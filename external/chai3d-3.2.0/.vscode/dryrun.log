@@ -1,0 +1,275 @@
+make --dry-run --keep-going --print-directory
+make: Entering directory '/home/kai/Desktop/application/external/chai3d-3.2.0'
+ 
+make -C examples
+ 
+make[1]: Entering directory '/home/kai/Desktop/application/external/chai3d-3.2.0/examples'
+ 
+make -C GLFW
+ 
+make[2]: Entering directory '/home/kai/Desktop/application/external/chai3d-3.2.0/examples/GLFW'
+ 
+make -C ../../extras/GLFW
+ 
+make[3]: Entering directory '/home/kai/Desktop/application/external/chai3d-3.2.0/extras/GLFW'
+ 
+make[3]: Nothing to be done for 'all'.
+make[3]: Leaving directory '/home/kai/Desktop/application/external/chai3d-3.2.0/extras/GLFW'
+ 
+make -C 01-mydevice
+ 
+make[3]: Entering directory '/home/kai/Desktop/application/external/chai3d-3.2.0/examples/GLFW/01-mydevice'
+ 
+make[3]: Nothing to be done for 'all'.
+make[3]: Leaving directory '/home/kai/Desktop/application/external/chai3d-3.2.0/examples/GLFW/01-mydevice'
+ 
+make -C 02-multi-devices
+ 
+make[3]: Entering directory '/home/kai/Desktop/application/external/chai3d-3.2.0/examples/GLFW/02-multi-devices'
+ 
+make[3]: Nothing to be done for 'all'.
+make[3]: Leaving directory '/home/kai/Desktop/application/external/chai3d-3.2.0/examples/GLFW/02-multi-devices'
+ 
+make -C 03-analytics
+ 
+make[3]: Entering directory '/home/kai/Desktop/application/external/chai3d-3.2.0/examples/GLFW/03-analytics'
+ 
+make[3]: Nothing to be done for 'all'.
+make[3]: Leaving directory '/home/kai/Desktop/application/external/chai3d-3.2.0/examples/GLFW/03-analytics'
+ 
+make -C 04-shapes
+ 
+make[3]: Entering directory '/home/kai/Desktop/application/external/chai3d-3.2.0/examples/GLFW/04-shapes'
+ 
+make[3]: Nothing to be done for 'all'.
+make[3]: Leaving directory '/home/kai/Desktop/application/external/chai3d-3.2.0/examples/GLFW/04-shapes'
+ 
+make -C 05-fonts
+ 
+make[3]: Entering directory '/home/kai/Desktop/application/external/chai3d-3.2.0/examples/GLFW/05-fonts'
+ 
+make[3]: Nothing to be done for 'all'.
+make[3]: Leaving directory '/home/kai/Desktop/application/external/chai3d-3.2.0/examples/GLFW/05-fonts'
+ 
+make -C 06-images
+ 
+make[3]: Entering directory '/home/kai/Desktop/application/external/chai3d-3.2.0/examples/GLFW/06-images'
+ 
+make[3]: Nothing to be done for 'all'.
+make[3]: Leaving directory '/home/kai/Desktop/application/external/chai3d-3.2.0/examples/GLFW/06-images'
+ 
+make -C 07-mouse-select
+ 
+make[3]: Entering directory '/home/kai/Desktop/application/external/chai3d-3.2.0/examples/GLFW/07-mouse-select'
+ 
+make[3]: Nothing to be done for 'all'.
+make[3]: Leaving directory '/home/kai/Desktop/application/external/chai3d-3.2.0/examples/GLFW/07-mouse-select'
+ 
+make -C 08-shaders
+ 
+make[3]: Entering directory '/home/kai/Desktop/application/external/chai3d-3.2.0/examples/GLFW/08-shaders'
+ 
+make[3]: Nothing to be done for 'all'.
+make[3]: Leaving directory '/home/kai/Desktop/application/external/chai3d-3.2.0/examples/GLFW/08-shaders'
+ 
+make -C 09-magnets
+ 
+make[3]: Entering directory '/home/kai/Desktop/application/external/chai3d-3.2.0/examples/GLFW/09-magnets'
+ 
+make[3]: Nothing to be done for 'all'.
+make[3]: Leaving directory '/home/kai/Desktop/application/external/chai3d-3.2.0/examples/GLFW/09-magnets'
+ 
+make -C 10-oring
+ 
+make[3]: Entering directory '/home/kai/Desktop/application/external/chai3d-3.2.0/examples/GLFW/10-oring'
+ 
+make[3]: Nothing to be done for 'all'.
+make[3]: Leaving directory '/home/kai/Desktop/application/external/chai3d-3.2.0/examples/GLFW/10-oring'
+ 
+make -C 11-effects
+ 
+make[3]: Entering directory '/home/kai/Desktop/application/external/chai3d-3.2.0/examples/GLFW/11-effects'
+ 
+make[3]: Nothing to be done for 'all'.
+make[3]: Leaving directory '/home/kai/Desktop/application/external/chai3d-3.2.0/examples/GLFW/11-effects'
+ 
+make -C 12-polygons
+ 
+make[3]: Entering directory '/home/kai/Desktop/application/external/chai3d-3.2.0/examples/GLFW/12-polygons'
+ 
+make[3]: Nothing to be done for 'all'.
+make[3]: Leaving directory '/home/kai/Desktop/application/external/chai3d-3.2.0/examples/GLFW/12-polygons'
+ 
+make -C 13-primitives
+ 
+make[3]: Entering directory '/home/kai/Desktop/application/external/chai3d-3.2.0/examples/GLFW/13-primitives'
+ 
+make[3]: Nothing to be done for 'all'.
+make[3]: Leaving directory '/home/kai/Desktop/application/external/chai3d-3.2.0/examples/GLFW/13-primitives'
+ 
+make -C 14-textures
+ 
+make[3]: Entering directory '/home/kai/Desktop/application/external/chai3d-3.2.0/examples/GLFW/14-textures'
+ 
+make[3]: Nothing to be done for 'all'.
+make[3]: Leaving directory '/home/kai/Desktop/application/external/chai3d-3.2.0/examples/GLFW/14-textures'
+ 
+make -C 15-paint
+ 
+make[3]: Entering directory '/home/kai/Desktop/application/external/chai3d-3.2.0/examples/GLFW/15-paint'
+ 
+make[3]: Nothing to be done for 'all'.
+make[3]: Leaving directory '/home/kai/Desktop/application/external/chai3d-3.2.0/examples/GLFW/15-paint'
+ 
+make -C 16-friction
+ 
+make[3]: Entering directory '/home/kai/Desktop/application/external/chai3d-3.2.0/examples/GLFW/16-friction'
+ 
+make[3]: Nothing to be done for 'all'.
+make[3]: Leaving directory '/home/kai/Desktop/application/external/chai3d-3.2.0/examples/GLFW/16-friction'
+ 
+make -C 17-shading
+ 
+make[3]: Entering directory '/home/kai/Desktop/application/external/chai3d-3.2.0/examples/GLFW/17-shading'
+ 
+make[3]: Nothing to be done for 'all'.
+make[3]: Leaving directory '/home/kai/Desktop/application/external/chai3d-3.2.0/examples/GLFW/17-shading'
+ 
+make -C 18-endoscope
+ 
+make[3]: Entering directory '/home/kai/Desktop/application/external/chai3d-3.2.0/examples/GLFW/18-endoscope'
+ 
+make[3]: Nothing to be done for 'all'.
+make[3]: Leaving directory '/home/kai/Desktop/application/external/chai3d-3.2.0/examples/GLFW/18-endoscope'
+ 
+make -C 19-space
+ 
+make[3]: Entering directory '/home/kai/Desktop/application/external/chai3d-3.2.0/examples/GLFW/19-space'
+ 
+make[3]: Nothing to be done for 'all'.
+make[3]: Leaving directory '/home/kai/Desktop/application/external/chai3d-3.2.0/examples/GLFW/19-space'
+ 
+make -C 20-map
+ 
+make[3]: Entering directory '/home/kai/Desktop/application/external/chai3d-3.2.0/examples/GLFW/20-map'
+ 
+make[3]: Nothing to be done for 'all'.
+make[3]: Leaving directory '/home/kai/Desktop/application/external/chai3d-3.2.0/examples/GLFW/20-map'
+ 
+make -C 21-object
+ 
+make[3]: Entering directory '/home/kai/Desktop/application/external/chai3d-3.2.0/examples/GLFW/21-object'
+ 
+make[3]: Nothing to be done for 'all'.
+make[3]: Leaving directory '/home/kai/Desktop/application/external/chai3d-3.2.0/examples/GLFW/21-object'
+ 
+make -C 22-chrome
+ 
+make[3]: Entering directory '/home/kai/Desktop/application/external/chai3d-3.2.0/examples/GLFW/22-chrome'
+ 
+make[3]: Nothing to be done for 'all'.
+make[3]: Leaving directory '/home/kai/Desktop/application/external/chai3d-3.2.0/examples/GLFW/22-chrome'
+ 
+make -C 23-tooth
+ 
+make[3]: Entering directory '/home/kai/Desktop/application/external/chai3d-3.2.0/examples/GLFW/23-tooth'
+ 
+make[3]: Nothing to be done for 'all'.
+make[3]: Leaving directory '/home/kai/Desktop/application/external/chai3d-3.2.0/examples/GLFW/23-tooth'
+ 
+make -C 24-turntable
+ 
+make[3]: Entering directory '/home/kai/Desktop/application/external/chai3d-3.2.0/examples/GLFW/24-turntable'
+ 
+make[3]: Nothing to be done for 'all'.
+make[3]: Leaving directory '/home/kai/Desktop/application/external/chai3d-3.2.0/examples/GLFW/24-turntable'
+ 
+make -C 25-sounds
+ 
+make[3]: Entering directory '/home/kai/Desktop/application/external/chai3d-3.2.0/examples/GLFW/25-sounds'
+ 
+make[3]: Nothing to be done for 'all'.
+make[3]: Leaving directory '/home/kai/Desktop/application/external/chai3d-3.2.0/examples/GLFW/25-sounds'
+make -C 26-video
+ 
+make[3]: Entering directory '/home/kai/Desktop/application/external/chai3d-3.2.0/examples/GLFW/26-video'
+ 
+make[3]: Nothing to be done for 'all'.
+make[3]: Leaving directory '/home/kai/Desktop/application/external/chai3d-3.2.0/examples/GLFW/26-video'
+ 
+make -C 27-multiframes
+ 
+make[3]: Entering directory '/home/kai/Desktop/application/external/chai3d-3.2.0/examples/GLFW/27-multiframes'
+ 
+make[3]: Nothing to be done for 'all'.
+make[3]: Leaving directory '/home/kai/Desktop/application/external/chai3d-3.2.0/examples/GLFW/27-multiframes'
+ 
+make -C 28-voxel-basic
+ 
+make[3]: Entering directory '/home/kai/Desktop/application/external/chai3d-3.2.0/examples/GLFW/28-voxel-basic'
+ 
+make[3]: Nothing to be done for 'all'.
+make[3]: Leaving directory '/home/kai/Desktop/application/external/chai3d-3.2.0/examples/GLFW/28-voxel-basic'
+ 
+make -C 29-voxel-isosurface
+ 
+make[3]: Entering directory '/home/kai/Desktop/application/external/chai3d-3.2.0/examples/GLFW/29-voxel-isosurface'
+ 
+make[3]: Nothing to be done for 'all'.
+make[3]: Leaving directory '/home/kai/Desktop/application/external/chai3d-3.2.0/examples/GLFW/29-voxel-isosurface'
+ 
+make -C 30-voxel-colormap
+ 
+make[3]: Entering directory '/home/kai/Desktop/application/external/chai3d-3.2.0/examples/GLFW/30-voxel-colormap'
+ 
+make[3]: Nothing to be done for 'all'.
+make[3]: Leaving directory '/home/kai/Desktop/application/external/chai3d-3.2.0/examples/GLFW/30-voxel-colormap'
+ 
+make -C 31-pointcloud
+ 
+make[3]: Entering directory '/home/kai/Desktop/application/external/chai3d-3.2.0/examples/GLFW/31-pointcloud'
+ 
+g++ -I../../../src -fsigned-char -O3 -I../../../external/Eigen -I../../../external/glew/include -I../../../external/DHD/include -DLINUX -Wno-deprecated -std=c++0x -m64 -I../../../extras/GLFW/include -c -o obj/release/lin-x86_64-cc/31-pointcloud.o 31-pointcloud.cpp
+ 
+g++ -I../../../src -fsigned-char -O3 -I../../../external/Eigen -I../../../external/glew/include -I../../../external/DHD/include -DLINUX -Wno-deprecated -std=c++0x -m64 -I../../../extras/GLFW/include -I.  ./obj/release/lin-x86_64-cc/31-pointcloud.o -L../../../lib/release/lin-x86_64-cc -L../../../external/DHD/lib/lin-x86_64 -L../../../extras/GLFW/lib/release/lin-x86_64-cc -lchai3d -ldrd -lpthread -lrt -ldl -lGL -lGLU -lusb-1.0 -lglfw -lX11 -lXcursor -lXrandr -lXinerama -o ../../../bin/lin-x86_64/31-pointcloud 
+make[3]: Leaving directory '/home/kai/Desktop/application/external/chai3d-3.2.0/examples/GLFW/31-pointcloud'
+ 
+make[2]: Leaving directory '/home/kai/Desktop/application/external/chai3d-3.2.0/examples/GLFW'
+ 
+make[1]: Leaving directory '/home/kai/Desktop/application/external/chai3d-3.2.0/examples'
+ 
+make -C utils
+ 
+make[1]: Entering directory '/home/kai/Desktop/application/external/chai3d-3.2.0/utils'
+ 
+make -C CLI
+ 
+make[2]: Entering directory '/home/kai/Desktop/application/external/chai3d-3.2.0/utils/CLI'
+ 
+make -C cfont
+ 
+make[3]: Entering directory '/home/kai/Desktop/application/external/chai3d-3.2.0/utils/CLI/cfont'
+ 
+make[3]: Nothing to be done for 'all'.
+ 
+make[3]: Leaving directory '/home/kai/Desktop/application/external/chai3d-3.2.0/utils/CLI/cfont'
+ 
+make -C cimage
+ 
+make[3]: Entering directory '/home/kai/Desktop/application/external/chai3d-3.2.0/utils/CLI/cimage'
+ 
+make[3]: Nothing to be done for 'all'.
+make[3]: Leaving directory '/home/kai/Desktop/application/external/chai3d-3.2.0/utils/CLI/cimage'
+ 
+make -C cshader
+ 
+make[3]: Entering directory '/home/kai/Desktop/application/external/chai3d-3.2.0/utils/CLI/cshader'
+ 
+make[3]: Nothing to be done for 'all'.
+make[3]: Leaving directory '/home/kai/Desktop/application/external/chai3d-3.2.0/utils/CLI/cshader'
+ 
+make[2]: Leaving directory '/home/kai/Desktop/application/external/chai3d-3.2.0/utils/CLI'
+make[1]: Leaving directory '/home/kai/Desktop/application/external/chai3d-3.2.0/utils'
+ 
+make: Leaving directory '/home/kai/Desktop/application/external/chai3d-3.2.0'
+ 

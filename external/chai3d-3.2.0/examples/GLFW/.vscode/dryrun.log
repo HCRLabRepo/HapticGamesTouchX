@@ -1,0 +1,338 @@
+make --dry-run --always-make --keep-going --print-directory
+make: Entering directory '/home/kai/Desktop/application/external/chai3d-3.2.0/examples/GLFW'
+ 
+make -C ../../extras/GLFW
+make[1]: Entering directory '/home/kai/Desktop/application/external/chai3d-3.2.0/extras/GLFW'
+ 
+mkdir -p obj/release/lin-x86_64-cc/./src/
+mkdir -p src/
+cc -O3 -w -DLINUX -D_GLFW_X11 -m64 -I./include -I./src -c -o obj/release/lin-x86_64-cc/./src/context.o src/context.c
+cc -O3 -w -DLINUX -D_GLFW_X11 -m64 -I./include -I./src -c -o obj/release/lin-x86_64-cc/./src/init.o src/init.c
+cc -O3 -w -DLINUX -D_GLFW_X11 -m64 -I./include -I./src -c -o obj/release/lin-x86_64-cc/./src/input.o src/input.c
+cc -O3 -w -DLINUX -D_GLFW_X11 -m64 -I./include -I./src -c -o obj/release/lin-x86_64-cc/./src/monitor.o src/monitor.c
+cc -O3 -w -DLINUX -D_GLFW_X11 -m64 -I./include -I./src -c -o obj/release/lin-x86_64-cc/./src/vulkan.o src/vulkan.c
+cc -O3 -w -DLINUX -D_GLFW_X11 -m64 -I./include -I./src -c -o obj/release/lin-x86_64-cc/./src/window.o src/window.c
+cc -O3 -w -DLINUX -D_GLFW_X11 -m64 -I./include -I./src -c -o obj/release/lin-x86_64-cc/./src/x11_init.o src/x11_init.c
+cc -O3 -w -DLINUX -D_GLFW_X11 -m64 -I./include -I./src -c -o obj/release/lin-x86_64-cc/./src/x11_monitor.o src/x11_monitor.c
+cc -O3 -w -DLINUX -D_GLFW_X11 -m64 -I./include -I./src -c -o obj/release/lin-x86_64-cc/./src/x11_window.o src/x11_window.c
+cc -O3 -w -DLINUX -D_GLFW_X11 -m64 -I./include -I./src -c -o obj/release/lin-x86_64-cc/./src/xkb_unicode.o src/xkb_unicode.c
+cc -O3 -w -DLINUX -D_GLFW_X11 -m64 -I./include -I./src -c -o obj/release/lin-x86_64-cc/./src/linux_joystick.o src/linux_joystick.c
+cc -O3 -w -DLINUX -D_GLFW_X11 -m64 -I./include -I./src -c -o obj/release/lin-x86_64-cc/./src/posix_time.o src/posix_time.c
+cc -O3 -w -DLINUX -D_GLFW_X11 -m64 -I./include -I./src -c -o obj/release/lin-x86_64-cc/./src/posix_tls.o src/posix_tls.c
+cc -O3 -w -DLINUX -D_GLFW_X11 -m64 -I./include -I./src -c -o obj/release/lin-x86_64-cc/./src/glx_context.o src/glx_context.c
+cc -O3 -w -DLINUX -D_GLFW_X11 -m64 -I./include -I./src -c -o obj/release/lin-x86_64-cc/./src/egl_context.o src/egl_context.c
+mkdir -p lib/release/lin-x86_64-cc
+ar rs ./lib/release/lin-x86_64-cc/libglfw.a obj/release/lin-x86_64-cc/./src/context.o obj/release/lin-x86_64-cc/./src/init.o obj/release/lin-x86_64-cc/./src/input.o obj/release/lin-x86_64-cc/./src/monitor.o obj/release/lin-x86_64-cc/./src/vulkan.o obj/release/lin-x86_64-cc/./src/window.o obj/release/lin-x86_64-cc/./src/x11_init.o obj/release/lin-x86_64-cc/./src/x11_monitor.o obj/release/lin-x86_64-cc/./src/x11_window.o obj/release/lin-x86_64-cc/./src/xkb_unicode.o obj/release/lin-x86_64-cc/./src/linux_joystick.o obj/release/lin-x86_64-cc/./src/posix_time.o obj/release/lin-x86_64-cc/./src/posix_tls.o obj/release/lin-x86_64-cc/./src/glx_context.o obj/release/lin-x86_64-cc/./src/egl_context.o src/context.c src/init.c src/input.c src/monitor.c src/vulkan.c src/window.c src/x11_init.c src/x11_monitor.c src/x11_window.c src/xkb_unicode.c src/linux_joystick.c src/posix_time.c src/posix_tls.c src/glx_context.c src/egl_context.c
+make[1]: Leaving directory '/home/kai/Desktop/application/external/chai3d-3.2.0/extras/GLFW'
+make -C 01-mydevice
+make[1]: Entering directory '/home/kai/Desktop/application/external/chai3d-3.2.0/examples/GLFW/01-mydevice'
+mkdir -p obj/release/lin-x86_64-cc
+g++ -I../../../src -fsigned-char -O3 -I../../../external/Eigen -I../../../external/glew/include -I../../../external/DHD/include -DLINUX -Wno-deprecated -std=c++0x -m64 -I../../../extras/GLFW/include -c -o obj/release/lin-x86_64-cc/01-mydevice.o 01-mydevice.cpp
+ 
+g++ -I../../../src -fsigned-char -O3 -I../../../external/Eigen -I../../../external/glew/include -I../../../external/DHD/include -DLINUX -Wno-deprecated -std=c++0x -m64 -I../../../extras/GLFW/include -I.  ./obj/release/lin-x86_64-cc/01-mydevice.o -L../../../lib/release/lin-x86_64-cc -L../../../external/DHD/lib/lin-x86_64 -L../../../extras/GLFW/lib/release/lin-x86_64-cc -lchai3d -ldrd -lpthread -lrt -ldl -lGL -lGLU -lusb-1.0 -lglfw -lX11 -lXcursor -lXrandr -lXinerama -o ../../../bin/lin-x86_64/01-mydevice 
+make[1]: Leaving directory '/home/kai/Desktop/application/external/chai3d-3.2.0/examples/GLFW/01-mydevice'
+make -C 02-multi-devices
+make[1]: Entering directory '/home/kai/Desktop/application/external/chai3d-3.2.0/examples/GLFW/02-multi-devices'
+ 
+mkdir -p obj/release/lin-x86_64-cc
+g++ -I../../../src -fsigned-char -O3 -I../../../external/Eigen -I../../../external/glew/include -I../../../external/DHD/include -DLINUX -Wno-deprecated -std=c++0x -m64 -I../../../extras/GLFW/include -c -o obj/release/lin-x86_64-cc/02-multi-devices.o 02-multi-devices.cpp
+g++ -I../../../src -fsigned-char -O3 -I../../../external/Eigen -I../../../external/glew/include -I../../../external/DHD/include -DLINUX -Wno-deprecated -std=c++0x -m64 -I../../../extras/GLFW/include -I.  ./obj/release/lin-x86_64-cc/02-multi-devices.o -L../../../lib/release/lin-x86_64-cc -L../../../external/DHD/lib/lin-x86_64 -L../../../extras/GLFW/lib/release/lin-x86_64-cc -lchai3d -ldrd -lpthread -lrt -ldl -lGL -lGLU -lusb-1.0 -lglfw -lX11 -lXcursor -lXrandr -lXinerama -o ../../../bin/lin-x86_64/02-multi-devices 
+make[1]: Leaving directory '/home/kai/Desktop/application/external/chai3d-3.2.0/examples/GLFW/02-multi-devices'
+make -C 03-analytics
+ 
+make[1]: Entering directory '/home/kai/Desktop/application/external/chai3d-3.2.0/examples/GLFW/03-analytics'
+ 
+mkdir -p obj/release/lin-x86_64-cc
+g++ -I../../../src -fsigned-char -O3 -I../../../external/Eigen -I../../../external/glew/include -I../../../external/DHD/include -DLINUX -Wno-deprecated -std=c++0x -m64 -I../../../extras/GLFW/include -c -o obj/release/lin-x86_64-cc/03-analytics.o 03-analytics.cpp
+ 
+g++ -I../../../src -fsigned-char -O3 -I../../../external/Eigen -I../../../external/glew/include -I../../../external/DHD/include -DLINUX -Wno-deprecated -std=c++0x -m64 -I../../../extras/GLFW/include -I.  ./obj/release/lin-x86_64-cc/03-analytics.o -L../../../lib/release/lin-x86_64-cc -L../../../external/DHD/lib/lin-x86_64 -L../../../extras/GLFW/lib/release/lin-x86_64-cc -lchai3d -ldrd -lpthread -lrt -ldl -lGL -lGLU -lusb-1.0 -lglfw -lX11 -lXcursor -lXrandr -lXinerama -o ../../../bin/lin-x86_64/03-analytics 
+make[1]: Leaving directory '/home/kai/Desktop/application/external/chai3d-3.2.0/examples/GLFW/03-analytics'
+make -C 04-shapes
+make[1]: Entering directory '/home/kai/Desktop/application/external/chai3d-3.2.0/examples/GLFW/04-shapes'
+ 
+mkdir -p obj/release/lin-x86_64-cc
+g++ -I../../../src -fsigned-char -O3 -I../../../external/Eigen -I../../../external/glew/include -I../../../external/DHD/include -DLINUX -Wno-deprecated -std=c++0x -m64 -I../../../extras/GLFW/include -c -o obj/release/lin-x86_64-cc/04-shapes.o 04-shapes.cpp
+ 
+g++ -I../../../src -fsigned-char -O3 -I../../../external/Eigen -I../../../external/glew/include -I../../../external/DHD/include -DLINUX -Wno-deprecated -std=c++0x -m64 -I../../../extras/GLFW/include -I.  ./obj/release/lin-x86_64-cc/04-shapes.o -L../../../lib/release/lin-x86_64-cc -L../../../external/DHD/lib/lin-x86_64 -L../../../extras/GLFW/lib/release/lin-x86_64-cc -lchai3d -ldrd -lpthread -lrt -ldl -lGL -lGLU -lusb-1.0 -lglfw -lX11 -lXcursor -lXrandr -lXinerama -o ../../../bin/lin-x86_64/04-shapes 
+make[1]: Leaving directory '/home/kai/Desktop/application/external/chai3d-3.2.0/examples/GLFW/04-shapes'
+make -C 05-fonts
+make[1]: Entering directory '/home/kai/Desktop/application/external/chai3d-3.2.0/examples/GLFW/05-fonts'
+ 
+mkdir -p obj/release/lin-x86_64-cc
+g++ -I../../../src -fsigned-char -O3 -I../../../external/Eigen -I../../../external/glew/include -I../../../external/DHD/include -DLINUX -Wno-deprecated -std=c++0x -m64 -I../../../extras/GLFW/include -c -o obj/release/lin-x86_64-cc/05-fonts.o 05-fonts.cpp
+ 
+g++ -I../../../src -fsigned-char -O3 -I../../../external/Eigen -I../../../external/glew/include -I../../../external/DHD/include -DLINUX -Wno-deprecated -std=c++0x -m64 -I../../../extras/GLFW/include -I.  ./obj/release/lin-x86_64-cc/05-fonts.o -L../../../lib/release/lin-x86_64-cc -L../../../external/DHD/lib/lin-x86_64 -L../../../extras/GLFW/lib/release/lin-x86_64-cc -lchai3d -ldrd -lpthread -lrt -ldl -lGL -lGLU -lusb-1.0 -lglfw -lX11 -lXcursor -lXrandr -lXinerama -o ../../../bin/lin-x86_64/05-fonts 
+make[1]: Leaving directory '/home/kai/Desktop/application/external/chai3d-3.2.0/examples/GLFW/05-fonts'
+make -C 06-images
+make[1]: Entering directory '/home/kai/Desktop/application/external/chai3d-3.2.0/examples/GLFW/06-images'
+ 
+mkdir -p obj/release/lin-x86_64-cc
+g++ -I../../../src -fsigned-char -O3 -I../../../external/Eigen -I../../../external/glew/include -I../../../external/DHD/include -DLINUX -Wno-deprecated -std=c++0x -m64 -I../../../extras/GLFW/include -c -o obj/release/lin-x86_64-cc/06-images.o 06-images.cpp
+ 
+g++ -I../../../src -fsigned-char -O3 -I../../../external/Eigen -I../../../external/glew/include -I../../../external/DHD/include -DLINUX -Wno-deprecated -std=c++0x -m64 -I../../../extras/GLFW/include -I.  ./obj/release/lin-x86_64-cc/06-images.o -L../../../lib/release/lin-x86_64-cc -L../../../external/DHD/lib/lin-x86_64 -L../../../extras/GLFW/lib/release/lin-x86_64-cc -lchai3d -ldrd -lpthread -lrt -ldl -lGL -lGLU -lusb-1.0 -lglfw -lX11 -lXcursor -lXrandr -lXinerama -o ../../../bin/lin-x86_64/06-images 
+make[1]: Leaving directory '/home/kai/Desktop/application/external/chai3d-3.2.0/examples/GLFW/06-images'
+make -C 07-mouse-select
+ 
+make[1]: Entering directory '/home/kai/Desktop/application/external/chai3d-3.2.0/examples/GLFW/07-mouse-select'
+ 
+mkdir -p obj/release/lin-x86_64-cc
+g++ -I../../../src -fsigned-char -O3 -I../../../external/Eigen -I../../../external/glew/include -I../../../external/DHD/include -DLINUX -Wno-deprecated -std=c++0x -m64 -I../../../extras/GLFW/include -c -o obj/release/lin-x86_64-cc/07-mouse-select.o 07-mouse-select.cpp
+ 
+g++ -I../../../src -fsigned-char -O3 -I../../../external/Eigen -I../../../external/glew/include -I../../../external/DHD/include -DLINUX -Wno-deprecated -std=c++0x -m64 -I../../../extras/GLFW/include -I.  ./obj/release/lin-x86_64-cc/07-mouse-select.o -L../../../lib/release/lin-x86_64-cc -L../../../external/DHD/lib/lin-x86_64 -L../../../extras/GLFW/lib/release/lin-x86_64-cc -lchai3d -ldrd -lpthread -lrt -ldl -lGL -lGLU -lusb-1.0 -lglfw -lX11 -lXcursor -lXrandr -lXinerama -o ../../../bin/lin-x86_64/07-mouse-select 
+make[1]: Leaving directory '/home/kai/Desktop/application/external/chai3d-3.2.0/examples/GLFW/07-mouse-select'
+make -C 08-shaders
+make[1]: Entering directory '/home/kai/Desktop/application/external/chai3d-3.2.0/examples/GLFW/08-shaders'
+ 
+mkdir -p obj/release/lin-x86_64-cc
+g++ -I../../../src -fsigned-char -O3 -I../../../external/Eigen -I../../../external/glew/include -I../../../external/DHD/include -DLINUX -Wno-deprecated -std=c++0x -m64 -I../../../extras/GLFW/include -c -o obj/release/lin-x86_64-cc/08-shaders.o 08-shaders.cpp
+ 
+g++ -I../../../src -fsigned-char -O3 -I../../../external/Eigen -I../../../external/glew/include -I../../../external/DHD/include -DLINUX -Wno-deprecated -std=c++0x -m64 -I../../../extras/GLFW/include -I.  ./obj/release/lin-x86_64-cc/08-shaders.o -L../../../lib/release/lin-x86_64-cc -L../../../external/DHD/lib/lin-x86_64 -L../../../extras/GLFW/lib/release/lin-x86_64-cc -lchai3d -ldrd -lpthread -lrt -ldl -lGL -lGLU -lusb-1.0 -lglfw -lX11 -lXcursor -lXrandr -lXinerama -o ../../../bin/lin-x86_64/08-shaders 
+make[1]: Leaving directory '/home/kai/Desktop/application/external/chai3d-3.2.0/examples/GLFW/08-shaders'
+make -C 09-magnets
+ 
+make[1]: Entering directory '/home/kai/Desktop/application/external/chai3d-3.2.0/examples/GLFW/09-magnets'
+ 
+mkdir -p obj/release/lin-x86_64-cc
+g++ -I../../../src -fsigned-char -O3 -I../../../external/Eigen -I../../../external/glew/include -I../../../external/DHD/include -DLINUX -Wno-deprecated -std=c++0x -m64 -I../../../extras/GLFW/include -c -o obj/release/lin-x86_64-cc/09-magnets.o 09-magnets.cpp
+ 
+g++ -I../../../src -fsigned-char -O3 -I../../../external/Eigen -I../../../external/glew/include -I../../../external/DHD/include -DLINUX -Wno-deprecated -std=c++0x -m64 -I../../../extras/GLFW/include -I.  ./obj/release/lin-x86_64-cc/09-magnets.o -L../../../lib/release/lin-x86_64-cc -L../../../external/DHD/lib/lin-x86_64 -L../../../extras/GLFW/lib/release/lin-x86_64-cc -lchai3d -ldrd -lpthread -lrt -ldl -lGL -lGLU -lusb-1.0 -lglfw -lX11 -lXcursor -lXrandr -lXinerama -o ../../../bin/lin-x86_64/09-magnets 
+make[1]: Leaving directory '/home/kai/Desktop/application/external/chai3d-3.2.0/examples/GLFW/09-magnets'
+ 
+make -C 10-oring
+ 
+make[1]: Entering directory '/home/kai/Desktop/application/external/chai3d-3.2.0/examples/GLFW/10-oring'
+ 
+mkdir -p obj/release/lin-x86_64-cc
+g++ -I../../../src -fsigned-char -O3 -I../../../external/Eigen -I../../../external/glew/include -I../../../external/DHD/include -DLINUX -Wno-deprecated -std=c++0x -m64 -I../../../extras/GLFW/include -c -o obj/release/lin-x86_64-cc/10-oring.o 10-oring.cpp
+ 
+g++ -I../../../src -fsigned-char -O3 -I../../../external/Eigen -I../../../external/glew/include -I../../../external/DHD/include -DLINUX -Wno-deprecated -std=c++0x -m64 -I../../../extras/GLFW/include -I.  ./obj/release/lin-x86_64-cc/10-oring.o -L../../../lib/release/lin-x86_64-cc -L../../../external/DHD/lib/lin-x86_64 -L../../../extras/GLFW/lib/release/lin-x86_64-cc -lchai3d -ldrd -lpthread -lrt -ldl -lGL -lGLU -lusb-1.0 -lglfw -lX11 -lXcursor -lXrandr -lXinerama -o ../../../bin/lin-x86_64/10-oring 
+make[1]: Leaving directory '/home/kai/Desktop/application/external/chai3d-3.2.0/examples/GLFW/10-oring'
+make -C 11-effects
+make[1]: Entering directory '/home/kai/Desktop/application/external/chai3d-3.2.0/examples/GLFW/11-effects'
+ 
+mkdir -p obj/release/lin-x86_64-cc
+ 
+g++ -I../../../src -fsigned-char -O3 -I../../../external/Eigen -I../../../external/glew/include -I../../../external/DHD/include -DLINUX -Wno-deprecated -std=c++0x -m64 -I../../../extras/GLFW/include -c -o obj/release/lin-x86_64-cc/11-effects.o 11-effects.cpp
+ 
+g++ -I../../../src -fsigned-char -O3 -I../../../external/Eigen -I../../../external/glew/include -I../../../external/DHD/include -DLINUX -Wno-deprecated -std=c++0x -m64 -I../../../extras/GLFW/include -I.  ./obj/release/lin-x86_64-cc/11-effects.o -L../../../lib/release/lin-x86_64-cc -L../../../external/DHD/lib/lin-x86_64 -L../../../extras/GLFW/lib/release/lin-x86_64-cc -lchai3d -ldrd -lpthread -lrt -ldl -lGL -lGLU -lusb-1.0 -lglfw -lX11 -lXcursor -lXrandr -lXinerama -o ../../../bin/lin-x86_64/11-effects 
+make[1]: Leaving directory '/home/kai/Desktop/application/external/chai3d-3.2.0/examples/GLFW/11-effects'
+ 
+make -C 12-polygons
+ 
+make[1]: Entering directory '/home/kai/Desktop/application/external/chai3d-3.2.0/examples/GLFW/12-polygons'
+ 
+mkdir -p obj/release/lin-x86_64-cc
+ 
+g++ -I../../../src -fsigned-char -O3 -I../../../external/Eigen -I../../../external/glew/include -I../../../external/DHD/include -DLINUX -Wno-deprecated -std=c++0x -m64 -I../../../extras/GLFW/include -c -o obj/release/lin-x86_64-cc/12-polygons.o 12-polygons.cpp
+ 
+g++ -I../../../src -fsigned-char -O3 -I../../../external/Eigen -I../../../external/glew/include -I../../../external/DHD/include -DLINUX -Wno-deprecated -std=c++0x -m64 -I../../../extras/GLFW/include -I.  ./obj/release/lin-x86_64-cc/12-polygons.o -L../../../lib/release/lin-x86_64-cc -L../../../external/DHD/lib/lin-x86_64 -L../../../extras/GLFW/lib/release/lin-x86_64-cc -lchai3d -ldrd -lpthread -lrt -ldl -lGL -lGLU -lusb-1.0 -lglfw -lX11 -lXcursor -lXrandr -lXinerama -o ../../../bin/lin-x86_64/12-polygons 
+make[1]: Leaving directory '/home/kai/Desktop/application/external/chai3d-3.2.0/examples/GLFW/12-polygons'
+make -C 13-primitives
+make[1]: Entering directory '/home/kai/Desktop/application/external/chai3d-3.2.0/examples/GLFW/13-primitives'
+ 
+mkdir -p obj/release/lin-x86_64-cc
+g++ -I../../../src -fsigned-char -O3 -I../../../external/Eigen -I../../../external/glew/include -I../../../external/DHD/include -DLINUX -Wno-deprecated -std=c++0x -m64 -I../../../extras/GLFW/include -c -o obj/release/lin-x86_64-cc/13-primitives.o 13-primitives.cpp
+ 
+g++ -I../../../src -fsigned-char -O3 -I../../../external/Eigen -I../../../external/glew/include -I../../../external/DHD/include -DLINUX -Wno-deprecated -std=c++0x -m64 -I../../../extras/GLFW/include -I.  ./obj/release/lin-x86_64-cc/13-primitives.o -L../../../lib/release/lin-x86_64-cc -L../../../external/DHD/lib/lin-x86_64 -L../../../extras/GLFW/lib/release/lin-x86_64-cc -lchai3d -ldrd -lpthread -lrt -ldl -lGL -lGLU -lusb-1.0 -lglfw -lX11 -lXcursor -lXrandr -lXinerama -o ../../../bin/lin-x86_64/13-primitives 
+make[1]: Leaving directory '/home/kai/Desktop/application/external/chai3d-3.2.0/examples/GLFW/13-primitives'
+ 
+make -C 14-textures
+ 
+make[1]: Entering directory '/home/kai/Desktop/application/external/chai3d-3.2.0/examples/GLFW/14-textures'
+ 
+mkdir -p obj/release/lin-x86_64-cc
+ 
+g++ -I../../../src -fsigned-char -O3 -I../../../external/Eigen -I../../../external/glew/include -I../../../external/DHD/include -DLINUX -Wno-deprecated -std=c++0x -m64 -I../../../extras/GLFW/include -c -o obj/release/lin-x86_64-cc/14-textures.o 14-textures.cpp
+ 
+g++ -I../../../src -fsigned-char -O3 -I../../../external/Eigen -I../../../external/glew/include -I../../../external/DHD/include -DLINUX -Wno-deprecated -std=c++0x -m64 -I../../../extras/GLFW/include -I.  ./obj/release/lin-x86_64-cc/14-textures.o -L../../../lib/release/lin-x86_64-cc -L../../../external/DHD/lib/lin-x86_64 -L../../../extras/GLFW/lib/release/lin-x86_64-cc -lchai3d -ldrd -lpthread -lrt -ldl -lGL -lGLU -lusb-1.0 -lglfw -lX11 -lXcursor -lXrandr -lXinerama -o ../../../bin/lin-x86_64/14-textures 
+make[1]: Leaving directory '/home/kai/Desktop/application/external/chai3d-3.2.0/examples/GLFW/14-textures'
+ 
+make -C 15-paint
+ 
+make[1]: Entering directory '/home/kai/Desktop/application/external/chai3d-3.2.0/examples/GLFW/15-paint'
+ 
+mkdir -p obj/release/lin-x86_64-cc
+ 
+g++ -I../../../src -fsigned-char -O3 -I../../../external/Eigen -I../../../external/glew/include -I../../../external/DHD/include -DLINUX -Wno-deprecated -std=c++0x -m64 -I../../../extras/GLFW/include -c -o obj/release/lin-x86_64-cc/15-paint.o 15-paint.cpp
+ 
+g++ -I../../../src -fsigned-char -O3 -I../../../external/Eigen -I../../../external/glew/include -I../../../external/DHD/include -DLINUX -Wno-deprecated -std=c++0x -m64 -I../../../extras/GLFW/include -I.  ./obj/release/lin-x86_64-cc/15-paint.o -L../../../lib/release/lin-x86_64-cc -L../../../external/DHD/lib/lin-x86_64 -L../../../extras/GLFW/lib/release/lin-x86_64-cc -lchai3d -ldrd -lpthread -lrt -ldl -lGL -lGLU -lusb-1.0 -lglfw -lX11 -lXcursor -lXrandr -lXinerama -o ../../../bin/lin-x86_64/15-paint 
+make[1]: Leaving directory '/home/kai/Desktop/application/external/chai3d-3.2.0/examples/GLFW/15-paint'
+ 
+make -C 16-friction
+ 
+make[1]: Entering directory '/home/kai/Desktop/application/external/chai3d-3.2.0/examples/GLFW/16-friction'
+ 
+mkdir -p obj/release/lin-x86_64-cc
+ 
+g++ -I../../../src -fsigned-char -O3 -I../../../external/Eigen -I../../../external/glew/include -I../../../external/DHD/include -DLINUX -Wno-deprecated -std=c++0x -m64 -I../../../extras/GLFW/include -c -o obj/release/lin-x86_64-cc/16-friction.o 16-friction.cpp
+ 
+g++ -I../../../src -fsigned-char -O3 -I../../../external/Eigen -I../../../external/glew/include -I../../../external/DHD/include -DLINUX -Wno-deprecated -std=c++0x -m64 -I../../../extras/GLFW/include -I.  ./obj/release/lin-x86_64-cc/16-friction.o -L../../../lib/release/lin-x86_64-cc -L../../../external/DHD/lib/lin-x86_64 -L../../../extras/GLFW/lib/release/lin-x86_64-cc -lchai3d -ldrd -lpthread -lrt -ldl -lGL -lGLU -lusb-1.0 -lglfw -lX11 -lXcursor -lXrandr -lXinerama -o ../../../bin/lin-x86_64/16-friction 
+make[1]: Leaving directory '/home/kai/Desktop/application/external/chai3d-3.2.0/examples/GLFW/16-friction'
+ 
+make -C 17-shading
+ 
+make[1]: Entering directory '/home/kai/Desktop/application/external/chai3d-3.2.0/examples/GLFW/17-shading'
+ 
+mkdir -p obj/release/lin-x86_64-cc
+ 
+g++ -I../../../src -fsigned-char -O3 -I../../../external/Eigen -I../../../external/glew/include -I../../../external/DHD/include -DLINUX -Wno-deprecated -std=c++0x -m64 -I../../../extras/GLFW/include -c -o obj/release/lin-x86_64-cc/17-shading.o 17-shading.cpp
+ 
+g++ -I../../../src -fsigned-char -O3 -I../../../external/Eigen -I../../../external/glew/include -I../../../external/DHD/include -DLINUX -Wno-deprecated -std=c++0x -m64 -I../../../extras/GLFW/include -I.  ./obj/release/lin-x86_64-cc/17-shading.o -L../../../lib/release/lin-x86_64-cc -L../../../external/DHD/lib/lin-x86_64 -L../../../extras/GLFW/lib/release/lin-x86_64-cc -lchai3d -ldrd -lpthread -lrt -ldl -lGL -lGLU -lusb-1.0 -lglfw -lX11 -lXcursor -lXrandr -lXinerama -o ../../../bin/lin-x86_64/17-shading 
+make[1]: Leaving directory '/home/kai/Desktop/application/external/chai3d-3.2.0/examples/GLFW/17-shading'
+ 
+make -C 18-endoscope
+ 
+make[1]: Entering directory '/home/kai/Desktop/application/external/chai3d-3.2.0/examples/GLFW/18-endoscope'
+ 
+mkdir -p obj/release/lin-x86_64-cc
+ 
+g++ -I../../../src -fsigned-char -O3 -I../../../external/Eigen -I../../../external/glew/include -I../../../external/DHD/include -DLINUX -Wno-deprecated -std=c++0x -m64 -I../../../extras/GLFW/include -c -o obj/release/lin-x86_64-cc/18-endoscope.o 18-endoscope.cpp
+ 
+g++ -I../../../src -fsigned-char -O3 -I../../../external/Eigen -I../../../external/glew/include -I../../../external/DHD/include -DLINUX -Wno-deprecated -std=c++0x -m64 -I../../../extras/GLFW/include -I.  ./obj/release/lin-x86_64-cc/18-endoscope.o -L../../../lib/release/lin-x86_64-cc -L../../../external/DHD/lib/lin-x86_64 -L../../../extras/GLFW/lib/release/lin-x86_64-cc -lchai3d -ldrd -lpthread -lrt -ldl -lGL -lGLU -lusb-1.0 -lglfw -lX11 -lXcursor -lXrandr -lXinerama -o ../../../bin/lin-x86_64/18-endoscope 
+make[1]: Leaving directory '/home/kai/Desktop/application/external/chai3d-3.2.0/examples/GLFW/18-endoscope'
+ 
+make -C 19-space
+ 
+make[1]: Entering directory '/home/kai/Desktop/application/external/chai3d-3.2.0/examples/GLFW/19-space'
+ 
+mkdir -p obj/release/lin-x86_64-cc
+ 
+g++ -I../../../src -fsigned-char -O3 -I../../../external/Eigen -I../../../external/glew/include -I../../../external/DHD/include -DLINUX -Wno-deprecated -std=c++0x -m64 -I../../../extras/GLFW/include -c -o obj/release/lin-x86_64-cc/19-space.o 19-space.cpp
+ 
+g++ -I../../../src -fsigned-char -O3 -I../../../external/Eigen -I../../../external/glew/include -I../../../external/DHD/include -DLINUX -Wno-deprecated -std=c++0x -m64 -I../../../extras/GLFW/include -I.  ./obj/release/lin-x86_64-cc/19-space.o -L../../../lib/release/lin-x86_64-cc -L../../../external/DHD/lib/lin-x86_64 -L../../../extras/GLFW/lib/release/lin-x86_64-cc -lchai3d -ldrd -lpthread -lrt -ldl -lGL -lGLU -lusb-1.0 -lglfw -lX11 -lXcursor -lXrandr -lXinerama -o ../../../bin/lin-x86_64/19-space 
+make[1]: Leaving directory '/home/kai/Desktop/application/external/chai3d-3.2.0/examples/GLFW/19-space'
+ 
+make -C 20-map
+ 
+make[1]: Entering directory '/home/kai/Desktop/application/external/chai3d-3.2.0/examples/GLFW/20-map'
+ 
+mkdir -p obj/release/lin-x86_64-cc
+ 
+g++ -I../../../src -fsigned-char -O3 -I../../../external/Eigen -I../../../external/glew/include -I../../../external/DHD/include -DLINUX -Wno-deprecated -std=c++0x -m64 -I../../../extras/GLFW/include -c -o obj/release/lin-x86_64-cc/20-map.o 20-map.cpp
+ 
+g++ -I../../../src -fsigned-char -O3 -I../../../external/Eigen -I../../../external/glew/include -I../../../external/DHD/include -DLINUX -Wno-deprecated -std=c++0x -m64 -I../../../extras/GLFW/include -I.  ./obj/release/lin-x86_64-cc/20-map.o -L../../../lib/release/lin-x86_64-cc -L../../../external/DHD/lib/lin-x86_64 -L../../../extras/GLFW/lib/release/lin-x86_64-cc -lchai3d -ldrd -lpthread -lrt -ldl -lGL -lGLU -lusb-1.0 -lglfw -lX11 -lXcursor -lXrandr -lXinerama -o ../../../bin/lin-x86_64/20-map 
+make[1]: Leaving directory '/home/kai/Desktop/application/external/chai3d-3.2.0/examples/GLFW/20-map'
+ 
+make -C 21-object
+ 
+make[1]: Entering directory '/home/kai/Desktop/application/external/chai3d-3.2.0/examples/GLFW/21-object'
+ 
+mkdir -p obj/release/lin-x86_64-cc
+ 
+g++ -I../../../src -fsigned-char -O3 -I../../../external/Eigen -I../../../external/glew/include -I../../../external/DHD/include -DLINUX -Wno-deprecated -std=c++0x -m64 -I../../../extras/GLFW/include -c -o obj/release/lin-x86_64-cc/21-object.o 21-object.cpp
+ 
+g++ -I../../../src -fsigned-char -O3 -I../../../external/Eigen -I../../../external/glew/include -I../../../external/DHD/include -DLINUX -Wno-deprecated -std=c++0x -m64 -I../../../extras/GLFW/include -I.  ./obj/release/lin-x86_64-cc/21-object.o -L../../../lib/release/lin-x86_64-cc -L../../../external/DHD/lib/lin-x86_64 -L../../../extras/GLFW/lib/release/lin-x86_64-cc -lchai3d -ldrd -lpthread -lrt -ldl -lGL -lGLU -lusb-1.0 -lglfw -lX11 -lXcursor -lXrandr -lXinerama -o ../../../bin/lin-x86_64/21-object 
+make[1]: Leaving directory '/home/kai/Desktop/application/external/chai3d-3.2.0/examples/GLFW/21-object'
+ 
+make -C 22-chrome
+ 
+make[1]: Entering directory '/home/kai/Desktop/application/external/chai3d-3.2.0/examples/GLFW/22-chrome'
+ 
+mkdir -p obj/release/lin-x86_64-cc
+ 
+g++ -I../../../src -fsigned-char -O3 -I../../../external/Eigen -I../../../external/glew/include -I../../../external/DHD/include -DLINUX -Wno-deprecated -std=c++0x -m64 -I../../../extras/GLFW/include -c -o obj/release/lin-x86_64-cc/22-chrome.o 22-chrome.cpp
+ 
+g++ -I../../../src -fsigned-char -O3 -I../../../external/Eigen -I../../../external/glew/include -I../../../external/DHD/include -DLINUX -Wno-deprecated -std=c++0x -m64 -I../../../extras/GLFW/include -I.  ./obj/release/lin-x86_64-cc/22-chrome.o -L../../../lib/release/lin-x86_64-cc -L../../../external/DHD/lib/lin-x86_64 -L../../../extras/GLFW/lib/release/lin-x86_64-cc -lchai3d -ldrd -lpthread -lrt -ldl -lGL -lGLU -lusb-1.0 -lglfw -lX11 -lXcursor -lXrandr -lXinerama -o ../../../bin/lin-x86_64/22-chrome 
+make[1]: Leaving directory '/home/kai/Desktop/application/external/chai3d-3.2.0/examples/GLFW/22-chrome'
+ 
+make -C 23-tooth
+ 
+make[1]: Entering directory '/home/kai/Desktop/application/external/chai3d-3.2.0/examples/GLFW/23-tooth'
+ 
+mkdir -p obj/release/lin-x86_64-cc
+ 
+g++ -I../../../src -fsigned-char -O3 -I../../../external/Eigen -I../../../external/glew/include -I../../../external/DHD/include -DLINUX -Wno-deprecated -std=c++0x -m64 -I../../../extras/GLFW/include -c -o obj/release/lin-x86_64-cc/23-tooth.o 23-tooth.cpp
+ 
+g++ -I../../../src -fsigned-char -O3 -I../../../external/Eigen -I../../../external/glew/include -I../../../external/DHD/include -DLINUX -Wno-deprecated -std=c++0x -m64 -I../../../extras/GLFW/include -I.  ./obj/release/lin-x86_64-cc/23-tooth.o -L../../../lib/release/lin-x86_64-cc -L../../../external/DHD/lib/lin-x86_64 -L../../../extras/GLFW/lib/release/lin-x86_64-cc -lchai3d -ldrd -lpthread -lrt -ldl -lGL -lGLU -lusb-1.0 -lglfw -lX11 -lXcursor -lXrandr -lXinerama -o ../../../bin/lin-x86_64/23-tooth 
+make[1]: Leaving directory '/home/kai/Desktop/application/external/chai3d-3.2.0/examples/GLFW/23-tooth'
+ 
+make -C 24-turntable
+ 
+make[1]: Entering directory '/home/kai/Desktop/application/external/chai3d-3.2.0/examples/GLFW/24-turntable'
+ 
+mkdir -p obj/release/lin-x86_64-cc
+ 
+g++ -I../../../src -fsigned-char -O3 -I../../../external/Eigen -I../../../external/glew/include -I../../../external/DHD/include -DLINUX -Wno-deprecated -std=c++0x -m64 -I../../../extras/GLFW/include -c -o obj/release/lin-x86_64-cc/24-turntable.o 24-turntable.cpp
+ 
+g++ -I../../../src -fsigned-char -O3 -I../../../external/Eigen -I../../../external/glew/include -I../../../external/DHD/include -DLINUX -Wno-deprecated -std=c++0x -m64 -I../../../extras/GLFW/include -I.  ./obj/release/lin-x86_64-cc/24-turntable.o -L../../../lib/release/lin-x86_64-cc -L../../../external/DHD/lib/lin-x86_64 -L../../../extras/GLFW/lib/release/lin-x86_64-cc -lchai3d -ldrd -lpthread -lrt -ldl -lGL -lGLU -lusb-1.0 -lglfw -lX11 -lXcursor -lXrandr -lXinerama -o ../../../bin/lin-x86_64/24-turntable 
+make[1]: Leaving directory '/home/kai/Desktop/application/external/chai3d-3.2.0/examples/GLFW/24-turntable'
+ 
+make -C 25-sounds
+ 
+make[1]: Entering directory '/home/kai/Desktop/application/external/chai3d-3.2.0/examples/GLFW/25-sounds'
+ 
+mkdir -p obj/release/lin-x86_64-cc
+ 
+g++ -I../../../src -fsigned-char -O3 -I../../../external/Eigen -I../../../external/glew/include -I../../../external/DHD/include -DLINUX -Wno-deprecated -std=c++0x -m64 -I../../../extras/GLFW/include -c -o obj/release/lin-x86_64-cc/25-sounds.o 25-sounds.cpp
+ 
+g++ -I../../../src -fsigned-char -O3 -I../../../external/Eigen -I../../../external/glew/include -I../../../external/DHD/include -DLINUX -Wno-deprecated -std=c++0x -m64 -I../../../extras/GLFW/include -I.  ./obj/release/lin-x86_64-cc/25-sounds.o -L../../../lib/release/lin-x86_64-cc -L../../../external/DHD/lib/lin-x86_64 -L../../../extras/GLFW/lib/release/lin-x86_64-cc -lchai3d -ldrd -lpthread -lrt -ldl -lGL -lGLU -lusb-1.0 -lglfw -lX11 -lXcursor -lXrandr -lXinerama -o ../../../bin/lin-x86_64/25-sounds 
+make[1]: Leaving directory '/home/kai/Desktop/application/external/chai3d-3.2.0/examples/GLFW/25-sounds'
+ 
+make -C 26-video
+ 
+make[1]: Entering directory '/home/kai/Desktop/application/external/chai3d-3.2.0/examples/GLFW/26-video'
+ 
+mkdir -p obj/release/lin-x86_64-cc
+ 
+g++ -I../../../src -fsigned-char -O3 -I../../../external/Eigen -I../../../external/glew/include -I../../../external/DHD/include -DLINUX -Wno-deprecated -std=c++0x -m64 -I../../../extras/GLFW/include -c -o obj/release/lin-x86_64-cc/26-video.o 26-video.cpp
+ 
+g++ -I../../../src -fsigned-char -O3 -I../../../external/Eigen -I../../../external/glew/include -I../../../external/DHD/include -DLINUX -Wno-deprecated -std=c++0x -m64 -I../../../extras/GLFW/include -I.  ./obj/release/lin-x86_64-cc/26-video.o -L../../../lib/release/lin-x86_64-cc -L../../../external/DHD/lib/lin-x86_64 -L../../../extras/GLFW/lib/release/lin-x86_64-cc -lchai3d -ldrd -lpthread -lrt -ldl -lGL -lGLU -lusb-1.0 -lglfw -lX11 -lXcursor -lXrandr -lXinerama -o ../../../bin/lin-x86_64/26-video 
+make[1]: Leaving directory '/home/kai/Desktop/application/external/chai3d-3.2.0/examples/GLFW/26-video'
+ 
+make -C 27-multiframes
+ 
+make[1]: Entering directory '/home/kai/Desktop/application/external/chai3d-3.2.0/examples/GLFW/27-multiframes'
+ 
+mkdir -p obj/release/lin-x86_64-cc
+ 
+g++ -I../../../src -fsigned-char -O3 -I../../../external/Eigen -I../../../external/glew/include -I../../../external/DHD/include -DLINUX -Wno-deprecated -std=c++0x -m64 -I../../../extras/GLFW/include -c -o obj/release/lin-x86_64-cc/27-multiframes.o 27-multiframes.cpp
+ 
+g++ -I../../../src -fsigned-char -O3 -I../../../external/Eigen -I../../../external/glew/include -I../../../external/DHD/include -DLINUX -Wno-deprecated -std=c++0x -m64 -I../../../extras/GLFW/include -I.  ./obj/release/lin-x86_64-cc/27-multiframes.o -L../../../lib/release/lin-x86_64-cc -L../../../external/DHD/lib/lin-x86_64 -L../../../extras/GLFW/lib/release/lin-x86_64-cc -lchai3d -ldrd -lpthread -lrt -ldl -lGL -lGLU -lusb-1.0 -lglfw -lX11 -lXcursor -lXrandr -lXinerama -o ../../../bin/lin-x86_64/27-multiframes 
+make[1]: Leaving directory '/home/kai/Desktop/application/external/chai3d-3.2.0/examples/GLFW/27-multiframes'
+ 
+make -C 28-voxel-basic
+ 
+make[1]: Entering directory '/home/kai/Desktop/application/external/chai3d-3.2.0/examples/GLFW/28-voxel-basic'
+ 
+mkdir -p obj/release/lin-x86_64-cc
+ 
+g++ -I../../../src -fsigned-char -O3 -I../../../external/Eigen -I../../../external/glew/include -I../../../external/DHD/include -DLINUX -Wno-deprecated -std=c++0x -m64 -I../../../extras/GLFW/include -c -o obj/release/lin-x86_64-cc/28-voxel-basic.o 28-voxel-basic.cpp
+ 
+g++ -I../../../src -fsigned-char -O3 -I../../../external/Eigen -I../../../external/glew/include -I../../../external/DHD/include -DLINUX -Wno-deprecated -std=c++0x -m64 -I../../../extras/GLFW/include -I.  ./obj/release/lin-x86_64-cc/28-voxel-basic.o -L../../../lib/release/lin-x86_64-cc -L../../../external/DHD/lib/lin-x86_64 -L../../../extras/GLFW/lib/release/lin-x86_64-cc -lchai3d -ldrd -lpthread -lrt -ldl -lGL -lGLU -lusb-1.0 -lglfw -lX11 -lXcursor -lXrandr -lXinerama -o ../../../bin/lin-x86_64/28-voxel-basic 
+make[1]: Leaving directory '/home/kai/Desktop/application/external/chai3d-3.2.0/examples/GLFW/28-voxel-basic'
+ 
+make -C 29-voxel-isosurface
+ 
+make[1]: Entering directory '/home/kai/Desktop/application/external/chai3d-3.2.0/examples/GLFW/29-voxel-isosurface'
+ 
+mkdir -p obj/release/lin-x86_64-cc
+ 
+g++ -I../../../src -fsigned-char -O3 -I../../../external/Eigen -I../../../external/glew/include -I../../../external/DHD/include -DLINUX -Wno-deprecated -std=c++0x -m64 -I../../../extras/GLFW/include -c -o obj/release/lin-x86_64-cc/29-voxel-isosurface.o 29-voxel-isosurface.cpp
+ 
+g++ -I../../../src -fsigned-char -O3 -I../../../external/Eigen -I../../../external/glew/include -I../../../external/DHD/include -DLINUX -Wno-deprecated -std=c++0x -m64 -I../../../extras/GLFW/include -I.  ./obj/release/lin-x86_64-cc/29-voxel-isosurface.o -L../../../lib/release/lin-x86_64-cc -L../../../external/DHD/lib/lin-x86_64 -L../../../extras/GLFW/lib/release/lin-x86_64-cc -lchai3d -ldrd -lpthread -lrt -ldl -lGL -lGLU -lusb-1.0 -lglfw -lX11 -lXcursor -lXrandr -lXinerama -o ../../../bin/lin-x86_64/29-voxel-isosurface 
+make[1]: Leaving directory '/home/kai/Desktop/application/external/chai3d-3.2.0/examples/GLFW/29-voxel-isosurface'
+ 
+make -C 30-voxel-colormap
+ 
+make[1]: Entering directory '/home/kai/Desktop/application/external/chai3d-3.2.0/examples/GLFW/30-voxel-colormap'
+ 
+mkdir -p obj/release/lin-x86_64-cc
+ 
+g++ -I../../../src -fsigned-char -O3 -I../../../external/Eigen -I../../../external/glew/include -I../../../external/DHD/include -DLINUX -Wno-deprecated -std=c++0x -m64 -I../../../extras/GLFW/include -c -o obj/release/lin-x86_64-cc/30-voxel-colormap.o 30-voxel-colormap.cpp
+ 
+g++ -I../../../src -fsigned-char -O3 -I../../../external/Eigen -I../../../external/glew/include -I../../../external/DHD/include -DLINUX -Wno-deprecated -std=c++0x -m64 -I../../../extras/GLFW/include -I.  ./obj/release/lin-x86_64-cc/30-voxel-colormap.o -L../../../lib/release/lin-x86_64-cc -L../../../external/DHD/lib/lin-x86_64 -L../../../extras/GLFW/lib/release/lin-x86_64-cc -lchai3d -ldrd -lpthread -lrt -ldl -lGL -lGLU -lusb-1.0 -lglfw -lX11 -lXcursor -lXrandr -lXinerama -o ../../../bin/lin-x86_64/30-voxel-colormap 
+make[1]: Leaving directory '/home/kai/Desktop/application/external/chai3d-3.2.0/examples/GLFW/30-voxel-colormap'
+ 
+make -C 31-pointcloud
+ 
+make[1]: Entering directory '/home/kai/Desktop/application/external/chai3d-3.2.0/examples/GLFW/31-pointcloud'
+ 
+mkdir -p obj/release/lin-x86_64-cc
+ 
+g++ -I../../../src -fsigned-char -O3 -I../../../external/Eigen -I../../../external/glew/include -I../../../external/DHD/include -DLINUX -Wno-deprecated -std=c++0x -m64 -I../../../extras/GLFW/include -c -o obj/release/lin-x86_64-cc/31-pointcloud.o 31-pointcloud.cpp
+ 
+g++ -I../../../src -fsigned-char -O3 -I../../../external/Eigen -I../../../external/glew/include -I../../../external/DHD/include -DLINUX -Wno-deprecated -std=c++0x -m64 -I../../../extras/GLFW/include -I.  ./obj/release/lin-x86_64-cc/31-pointcloud.o -L../../../lib/release/lin-x86_64-cc -L../../../external/DHD/lib/lin-x86_64 -L../../../extras/GLFW/lib/release/lin-x86_64-cc -lchai3d -ldrd -lpthread -lrt -ldl -lGL -lGLU -lusb-1.0 -lglfw -lX11 -lXcursor -lXrandr -lXinerama -o ../../../bin/lin-x86_64/31-pointcloud 
+make[1]: Leaving directory '/home/kai/Desktop/application/external/chai3d-3.2.0/examples/GLFW/31-pointcloud'
+ 
+make: Leaving directory '/home/kai/Desktop/application/external/chai3d-3.2.0/examples/GLFW'
+ 

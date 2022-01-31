@@ -1,0 +1,10 @@
+make --dry-run --always-make --keep-going --print-directory
+make: Entering directory '/home/kai/Desktop/application/external/chai3d-3.2.0/examples/GLFW/09-magnets'
+ 
+mkdir -p obj/release/lin-x86_64-cc
+ 
+g++ -I../../../src -fsigned-char -O3 -I../../../external/Eigen -I../../../external/glew/include -I../../../external/DHD/include -DLINUX -Wno-deprecated -std=c++0x -m64 -I../../../extras/GLFW/include -c -o obj/release/lin-x86_64-cc/09-magnets.o 09-magnets.cpp
+ 
+g++ -I../../../src -fsigned-char -O3 -I../../../external/Eigen -I../../../external/glew/include -I../../../external/DHD/include -DLINUX -Wno-deprecated -std=c++0x -m64 -I../../../extras/GLFW/include -I.  ./obj/release/lin-x86_64-cc/09-magnets.o -L../../../lib/release/lin-x86_64-cc -L../../../external/DHD/lib/lin-x86_64 -L../../../extras/GLFW/lib/release/lin-x86_64-cc -lchai3d -ldrd -lpthread -lrt -ldl -lGL -lGLU -lusb-1.0 -lglfw -lX11 -lXcursor -lXrandr -lXinerama -o ../../../bin/lin-x86_64/09-magnets 
+make: Leaving directory '/home/kai/Desktop/application/external/chai3d-3.2.0/examples/GLFW/09-magnets'
+ 
