@@ -97,9 +97,6 @@ cCamera* camera;
 // a light source to illuminate the objects in the world
 cDirectionalLight *light;
 
-// a small sphere (cursor) representing the haptic device 
-cShapeSphere* cursor;
-
 // a virtual tool representing the haptic device in the scene
 cToolCursor* tool;
 
@@ -142,7 +139,7 @@ cLabel* labelRates;
 bool useDamping = false;
 
 // a flag for using force field (ON/OFF)
-bool useForceField = true;
+bool useForceField = false;
 
 // a flag to indicate if the haptic simulation currently running
 bool simulationRunning = false;
@@ -377,11 +374,7 @@ int main(int argc, char* argv[])
     // define direction of light beam
     light->setDir(0.0, 0.2, -1.0);
 
-    // create a sphere (cursor) to represent the haptic device
-    cursor = new cShapeSphere(0.01);
 
-    // insert cursor inside world
-    world->addChild(cursor);
 
     // create small line to illustrate the velocity of the haptic device
     velocity = new cShapeLine(cVector3d(0,0,0), 
@@ -401,27 +394,33 @@ int main(int argc, char* argv[])
     // get a handle to the first haptic device
     handler->getDevice(hapticDevice, 0);
 
-    // open a connection to haptic device
-    hapticDevice->open();
-
-    // calibrate device (if necessary)
-    hapticDevice->calibrate();
-
     // retrieve information about the current haptic device
     cHapticDeviceInfo info = hapticDevice->getSpecifications();
 
-    // display a reference frame if haptic device supports orientations
-    if (info.m_sensedRotation == true)
-    {
-        // display reference frame
-        cursor->setShowFrame(true);
+    
+    // create a tool (cursor) and insert into the world
+    tool = new cToolCursor(world);
+    world->addChild(tool);
 
-        // set the size of the reference frame
-        cursor->setFrameSize(0.05);
-    }
+    // connect the haptic device to the virtual tool
+    tool->setHapticDevice(hapticDevice);
+
+    // map the physical workspace of the haptic device to a larger virtual workspace.
+    tool->setWorkspaceRadius(1.0);
+
+    // define a radius for the virtual tool (sphere)
+    tool->setRadius(SPHERE_RADIUS);
+
+    // haptic forces are enabled only if small forces are first sent to the device;
+    // this mode avoids the force spike that occurs when the application starts when 
+    // the tool is located inside an object for instance. 
+    tool->setWaitForSmallForce(true);
+
+    // start the haptic tool
+    tool->start();
 
     // if the device has a gripper, enable the gripper to simulate a user switch
-    hapticDevice->setEnableGripperUserSwitch(true);
+    // hapticDevice->setEnableGripperUserSwitch(true);
 
 
     //--------------------------------------------------------------------------
@@ -474,6 +473,13 @@ int main(int argc, char* argv[])
                         0.8 * SPHERE_RADIUS * (double)(2) * sin(1.0 * (double)(0)), 
                         SPHERE_RADIUS);
     sphere->m_material->setWhite();
+    sphere->setStiffness(100);
+
+    cGenericCollision* collisiondetector;
+    sphere->setCollisionDetector(collisiondetector);
+    sphere->createEffectSurface();
+    // use display list to optimize graphic rendering performance
+    sphere->setUseDisplayList(true);
 
     /////////////////////////////////////////////////////////////////////////
     // Box
@@ -579,7 +585,7 @@ int main(int argc, char* argv[])
 
     // set material properties
     box->m_material->setRed();   
-    box->setStiffness(1000);
+    box->setStiffness(100);
 
 
     // build collision detection tree
@@ -773,7 +779,9 @@ void mouseMotionCallback(GLFWwindow* a_window, double a_posX, double a_posY)
         camera->setSphericalPolarDeg(polarDeg);
 
         // oriente tool with camera
-        cursor->setLocalRot(camera->getLocalRot());
+        cVector3d cameraPos = camera->getLocalPos();
+        cameraPos.x(0);
+        tool->setLocalPos(cameraPos);
     }
 }
 
@@ -796,7 +804,7 @@ void close(void)
     while (!simulationFinished) { cSleepMs(100); }
 
     // close haptic device
-    hapticDevice->close();
+    tool->stop();
 
     // delete resources
     delete hapticsThread;
@@ -923,35 +931,21 @@ void updateHaptics(void)
         velocity->m_pointB = cAdd(position, linearVelocity);    
 
         // update position and orientation of cursor
-        cursor->setLocalPos(position*5);
-        cursor->setLocalRot(rotation);
+        world->computeGlobalPositions(true);
+
+
+        tool->updateFromDevice();
+        // compute interaction forces
+        tool->computeInteractionForces();
+
+        // send forces to haptic device
+        tool->applyToDevice();
 
         // adjust the  color of the cursor according to the status of
         // the user-switch (ON = TRUE / OFF = FALSE)
-        if (button0)
-        {
-            cursor->m_material->setGreenMediumAquamarine(); 
-        }
-        else if (button1)
-        {
-            cursor->m_material->setYellowGold();    
-        }
-        else if (button2)
-        {
-            cursor->m_material->setOrangeCoral();
-        }
-        else if (button3)
-        {
-            cursor->m_material->setPurpleLavender();
-        }
-        else
-        {
-            cursor->m_material->setBlueRoyal();
-        }
-
         // update global variable for graphic display update
         
-        hapticDevicePosition = position*5;
+        hapticDevicePosition = position * 10;
         
 
         // Update the force of the sphere
@@ -964,7 +958,7 @@ void updateHaptics(void)
         const double SPHERE_MASS        = 0.04;
         const double K_DAMPING          = 0.98;
         const double K_SPRING           = 5.0;
-        const double SPHERE_STIFFNESS   = 1000.0;
+        const double SPHERE_STIFFNESS   = 100.0;
         const double WALL_GROUND        = 0 + SPHERE_RADIUS;
 
         // compute direction vector from sphere 0 to 1
@@ -1050,9 +1044,14 @@ void updateHaptics(void)
             double Kvg = 1.0 * info.m_maxGripperAngularDamping;
             gripperForce = gripperForce - Kvg * gripperAngularVelocity;
         }
-
+        cout << force.length()<<endl;
         // send computed force, torque, and gripper force to haptic device
-        hapticDevice->setForceAndTorqueAndGripperForce(force, torque, gripperForce);
+        // if(force.length()>7){
+        //     force.normalize();
+        //     force = force*7;
+
+        // }
+        //hapticDevice->setForceAndTorqueAndGripperForce(force, torque, gripperForce);
 
         // signal frequency counter
         freqCounterHaptics.signal(1);

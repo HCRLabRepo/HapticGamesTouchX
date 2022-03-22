@@ -9,13 +9,13 @@ make -C ../../extras/GLFW
 # License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
- 
 
-# Make data base, printed on Mon Jan 31 15:20:23 2022
+# Make data base, printed on Tue Feb  1 10:11:02 2022
 
 # Variables
 
 # 'override' directive
+ 
 GNUMAKEFLAGS := 
 # automatic
 <D = $(patsubst %/,%,$(dir $<))
@@ -104,7 +104,7 @@ PATH = /opt/ros/melodic/bin:/home/kai/.local/bin:/usr/local/sbin:/usr/local/bin:
 # environment
 GPG_AGENT_INFO = /run/user/1000/gnupg/S.gpg-agent:0:1
 # environment
-SESSION_MANAGER = local/kai-ThinkPad-T14s-Gen-1:@/tmp/.ICE-unix/1545,unix/kai-ThinkPad-T14s-Gen-1:/tmp/.ICE-unix/1545
+SESSION_MANAGER = local/kai-ThinkPad-T14s-Gen-1:@/tmp/.ICE-unix/1582,unix/kai-ThinkPad-T14s-Gen-1:/tmp/.ICE-unix/1582
 # environment
 XDG_RUNTIME_DIR = /run/user/1000
 # environment
@@ -146,7 +146,7 @@ PWD = /home/kai/Desktop/application/external/chai3d-3.2.0/examples/GLFW
 # environment
 XDG_SEAT = seat0
 # environment
-SSH_AGENT_PID = 1622
+SSH_AGENT_PID = 1659
 # environment
 PKG_CONFIG_PATH = /opt/ros/melodic/lib/pkgconfig
 # environment
@@ -202,7 +202,7 @@ CC = gcc
 # environment
 GNOME_SHELL_SESSION_MODE = ubuntu
 # environment
-VSCODE_IPC_HOOK_EXTHOST = /run/user/1000/vscode-ipc-83716410-74ce-45ce-a64c-6e18ffade06d.sock
+VSCODE_IPC_HOOK_EXTHOST = /run/user/1000/vscode-ipc-2aea4e6f-1dbc-4b3c-a068-637fcf6b5dd5.sock
 # environment
 XDG_SESSION_ID = 3
 # environment
@@ -214,7 +214,6 @@ LC_MONETARY = en_GB.UTF-8
 # environment
 XDG_CURRENT_DESKTOP = Unity
 # environment
- 
 ROSLISP_PACKAGE_DIRECTORIES = 
 # automatic
 %D = $(patsubst %/,%,$(dir $%))
@@ -226,6 +225,7 @@ MAKE_COMMAND := make
 CSOURCES = $(SRC_DIR)/context.c $(SRC_DIR)/init.c $(SRC_DIR)/input.c $(SRC_DIR)/monitor.c $(SRC_DIR)/vulkan.c $(SRC_DIR)/window.c $(SRC_DIR)/x11_init.c $(SRC_DIR)/x11_monitor.c $(SRC_DIR)/x11_window.c $(SRC_DIR)/xkb_unicode.c $(SRC_DIR)/linux_joystick.c $(SRC_DIR)/posix_time.c $(SRC_DIR)/posix_tls.c $(SRC_DIR)/glx_context.c $(SRC_DIR)/egl_context.c
 # environment
 OLDPWD = /home/kai/Desktop/application/external/chai3d-3.2.0
+ 
 # default
 .VARIABLES := 
 # automatic
@@ -289,11 +289,11 @@ QT4_IM_MODULE = xim
 # environment
 GJS_DEBUG_TOPICS = JS ERROR;JS LOG
 # environment
-GNOME_TERMINAL_SCREEN = /org/gnome/Terminal/screen/82bfdfe3_8d3f_4d84_a94d_2d0af0ef3a8b
+GNOME_TERMINAL_SCREEN = /org/gnome/Terminal/screen/164995e7_a4ed_4b08_b3f2_1dd0ca8637dc
 # environment
 LC_PAPER = en_GB.UTF-8
 # environment
-GNOME_TERMINAL_SERVICE = :1.83
+GNOME_TERMINAL_SERVICE = :1.89
 # default
 SUFFIXES := 
 # makefile (from 'Makefile', line 127)
@@ -319,7 +319,7 @@ LANG = C
 # environment
 TERM = xterm-256color
 # environment
-VSCODE_PID = 3070
+VSCODE_PID = 3628
 # variable set hash-table stats:
 # Load=152/1024=15%, Rehash=0, Collisions=270/623=43%
 
@@ -363,6 +363,7 @@ src/egl_context.c: include/GLFW/glfw3.h include/GLFW/glfw3native.h | obj/release
 #  File has not been updated.
 
 all: lib
+ 
 #  Implicit rule search has been done.
 #  File does not exist.
 #  File has been updated.
@@ -402,7 +403,6 @@ tags:
 Makefile:
 #  Implicit rule search has been done.
 #  Last modified 2016-12-19 15:47:02
- 
 #  File has been updated.
 #  Successfully updated.
 
@@ -530,7 +530,6 @@ src/context.c: include/GLFW/glfw3.h include/GLFW/glfw3native.h | obj/release/lin
 #  File has been updated.
 #  Needs to be updated (-q is set).
 # variable set hash-table stats:
- 
 # Load=0/32=0%, Rehash=0, Collisions=0/3=0%
 
 obj/release/lin-x86_64-gcc/./src/posix_tls.o: include/GLFW/glfw3.h include/GLFW/glfw3native.h | obj/release/lin-x86_64-gcc/./src/ src/
@@ -548,6 +547,7 @@ clean:
 
 obj/release/lin-x86_64-gcc/./src/x11_window.o: include/GLFW/glfw3.h include/GLFW/glfw3native.h | obj/release/lin-x86_64-gcc/./src/ src/
 #  Implicit rule search has not been done.
+ 
 #  Modification time never checked.
 #  File has not been updated.
 
@@ -643,7 +643,7 @@ obj/release/lin-x86_64-gcc/./src/egl_context.o: include/GLFW/glfw3.h include/GLF
 # strcache performance: lookups = 201 / hit rate = 43%
 # hash-table stats:
 # Load=114/8192=1%, Rehash=0, Collisions=3/201=1%
-# Finished Make data base on Mon Jan 31 15:20:23 2022
+# Finished Make data base on Tue Feb  1 10:11:02 2022
 
 # make[1]: Leaving directory '/home/kai/Desktop/application/external/chai3d-3.2.0/extras/GLFW'
  
@@ -653,8 +653,9 @@ obj/release/lin-x86_64-gcc/./src/egl_context.o: include/GLFW/glfw3.h include/GLF
 # License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
+ 
 
-# Make data base, printed on Mon Jan 31 15:20:23 2022
+# Make data base, printed on Tue Feb  1 10:11:02 2022
 
 # Variables
 
@@ -729,6 +730,7 @@ SYSTEM = $(shell echo `uname -s`)
 # environment
 ROS_PACKAGE_PATH = /opt/ros/melodic/share
 # environment
+ 
 TURTLEBOT3_MODEL = waffle
 # environment
 ROS_PYTHON_VERSION = 2
@@ -749,7 +751,7 @@ XDG_SESSION_DESKTOP = ubuntu
 # environment
 GPG_AGENT_INFO = /run/user/1000/gnupg/S.gpg-agent:0:1
 # environment
-SESSION_MANAGER = local/kai-ThinkPad-T14s-Gen-1:@/tmp/.ICE-unix/1545,unix/kai-ThinkPad-T14s-Gen-1:/tmp/.ICE-unix/1545
+SESSION_MANAGER = local/kai-ThinkPad-T14s-Gen-1:@/tmp/.ICE-unix/1582,unix/kai-ThinkPad-T14s-Gen-1:/tmp/.ICE-unix/1582
 # environment
 XDG_RUNTIME_DIR = /run/user/1000
 # makefile (from '../../Makefile.common.lin', line 68)
@@ -793,12 +795,11 @@ PWD = /home/kai/Desktop/application/external/chai3d-3.2.0/examples/GLFW
 # environment
 XDG_SEAT = seat0
 # environment
-SSH_AGENT_PID = 1622
+SSH_AGENT_PID = 1659
 # makefile (from '../../Makefile.common.lin', line 69)
 LDLIBS_GLFW = -lglfw -lX11 -lXcursor -lXrandr -lXinerama
 # makefile (from '../../Makefile.config', line 46)
 USE_EXTERNAL_LIBJPEG = no
- 
 # environment
 PKG_CONFIG_PATH = /opt/ros/melodic/lib/pkgconfig
 # environment
@@ -856,7 +857,8 @@ CC = gcc
 # environment
 GNOME_SHELL_SESSION_MODE = ubuntu
 # environment
-VSCODE_IPC_HOOK_EXTHOST = /run/user/1000/vscode-ipc-83716410-74ce-45ce-a64c-6e18ffade06d.sock
+ 
+VSCODE_IPC_HOOK_EXTHOST = /run/user/1000/vscode-ipc-2aea4e6f-1dbc-4b3c-a068-637fcf6b5dd5.sock
 # environment
 XDG_SESSION_ID = 3
 # environment
@@ -954,11 +956,11 @@ QT4_IM_MODULE = xim
 # environment
 GJS_DEBUG_TOPICS = JS ERROR;JS LOG
 # environment
-GNOME_TERMINAL_SCREEN = /org/gnome/Terminal/screen/82bfdfe3_8d3f_4d84_a94d_2d0af0ef3a8b
+GNOME_TERMINAL_SCREEN = /org/gnome/Terminal/screen/164995e7_a4ed_4b08_b3f2_1dd0ca8637dc
 # automatic
 ^F = $(notdir $^)
 # environment
-GNOME_TERMINAL_SERVICE = :1.83
+GNOME_TERMINAL_SERVICE = :1.89
 # default
 SUFFIXES := 
 # makefile (from '../../Makefile.common', line 50)
@@ -973,9 +975,9 @@ WINDOWPATH = 2
 TOP_DIR = ../..
 # default
 .INCLUDE_DIRS = /usr/include /usr/local/include /usr/include
+ 
 # environment
 GJS_DEBUG_OUTPUT = stderr
- 
 # makefile (from '../../Makefile.config', line 49)
 USE_EXTERNAL_PUGIXML = no
 # default
@@ -991,7 +993,7 @@ LANG = C
 # environment
 TERM = xterm-256color
 # environment
-VSCODE_PID = 3070
+VSCODE_PID = 3628
 # variable set hash-table stats:
 # Load=166/1024=16%, Rehash=0, Collisions=40/273=15%
 
@@ -1049,6 +1051,7 @@ all: 01-mydevice 02-multi-devices 03-analytics 04-shapes 05-fonts 06-images 07-m
 
 19-space: glfw
 #  Phony target (prerequisite of .PHONY).
+ 
 #  Implicit rule search has not been done.
 #  File does not exist.
 #  File has not been updated.
@@ -1080,7 +1083,6 @@ all: 01-mydevice 02-multi-devices 03-analytics 04-shapes 05-fonts 06-images 07-m
 	$(MAKE) -C $@
 
 # Not a target:
- 
 .SUFFIXES:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
@@ -1140,6 +1142,7 @@ Makefile:
 #  File has not been updated.
 #  recipe to execute (from 'Makefile', line 82):
 	$(MAKE) -C $@
+ 
 
 09-magnets: glfw
 #  Phony target (prerequisite of .PHONY).
@@ -1206,7 +1209,6 @@ glfw:
 #  recipe to execute (from 'Makefile', line 85):
 	$(MAKE) -C $(TOP_DIR)/extras/GLFW
 
- 
 # Not a target:
 ../../Makefile.config:
 #  Implicit rule search has been done.
@@ -1228,6 +1230,7 @@ glfw:
 #  File has not been updated.
 #  recipe to execute (from 'Makefile', line 82):
 	$(MAKE) -C $@
+ 
 
 clean:
 #  Implicit rule search has not been done.
@@ -1304,7 +1307,6 @@ clean:
 18-endoscope: glfw
 #  Phony target (prerequisite of .PHONY).
 #  Implicit rule search has not been done.
- 
 #  File does not exist.
 #  File has not been updated.
 #  recipe to execute (from 'Makefile', line 82):
@@ -1322,6 +1324,7 @@ clean:
 #  Phony target (prerequisite of .PHONY).
 #  Implicit rule search has not been done.
 #  File does not exist.
+ 
 #  File has not been updated.
 # variable set hash-table stats:
 # Load=0/32=0%, Rehash=0, Collisions=0/6=0%
@@ -1366,6 +1369,6 @@ clean:
 # strcache performance: lookups = 184 / hit rate = 75%
 # hash-table stats:
 # Load=46/8192=1%, Rehash=0, Collisions=1/184=1%
-# Finished Make data base on Mon Jan 31 15:20:23 2022
+# Finished Make data base on Tue Feb  1 10:11:02 2022
 
  
