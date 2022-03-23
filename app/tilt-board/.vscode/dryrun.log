@@ -1,0 +1,9 @@
+make --dry-run --always-make --keep-going --print-directory
+make: Entering directory '/home/kai/Desktop/application/tilt-board'
+ 
+mkdir -p obj/release/lin-x86_64-cc
+g++ -I../external/chai3d-3.2.0/src -fsigned-char -O3 -I../external/chai3d-3.2.0/external/Eigen -I../external/chai3d-3.2.0/external/glew/include -I../external/chai3d-3.2.0/external/DHD/include -DLINUX -Wno-deprecated -std=c++0x -m64 -I../external/chai3d-3.2.0/extras/GLFW/include -c -o obj/release/lin-x86_64-cc/tilt-board.o tilt-board.cpp
+mkdir -p ../bin/lin-x86_64
+g++ -I../external/chai3d-3.2.0/src -fsigned-char -O3 -I../external/chai3d-3.2.0/external/Eigen -I../external/chai3d-3.2.0/external/glew/include -I../external/chai3d-3.2.0/external/DHD/include -DLINUX -Wno-deprecated -std=c++0x -m64 -I../external/chai3d-3.2.0/extras/GLFW/include -I.  ./obj/release/lin-x86_64-cc/tilt-board.o -L../external/chai3d-3.2.0/lib/release/lin-x86_64-cc -L../external/chai3d-3.2.0/external/DHD/lib/lin-x86_64 -L../external/chai3d-3.2.0/extras/GLFW/lib/release/lin-x86_64-cc -lchai3d -ldrd -lpthread -lrt -ldl -lGL -lGLU -lusb-1.0 -lglfw -lX11 -lXcursor -lXrandr -lXinerama -o ../bin/lin-x86_64/tilt-board
+make: Leaving directory '/home/kai/Desktop/application/tilt-board'
+ 
