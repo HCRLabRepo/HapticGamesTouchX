@@ -2,7 +2,6 @@ import random
 from itertools import count
 import pandas as pd
 import matplotlib.pyplot as plt
-import heartpy as hp
 from matplotlib.animation import FuncAnimation
 
 #plt.style.use('fivethirtyeight')
@@ -17,7 +16,7 @@ bx2 = fig.add_subplot(414, sharex=bx1)
 bx2.title.set_text("ALL PPG")
 
 def animate(i):
-    data = pd.read_csv('data.csv')
+    data = pd.read_csv('GSR_PPG.csv')
     x = data['Timestamp']
     y1 = data['GSR']
     y2 = data['PPG']

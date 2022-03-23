@@ -1,12 +1,19 @@
 #include "CGenericScene.h"
 #include "CBullet.h"
+
 using namespace std;
 
 const double SPHERE_MASS        = 0.04;
-const double SPHERE_STIFFNESS   = 100.0;
-const double K_DAMPING          = 0.98;
-const double K_SPRING           = 5.0;
+const double SPHERE_STIFFNESS   = 200.0;
+const double K_DAMPING          = 0.999999999999999;
+const double K_SPRING           = 20.0;
+const double HAPTIC_STIFFNESS   = 500.0;
+const double WALL_GROUND = -0.2;
 
+const double MAX_HAPTIC_FORCE = 2.5;
+
+bool flagHapticsEnabled = false;
+double hapticDeviceMaxStiffness;
 
 cGenericScene::cGenericScene(shared_ptr<cGenericHapticDevice> a_hapticDevice)
 {   hapticDevice = a_hapticDevice;
@@ -65,32 +72,32 @@ cGenericScene::cGenericScene(shared_ptr<cGenericHapticDevice> a_hapticDevice)
     // Create boarders
     cMaterial matBase;
     matBase.setGrayLevel(0.3);
-    matBase.setStiffness(100);
+    matBase.setStiffness(10);
     matBase.setDynamicFriction(0.2);
     matBase.setStaticFriction(0.1);
 
-    border1 = new cBulletBox(bulletWorld, 0.005, 0.6, 0.01);
+    border1 = new cBulletBox(bulletWorld, 0.005, 0.6, 0.02);
     bulletWorld->addChild(border1);
     border1->createAABBCollisionDetector(toolRadius);
     border1->setMaterial(matBase);
     border1->buildDynamicModel();
     border1->setLocalPos(0.3, 0.0, -0.2);
 
-    border2 = new cBulletBox(bulletWorld, 0.005, 0.6, 0.01);
+    border2 = new cBulletBox(bulletWorld, 0.005, 0.6, 0.02);
     bulletWorld->addChild(border2);
     border2->createAABBCollisionDetector(toolRadius);
     border2->setMaterial(matBase);
     border2->buildDynamicModel();
     border2->setLocalPos(-0.3, 0.0, -0.2);
 
-    border3 = new cBulletBox(bulletWorld, 0.6, 0.005, 0.01);
+    border3 = new cBulletBox(bulletWorld, 0.6, 0.005, 0.02);
     bulletWorld->addChild(border3);
     border3->createAABBCollisionDetector(toolRadius);
     border3->setMaterial(matBase);
     border3->buildDynamicModel();
     border3->setLocalPos(0.0, 0.3, -0.2);
 
-    border4 = new cBulletBox(bulletWorld, 0.6, 0.005, 0.01);
+    border4 = new cBulletBox(bulletWorld, 0.6, 0.005, 0.02);
     bulletWorld->addChild(border4);
     border4->createAABBCollisionDetector(toolRadius);
     border4->setMaterial(matBase);
@@ -114,13 +121,13 @@ cGenericScene::cGenericScene(shared_ptr<cGenericHapticDevice> a_hapticDevice)
 
     controlSphere = new cShapeSphere(toolRadius);
     bulletWorld->addChild(controlSphere);
-    controlSphere->setLocalPos(0.0,0.0, -0.15);
+    controlSphere->setLocalPos(0.0,0.0, -0.20);
     controlSphere->m_material->setWhite();
 
     cMaterial mat;
     mat.setRedIndian();
     mat.m_specular.set(0.0, 0.0, 0.0);
-    mat.setStiffness(1000);
+    mat.setStiffness(SPHERE_STIFFNESS);
     mat.setDynamicFriction(0.9);
     mat.setStaticFriction(0.9);
 
@@ -130,10 +137,17 @@ cGenericScene::cGenericScene(shared_ptr<cGenericHapticDevice> a_hapticDevice)
     movingSphere->setMaterial(mat);
     movingSphere->setMass(SPHERE_MASS);
     movingSphere->buildDynamicModel();
-    movingSphere->setLocalPos(0.0,0.0,0.0);
+    movingSphere->setLocalPos(0.0,0.0,-0.2+toolRadius);
+    movingSphere->setDamping(K_DAMPING, K_DAMPING);
     
     // Set gravity.
     bulletWorld->setGravity(cVector3d(0.0, 0.0, 0.0));
+
+    // retrieve the highest stiffness this device can render
+    cHapticDeviceInfo hapticDeviceInfo = hapticDevice->getSpecifications();
+    hapticDeviceMaxStiffness = hapticDeviceInfo.m_maxLinearStiffness;
+
+    
 }
 
 void cGenericScene::updateGraphics(int a_width, int a_height){
@@ -147,26 +161,55 @@ void cGenericScene::updateHaptics(double timeInterval){
 
     bulletWorld->computeGlobalPositions(true);
 
+    // Compute World Dynamics Forces.
     cVector3d hapticDevicePosition;
     cVector3d positionSphere = movingSphere->getLocalPos();
     hapticDevice->getPosition(hapticDevicePosition);
-
+    hapticDevicePosition = hapticDevicePosition *10;
+    hapticDevicePosition.z(WALL_GROUND+toolRadius);
     
     cVector3d dir01 = cNormalize(hapticDevicePosition-positionSphere);
     double distance = cDistance(hapticDevicePosition, positionSphere);
     cVector3d sphereForce = (K_SPRING * (distance) * dir01);
-    cVector3d stringForce = sphereForce;
-    if (positionSphere.z() < -0.2)
-        {
-            sphereForce.add(cVector3d(0.0, 0.0, SPHERE_STIFFNESS * (-0.2 - positionSphere.z())));
-        }
-    cVector3d sphereAcc = (sphereForce / SPHERE_MASS) + cVector3d(0.0, 0.0, -9.8);
-    sphereVel = K_DAMPING * (sphereVel + timeInterval * sphereAcc);
-    cVector3d spherePos = movingSphere->getLocalPos() + timeInterval * sphereVel + cSqr(timeInterval) * sphereAcc;
-    movingSphere->setLocalPos(spherePos); 
+    cVector3d hapticForce = -sphereForce;
+    
+    sphereForce.z(0);
+    movingSphere->addExternalForce(sphereForce);
+    controlSphere->setLocalPos(hapticDevicePosition); 
 
     double time = simClock.getCurrentTimeSeconds();
     double nextSimInterval = cClamp(time, 0.0001, 0.001);
+
+     /////////////////////////////////////////////////////////////////////////
+    // APPLY FORCES
+    /////////////////////////////////////////////////////////////////////////
+
+    // if (!flagHapticsEnabled)
+    //     {
+    //         // check for small force
+    //         if (hapticForce.length() < 1.0)
+    //         {
+    //             flagHapticsEnabled = true;
+    //         }
+    //         else
+    //         {
+    //             hapticForce.zero();
+    //         }
+    //     }
+
+    double stiffnessRatio = 1.0;
+    
+    if (hapticDeviceMaxStiffness < HAPTIC_STIFFNESS)
+        stiffnessRatio = hapticDeviceMaxStiffness / HAPTIC_STIFFNESS;
+    // Compute Force Feedback
+
+    // Safety fuse.
+    if(hapticForce.length()> MAX_HAPTIC_FORCE){
+        hapticForce = cNormalize(hapticForce) * MAX_HAPTIC_FORCE;
+    }
+
+    hapticDevice->setForce(hapticForce*stiffnessRatio/2);
+  
 
     // Reset Clock
     simClock.reset();
@@ -180,7 +223,7 @@ void cGenericScene::init(){
     camera->set(cVector3d(0.50, 0.00, 0.40),    
                 cVector3d(0.00, 0.00, -0.20),   
                 cVector3d(0.00, 0.00, 1.00));
-    movingSphere->setLocalPos(0.0,0.0,0.2);
+    movingSphere->setLocalPos(0.0,0.0,-0.2+toolRadius);
 }
 
 

@@ -1,5 +1,8 @@
 #include "chai3d.h"
 #include <GLFW/glfw3.h>
+#include <iostream>
+#include <fstream>
+#include <chrono>
 
 using namespace chai3d;
 using namespace std;
@@ -9,6 +12,10 @@ using namespace std;
 #include "CScene2.h"
 #include "CScene3.h"
 
+uint64_t timeSinceEpochMillisec() {
+  using namespace std::chrono;
+  return duration_cast<milliseconds>(system_clock::now().time_since_epoch()).count();
+}
 //---------------------------------------------------------------------------
 // DISPLAY SETTINGS
 //---------------------------------------------------------------------------
@@ -83,6 +90,8 @@ void close(void); // This function closes the application
 void initScene1();
 void initScene2();
 void initScene3();
+
+std::ofstream myfile;
 
 int main(int argc, char* argv[]){
     //---------------------------------------------------------------------------
@@ -180,7 +189,7 @@ int main(int argc, char* argv[]){
 
     // Read the scale factor between the physical workspace of the haptic
     // device and the virtual workspace defined for the tool
-    double maxStiffness = 100;
+    double maxStiffness = 10;
     if(tool!=NULL)
     {
         double workspaceScaleFactor = tool->getWorkspaceScaleFactor();
@@ -228,7 +237,7 @@ int main(int argc, char* argv[]){
     
     
     initScene1();
-
+    myfile.open("movement.csv");
 
     //--------------------------------------------------------------------------
     // START SIMULATION
@@ -260,6 +269,10 @@ int main(int argc, char* argv[]){
 
     glfwDestroyWindow(window); // Close window
     glfwTerminate(); //terminate GLFW library
+    
+    
+
+
     return 0;
 }
 
@@ -465,17 +478,16 @@ void updateHaptics(void){
     // Reset Clock
     cPrecisionClock clock;
     clock.reset();
+    hapticDevice->open();
+    hapticDevice->calibrate();
 
     while(simulationRunning){
         /////////////////////////////////////////////////////////////////////
         // SIMULATION TIME    
         /////////////////////////////////////////////////////////////////////
-
+        hapticDevice->getPosition(hapticDevicePosition);
         // Stop the simulation clock
         clock.stop();
-
-        hapticDevice->getPosition(hapticDevicePosition);
-        cout << hapticDevicePosition <<endl;
         // Read the time increment in seconds
         double timeInterval = cMin(0.001, clock.getCurrentTimeSeconds());
         timeInterval=0.001;
@@ -488,6 +500,10 @@ void updateHaptics(void){
 
         // Signal frequency counter
         freqCounterHaptics.signal(1);
+        myfile <<  timeSinceEpochMillisec() << ", "<< hapticDevicePosition <<endl;
+
     }
+    myfile.close();
+    hapticDevice->close();
     simulationFinished = true;
 }

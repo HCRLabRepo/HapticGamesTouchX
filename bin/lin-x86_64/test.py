@@ -4,7 +4,7 @@ import neurokit2 as nk
 import matplotlib.pyplot as plt
 import time
 
-data = pd.read_csv('data.csv')
+data = pd.read_csv('GSR_PPG.csv')
 ppg = data["PPG"]
 
 signals, info = nk.ppg_process(ppg, sampling_rate=128)

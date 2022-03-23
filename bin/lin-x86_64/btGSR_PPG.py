@@ -58,7 +58,7 @@ else:
    print "Packet Type\tTimestamp\tGSR\tPPG"
 
    fieldnames = ["Timestamp", "GSR", "PPG"]
-   with open('data.csv', 'w') as csv_file:
+   with open('GSR_PPG.csv', 'w') as csv_file:
       csv_writer = csv.DictWriter(csv_file, fieldnames=fieldnames)
       csv_writer.writeheader()
 
@@ -100,7 +100,7 @@ else:
          timestamp = timestamp0 + timestamp1*256 + timestamp2*65536
          timestamp = time.time()*1000
 
-         with open('data.csv', 'a') as csv_file:
+         with open('GSR_PPG.csv', 'a') as csv_file:
             csv_writer = csv.DictWriter(csv_file, fieldnames=fieldnames)
 
             info = {
