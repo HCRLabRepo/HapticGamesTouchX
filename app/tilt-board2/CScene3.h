@@ -14,6 +14,6 @@ class cScene3: public cGenericScene{
 
     public:
 
-        cBulletBox* obstaclesRow[20];
-        cBulletBox* obstaclesColumns[10];
+        cBulletBox* obstacles[20];
+
 };

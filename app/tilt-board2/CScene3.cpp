@@ -5,31 +5,32 @@ cScene3::cScene3(shared_ptr<cGenericHapticDevice> a_hapticDevice):cGenericScene(
     
     cMaterial matBase;
     matBase.setGrayLevel(0.3);
-    matBase.setStiffness(1500);
+    matBase.setStiffness(100);
+    double x = -0.013;
+    double y = 0;
 
     for(int i =0; i<20; i++){
-        int direction = i%2 == 0? -1:1;
+        int direction = i%2 == 0? 90:0;
+        cout << (pow(-1,(i+3)/2))*(((i+3)/2)*0.012) << endl;
+        x += (pow(-1,i/2))*(0.012 + (i/2)*0.012);
+        y += (pow(-1,(i+3)/2))*(((i+3)/2)*0.012);
+        //cout<< x << "," << y <<endl;
+ 
+        
+        obstacles[i] = new cBulletBox(bulletWorld, 0.005, 0.026*(i/2+1), 0.015);
+        bulletWorld->addChild(obstacles[i]);
+        obstacles[i]->setMaterial(matBase);
+        obstacles[i]->buildDynamicModel();
+        obstacles[i]->setLocalPos(x, y, -0.2);
+        obstacles[i]->setLocalRot(cMatrix3d(cDegToRad(0), cDegToRad(0), cDegToRad(direction), C_EULER_ORDER_XYZ));
+    }
 
-        obstaclesRow[i] = new cBulletBox(bulletWorld, 0.005, 0.020*(i+1), 0.01);
-        bulletWorld->addChild(obstaclesRow[i]);
-        obstaclesRow[i]->setMaterial(matBase);
-        obstaclesRow[i]->buildDynamicModel();
-        obstaclesRow[i]->setLocalPos(-0.013 + i*0.015 * direction, -0.00 + 0.005 * direction, -0.2);
-    }
-    for(int i =0; i<2; i++){
-        int direction = i%2 == 0? -1:1;
-        obstaclesColumns[i] = new cBulletBox(bulletWorld, 0.019*(i+1), 0.005, 0.01);
-        bulletWorld->addChild(obstaclesColumns[i]);
-        obstaclesColumns[i]->setMaterial(matBase);
-        obstaclesColumns[i]->buildDynamicModel();
-        obstaclesColumns[i]->setLocalPos(-0.005 + 0.005 * direction, -0.009 + i*0.015 * direction, -0.2);
-    }
 
 }
 
 void cScene3::setStiffness(double a_stiffness){
     bulletGround->setStiffness(a_stiffness);
     for(int i =0; i<10; i++){
-        obstaclesRow[i]->setStiffness(a_stiffness);
+        obstacles[i]->setStiffness(a_stiffness);
     }
 }

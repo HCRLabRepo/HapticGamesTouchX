@@ -5,7 +5,7 @@ using namespace std;
 
 const double SPHERE_MASS        = 0.04;
 const double SPHERE_STIFFNESS   = 200.0;
-const double K_DAMPING          = 0.999999999999999;
+const double K_DAMPING          = 0.999999999999;
 const double K_SPRING           = 20.0;
 const double HAPTIC_STIFFNESS   = 500.0;
 const double WALL_GROUND = -0.2;
@@ -141,7 +141,7 @@ cGenericScene::cGenericScene(shared_ptr<cGenericHapticDevice> a_hapticDevice)
     movingSphere->setDamping(K_DAMPING, K_DAMPING);
     
     // Set gravity.
-    bulletWorld->setGravity(cVector3d(0.0, 0.0, 0.0));
+    bulletWorld->setGravity(cVector3d(0.0, 0.0, -9.8));
 
     // retrieve the highest stiffness this device can render
     cHapticDeviceInfo hapticDeviceInfo = hapticDevice->getSpecifications();

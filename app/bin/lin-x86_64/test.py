@@ -5,10 +5,9 @@ import matplotlib.pyplot as plt
 import time
 
 data = pd.read_csv('GSR_PPG.csv')
-ppg = data["PPG"]
+ppg = data["GSR"]
 
-signals, info = nk.ppg_process(ppg, sampling_rate=128)
+signals, info = nk.eda_process(ppg, sampling_rate=10)
 
-fig = nk.ppg_plot(signals, sampling_rate=128)
+fig = nk.eda_plot(signals, sampling_rate=10)
 
-plt.show()

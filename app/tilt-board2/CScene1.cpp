@@ -54,6 +54,16 @@ cScene1::cScene1(shared_ptr<cGenericHapticDevice> a_hapticDevice):cGenericScene(
     obstacle5->setMaterial(matBase);
     obstacle5->buildDynamicModel();
     obstacle5->setLocalPos(0.25, 0.05, -0.2);
+
+    // set up target
+    cBulletCylinder* target = new cBulletCylinder(bulletWorld, 0.0005, toolRadius*1.5);
+    bulletWorld->addChild(target);
+    target->createAABBCollisionDetector(toolRadius);
+    target->setMaterial(matBase);
+    target->buildDynamicModel();
+    target->m_material->setGreen();
+    target->setLocalPos(0.28, 0.28, -0.2+0.0005/2);
+
 }
 
 void cScene1::setStiffness(double a_stiffness){

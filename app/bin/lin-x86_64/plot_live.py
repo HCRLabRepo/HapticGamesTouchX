@@ -47,6 +47,6 @@ def animate(i):
     #      transform=plt.gca().transAxes)
 
 
-ani = FuncAnimation(plt.gcf(), animate, interval=1000)
+ani = FuncAnimation(plt.gcf(), animate, interval=100)
 plt.tight_layout()
 plt.show()

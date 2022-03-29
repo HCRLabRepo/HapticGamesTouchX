@@ -340,6 +340,9 @@ void keyCallback(GLFWwindow* a_window, int a_key, int a_scancode, int a_action, 
         scene2->mirroredDisplay = mirroredDisplay;
         scene3->mirroredDisplay = mirroredDisplay;
     }
+    else if(a_key == GLFW_KEY_S){
+        main_scene->controlSphere->setEnabled(!(main_scene->controlSphere->getEnabled()));
+    }
 
     else if (a_key == GLFW_KEY_1)
     {
