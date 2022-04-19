@@ -2,7 +2,25 @@
 #!/usr/bin/python
 import sys, struct, serial, csv
 import time
+import os 
 
+
+
+with open('ExperimentSettings.txt') as f:
+   subject_num = f.readline()[:-1]
+   subject_sex = f.readline()[:-1]
+   subject_age = f.readline()[:-1]
+   game_scene = f.readline()[:-1]
+   control_mode = f.readline()
+
+if control_mode = 0:
+   control_mode = "baseline"
+
+file_name = "S" + subject_num + "/GSR_PPG" + "/S" + subject_num + "_" + subject_sex + subject_age + "_" + game_scene + "_" + control_mode + ".csv"
+
+if not os.path.exists("S" + subject_num + "/GSR_PPG"):
+    os.makedirs("S" + subject_num + "/GSR_PPG")
+    
 def wait_for_ack():
    ddata = ""
    ack = struct.pack('B', 0xff)
@@ -58,7 +76,7 @@ else:
    print "Packet Type\tTimestamp\tGSR\tPPG"
 
    fieldnames = ["Timestamp", "GSR", "PPG"]
-   with open('GSR_PPG.csv', 'w') as csv_file:
+   with open(file_name, 'w+ ') as csv_file:
       csv_writer = csv.DictWriter(csv_file, fieldnames=fieldnames)
       csv_writer.writeheader()
 
@@ -100,7 +118,7 @@ else:
          timestamp = timestamp0 + timestamp1*256 + timestamp2*65536
          timestamp = time.time()*1000
 
-         with open('GSR_PPG.csv', 'a') as csv_file:
+         with open(file_name, 'a') as csv_file:
             csv_writer = csv.DictWriter(csv_file, fieldnames=fieldnames)
 
             info = {

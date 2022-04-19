@@ -3,6 +3,7 @@
 #include <iostream>
 #include <fstream>
 #include <chrono>
+#include <thread>
 
 using namespace chai3d;
 using namespace std;
@@ -16,6 +17,8 @@ uint64_t timeSinceEpochMillisec() {
   using namespace std::chrono;
   return duration_cast<milliseconds>(system_clock::now().time_since_epoch()).count();
 }
+
+
 //---------------------------------------------------------------------------
 // DISPLAY SETTINGS
 //---------------------------------------------------------------------------
@@ -73,6 +76,17 @@ int height = 0; // Current height of the window
 int swapInterval = 1;// swap interval for the display context (vertical synchronization)
 
 //---------------------------------------------------------------------------
+// EXPERIMENT VARIABLE
+//---------------------------------------------------------------------------
+
+string subject_num;
+string subject_sex;
+int subject_age;
+int game_scene;
+int control_mode;
+
+
+//---------------------------------------------------------------------------
 // DECLARED FUNCTIONS
 //---------------------------------------------------------------------------
 void windowSizeCallback(GLFWwindow* a_window, int a_width, int a_height); // Callback when the window display is resized
@@ -91,9 +105,66 @@ void initScene1();
 void initScene2();
 void initScene3();
 
-std::ofstream myfile;
+std::ofstream gamefile;
 
+void recoverColor(const btCollisionObjectWrapper* obj1)
+{   usleep(1000);
+    ((cBulletMesh*)(obj1->getCollisionObject()->getUserPointer()))->m_material->setGrayLevel(0.3);
+
+}
+bool callbackFunc(btManifoldPoint& cp, const btCollisionObjectWrapper* obj1, int id1, int index1, const btCollisionObjectWrapper* obj2, int id2, int index2)
+{   cColorf Red;
+    cColorf Gray;
+    cColorf Green;
+    cColorf Blue;
+    
+    Red.setRed();
+    Gray.setGrayLevel(0.3);
+    Green.setGreen();
+    Blue.setBlue();
+
+    if( (((cBulletMesh*)(obj1->getCollisionObject()->getUserPointer()))->m_material->m_diffuse == Gray) && (((cBulletMesh*)(obj2->getCollisionObject()->getUserPointer()))->m_material->m_diffuse != Blue)){
+        ((cBulletMesh*)(obj1->getCollisionObject()->getUserPointer()))->m_material->setRed();
+        std::thread t(recoverColor,obj1);
+        gamefile << "Collision" <<endl;
+        t.join();
+    }
+    if( (((cBulletMesh*)(obj2->getCollisionObject()->getUserPointer()))->m_material->m_diffuse == Gray) && (((cBulletMesh*)(obj1->getCollisionObject()->getUserPointer()))->m_material->m_diffuse != Blue) ){
+        ((cBulletMesh*)(obj2->getCollisionObject()->getUserPointer()))->m_material->setRed();
+        std::thread t(recoverColor,obj2);
+        gamefile <<  "Collision" <<endl;
+        t.join();
+    }
+
+    return false;
+}
 int main(int argc, char* argv[]){
+    gContactAddedCallback=callbackFunc;
+    //---------------------------------------------------------------------------
+    // Retreat Experiment Settings
+    //---------------------------------------------------------------------------
+    std::ifstream settingsfile("ExperimentSettings.txt");
+
+    if(settingsfile.is_open()){
+        settingsfile >> subject_num;
+        settingsfile >> subject_sex;
+        settingsfile >> subject_age;
+        settingsfile >> game_scene;
+        settingsfile >> control_mode;
+
+        cout << subject_num << endl;
+        cout << subject_sex << endl;
+        cout << subject_age << endl;
+        cout << game_scene << endl;
+        cout << control_mode << endl;
+
+        settingsfile.close();
+    }else{
+        cout << "Settings File Not Found!" << endl;
+        return 0;
+    }
+
+    string gamefilename = "S" + subject_num + "/game" + "/S" + subject_num + "_" + subject_sex + to_string(subject_age) + "_" + to_string(game_scene) + "_" + to_string(control_mode) + ".csv";
     //---------------------------------------------------------------------------
     // Initial Print Message
     //---------------------------------------------------------------------------
@@ -121,7 +192,7 @@ int main(int argc, char* argv[]){
         return 1;
     }
     glfwSetErrorCallback(errorCallback);
-
+    
     // Compute desired size of window
     const GLFWvidmode* mode = glfwGetVideoMode(glfwGetPrimaryMonitor());
     int w = 0.8 * mode->height;
@@ -189,7 +260,7 @@ int main(int argc, char* argv[]){
 
     // Read the scale factor between the physical workspace of the haptic
     // device and the virtual workspace defined for the tool
-    double maxStiffness = 10;
+    double maxStiffness = 1000;
     if(tool!=NULL)
     {
         double workspaceScaleFactor = tool->getWorkspaceScaleFactor();
@@ -235,10 +306,16 @@ int main(int argc, char* argv[]){
     scene2->camera->m_frontLayer->addChild(labelRates);
     scene3->camera->m_frontLayer->addChild(labelRates);
     
-    
-    initScene1();
-    myfile.open("movement.csv");
-
+    if(game_scene==1){
+        initScene1();
+    }
+    else if(game_scene == 2){
+        initScene2();
+    }
+    else if(game_scene == 3){
+        initScene3();
+    }
+    gamefile.open(gamefilename);
     //--------------------------------------------------------------------------
     // START SIMULATION
     //--------------------------------------------------------------------------
@@ -344,6 +421,13 @@ void keyCallback(GLFWwindow* a_window, int a_key, int a_scancode, int a_action, 
         main_scene->controlSphere->setEnabled(!(main_scene->controlSphere->getEnabled()));
     }
 
+    else if(a_key == GLFW_KEY_G){
+        main_scene->guidanceSphere->setEnabled(!(main_scene->guidanceSphere->getEnabled()));
+    }
+    else if(a_key == GLFW_KEY_N){
+        main_scene->negotiatedSphere->setEnabled(!(main_scene->negotiatedSphere->getEnabled()));
+    }
+
     else if (a_key == GLFW_KEY_1)
     {
         initScene1();
@@ -433,7 +517,6 @@ void mouseMotionCallback(GLFWwindow* a_window, double a_posX, double a_posY)
 
         // oriente tool with camera
         cVector3d cameraPos = main_scene->camera->getLocalPos();
-        cout<<cameraPos<<endl;
         cameraPos.x(0);
     }
 }
@@ -484,6 +567,8 @@ void updateHaptics(void){
     hapticDevice->open();
     hapticDevice->calibrate();
 
+    
+
     while(simulationRunning){
         /////////////////////////////////////////////////////////////////////
         // SIMULATION TIME    
@@ -494,19 +579,94 @@ void updateHaptics(void){
         // Read the time increment in seconds
         double timeInterval = cMin(0.001, clock.getCurrentTimeSeconds());
         timeInterval=0.001;
+        bool button0, button1;
+        button0 = false;
+        button1 = false;
+
+
+
+        hapticDevice->getUserSwitch(0, button0);
+        hapticDevice->getUserSwitch(1, button1);
+        // Human Control Mode
+        if(control_mode == 1){
+            main_scene->ALPHA_CONTROL = 1;
+        }
+        // Shared Control Mode (Human operator should always able to take back control)
+        else if(control_mode == 2){
+            if (button0){
+                // gradually change the control to human.
+                main_scene->ALPHA_CONTROL += 0.001;
+                main_scene->ALPHA_CONTROL = min(main_scene->ALPHA_CONTROL, 1.0);
+                main_scene->K_DAMPING_VELOCITY = 2;
+            }
+            else if (button1){
+                // gradually change the control to robot.
+                main_scene->ALPHA_CONTROL -= 0.001;
+                main_scene->ALPHA_CONTROL = max(main_scene->ALPHA_CONTROL, 0.0);
+                main_scene->K_DAMPING_VELOCITY = 0.13;
+            }
+            else{
+                // gradually change to equal control.
+                double difference = main_scene->ALPHA_CONTROL - 0.5;
+                main_scene->ALPHA_CONTROL -= copysign(0.001, difference);
+                main_scene->K_DAMPING_VELOCITY = 0.13;
+            }
+        }
+        // Variable Control by Physiological Signal
+        else if(control_mode == 3){
+            if (button0){
+                // gradually change the control constant.
+                main_scene->ALPHA_CONTROL += 0.001;
+                main_scene->ALPHA_CONTROL = min(main_scene->ALPHA_CONTROL, 1.0);
+                main_scene->K_DAMPING_VELOCITY = 2;
+            }
+            else if (button1){
+                // gradually change the control constant.
+                main_scene->ALPHA_CONTROL -= 0.001;
+                main_scene->ALPHA_CONTROL = max(main_scene->ALPHA_CONTROL, 0.0);
+                main_scene->K_DAMPING_VELOCITY = 0.13;
+            }
+            else{
+                // gradually change to control determines by physiology data prediction.
+
+                // if(prediction == "easy"){
+                //     main_scene->ALPHA_CONTROL += 0.001;
+                //     main_scene->ALPHA_CONTROL = min(main_scene->ALPHA_CONTROL, 0.9);
+                //     main_scene->K_DAMPING_VELOCITY = 2;
+                // }
+                // else if(prediction == "medium"){
+                //     double difference = main_scene->ALPHA_CONTROL - 0.5;
+                //     main_scene->ALPHA_CONTROL -= copysign(0.001, difference);
+                //     main_scene->K_DAMPING_VELOCITY = 0.13;
+                // }
+                // else{
+                //     main_scene->ALPHA_CONTROL -= 0.001;
+                //     main_scene->ALPHA_CONTROL = max(main_scene->ALPHA_CONTROL, 0.0);
+                //     main_scene->K_DAMPING_VELOCITY = 0.13;
+                // }
+            }
+        }
+        // Ideal Control (Narrow == Computer Control, Wide == Human Control)
+        else if(control_mode == 4){
+            // not determine yet
+        }
+        
+        
 
         main_scene->updateHaptics(timeInterval);
-        
+        if(main_scene->destination_index == main_scene->destinations.size()){
+            break;        
+        }
         // Reset the simulation clock
         clock.reset();
         clock.start();
 
         // Signal frequency counter
         freqCounterHaptics.signal(1);
-        myfile <<  timeSinceEpochMillisec() << ", "<< hapticDevicePosition <<endl;
+        gamefile <<  timeSinceEpochMillisec() << ", "<< hapticDevicePosition <<endl;
 
     }
-    myfile.close();
+    gamefile.close();
     hapticDevice->close();
     simulationFinished = true;
 }

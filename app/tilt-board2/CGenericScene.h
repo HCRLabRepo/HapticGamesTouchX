@@ -18,6 +18,11 @@ public:
     virtual void updateHaptics(double timeInterval);
     virtual void updateGraphics(int a_width, int a_height);
     virtual void setStiffness(double a_stiffness){};
+    virtual void updateWaypoint(cVector3d positionSphere, cVector3d positionTarget);
+    virtual void generateWaypoints(cVector3d positionSphere, cVector3d positionTarget){};
+    virtual void initWaypoints(){};
+    void updateTarget();
+    
 
 public:
 
@@ -26,6 +31,7 @@ public:
     cSpotLight* spotLight;
     cDirectionalLight *directionalLight;
     cBulletStaticPlane* bulletGround; 
+    cBulletStaticPlane* bulletCeilling;
     double toolRadius;
     cPrecisionClock simClock;
     bool mirroredDisplay;
@@ -38,5 +44,25 @@ public:
     std::shared_ptr<cGenericHapticDevice> hapticDevice;
 
     cShapeSphere* controlSphere;
-    cBulletSphere* movingSphere;
+    cBulletSphere* negotiatedSphere;
+    cBulletSphere* guidanceSphere;
+    cBulletSphere* mainSphere;
+    cBulletCylinder* target;
+
+    std::vector<cVector3d> destinations;
+    std::vector<int> shuffled_order;
+
+    std::vector<cVector3d> waypoints;
+    std::vector<double> waypointsRange;
+
+    cVector3d positionWaypoint;
+
+    std::vector<cVector3d> checkpoints;
+    std::vector<double> checkpointsRange;
+    
+    int destination_index = 0;
+    int waypoint_index = 0;
+    int last_waypoint_index = 1;
+    double ALPHA_CONTROL = 1;
+    double K_DAMPING_VELOCITY = 0.2;
 };
