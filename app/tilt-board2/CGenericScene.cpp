@@ -12,16 +12,17 @@ using namespace std;
 const double SPHERE_MASS        = 0.04;
 const double SPHERE_STIFFNESS   = 200.0;
 const double K_DAMPING          = 0.9999999999999999;
-const double K_SPRING           = 60.0;
+const double K_SPRING           = 80.0;
 const double K_SPRING_TARGET    = 20.0;
-const double HAPTIC_STIFFNESS   = 500.0;
+const double HAPTIC_STIFFNESS   = 1.0;
 const double WALL_GROUND = -0.2;
 
 
-const double MAX_HAPTIC_FORCE = 2.5;
+const double MAX_HAPTIC_FORCE = 5;
 
 bool flagHapticsEnabled = false;
 double hapticDeviceMaxStiffness;
+
 
 
 
@@ -42,10 +43,7 @@ void cGenericScene::updateTarget(){
 
 cGenericScene::cGenericScene(shared_ptr<cGenericHapticDevice> a_hapticDevice)
 {   
-    hapticDevice = a_hapticDevice;
-    mirroredDisplay = false;
-    toolRadius = 0.0025;
-
+    
     //-----------------------------------------------------------------------
     // WORLD - CAMERA - LIGHTING
     //-----------------------------------------------------------------------
@@ -64,7 +62,7 @@ cGenericScene::cGenericScene(shared_ptr<cGenericHapticDevice> a_hapticDevice)
     camera->setClippingPlanes(0.01, 10.0); // Set near and far clipping planes of the camera
     camera->setStereoEyeSeparation(0.01);
     camera->setStereoFocalLength(0.5);
-    camera->setMirrorVertical(mirroredDisplay);
+
     
     //Create a spot light.
     spotLight = new cSpotLight(bulletWorld);
@@ -101,8 +99,42 @@ cGenericScene::cGenericScene(shared_ptr<cGenericHapticDevice> a_hapticDevice)
     bulletCeilling->createAABBCollisionDetector(toolRadius);
     bulletCeilling->setEnabled(false);
 
+    //-----------------------------------------------------------------------
+    // Widget
+    //-----------------------------------------------------------------------    
+    cFontPtr font = NEW_CFONTCALIBRI20();
 
-    // Create boarders
+    labelHapticDeviceModel = new cLabel(font);
+    camera->m_frontLayer->addChild(labelHapticDeviceModel);
+    cHapticDeviceInfo hapticDeviceInfo = a_hapticDevice->getSpecifications();
+    labelHapticDeviceModel->setText(hapticDeviceInfo.m_modelName);
+    
+    // Create a label to display the position of haptic device
+    labelHapticDevicePosition = new cLabel(font);
+    camera->m_frontLayer->addChild(labelHapticDevicePosition);
+
+    // Create a label to display the haptic and graphic rate of the simulation
+    labelRates = new cLabel(font);
+    labelRates->m_fontColor.setWhite();
+    camera->m_frontLayer->addChild(labelRates);
+
+    // Create bar
+    controlLevel = new cLevel();
+    camera->m_frontLayer->addChild(controlLevel);
+    controlLevel->setLocalPos(20, 60);
+    controlLevel->setRange(0.0, 1.0);
+    controlLevel->setWidth(40);
+    controlLevel->setNumIncrements(46);
+    controlLevel->setSingleIncrementDisplay(false);
+    controlLevel->setTransparencyLevel(0.5);
+
+    hapticDevice = a_hapticDevice;
+    mirroredDisplay = false;
+    toolRadius = 0.0025;
+
+    //-----------------------------------------------------------------------
+    // Borders
+    //-----------------------------------------------------------------------
     cMaterial matBase;
     matBase.setGrayLevel(0.3);
     matBase.setStiffness(10);
@@ -224,7 +256,6 @@ cGenericScene::cGenericScene(shared_ptr<cGenericHapticDevice> a_hapticDevice)
     bulletWorld->setGravity(cVector3d(0.0, 0.0, -9.0));
 
     // retrieve the highest stiffness this device can render
-    cHapticDeviceInfo hapticDeviceInfo = hapticDevice->getSpecifications();
     hapticDeviceMaxStiffness = hapticDeviceInfo.m_maxLinearStiffness;
 
     //initial the starting point for robot guidance.
@@ -238,14 +269,12 @@ cGenericScene::cGenericScene(shared_ptr<cGenericHapticDevice> a_hapticDevice)
 void cGenericScene::updateWaypoint(cVector3d positionSphere, cVector3d positionTarget){
     if(waypoint_index == last_waypoint_index)
     {
-        cout<< "waypoint upodated forward" << endl;
         waypoint_index = last_waypoint_index +1;
         return;
     }
 
     for(int i=max(last_waypoint_index-1,0); i < min(last_waypoint_index+2, (int)waypoints.size()); i++){
         if(cDistance(positionSphere, waypoints[i])/cDistance(waypoints[last_waypoint_index], waypoints[i])+0.7<cDistance(positionSphere, waypoints[waypoint_index])/cDistance(waypoints[last_waypoint_index], waypoints[waypoint_index])){
-            cout << "waypoint updated backward" << endl;
             waypoint_index = i;
         }
     }
@@ -264,6 +293,8 @@ void cGenericScene::updateGraphics(int a_width, int a_height){
     bulletWorld->updateShadowMaps(false, mirroredDisplay);
     camera->renderView(a_width, a_height);
 
+    controlLevel->setValue(1-ALPHA_CONTROL);
+
 }
 
 void cGenericScene::updateHaptics(double timeInterval){
@@ -280,7 +311,7 @@ void cGenericScene::updateHaptics(double timeInterval){
     hapticDevicePosition = hapticDevicePosition *10;
 
     cVector3d wallForce;
-    wallForce.add(cVector3d(0.0, 0.0, 200 * (WALL_GROUND + toolRadius- hapticDevicePosition.z())));
+    wallForce.add(cVector3d(0.0, 0.0, 50 * (WALL_GROUND + toolRadius- hapticDevicePosition.z())));
     hapticDevicePosition.z(WALL_GROUND+toolRadius);
     
     // Compute the varies forces.
@@ -288,6 +319,11 @@ void cGenericScene::updateHaptics(double timeInterval){
     cVector3d dir01 = cNormalize(hapticDevicePosition-positionNegotiatedSphere);
     double distance01 = cDistance(hapticDevicePosition, positionNegotiatedSphere);
     cVector3d sphereForce = (K_SPRING*(ALPHA_CONTROL) * (distance01) * dir01);
+    if((K_SPRING*(0.5) * (distance01) * dir01).length()<1.0){
+        userInactive = true;
+    }else{
+        userInactive = false;
+    }
     cVector3d hapticForce = -(K_SPRING*(0.5) * (distance01) * dir01) + wallForce;
 
     // The force of negotiatedSphere towards guidanceSphere. 
@@ -340,7 +376,7 @@ void cGenericScene::updateHaptics(double timeInterval){
     if (hapticDeviceMaxStiffness < HAPTIC_STIFFNESS)
         stiffnessRatio = hapticDeviceMaxStiffness / HAPTIC_STIFFNESS;
     // Compute Force Feedback
-    hapticForce = hapticForce * stiffnessRatio * 0.5;
+    hapticForce = hapticForce * stiffnessRatio * 0.2;
 
     // Safety fuse.
     if(hapticForce.length()> MAX_HAPTIC_FORCE){

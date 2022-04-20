@@ -122,14 +122,14 @@ cScene2::cScene2(shared_ptr<cGenericHapticDevice> a_hapticDevice):cGenericScene(
     destinations.push_back(cVector3d(-0.25, 0.0, -0.2+0.00025));
     destinations.push_back(cVector3d(0.25, 0.0, -0.2+0.00025));
 
-    checkpoints.push_back(cVector3d(-0.06, 0.06, -0.2+0.00025));
-    checkpointsRange.push_back(0.01);
-    checkpoints.push_back(cVector3d(0.06, 0.06, -0.2+0.00025));
-    checkpointsRange.push_back(0.01);
-    checkpoints.push_back(cVector3d(-0.06, -0.06, -0.2+0.00025));
-    checkpointsRange.push_back(0.01);
-    checkpoints.push_back(cVector3d(0.06, -0.06, -0.2+0.00025));
-    checkpointsRange.push_back(0.01);
+    checkpoints.push_back(cVector3d(-0.05, 0.05, -0.2+0.00025));
+    checkpointsRange.push_back(0.015);
+    checkpoints.push_back(cVector3d(0.05, 0.05, -0.2+0.00025));
+    checkpointsRange.push_back(0.015);
+    checkpoints.push_back(cVector3d(-0.05, -0.05, -0.2+0.00025));
+    checkpointsRange.push_back(0.015);
+    checkpoints.push_back(cVector3d(0.05, -0.05, -0.2+0.00025));
+    checkpointsRange.push_back(0.015);
     checkpoints.push_back(cVector3d(0, -0.05, -0.2+0.00025));
     checkpointsRange.push_back(0.04);
     checkpoints.push_back(cVector3d(0, 0.05, -0.2+0.00025));

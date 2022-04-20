@@ -13,8 +13,6 @@ with open('ExperimentSettings.txt') as f:
    game_scene = f.readline()[:-1]
    control_mode = f.readline()
 
-if control_mode = 0:
-   control_mode = "baseline"
 
 file_name = "S" + subject_num + "/GSR_PPG" + "/S" + subject_num + "_" + subject_sex + subject_age + "_" + game_scene + "_" + control_mode + ".csv"
 

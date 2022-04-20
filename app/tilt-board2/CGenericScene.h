@@ -65,4 +65,10 @@ public:
     int last_waypoint_index = 1;
     double ALPHA_CONTROL = 1;
     double K_DAMPING_VELOCITY = 0.2;
+    bool userInactive = false;
+
+    cLabel* labelHapticDeviceModel;
+    cLabel* labelHapticDevicePosition;
+    cLabel* labelRates;
+    cLevel* controlLevel;
 };

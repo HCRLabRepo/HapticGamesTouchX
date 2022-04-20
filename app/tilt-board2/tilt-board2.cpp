@@ -43,9 +43,9 @@ cHapticDeviceHandler* handler;
 shared_ptr<cGenericHapticDevice> hapticDevice;
 cGenericTool* tool;
 
-cLabel* labelHapticDeviceModel;
-cLabel* labelHapticDevicePosition;
-cLabel* labelRates;
+// cLabel* labelHapticDeviceModel;
+// cLabel* labelHapticDevicePosition;
+// cLabel* labelRates;
 cVector3d hapticDevicePosition;
 
 //---------------------------------------------------------------------------
@@ -108,7 +108,7 @@ void initScene3();
 std::ofstream gamefile;
 
 void recoverColor(const btCollisionObjectWrapper* obj1)
-{   usleep(1000);
+{   usleep(500);
     ((cBulletMesh*)(obj1->getCollisionObject()->getUserPointer()))->m_material->setGrayLevel(0.3);
 
 }
@@ -144,19 +144,12 @@ int main(int argc, char* argv[]){
     // Retreat Experiment Settings
     //---------------------------------------------------------------------------
     std::ifstream settingsfile("ExperimentSettings.txt");
-
     if(settingsfile.is_open()){
         settingsfile >> subject_num;
         settingsfile >> subject_sex;
         settingsfile >> subject_age;
         settingsfile >> game_scene;
         settingsfile >> control_mode;
-
-        cout << subject_num << endl;
-        cout << subject_sex << endl;
-        cout << subject_age << endl;
-        cout << game_scene << endl;
-        cout << control_mode << endl;
 
         settingsfile.close();
     }else{
@@ -192,7 +185,6 @@ int main(int argc, char* argv[]){
         return 1;
     }
     glfwSetErrorCallback(errorCallback);
-    
     // Compute desired size of window
     const GLFWvidmode* mode = glfwGetVideoMode(glfwGetPrimaryMonitor());
     int w = 0.8 * mode->height;
@@ -220,7 +212,6 @@ int main(int argc, char* argv[]){
         return 1;
     }
 
-    
     glfwGetWindowSize(window, &width, &height);// Get width and heigth of window
     glfwSetWindowPos(window, x, y); // Set position of window
     glfwSetKeyCallback(window, keyCallback); // Set key callback
@@ -243,12 +234,10 @@ int main(int argc, char* argv[]){
     //-----------------------------------------------------------------------
     // HAPTIC DEVICES / TOOLS
     //-----------------------------------------------------------------------
-
     handler = new cHapticDeviceHandler();
     handler->getDevice(hapticDevice, 0); // Get access to the first available haptic device
 
     cHapticDeviceInfo hapticDeviceInfo = hapticDevice->getSpecifications();
-
 
     //-----------------------------------------------------------------------
     // SETUP BULLET WORLD AND OBJECTS
@@ -257,7 +246,6 @@ int main(int argc, char* argv[]){
     scene1 = new cScene1(hapticDevice);
     scene2 = new cScene2(hapticDevice);
     scene3 = new cScene3(hapticDevice);
-
     // Read the scale factor between the physical workspace of the haptic
     // device and the virtual workspace defined for the tool
     double maxStiffness = 1000;
@@ -266,7 +254,6 @@ int main(int argc, char* argv[]){
         double workspaceScaleFactor = tool->getWorkspaceScaleFactor();
         maxStiffness = cMin(maxStiffness,hapticDeviceInfo.m_maxLinearStiffness/workspaceScaleFactor);
     }
-    
     // Stiffness properties
     scene1->camera->setStereoMode(stereoMode);
     scene2->camera->setStereoMode(stereoMode);
@@ -276,37 +263,36 @@ int main(int argc, char* argv[]){
     scene2->setStiffness(maxStiffness);
     scene3->setStiffness(maxStiffness);
 
-
     //--------------------------------------------------------------------------
     // WIDGETS
     //--------------------------------------------------------------------------
-    cFontPtr font = NEW_CFONTCALIBRI20();
+    // cFontPtr font = NEW_CFONTCALIBRI20();
     main_scene = new cGenericScene(hapticDevice);
-
-    // Create a label to display the haptic device model
-    labelHapticDeviceModel = new cLabel(font);
-    main_scene->camera->m_frontLayer->addChild(labelHapticDeviceModel);
-    scene1->camera->m_frontLayer->addChild(labelHapticDeviceModel);
-    scene2->camera->m_frontLayer->addChild(labelHapticDeviceModel);
-    scene3->camera->m_frontLayer->addChild(labelHapticDeviceModel);
-    labelHapticDeviceModel->setText(hapticDeviceInfo.m_modelName);
-    cout <<hapticDeviceInfo.m_modelName<< endl;
-    // Create a label to display the position of haptic device
-    labelHapticDevicePosition = new cLabel(font);
-    main_scene->camera->m_frontLayer->addChild(labelHapticDevicePosition);
-    //scene1->camera->m_frontLayer->addChild(labelHapticDevicePosition);
-    scene2->camera->m_frontLayer->addChild(labelHapticDevicePosition);
-    scene3->camera->m_frontLayer->addChild(labelHapticDevicePosition);
+    
+    // // Create a label to display the haptic device model
+    // labelHapticDeviceModel = new cLabel(font);
+    // main_scene->camera->m_frontLayer->addChild(labelHapticDeviceModel);
+    // // scene1->camera->m_frontLayer->addChild(labelHapticDeviceModel);
+    // // scene2->camera->m_frontLayer->addChild(labelHapticDeviceModel);
+    // // scene3->camera->m_frontLayer->addChild(labelHapticDeviceModel);
+    // labelHapticDeviceModel->setText(hapticDeviceInfo.m_modelName);
+    // cout <<hapticDeviceInfo.m_modelName<< endl;
+    // // Create a label to display the position of haptic device
+    // labelHapticDevicePosition = new cLabel(font);
+    // main_scene->camera->m_frontLayer->addChild(labelHapticDevicePosition);
+    // scene1->camera->m_frontLayer->addChild(labelHapticDevicePosition);
+    // scene2->camera->m_frontLayer->addChild(labelHapticDevicePosition);
+    // scene3->camera->m_frontLayer->addChild(labelHapticDevicePosition);
 
     // Create a label to display the haptic and graphic rate of the simulation
-    labelRates = new cLabel(font);
-    labelRates->m_fontColor.setWhite();
-    main_scene->camera->m_frontLayer->addChild(labelRates);
-    scene1->camera->m_frontLayer->addChild(labelRates);
-    scene2->camera->m_frontLayer->addChild(labelRates);
-    scene3->camera->m_frontLayer->addChild(labelRates);
+    // labelRates = new cLabel(font);
+    // labelRates->m_fontColor.setWhite();
+    // main_scene->camera->m_frontLayer->addChild(labelRates);
+    // scene1->camera->m_frontLayer->addChild(labelRates);
+    // scene2->camera->m_frontLayer->addChild(labelRates);
+    // scene3->camera->m_frontLayer->addChild(labelRates);
     
-    if(game_scene==1){
+    if(game_scene==1 || game_scene ==0){
         initScene1();
     }
     else if(game_scene == 2){
@@ -319,21 +305,19 @@ int main(int argc, char* argv[]){
     //--------------------------------------------------------------------------
     // START SIMULATION
     //--------------------------------------------------------------------------
-
+    
     // Create a thread which starts the main haptics rendering loop
     hapticsThread = new cThread();
     hapticsThread->start(updateHaptics, CTHREAD_PRIORITY_HAPTICS);
-
+    
     // Setup callback when application exits
     atexit(close);
 
     //--------------------------------------------------------------------------
     // MAIN GRAPHIC LOOP
     //--------------------------------------------------------------------------
-
     // Call window size callback at initialization
     windowSizeCallback(window, width, height);
-
     // Main graphic loop
     while(!glfwWindowShouldClose(window)){
         // Get width and height of window
@@ -356,8 +340,6 @@ int main(int argc, char* argv[]){
 void initScene1(){
     main_scene = scene1;
     main_scene->init();
-    main_scene->camera->m_frontLayer->addChild(labelHapticDeviceModel);
-    main_scene->camera->m_frontLayer->addChild(labelRates);
 }
 
 void initScene2(){
@@ -466,10 +448,9 @@ void windowSizeCallback(GLFWwindow* a_window, int a_width, int a_height)
     width = a_width;
     height = a_height;
     // update position of label
-    labelHapticDeviceModel->setLocalPos(20, height - 40, 0);
-
+    main_scene->labelHapticDeviceModel->setLocalPos(20, height - 40, 0);
     // update position of label
-    labelHapticDevicePosition->setLocalPos(20, height - 60, 0);
+    main_scene->labelHapticDevicePosition->setLocalPos(20, height - 60, 0);
 }
 
 
@@ -533,14 +514,13 @@ void updateGraphics(void){
     // UPDATE WIDGETS
     /////////////////////////////////////////////////////////////////////
 
-    // Update the text information.
-    labelHapticDevicePosition->setText(hapticDevicePosition.str(3));
-    labelRates->setText(cStr(freqCounterGraphics.getFrequency(), 0) + " Hz /" + 
+    //Update the text information.
+    main_scene->labelHapticDevicePosition->setText(hapticDevicePosition.str(3));
+    main_scene->labelRates->setText(cStr(freqCounterGraphics.getFrequency(), 0) + " Hz /" + 
                         cStr(freqCounterHaptics.getFrequency(),0) + " Hz");
-
-    // Update the position of the label (the coordination of middle is changing.)
-    labelRates->setLocalPos((int)(0.5*(width-labelRates->getWidth())),15);
-
+    
+    // update position of label
+    main_scene->labelRates->setLocalPos((int)(0.5 * (width - main_scene->labelRates->getWidth())), 15);
     /////////////////////////////////////////////////////////////////////
     // RENDER SCENE
     /////////////////////////////////////////////////////////////////////
@@ -599,17 +579,17 @@ void updateHaptics(void){
                 main_scene->ALPHA_CONTROL = min(main_scene->ALPHA_CONTROL, 1.0);
                 main_scene->K_DAMPING_VELOCITY = 2;
             }
-            else if (button1){
+            else if (button1 || main_scene->userInactive){
                 // gradually change the control to robot.
                 main_scene->ALPHA_CONTROL -= 0.001;
                 main_scene->ALPHA_CONTROL = max(main_scene->ALPHA_CONTROL, 0.0);
-                main_scene->K_DAMPING_VELOCITY = 0.13;
+                main_scene->K_DAMPING_VELOCITY = 0.10;
             }
             else{
                 // gradually change to equal control.
                 double difference = main_scene->ALPHA_CONTROL - 0.5;
                 main_scene->ALPHA_CONTROL -= copysign(0.001, difference);
-                main_scene->K_DAMPING_VELOCITY = 0.13;
+                main_scene->K_DAMPING_VELOCITY = 0.10;
             }
         }
         // Variable Control by Physiological Signal
@@ -624,35 +604,35 @@ void updateHaptics(void){
                 // gradually change the control constant.
                 main_scene->ALPHA_CONTROL -= 0.001;
                 main_scene->ALPHA_CONTROL = max(main_scene->ALPHA_CONTROL, 0.0);
-                main_scene->K_DAMPING_VELOCITY = 0.13;
+                main_scene->K_DAMPING_VELOCITY = 0.10;
             }
             else{
-                // gradually change to control determines by physiology data prediction.
+                string prediction = "0";
+                string prediction_file_name = "S" + subject_num + "/prediction" + "/S" + subject_num + "_" + subject_sex + to_string(subject_age) + "_" + to_string(game_scene) + "_" + to_string(control_mode) + "_live" + ".csv";
+                std::ifstream live_prediction_file(prediction_file_name);
+                if(live_prediction_file.is_open()){
+                    live_prediction_file >> prediction;
+                }
 
-                // if(prediction == "easy"){
-                //     main_scene->ALPHA_CONTROL += 0.001;
-                //     main_scene->ALPHA_CONTROL = min(main_scene->ALPHA_CONTROL, 0.9);
-                //     main_scene->K_DAMPING_VELOCITY = 2;
-                // }
-                // else if(prediction == "medium"){
-                //     double difference = main_scene->ALPHA_CONTROL - 0.5;
-                //     main_scene->ALPHA_CONTROL -= copysign(0.001, difference);
-                //     main_scene->K_DAMPING_VELOCITY = 0.13;
-                // }
-                // else{
-                //     main_scene->ALPHA_CONTROL -= 0.001;
-                //     main_scene->ALPHA_CONTROL = max(main_scene->ALPHA_CONTROL, 0.0);
-                //     main_scene->K_DAMPING_VELOCITY = 0.13;
-                // }
+                // gradually change to control determines by physiology data prediction.
+                if(prediction == "0"){
+                    main_scene->ALPHA_CONTROL += 0.001;
+                    main_scene->ALPHA_CONTROL = min(main_scene->ALPHA_CONTROL, 1.0);
+                    main_scene->K_DAMPING_VELOCITY = 2;
+                }
+                else if(prediction == "1"){
+                    double difference = main_scene->ALPHA_CONTROL - 0.5;
+                    main_scene->ALPHA_CONTROL -= copysign(0.001, difference);
+                    main_scene->K_DAMPING_VELOCITY = 0.13;
+                }
+                else{
+                    main_scene->ALPHA_CONTROL -= 0.001;
+                    main_scene->ALPHA_CONTROL = max(main_scene->ALPHA_CONTROL, 0.0);
+                    main_scene->K_DAMPING_VELOCITY = 0.13;
+                }
             }
         }
         // Ideal Control (Narrow == Computer Control, Wide == Human Control)
-        else if(control_mode == 4){
-            // not determine yet
-        }
-        
-        
-
         main_scene->updateHaptics(timeInterval);
         if(main_scene->destination_index == main_scene->destinations.size()){
             break;        
