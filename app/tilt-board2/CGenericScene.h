@@ -71,4 +71,12 @@ public:
     cLabel* labelHapticDevicePosition;
     cLabel* labelRates;
     cLevel* controlLevel;
+
+    cVector3d positionNegotiatedSphere;
+    cVector3d positionMainSphere;
+    cVector3d positionGuidanceSphere;
+    cVector3d sphereForce;
+    cVector3d guidanceForce;
+
+
 };

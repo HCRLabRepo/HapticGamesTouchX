@@ -6,8 +6,8 @@ cScene2::cScene2(shared_ptr<cGenericHapticDevice> a_hapticDevice):cGenericScene(
     cMaterial matBase;
     matBase.setGrayLevel(0.3);
     matBase.setStiffness(100);
-    matBase.setDynamicFriction(0.2);
-    matBase.setStaticFriction(0.1);
+    matBase.setDynamicFriction(0.5);
+    matBase.setStaticFriction(0.9);
 
     // Setup static obstacles
     obstacle0 = new cBulletBox(bulletWorld, 0.005, 0.33, 0.015);
@@ -211,7 +211,7 @@ void cScene2::updateWaypoint(cVector3d positionSphere, cVector3d positionTarget)
             waypoint_index = last_waypoint_index +1;
             return;
 
-        }else if(cDistance(positionTarget,positionSphere) + cDistance(waypoints[waypoint_index-1], positionSphere) > cDistance(waypoints[waypoint_index-1],positionTarget)+0.03)
+        }else if(cDistance(positionTarget,positionSphere) + cDistance(waypoints[waypoint_index-1], positionSphere) > cDistance(waypoints[waypoint_index-1],positionTarget)+0.09)
         {
             last_waypoint_index = last_waypoint_index -1;
             waypoint_index = waypoint_index-1;

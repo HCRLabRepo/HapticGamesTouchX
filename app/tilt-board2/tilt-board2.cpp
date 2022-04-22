@@ -105,7 +105,12 @@ void initScene1();
 void initScene2();
 void initScene3();
 
-std::ofstream gamefile;
+std::ofstream ballfile;
+std::ofstream HIPfile;
+std::ofstream CIPfile;
+std::ofstream NIPfile;
+std::ofstream HIPforcefile;
+std::ofstream CIPforcefile;
 
 void recoverColor(const btCollisionObjectWrapper* obj1)
 {   usleep(500);
@@ -126,13 +131,13 @@ bool callbackFunc(btManifoldPoint& cp, const btCollisionObjectWrapper* obj1, int
     if( (((cBulletMesh*)(obj1->getCollisionObject()->getUserPointer()))->m_material->m_diffuse == Gray) && (((cBulletMesh*)(obj2->getCollisionObject()->getUserPointer()))->m_material->m_diffuse != Blue)){
         ((cBulletMesh*)(obj1->getCollisionObject()->getUserPointer()))->m_material->setRed();
         std::thread t(recoverColor,obj1);
-        gamefile << "Collision" <<endl;
+        ballfile << "Collision" <<endl;
         t.join();
     }
     if( (((cBulletMesh*)(obj2->getCollisionObject()->getUserPointer()))->m_material->m_diffuse == Gray) && (((cBulletMesh*)(obj1->getCollisionObject()->getUserPointer()))->m_material->m_diffuse != Blue) ){
         ((cBulletMesh*)(obj2->getCollisionObject()->getUserPointer()))->m_material->setRed();
         std::thread t(recoverColor,obj2);
-        gamefile <<  "Collision" <<endl;
+        ballfile <<  "Collision" <<endl;
         t.join();
     }
 
@@ -157,7 +162,12 @@ int main(int argc, char* argv[]){
         return 0;
     }
 
-    string gamefilename = "S" + subject_num + "/game" + "/S" + subject_num + "_" + subject_sex + to_string(subject_age) + "_" + to_string(game_scene) + "_" + to_string(control_mode) + ".csv";
+    string ballfilename = "S" + subject_num + "/ball" + "/S" + subject_num + "_" + subject_sex + to_string(subject_age) + "_" + to_string(game_scene) + "_" + to_string(control_mode) + ".csv";
+    string HIPfilename = "S" + subject_num + "/HIP" + "/S" + subject_num + "_" + subject_sex + to_string(subject_age) + "_" + to_string(game_scene) + "_" + to_string(control_mode) + ".csv";
+    string CIPfilename = "S" + subject_num + "/CIP" + "/S" + subject_num + "_" + subject_sex + to_string(subject_age) + "_" + to_string(game_scene) + "_" + to_string(control_mode) + ".csv";
+    string NIPfilename = "S" + subject_num + "/NIP" + "/S" + subject_num + "_" + subject_sex + to_string(subject_age) + "_" + to_string(game_scene) + "_" + to_string(control_mode) + ".csv";
+    string HIPforcefilename = "S" + subject_num + "/HIP" + "/S" + subject_num + "_" + subject_sex + to_string(subject_age) + "_" + to_string(game_scene) + "_" + to_string(control_mode) + "_force.csv";
+    string CIPforcefilename = "S" + subject_num + "/CIP" + "/S" + subject_num + "_" + subject_sex + to_string(subject_age) + "_" + to_string(game_scene) + "_" + to_string(control_mode) + "_force.csv";
     //---------------------------------------------------------------------------
     // Initial Print Message
     //---------------------------------------------------------------------------
@@ -301,7 +311,12 @@ int main(int argc, char* argv[]){
     else if(game_scene == 3){
         initScene3();
     }
-    gamefile.open(gamefilename);
+    ballfile.open(ballfilename);
+    HIPfile.open(HIPfilename);
+    CIPfile.open(CIPfilename);
+    NIPfile.open(NIPfilename);
+    HIPforcefile.open(HIPforcefilename);
+    CIPforcefile.open(CIPforcefilename);
     //--------------------------------------------------------------------------
     // START SIMULATION
     //--------------------------------------------------------------------------
@@ -623,16 +638,20 @@ void updateHaptics(void){
                 else if(prediction == "1"){
                     double difference = main_scene->ALPHA_CONTROL - 0.5;
                     main_scene->ALPHA_CONTROL -= copysign(0.001, difference);
-                    main_scene->K_DAMPING_VELOCITY = 0.13;
+                    main_scene->K_DAMPING_VELOCITY = 0.10;
                 }
                 else{
                     main_scene->ALPHA_CONTROL -= 0.001;
                     main_scene->ALPHA_CONTROL = max(main_scene->ALPHA_CONTROL, 0.0);
-                    main_scene->K_DAMPING_VELOCITY = 0.13;
+                    main_scene->K_DAMPING_VELOCITY = 0.10;
                 }
             }
         }
-        // Ideal Control (Narrow == Computer Control, Wide == Human Control)
+        // Ideal Control (Robot Control for best score reference, not part of user experiment but to produce the standard score.)
+        else if(control_mode == 4){
+            main_scene->ALPHA_CONTROL = 0;
+            main_scene->K_DAMPING_VELOCITY = 0.10;
+        }
         main_scene->updateHaptics(timeInterval);
         if(main_scene->destination_index == main_scene->destinations.size()){
             break;        
@@ -643,10 +662,21 @@ void updateHaptics(void){
 
         // Signal frequency counter
         freqCounterHaptics.signal(1);
-        gamefile <<  timeSinceEpochMillisec() << ", "<< hapticDevicePosition <<endl;
+        ballfile <<  timeSinceEpochMillisec() << ", " << main_scene->positionMainSphere <<endl;
+        HIPfile << timeSinceEpochMillisec() << ", " << hapticDevicePosition << endl;
+        CIPfile << timeSinceEpochMillisec() << ", " << main_scene->positionGuidanceSphere << endl;
+        NIPfile << timeSinceEpochMillisec() << ", " << main_scene->positionNegotiatedSphere << endl;
+        HIPforcefile << timeSinceEpochMillisec() << ", " << main_scene->sphereForce << endl;
+        CIPforcefile << timeSinceEpochMillisec() << ", " << main_scene->guidanceForce << endl;
+
 
     }
-    gamefile.close();
+    ballfile.close();
+    HIPfile.close();
+    CIPfile.close();
+    NIPfile.close();
+    HIPforcefile.close();
+    CIPforcefile.close();
     hapticDevice->close();
     simulationFinished = true;
 }

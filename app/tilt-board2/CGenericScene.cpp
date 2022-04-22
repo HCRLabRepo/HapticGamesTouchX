@@ -138,8 +138,8 @@ cGenericScene::cGenericScene(shared_ptr<cGenericHapticDevice> a_hapticDevice)
     cMaterial matBase;
     matBase.setGrayLevel(0.3);
     matBase.setStiffness(10);
-    matBase.setDynamicFriction(0.2);
-    matBase.setStaticFriction(0.1);
+    matBase.setDynamicFriction(0.5);
+    matBase.setStaticFriction(0.9);
 
     border1 = new cBulletBox(bulletWorld, 0.005, 0.6, 0.02);
     bulletWorld->addChild(border1);
@@ -303,9 +303,9 @@ void cGenericScene::updateHaptics(double timeInterval){
     // Compute World Dynamics Forces.
     cVector3d hapticDevicePosition;
     cVector3d positionTarget = target->getLocalPos();
-    cVector3d positionNegotiatedSphere = negotiatedSphere->getLocalPos();
-    cVector3d positionMainSphere = mainSphere->getLocalPos();
-    cVector3d positionGuidanceSphere = guidanceSphere->getLocalPos();
+    positionNegotiatedSphere = negotiatedSphere->getLocalPos();
+    positionMainSphere = mainSphere->getLocalPos();
+    positionGuidanceSphere = guidanceSphere->getLocalPos();
     
     hapticDevice->getPosition(hapticDevicePosition); 
     hapticDevicePosition = hapticDevicePosition *10;
@@ -318,7 +318,7 @@ void cGenericScene::updateHaptics(double timeInterval){
     // The force of negotiatedSphere towards controlSphere and the force feedback for human operator.
     cVector3d dir01 = cNormalize(hapticDevicePosition-positionNegotiatedSphere);
     double distance01 = cDistance(hapticDevicePosition, positionNegotiatedSphere);
-    cVector3d sphereForce = (K_SPRING*(ALPHA_CONTROL) * (distance01) * dir01);
+    sphereForce = (K_SPRING*(ALPHA_CONTROL) * (distance01) * dir01);
     if((K_SPRING*(0.5) * (distance01) * dir01).length()<1.0){
         userInactive = true;
     }else{
@@ -329,7 +329,7 @@ void cGenericScene::updateHaptics(double timeInterval){
     // The force of negotiatedSphere towards guidanceSphere. 
     cVector3d dir02 = cNormalize(positionGuidanceSphere-positionNegotiatedSphere);
     double distance02 = cDistance(positionGuidanceSphere, positionNegotiatedSphere);
-    cVector3d guidanceForce = (K_SPRING*(1-ALPHA_CONTROL) * (distance02) * dir02);
+    guidanceForce = (K_SPRING*(1-ALPHA_CONTROL) * (distance02) * dir02);
 
     // The force of guidanceSphere towards waypoint.
     cVector3d dir03 = cNormalize(positionWaypoint-positionGuidanceSphere);
@@ -376,7 +376,7 @@ void cGenericScene::updateHaptics(double timeInterval){
     if (hapticDeviceMaxStiffness < HAPTIC_STIFFNESS)
         stiffnessRatio = hapticDeviceMaxStiffness / HAPTIC_STIFFNESS;
     // Compute Force Feedback
-    hapticForce = hapticForce * stiffnessRatio * 0.2;
+    hapticForce = hapticForce * stiffnessRatio * 0.3;
 
     // Safety fuse.
     if(hapticForce.length()> MAX_HAPTIC_FORCE){

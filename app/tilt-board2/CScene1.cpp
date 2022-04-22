@@ -9,8 +9,8 @@ cScene1::cScene1(shared_ptr<cGenericHapticDevice> a_hapticDevice):cGenericScene(
     cMaterial matBase;
     matBase.setGrayLevel(0.3);
     matBase.setStiffness(100);
-    matBase.setDynamicFriction(0.2);
-    matBase.setStaticFriction(0.1);
+    matBase.setDynamicFriction(0.5);
+    matBase.setStaticFriction(0.9);
 
     // Setup static obstacles
     obstacle0 = new cBulletBox(bulletWorld, 0.005, 0.5, 0.02);
@@ -84,13 +84,13 @@ cScene1::cScene1(shared_ptr<cGenericHapticDevice> a_hapticDevice):cGenericScene(
     destinations.push_back(cVector3d(-0.28,-0.28,-0.2+0.00025));
 
     checkpoints.push_back(cVector3d(-0.25,0.23, -0.20025));
-    checkpointsRange.push_back(0.07);
-    checkpoints.push_back(cVector3d(-0.15,0.23, -0.20025));
-    checkpointsRange.push_back(0.07);
-    checkpoints.push_back(cVector3d(-0.14,-0.22, -0.20025));
     checkpointsRange.push_back(0.06);
+    checkpoints.push_back(cVector3d(-0.15,0.23, -0.20025));
+    checkpointsRange.push_back(0.06);
+    checkpoints.push_back(cVector3d(-0.14,-0.22, -0.20025));
+    checkpointsRange.push_back(0.05);
     checkpoints.push_back(cVector3d(-0.07,-0.22, -0.20025));
-    checkpointsRange.push_back(0.07);
+    checkpointsRange.push_back(0.06);
     checkpoints.push_back(cVector3d(-0.06,0.22, -0.20025));
     checkpointsRange.push_back(0.06);
     checkpoints.push_back(cVector3d(0.03,0.22, -0.20025));
