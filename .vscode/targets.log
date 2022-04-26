@@ -8,7 +8,7 @@ make: *** No rule to make target 'all'.  Stop.
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Thu Apr 21 16:50:00 2022
+# Make data base, printed on Tue Apr 26 15:06:59 2022
 
 # Variables
 
@@ -47,7 +47,7 @@ VTE_VERSION = 5202
 # environment
 VSCODE_NLS_CONFIG = {"locale":"en-us","availableLanguages":{},"_languagePackSupport":true}
 # environment
-_ = /usr/bin/code
+JOURNAL_STREAM = 9:46523
 # environment
 XDG_CONFIG_DIRS = /etc/xdg/xdg-ubuntu:/etc/xdg
 # makefile
@@ -65,11 +65,15 @@ XDG_DATA_DIRS = /usr/share/ubuntu:/usr/local/share/:/usr/share/:/var/lib/snapd/d
 # environment
 ROS_ETC_DIR = /opt/ros/melodic/etc/ros
 # environment
-DBUS_SESSION_BUS_ADDRESS = unix:path=/run/user/1000/bus
+DBUS_SESSION_BUS_ADDRESS = unix:path=/run/user/1000/bus,guid=e9243a9e928be3a92caa95e96267fc5c
 # environment
 VSCODE_VERBOSE_LOGGING = true
 # environment
+_ = /usr/bin/code
+# environment
 ROS_PACKAGE_PATH = /opt/ros/melodic/share
+# environment
+MANAGERPID = 1697
 # environment
 TURTLEBOT3_MODEL = waffle
 # environment
@@ -91,7 +95,7 @@ XDG_SESSION_DESKTOP = ubuntu
 # environment
 GPG_AGENT_INFO = /run/user/1000/gnupg/S.gpg-agent:0:1
 # environment
-SESSION_MANAGER = local/kai-ThinkPad-T14s-Gen-1:@/tmp/.ICE-unix/1626,unix/kai-ThinkPad-T14s-Gen-1:/tmp/.ICE-unix/1626
+SESSION_MANAGER = local/kai-ThinkPad-T14s-Gen-1:@/tmp/.ICE-unix/1748,unix/kai-ThinkPad-T14s-Gen-1:/tmp/.ICE-unix/1748
 # environment
 XDG_RUNTIME_DIR = /run/user/1000
 # environment
@@ -104,6 +108,8 @@ XDG_MENU_PREFIX = gnome-
 VSCODE_LOG_STACK = false
 # environment
 ELECTRON_RUN_AS_NODE = 1
+# environment
+INVOCATION_ID = 8b965b60472f4d8c95e920e80af5f1f0
 # default
 .FEATURES := target-specific order-only second-expansion else-if shortest-stem undefine oneshell archives jobserver output-sync check-symlink load
 # environment
@@ -127,7 +133,7 @@ PWD = /home/kai/Desktop/application
 # environment
 XDG_SEAT = seat0
 # environment
-SSH_AGENT_PID = 1703
+SSH_AGENT_PID = 1825
 # environment
 PKG_CONFIG_PATH = /opt/ros/melodic/lib/pkgconfig
 # environment
@@ -181,7 +187,7 @@ SHLVL = 1
 # environment
 GNOME_SHELL_SESSION_MODE = ubuntu
 # environment
-VSCODE_IPC_HOOK_EXTHOST = /run/user/1000/vscode-ipc-ad1f2766-f2de-4125-b9d0-9091f835098d.sock
+VSCODE_IPC_HOOK_EXTHOST = /run/user/1000/vscode-ipc-9b5ec2f7-7850-4d1a-9852-62d0852c1a85.sock
 # environment
 XDG_SESSION_ID = 3
 # environment
@@ -200,8 +206,6 @@ ROSLISP_PACKAGE_DIRECTORIES =
 LC_TELEPHONE = en_GB.UTF-8
 # default
 MAKE_COMMAND := make
-# environment
-OLDPWD = /home/kai
 # default
 .VARIABLES := 
 # automatic
@@ -227,8 +231,6 @@ GDK_BACKEND = x11
 # environment
 LC_PAPER = en_GB.UTF-8
 # environment
-LC_IDENTIFICATION = en_GB.UTF-8
-# environment
 S_COLORS = auto
 # environment
 QT_ACCESSIBILITY = 1
@@ -247,15 +249,15 @@ ROS_MASTER_URI = http://localhost:11311
 # environment
 LC_ALL = C
 # environment
+DBUS_STARTER_BUS_TYPE = session
+# environment
 QT4_IM_MODULE = xim
 # environment
-GJS_DEBUG_TOPICS = JS ERROR;JS LOG
-# environment
-GNOME_TERMINAL_SCREEN = /org/gnome/Terminal/screen/0b2cf396_e81a_4180_88d5_8027af5eb861
+GNOME_TERMINAL_SCREEN = /org/gnome/Terminal/screen/ac394d0e_092b_42a5_8376_bc8b377db8d0
 # automatic
 ^F = $(notdir $^)
 # environment
-GNOME_TERMINAL_SERVICE = :1.823
+GNOME_TERMINAL_SERVICE = :1.85
 # default
 SUFFIXES := 
 # environment
@@ -265,7 +267,7 @@ WINDOWPATH = 2
 # default
 .INCLUDE_DIRS = /usr/include /usr/local/include /usr/include
 # environment
-GJS_DEBUG_OUTPUT = stderr
+LC_IDENTIFICATION = en_GB.UTF-8
 # default
 .RECIPEPREFIX := 
 # environment
@@ -275,9 +277,12 @@ LANG = C
 # environment
 TERM = xterm-256color
 # environment
-VSCODE_PID = 23241
+VSCODE_PID = 2663
+# environment
+DBUS_STARTER_ADDRESS = unix:path=/run/user/1000/bus,guid=e9243a9e928be3a92caa95e96267fc5c
 # variable set hash-table stats:
-# Load=132/1024=13%, Rehash=0, Collisions=22/154=14%
+ 
+# Load=134/1024=13%, Rehash=0, Collisions=22/156=14%
 
 # Pattern-specific Variable Values
 
@@ -287,7 +292,6 @@ VSCODE_PID = 23241
 
 # . (device 66309, inode 3029773): 6 files, no impossibilities.
 
- 
 # 6 files, no impossibilities in 1 directories.
 
 # Implicit Rules
@@ -344,6 +348,6 @@ GNUmakefile:
 # strcache performance: lookups = 17 / hit rate = 17%
 # hash-table stats:
 # Load=14/8192=0%, Rehash=0, Collisions=1/17=6%
-# Finished Make data base on Thu Apr 21 16:50:00 2022
+# Finished Make data base on Tue Apr 26 15:06:59 2022
 
  
