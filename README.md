@@ -201,9 +201,18 @@ Touch_Diagnostic ## Open a program to test the hardware.
 
 2. Ready the shimmer sensors for recording physiology data.
 
+First of all, you should connect your shimmer device via bluetooth. I don't know where I get this information.
+
+-  Download a software called bluetooth manager available in Linux.
+
+- Turn on your device, open bluetooth manager to connect the device, the passcode should be 1234 by default. You will see the port number if it connects successfully.
+
 There are some python2 scripts to connects the shimmers hardware in the from the official Github [Python Scripts](https://github.com/ShimmerResearch/shimmer3/tree/master/LogAndStream/python_scripts). I already downloaded the btGSR_PPG.py and modified it for my own usage.
+
+Now we should be able to get the live data.
 ```bash
-python btGSR_PPG.py ##My python default is python2.
+sudo python btGSR_PPG.py /dev/rfcomm0 ## sudo python $filename $port
+##My python default is python2, your portnumber can be different
 ```
 3. Run the game.
 
