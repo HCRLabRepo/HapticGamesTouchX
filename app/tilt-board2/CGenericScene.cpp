@@ -17,8 +17,7 @@ const double K_SPRING_TARGET    = 20.0;
 const double HAPTIC_STIFFNESS   = 1.0;
 const double WALL_GROUND = -0.2;
 
-
-const double MAX_HAPTIC_FORCE = 5;
+double MAX_HAPTIC_FORCE = 4;
 
 bool flagHapticsEnabled = false;
 double hapticDeviceMaxStiffness;
@@ -108,7 +107,11 @@ cGenericScene::cGenericScene(shared_ptr<cGenericHapticDevice> a_hapticDevice)
     camera->m_frontLayer->addChild(labelHapticDeviceModel);
     cHapticDeviceInfo hapticDeviceInfo = a_hapticDevice->getSpecifications();
     labelHapticDeviceModel->setText(hapticDeviceInfo.m_modelName);
-    
+    if(hapticDeviceInfo.m_modelName == "Touch X"){
+        MAX_HAPTIC_FORCE = 4;
+    }else{
+        MAX_HAPTIC_FORCE = 2;
+    }
     // Create a label to display the position of haptic device
     labelHapticDevicePosition = new cLabel(font);
     camera->m_frontLayer->addChild(labelHapticDevicePosition);
