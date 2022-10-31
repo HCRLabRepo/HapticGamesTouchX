@@ -1,0 +1,3 @@
+"C:\Program Files (x86)\CMake\bin\cmake.exe" -E remove -f CMakeFiles\25-sounds.dir/objects.a
+C:\msys64\mingw64\bin\ar.exe cr CMakeFiles\25-sounds.dir/objects.a @CMakeFiles\25-sounds.dir\objects1.rsp
+C:\msys64\mingw64\bin\g++.exe  -march=native -Wno-deprecated -std=c++0x -O3 -DNDEBUG   -Wl,--whole-archive CMakeFiles\25-sounds.dir/objects.a -Wl,--no-whole-archive  -o ..\..\..\bin\win-Win32\25-sounds.exe -Wl,--out-implib,lib25-sounds.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\25-sounds.dir\linklibs.rsp

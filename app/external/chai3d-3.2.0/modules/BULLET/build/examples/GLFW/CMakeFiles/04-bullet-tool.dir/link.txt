@@ -1,0 +1,3 @@
+"C:\Program Files (x86)\CMake\bin\cmake.exe" -E remove -f CMakeFiles\04-bullet-tool.dir/objects.a
+C:\msys64\mingw64\bin\ar.exe cr CMakeFiles\04-bullet-tool.dir/objects.a @CMakeFiles\04-bullet-tool.dir\objects1.rsp
+C:\msys64\mingw64\bin\g++.exe  -march=native -Wno-deprecated -std=c++0x -O3 -DNDEBUG   -Wl,--whole-archive CMakeFiles\04-bullet-tool.dir/objects.a -Wl,--no-whole-archive  -o ..\..\..\bin\win-Win32\04-bullet-tool.exe -Wl,--out-implib,lib04-bullet-tool.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\04-bullet-tool.dir\linklibs.rsp

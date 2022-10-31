@@ -1,0 +1,14 @@
+D:/git/project/HapticGamesTouchX/app/external/chai3d-3.2.0/modules/BULLET/build/CMakeFiles/chai3d-BULLET.dir
+D:/git/project/HapticGamesTouchX/app/external/chai3d-3.2.0/modules/BULLET/build/CMakeFiles/edit_cache.dir
+D:/git/project/HapticGamesTouchX/app/external/chai3d-3.2.0/modules/BULLET/build/CMakeFiles/rebuild_cache.dir
+D:/git/project/HapticGamesTouchX/app/external/chai3d-3.2.0/modules/BULLET/build/examples/CMakeFiles/edit_cache.dir
+D:/git/project/HapticGamesTouchX/app/external/chai3d-3.2.0/modules/BULLET/build/examples/CMakeFiles/rebuild_cache.dir
+D:/git/project/HapticGamesTouchX/app/external/chai3d-3.2.0/modules/BULLET/build/examples/GLFW/CMakeFiles/01-bullet-cube.dir
+D:/git/project/HapticGamesTouchX/app/external/chai3d-3.2.0/modules/BULLET/build/examples/GLFW/CMakeFiles/02-bullet-pool.dir
+D:/git/project/HapticGamesTouchX/app/external/chai3d-3.2.0/modules/BULLET/build/examples/GLFW/CMakeFiles/03-bullet-mesh.dir
+D:/git/project/HapticGamesTouchX/app/external/chai3d-3.2.0/modules/BULLET/build/examples/GLFW/CMakeFiles/rebuild_cache.dir
+D:/git/project/HapticGamesTouchX/app/external/chai3d-3.2.0/modules/BULLET/build/examples/GLFW/CMakeFiles/04-bullet-tool.dir
+D:/git/project/HapticGamesTouchX/app/external/chai3d-3.2.0/modules/BULLET/build/examples/GLFW/CMakeFiles/05-bullet-dental.dir
+D:/git/project/HapticGamesTouchX/app/external/chai3d-3.2.0/modules/BULLET/build/examples/GLFW/CMakeFiles/06-bullet-exploration.dir
+D:/git/project/HapticGamesTouchX/app/external/chai3d-3.2.0/modules/BULLET/build/examples/GLFW/CMakeFiles/07-bullet-articulation.dir
+D:/git/project/HapticGamesTouchX/app/external/chai3d-3.2.0/modules/BULLET/build/examples/GLFW/CMakeFiles/edit_cache.dir

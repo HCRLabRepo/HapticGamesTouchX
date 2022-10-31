@@ -1,0 +1,2 @@
+C:\msys64\mingw64\bin\ar.exe qc ..\..\..\lib\libBulletFileLoader.a  CMakeFiles/BulletFileLoader.dir/bChunk.obj CMakeFiles/BulletFileLoader.dir/bDNA.obj CMakeFiles/BulletFileLoader.dir/bFile.obj CMakeFiles/BulletFileLoader.dir/btBulletFile.obj
+C:\msys64\mingw64\bin\ranlib.exe ..\..\..\lib\libBulletFileLoader.a
