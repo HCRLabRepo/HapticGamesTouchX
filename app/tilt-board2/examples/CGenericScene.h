@@ -66,6 +66,7 @@ public:
     double ALPHA_CONTROL = 1;
     double K_DAMPING_VELOCITY = 0.2;
     bool userInactive = false;
+    double userForce = 0.0;
 
     cLabel* labelHapticDeviceModel;
     cLabel* labelHapticDevicePosition;

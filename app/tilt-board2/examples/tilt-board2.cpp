@@ -667,6 +667,29 @@ void updateHaptics(void){
             main_scene->ALPHA_CONTROL = 0;
             main_scene->K_DAMPING_VELOCITY = 0.10;
         }
+        // Force-based proportional human control. Alpha is proportional to force exerted by user
+        else if(control_mode == 5){
+            //Manual Override
+            if (button0){
+                main_scene->ALPHA_CONTROL += 0.001;
+                main_scene->ALPHA_CONTROL = min(main_scene->ALPHA_CONTROL, 1.0);
+                main_scene->K_DAMPING_VELOCITY = 2;
+            }
+            else{
+                main_scene->ALPHA_CONTROL = 0.1*(main_scene->userForce);
+                main_scene->K_DAMPING_VELOCITY = 0.10;
+            }
+        }
+        // Performance-based proportional human control. Alpha is proportional to how well the user is performing the task.
+        // Collision data and time taken are both taken into account for this.
+        else if(control_mode == 6){
+            //Manual Override
+            if (button0){
+                main_scene->ALPHA_CONTROL += 0.001;
+                main_scene->ALPHA_CONTROL = min(main_scene->ALPHA_CONTROL, 1.0);
+                main_scene->K_DAMPING_VELOCITY = 2;
+            }
+        }
         main_scene->updateHaptics(timeInterval);
         if(main_scene->destination_index == main_scene->destinations.size()){
             break;        

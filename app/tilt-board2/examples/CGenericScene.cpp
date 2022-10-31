@@ -322,7 +322,8 @@ void cGenericScene::updateHaptics(double timeInterval){
     cVector3d dir01 = cNormalize(hapticDevicePosition-positionNegotiatedSphere);
     double distance01 = cDistance(hapticDevicePosition, positionNegotiatedSphere);
     sphereForce = (K_SPRING*(ALPHA_CONTROL) * (distance01) * dir01);
-    if((K_SPRING*(0.5) * (distance01) * dir01).length()<1.0){
+    userForce = (K_SPRING*(0.5) * (distance01) * dir01).length();
+    if(userForce<1.0){
         userInactive = true;
     }else{
         userInactive = false;
