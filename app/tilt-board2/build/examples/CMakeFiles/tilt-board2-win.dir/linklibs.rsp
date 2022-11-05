@@ -1,1 +1,0 @@
-../libchai3d-BULLET.a D:/git/project/HapticGamesTouchX/app/external/chai3d-3.2.0/build/libchai3d.a -lopengl32 -lglu32 -lwinmm D:/git/project/HapticGamesTouchX/app/external/chai3d-3.2.0/build/extras/GLFW/libglfw.a -lopengl32 -lglu32 -lwinmm -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32 

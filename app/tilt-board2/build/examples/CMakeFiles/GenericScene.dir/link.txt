@@ -1,3 +1,0 @@
-"C:\Program Files (x86)\CMake\bin\cmake.exe" -E remove -f CMakeFiles\GenericScene.dir/objects.a
-C:\msys64\mingw64\bin\ar.exe cr CMakeFiles\GenericScene.dir/objects.a @CMakeFiles\GenericScene.dir\objects1.rsp
-C:\msys64\mingw64\bin\g++.exe  -march=native -Wno-deprecated -std=c++0x -O3 -DNDEBUG   -Wl,--whole-archive CMakeFiles\GenericScene.dir/objects.a -Wl,--no-whole-archive  -o D:\git\project\HapticGamesTouchX\app\bin\win-Win32\GenericScene.exe -Wl,--out-implib,libGenericScene.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\GenericScene.dir\linklibs.rsp

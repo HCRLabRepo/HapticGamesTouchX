@@ -1,0 +1,66 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.3.32929.385
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "tiltboard-win", "tiltboard-win.vcxproj", "{A96C7C1D-CE13-462E-8AC1-13AF99651706}"
+	ProjectSection(ProjectDependencies) = postProject
+		{71AF75A0-52B6-4C1B-8E56-CB31C6741A18} = {71AF75A0-52B6-4C1B-8E56-CB31C6741A18}
+		{89755822-86E3-4209-8C0E-C03B9BF95018} = {89755822-86E3-4209-8C0E-C03B9BF95018}
+		{A9F01342-5463-4634-B1F9-BF98CD5591B0} = {A9F01342-5463-4634-B1F9-BF98CD5591B0}
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "CHAI3D", "..\..\external\chai3d-3.2.0\CHAI3D-VS2015.vcxproj", "{A9F01342-5463-4634-B1F9-BF98CD5591B0}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "glfw", "..\..\external\chai3d-3.2.0\extras\GLFW\glfw-VS2015.vcxproj", "{71AF75A0-52B6-4C1B-8E56-CB31C6741A18}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "CHAI3D-BULLET", "..\..\external\chai3d-3.2.0\modules\BULLET\CHAI3D-BULLET-VS2015.vcxproj", "{89755822-86E3-4209-8C0E-C03B9BF95018}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x64 = Debug|x64
+		Debug|x86 = Debug|x86
+		Release|x64 = Release|x64
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A96C7C1D-CE13-462E-8AC1-13AF99651706}.Debug|x64.ActiveCfg = Debug|x64
+		{A96C7C1D-CE13-462E-8AC1-13AF99651706}.Debug|x64.Build.0 = Debug|x64
+		{A96C7C1D-CE13-462E-8AC1-13AF99651706}.Debug|x86.ActiveCfg = Debug|Win32
+		{A96C7C1D-CE13-462E-8AC1-13AF99651706}.Debug|x86.Build.0 = Debug|Win32
+		{A96C7C1D-CE13-462E-8AC1-13AF99651706}.Release|x64.ActiveCfg = Release|x64
+		{A96C7C1D-CE13-462E-8AC1-13AF99651706}.Release|x64.Build.0 = Release|x64
+		{A96C7C1D-CE13-462E-8AC1-13AF99651706}.Release|x86.ActiveCfg = Release|Win32
+		{A96C7C1D-CE13-462E-8AC1-13AF99651706}.Release|x86.Build.0 = Release|Win32
+		{A9F01342-5463-4634-B1F9-BF98CD5591B0}.Debug|x64.ActiveCfg = Debug|x64
+		{A9F01342-5463-4634-B1F9-BF98CD5591B0}.Debug|x64.Build.0 = Debug|x64
+		{A9F01342-5463-4634-B1F9-BF98CD5591B0}.Debug|x86.ActiveCfg = Debug|Win32
+		{A9F01342-5463-4634-B1F9-BF98CD5591B0}.Debug|x86.Build.0 = Debug|Win32
+		{A9F01342-5463-4634-B1F9-BF98CD5591B0}.Release|x64.ActiveCfg = Release|x64
+		{A9F01342-5463-4634-B1F9-BF98CD5591B0}.Release|x64.Build.0 = Release|x64
+		{A9F01342-5463-4634-B1F9-BF98CD5591B0}.Release|x86.ActiveCfg = Release|Win32
+		{A9F01342-5463-4634-B1F9-BF98CD5591B0}.Release|x86.Build.0 = Release|Win32
+		{71AF75A0-52B6-4C1B-8E56-CB31C6741A18}.Debug|x64.ActiveCfg = Debug|x64
+		{71AF75A0-52B6-4C1B-8E56-CB31C6741A18}.Debug|x64.Build.0 = Debug|x64
+		{71AF75A0-52B6-4C1B-8E56-CB31C6741A18}.Debug|x86.ActiveCfg = Debug|Win32
+		{71AF75A0-52B6-4C1B-8E56-CB31C6741A18}.Debug|x86.Build.0 = Debug|Win32
+		{71AF75A0-52B6-4C1B-8E56-CB31C6741A18}.Release|x64.ActiveCfg = Release|x64
+		{71AF75A0-52B6-4C1B-8E56-CB31C6741A18}.Release|x64.Build.0 = Release|x64
+		{71AF75A0-52B6-4C1B-8E56-CB31C6741A18}.Release|x86.ActiveCfg = Release|Win32
+		{71AF75A0-52B6-4C1B-8E56-CB31C6741A18}.Release|x86.Build.0 = Release|Win32
+		{89755822-86E3-4209-8C0E-C03B9BF95018}.Debug|x64.ActiveCfg = Debug|x64
+		{89755822-86E3-4209-8C0E-C03B9BF95018}.Debug|x64.Build.0 = Debug|x64
+		{89755822-86E3-4209-8C0E-C03B9BF95018}.Debug|x86.ActiveCfg = Debug|Win32
+		{89755822-86E3-4209-8C0E-C03B9BF95018}.Debug|x86.Build.0 = Debug|Win32
+		{89755822-86E3-4209-8C0E-C03B9BF95018}.Release|x64.ActiveCfg = Release|x64
+		{89755822-86E3-4209-8C0E-C03B9BF95018}.Release|x64.Build.0 = Release|x64
+		{89755822-86E3-4209-8C0E-C03B9BF95018}.Release|x86.ActiveCfg = Release|Win32
+		{89755822-86E3-4209-8C0E-C03B9BF95018}.Release|x86.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {CDC4CA78-3779-404B-87C2-34DEE582DF33}
+	EndGlobalSection
+EndGlobal
