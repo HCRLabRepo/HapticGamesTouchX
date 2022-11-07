@@ -211,3 +211,74 @@ if(positionTarget.equals(destinations[0]))
     }
     
 }
+
+void cScene1::engineSetup() {
+    using namespace fl;
+
+    InputVariable* time = new InputVariable;
+    time->setName("time");
+    time->setDescription("");
+    time->setEnabled(true);
+    time->setRange(0.000, 120.000);
+    time->setLockValueInRange(false);
+    time->addTerm(new Bell("acceptable", 0.000, 40.000, 5.000));
+    time->addTerm(new Gaussian("slow", 70.000, 15.000));
+    time->addTerm(new Bell("veryslow", 120.000, 30.000, 5.000));
+    engine->addInputVariable(time);
+
+    InputVariable* collisions = new InputVariable;
+    collisions->setName("collisions");
+    collisions->setDescription("");
+    collisions->setEnabled(true);
+    collisions->setRange(0.000, 5000.000);
+    collisions->setLockValueInRange(false);
+    collisions->addTerm(new Trapezoid("flawless", 0.000, 0.000, 500.000, 1000.000));
+    collisions->addTerm(new Trapezoid("good", 0.000, 1000.000, 1500.000, 2000.000));
+    collisions->addTerm(new Trapezoid("OK", 1000.000, 2000.000, 2500.000, 3000.000));
+    collisions->addTerm(new Trapezoid("bad", 2000.000, 3000.000, 3500.000, 4000.000));
+    collisions->addTerm(new Trapezoid("terrible", 3500.000, 4000.000, 5000.000, 99999.000));
+    engine->addInputVariable(collisions);
+
+    OutputVariable* alphachange = new OutputVariable;
+    alphachange->setName("alphachange");
+    alphachange->setDescription("");
+    alphachange->setEnabled(true);
+    alphachange->setRange(-1.000, 1.000);
+    alphachange->setLockValueInRange(false);
+    alphachange->setAggregation(new Maximum);
+    alphachange->setDefuzzifier(new Centroid(100));
+    alphachange->setDefaultValue(fl::nan);
+    alphachange->setLockPreviousValue(false);
+    alphachange->addTerm(new Trapezoid("greatdeduction", -1.000, -1.000, -0.800, -0.600));
+    alphachange->addTerm(new Trapezoid("smalldeduction", -0.800, -0.600, -0.400, -0.200));
+    alphachange->addTerm(new Gaussian("menialchange", 0.000, 0.100));
+    alphachange->addTerm(new Trapezoid("smallincrease", 0.200, 0.400, 0.600, 0.800));
+    alphachange->addTerm(new Trapezoid("greatincrease", 0.600, 0.800, 1.000, 1.000));
+    engine->addOutputVariable(alphachange);
+
+    RuleBlock* ruleBlock = new RuleBlock;
+    ruleBlock->setName("");
+    ruleBlock->setDescription("");
+    ruleBlock->setEnabled(true);
+    ruleBlock->setConjunction(new Minimum);
+    ruleBlock->setDisjunction(new Maximum);
+    ruleBlock->setImplication(new Minimum);
+    ruleBlock->setActivation(new General);
+    ruleBlock->addRule(Rule::parse("if time is acceptable and collisions is flawless then alphachange is greatincrease", engine));
+    ruleBlock->addRule(Rule::parse("if time is acceptable and collisions is good then alphachange is smallincrease", engine));
+    ruleBlock->addRule(Rule::parse("if time is acceptable and collisions is OK then alphachange is menialchange", engine));
+    ruleBlock->addRule(Rule::parse("if time is acceptable and collisions is bad then alphachange is smalldeduction", engine));
+    ruleBlock->addRule(Rule::parse("if time is acceptable and collisions is terrible then alphachange is smalldeduction", engine));
+    ruleBlock->addRule(Rule::parse("if time is slow and collisions is flawless then alphachange is smallincrease", engine));
+    ruleBlock->addRule(Rule::parse("if time is slow and collisions is good then alphachange is menialchange", engine));
+    ruleBlock->addRule(Rule::parse("if time is slow and collisions is OK then alphachange is smalldeduction", engine));
+    ruleBlock->addRule(Rule::parse("if time is slow and collisions is bad then alphachange is smalldeduction", engine));
+    ruleBlock->addRule(Rule::parse("if time is slow and collisions is terrible then alphachange is smalldeduction", engine));
+    ruleBlock->addRule(Rule::parse("if time is veryslow and collisions is flawless then alphachange is menialchange", engine));
+    ruleBlock->addRule(Rule::parse("if time is veryslow and collisions is good then alphachange is smalldeduction", engine));
+    ruleBlock->addRule(Rule::parse("if time is veryslow and collisions is OK then alphachange is smalldeduction", engine));
+    ruleBlock->addRule(Rule::parse("if time is veryslow and collisions is bad then alphachange is smalldeduction", engine));
+    ruleBlock->addRule(Rule::parse("if time is veryslow and collisions is terrible then alphachange is greatdeduction", engine));
+    engine->addRuleBlock(ruleBlock);
+}
+

@@ -2,6 +2,7 @@
 
 #include "chai3d.h"
 #include "CBullet.h"
+#include "fl/Headers.h"
 
 using namespace chai3d;
 
@@ -20,6 +21,7 @@ public:
     virtual void setStiffness(double a_stiffness){};
     virtual void updateWaypoint(cVector3d positionSphere, cVector3d positionTarget);
     virtual void generateWaypoints(cVector3d positionSphere, cVector3d positionTarget){};
+    double getFuzzyOutput(int timein, int collisionsin);
     virtual void initWaypoints(){};
     void updateTarget();
     
@@ -79,5 +81,6 @@ public:
     cVector3d sphereForce;
     cVector3d guidanceForce;
 
+    fl::Engine* engine;
 
 };

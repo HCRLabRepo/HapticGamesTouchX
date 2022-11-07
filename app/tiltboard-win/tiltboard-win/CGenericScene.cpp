@@ -264,6 +264,11 @@ cGenericScene::cGenericScene(shared_ptr<cGenericHapticDevice> a_hapticDevice)
     waypoints.push_back(cVector3d(0, 0.0,-0.2));
     waypointsRange.push_back(0.01);
     positionWaypoint = waypoints[0];
+
+    //Initialise the engine for fuzzy logic
+    engine = new fl::Engine();
+    engine->setName("Fuzzy Control Engine");
+    engine->setDescription("");
 }
 
 
@@ -429,4 +434,11 @@ void cGenericScene::init(){
     
 }
 
+double cGenericScene::getFuzzyOutput(int timein, int collisionsin) {
+    engine->inputVariables()[0]->setValue(timein);
+    engine->inputVariables()[1]->setValue(collisionsin);
+    engine->process();
+    double output = stod(fl::Op::str(engine->outputVariables()[0]->getValue()));
+    return output;
+}
 

@@ -1,0 +1,8 @@
+C:/Users/fadva/Desktop/fuzzylite-6.0/fuzzylite/build/CMakeFiles/fl-shared.dir
+C:/Users/fadva/Desktop/fuzzylite-6.0/fuzzylite/build/CMakeFiles/fl-static.dir
+C:/Users/fadva/Desktop/fuzzylite-6.0/fuzzylite/build/CMakeFiles/fl-bin.dir
+C:/Users/fadva/Desktop/fuzzylite-6.0/fuzzylite/build/CMakeFiles/fl-test.dir
+C:/Users/fadva/Desktop/fuzzylite-6.0/fuzzylite/build/CMakeFiles/RUN_TESTS.dir
+C:/Users/fadva/Desktop/fuzzylite-6.0/fuzzylite/build/CMakeFiles/INSTALL.dir
+C:/Users/fadva/Desktop/fuzzylite-6.0/fuzzylite/build/CMakeFiles/ALL_BUILD.dir
+C:/Users/fadva/Desktop/fuzzylite-6.0/fuzzylite/build/CMakeFiles/ZERO_CHECK.dir

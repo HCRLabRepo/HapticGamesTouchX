@@ -13,6 +13,7 @@ class cScene2: public cGenericScene{
         virtual void setStiffness(double a_stiffness);
         void generateWaypoints(cVector3d positionSphere, cVector3d positionTarget) override;
         void updateWaypoint(cVector3d positionSphere, cVector3d positionTarget) override;
+        void engineSetup();
 
 
     public:

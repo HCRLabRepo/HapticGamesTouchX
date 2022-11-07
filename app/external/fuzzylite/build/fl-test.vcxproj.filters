@@ -1,0 +1,399 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="C:\Users\fadva\Desktop\fuzzylite-6.0\fuzzylite\test\MainTest.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\fadva\Desktop\fuzzylite-6.0\fuzzylite\test\BenchmarkTest.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\fadva\Desktop\fuzzylite-6.0\fuzzylite\test\QuickTest.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\fadva\Desktop\fuzzylite-6.0\fuzzylite\test\activation\ThresholdTest.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\fadva\Desktop\fuzzylite-6.0\fuzzylite\test\hedge\HedgeFunctionTest.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\fadva\Desktop\fuzzylite-6.0\fuzzylite\test\imex\FldExporterTest.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\fadva\Desktop\fuzzylite-6.0\fuzzylite\test\imex\FllImporterTest.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\fadva\Desktop\fuzzylite-6.0\fuzzylite\test\imex\RScriptExporterTest.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\fadva\Desktop\fuzzylite-6.0\fuzzylite\test\norm\NormFunctionTest.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\fadva\Desktop\fuzzylite-6.0\fuzzylite\test\term\AggregatedTest.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\fadva\Desktop\fuzzylite-6.0\fuzzylite\test\term\DiscreteTest.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\fadva\Desktop\fuzzylite-6.0\fuzzylite\test\term\FunctionTest.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\fadva\Desktop\fuzzylite-6.0\fuzzylite\test\term\TrapezoidTest.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\fadva\Desktop\fuzzylite-6.0\fuzzylite\test\term\TriangleTest.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\fadva\Desktop\fuzzylite-6.0\fuzzylite\test\variable\VariableTest.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="C:\Users\fadva\Desktop\fuzzylite-6.0\fuzzylite\fl\Benchmark.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\fadva\Desktop\fuzzylite-6.0\fuzzylite\fl\Complexity.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\fadva\Desktop\fuzzylite-6.0\fuzzylite\fl\Console.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\fadva\Desktop\fuzzylite-6.0\fuzzylite\fl\activation\Activation.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\fadva\Desktop\fuzzylite-6.0\fuzzylite\fl\activation\First.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\fadva\Desktop\fuzzylite-6.0\fuzzylite\fl\activation\General.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\fadva\Desktop\fuzzylite-6.0\fuzzylite\fl\activation\Highest.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\fadva\Desktop\fuzzylite-6.0\fuzzylite\fl\activation\Last.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\fadva\Desktop\fuzzylite-6.0\fuzzylite\fl\activation\Lowest.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\fadva\Desktop\fuzzylite-6.0\fuzzylite\fl\activation\Proportional.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\fadva\Desktop\fuzzylite-6.0\fuzzylite\fl\activation\Threshold.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\fadva\Desktop\fuzzylite-6.0\fuzzylite\fl\defuzzifier\Bisector.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\fadva\Desktop\fuzzylite-6.0\fuzzylite\fl\defuzzifier\Centroid.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\fadva\Desktop\fuzzylite-6.0\fuzzylite\fl\defuzzifier\Defuzzifier.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\fadva\Desktop\fuzzylite-6.0\fuzzylite\fl\defuzzifier\IntegralDefuzzifier.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\fadva\Desktop\fuzzylite-6.0\fuzzylite\fl\defuzzifier\LargestOfMaximum.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\fadva\Desktop\fuzzylite-6.0\fuzzylite\fl\defuzzifier\MeanOfMaximum.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\fadva\Desktop\fuzzylite-6.0\fuzzylite\fl\defuzzifier\SmallestOfMaximum.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\fadva\Desktop\fuzzylite-6.0\fuzzylite\fl\defuzzifier\WeightedAverage.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\fadva\Desktop\fuzzylite-6.0\fuzzylite\fl\defuzzifier\WeightedAverageCustom.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\fadva\Desktop\fuzzylite-6.0\fuzzylite\fl\defuzzifier\WeightedDefuzzifier.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\fadva\Desktop\fuzzylite-6.0\fuzzylite\fl\defuzzifier\WeightedSum.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\fadva\Desktop\fuzzylite-6.0\fuzzylite\fl\defuzzifier\WeightedSumCustom.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\fadva\Desktop\fuzzylite-6.0\fuzzylite\fl\Engine.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\fadva\Desktop\fuzzylite-6.0\fuzzylite\fl\Exception.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\fadva\Desktop\fuzzylite-6.0\fuzzylite\fl\factory\ActivationFactory.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\fadva\Desktop\fuzzylite-6.0\fuzzylite\fl\factory\CloningFactory.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\fadva\Desktop\fuzzylite-6.0\fuzzylite\fl\factory\ConstructionFactory.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\fadva\Desktop\fuzzylite-6.0\fuzzylite\fl\factory\DefuzzifierFactory.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\fadva\Desktop\fuzzylite-6.0\fuzzylite\fl\factory\FactoryManager.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\fadva\Desktop\fuzzylite-6.0\fuzzylite\fl\factory\FunctionFactory.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\fadva\Desktop\fuzzylite-6.0\fuzzylite\fl\factory\HedgeFactory.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\fadva\Desktop\fuzzylite-6.0\fuzzylite\fl\factory\SNormFactory.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\fadva\Desktop\fuzzylite-6.0\fuzzylite\fl\factory\TermFactory.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\fadva\Desktop\fuzzylite-6.0\fuzzylite\fl\factory\TNormFactory.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\fadva\Desktop\fuzzylite-6.0\fuzzylite\fl\fuzzylite.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\fadva\Desktop\fuzzylite-6.0\fuzzylite\fl\Headers.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\fadva\Desktop\fuzzylite-6.0\fuzzylite\fl\hedge\Any.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\fadva\Desktop\fuzzylite-6.0\fuzzylite\fl\hedge\Extremely.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\fadva\Desktop\fuzzylite-6.0\fuzzylite\fl\hedge\Hedge.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\fadva\Desktop\fuzzylite-6.0\fuzzylite\fl\hedge\HedgeFunction.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\fadva\Desktop\fuzzylite-6.0\fuzzylite\fl\hedge\Not.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\fadva\Desktop\fuzzylite-6.0\fuzzylite\fl\hedge\Seldom.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\fadva\Desktop\fuzzylite-6.0\fuzzylite\fl\hedge\Somewhat.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\fadva\Desktop\fuzzylite-6.0\fuzzylite\fl\hedge\Very.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\fadva\Desktop\fuzzylite-6.0\fuzzylite\fl\imex\CppExporter.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\fadva\Desktop\fuzzylite-6.0\fuzzylite\fl\imex\Exporter.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\fadva\Desktop\fuzzylite-6.0\fuzzylite\fl\imex\FclExporter.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\fadva\Desktop\fuzzylite-6.0\fuzzylite\fl\imex\FclImporter.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\fadva\Desktop\fuzzylite-6.0\fuzzylite\fl\imex\FisExporter.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\fadva\Desktop\fuzzylite-6.0\fuzzylite\fl\imex\FisImporter.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\fadva\Desktop\fuzzylite-6.0\fuzzylite\fl\imex\FldExporter.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\fadva\Desktop\fuzzylite-6.0\fuzzylite\fl\imex\FllExporter.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\fadva\Desktop\fuzzylite-6.0\fuzzylite\fl\imex\FllImporter.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\fadva\Desktop\fuzzylite-6.0\fuzzylite\fl\imex\Importer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\fadva\Desktop\fuzzylite-6.0\fuzzylite\fl\imex\JavaExporter.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\fadva\Desktop\fuzzylite-6.0\fuzzylite\fl\imex\RScriptExporter.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\fadva\Desktop\fuzzylite-6.0\fuzzylite\fl\norm\Norm.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\fadva\Desktop\fuzzylite-6.0\fuzzylite\fl\norm\s\AlgebraicSum.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\fadva\Desktop\fuzzylite-6.0\fuzzylite\fl\norm\s\BoundedSum.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\fadva\Desktop\fuzzylite-6.0\fuzzylite\fl\norm\s\DrasticSum.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\fadva\Desktop\fuzzylite-6.0\fuzzylite\fl\norm\s\EinsteinSum.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\fadva\Desktop\fuzzylite-6.0\fuzzylite\fl\norm\s\HamacherSum.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\fadva\Desktop\fuzzylite-6.0\fuzzylite\fl\norm\s\Maximum.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\fadva\Desktop\fuzzylite-6.0\fuzzylite\fl\norm\s\NilpotentMaximum.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\fadva\Desktop\fuzzylite-6.0\fuzzylite\fl\norm\s\NormalizedSum.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\fadva\Desktop\fuzzylite-6.0\fuzzylite\fl\norm\s\SNormFunction.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\fadva\Desktop\fuzzylite-6.0\fuzzylite\fl\norm\s\UnboundedSum.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\fadva\Desktop\fuzzylite-6.0\fuzzylite\fl\norm\SNorm.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\fadva\Desktop\fuzzylite-6.0\fuzzylite\fl\norm\t\AlgebraicProduct.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\fadva\Desktop\fuzzylite-6.0\fuzzylite\fl\norm\t\BoundedDifference.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\fadva\Desktop\fuzzylite-6.0\fuzzylite\fl\norm\t\DrasticProduct.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\fadva\Desktop\fuzzylite-6.0\fuzzylite\fl\norm\t\EinsteinProduct.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\fadva\Desktop\fuzzylite-6.0\fuzzylite\fl\norm\t\HamacherProduct.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\fadva\Desktop\fuzzylite-6.0\fuzzylite\fl\norm\t\Minimum.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\fadva\Desktop\fuzzylite-6.0\fuzzylite\fl\norm\t\NilpotentMinimum.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\fadva\Desktop\fuzzylite-6.0\fuzzylite\fl\norm\t\TNormFunction.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\fadva\Desktop\fuzzylite-6.0\fuzzylite\fl\norm\TNorm.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\fadva\Desktop\fuzzylite-6.0\fuzzylite\fl\Operation.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\fadva\Desktop\fuzzylite-6.0\fuzzylite\fl\rule\Antecedent.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\fadva\Desktop\fuzzylite-6.0\fuzzylite\fl\rule\Consequent.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\fadva\Desktop\fuzzylite-6.0\fuzzylite\fl\rule\Expression.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\fadva\Desktop\fuzzylite-6.0\fuzzylite\fl\rule\RuleBlock.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\fadva\Desktop\fuzzylite-6.0\fuzzylite\fl\rule\Rule.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\fadva\Desktop\fuzzylite-6.0\fuzzylite\fl\term\Activated.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\fadva\Desktop\fuzzylite-6.0\fuzzylite\fl\term\Aggregated.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\fadva\Desktop\fuzzylite-6.0\fuzzylite\fl\term\Bell.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\fadva\Desktop\fuzzylite-6.0\fuzzylite\fl\term\Binary.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\fadva\Desktop\fuzzylite-6.0\fuzzylite\fl\term\Concave.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\fadva\Desktop\fuzzylite-6.0\fuzzylite\fl\term\Constant.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\fadva\Desktop\fuzzylite-6.0\fuzzylite\fl\term\Cosine.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\fadva\Desktop\fuzzylite-6.0\fuzzylite\fl\term\Discrete.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\fadva\Desktop\fuzzylite-6.0\fuzzylite\fl\term\Function.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\fadva\Desktop\fuzzylite-6.0\fuzzylite\fl\term\Gaussian.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\fadva\Desktop\fuzzylite-6.0\fuzzylite\fl\term\GaussianProduct.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\fadva\Desktop\fuzzylite-6.0\fuzzylite\fl\term\Linear.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\fadva\Desktop\fuzzylite-6.0\fuzzylite\fl\term\PiShape.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\fadva\Desktop\fuzzylite-6.0\fuzzylite\fl\term\Ramp.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\fadva\Desktop\fuzzylite-6.0\fuzzylite\fl\term\Rectangle.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\fadva\Desktop\fuzzylite-6.0\fuzzylite\fl\term\SigmoidDifference.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\fadva\Desktop\fuzzylite-6.0\fuzzylite\fl\term\Sigmoid.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\fadva\Desktop\fuzzylite-6.0\fuzzylite\fl\term\SigmoidProduct.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\fadva\Desktop\fuzzylite-6.0\fuzzylite\fl\term\Spike.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\fadva\Desktop\fuzzylite-6.0\fuzzylite\fl\term\SShape.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\fadva\Desktop\fuzzylite-6.0\fuzzylite\fl\term\Term.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\fadva\Desktop\fuzzylite-6.0\fuzzylite\fl\term\Trapezoid.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\fadva\Desktop\fuzzylite-6.0\fuzzylite\fl\term\Triangle.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\fadva\Desktop\fuzzylite-6.0\fuzzylite\fl\term\ZShape.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\fadva\Desktop\fuzzylite-6.0\fuzzylite\fl\variable\InputVariable.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\fadva\Desktop\fuzzylite-6.0\fuzzylite\fl\variable\OutputVariable.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\fadva\Desktop\fuzzylite-6.0\fuzzylite\fl\variable\Variable.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\fadva\Desktop\fuzzylite-6.0\fuzzylite\test\catch.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="C:\Users\fadva\Desktop\fuzzylite-6.0\fuzzylite\CMakeLists.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{A090FEDD-6A91-3979-A6CF-847175BF53C5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{6F09A06A-6E0D-3DAC-A3E0-2F82D45BCAE8}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>
