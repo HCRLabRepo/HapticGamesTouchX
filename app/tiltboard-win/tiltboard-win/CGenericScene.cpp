@@ -6,6 +6,7 @@
 #include "CBullet.h"
 
 
+
 using namespace std;
 
 const double SPHERE_MASS        = 0.04;
@@ -27,6 +28,13 @@ double hapticDeviceMaxStiffness;
 
 void cGenericScene::updateTarget(){
     destination_index++;
+    if (fuzzyControl) {
+        time_t timetaken = difftime(time(0), startTime);
+        double result = getFuzzyOutput(timetaken, collisionNum);
+        ALPHA_CONTROL += result;
+        ALPHA_CONTROL = min(1.0, ALPHA_CONTROL);
+        ALPHA_CONTROL = max(0.0, ALPHA_CONTROL);
+    }
     cout<< "updated target" << endl;
     if( destination_index == destinations.size() ){
         cout << "finished" << endl;
@@ -269,6 +277,8 @@ cGenericScene::cGenericScene(shared_ptr<cGenericHapticDevice> a_hapticDevice)
     engine = new fl::Engine();
     engine->setName("Fuzzy Control Engine");
     engine->setDescription("");
+
+    startTime = time(0);
 }
 
 

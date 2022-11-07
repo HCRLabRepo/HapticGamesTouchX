@@ -147,12 +147,14 @@ bool callbackFunc(btManifoldPoint& cp, const btCollisionObjectWrapper* obj1, int
         ((cBulletMesh*)(obj1->getCollisionObject()->getUserPointer()))->m_material->setRed();
         std::thread t(recoverColor,obj1);
         ballfile << "Collision" <<endl;
+        main_scene->collisionNum += 1;
         t.join();
     }
     if( (((cBulletMesh*)(obj2->getCollisionObject()->getUserPointer()))->m_material->m_diffuse == Gray) && (((cBulletMesh*)(obj1->getCollisionObject()->getUserPointer()))->m_material->m_diffuse != Blue) ){
         ((cBulletMesh*)(obj2->getCollisionObject()->getUserPointer()))->m_material->setRed();
         std::thread t(recoverColor,obj2);
         ballfile <<  "Collision" <<endl;
+        main_scene->collisionNum += 1;
         t.join();
     }
 
@@ -689,6 +691,7 @@ void updateHaptics(void){
                 main_scene->ALPHA_CONTROL = min(main_scene->ALPHA_CONTROL, 1.0);
                 main_scene->K_DAMPING_VELOCITY = 2;
             }
+            main_scene->fuzzyControl = true;
         }
         main_scene->updateHaptics(timeInterval);
         if(main_scene->destination_index == main_scene->destinations.size()){

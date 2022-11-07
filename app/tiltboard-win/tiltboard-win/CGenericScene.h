@@ -3,6 +3,7 @@
 #include "chai3d.h"
 #include "CBullet.h"
 #include "fl/Headers.h"
+#include <time.h>
 
 using namespace chai3d;
 
@@ -69,6 +70,10 @@ public:
     double K_DAMPING_VELOCITY = 0.2;
     bool userInactive = false;
     double userForce = 0.0;
+    int collisionNum = 0;
+    time_t startTime;
+    bool fuzzyControl = false;
+   
 
     cLabel* labelHapticDeviceModel;
     cLabel* labelHapticDevicePosition;
