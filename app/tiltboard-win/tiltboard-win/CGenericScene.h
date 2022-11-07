@@ -78,6 +78,8 @@ public:
     cLabel* labelHapticDeviceModel;
     cLabel* labelHapticDevicePosition;
     cLabel* labelRates;
+    cLabel* labelTime;
+    cLabel* labelCollisions;
     cLevel* controlLevel;
 
     cVector3d positionNegotiatedSphere;

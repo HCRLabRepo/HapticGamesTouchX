@@ -4,6 +4,7 @@
 #include <fstream>
 #include <chrono>
 #include <thread>
+#include <string>
 #ifdef LINUX
 #include <unistd.h>
 #endif
@@ -553,6 +554,12 @@ void updateGraphics(void){
     
     // update position of label
     main_scene->labelRates->setLocalPos((int)(0.5 * (width - main_scene->labelRates->getWidth())), 15);
+
+    main_scene->labelTime->setText("Time since last waypoint: " + to_string(difftime(time(0), main_scene->startTime)));
+    main_scene->labelTime->setLocalPos((int)(width - main_scene->labelTime->getWidth()), 15);
+
+    main_scene->labelCollisions->setText("Collisions: "+ to_string(main_scene->collisionNum));
+    main_scene->labelCollisions->setLocalPos((int)(width - main_scene->labelCollisions->getWidth()), 30);
     /////////////////////////////////////////////////////////////////////
     // RENDER SCENE
     /////////////////////////////////////////////////////////////////////

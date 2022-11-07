@@ -30,7 +30,9 @@ void cGenericScene::updateTarget(){
     destination_index++;
     if (fuzzyControl) {
         time_t timetaken = difftime(time(0), startTime);
+        cout << "Time: " << timetaken << " Collisions: " << collisionNum << endl;
         double result = getFuzzyOutput(timetaken, collisionNum);
+        cout << "Change in alpha: " << result << endl;
         ALPHA_CONTROL += result;
         ALPHA_CONTROL = min(1.0, ALPHA_CONTROL);
         ALPHA_CONTROL = max(0.0, ALPHA_CONTROL);
@@ -137,6 +139,16 @@ cGenericScene::cGenericScene(shared_ptr<cGenericHapticDevice> a_hapticDevice)
     controlLevel->setNumIncrements(46);
     controlLevel->setSingleIncrementDisplay(false);
     controlLevel->setTransparencyLevel(0.5);
+
+    // Create a label to display the time taken since the last waypoint
+    labelTime = new cLabel(font);
+    labelTime->m_fontColor.setWhite();
+    camera->m_frontLayer->addChild(labelTime);
+
+    //Create a lebel to display the number of collisions since last checkpoint
+    labelCollisions = new cLabel(font);
+    labelCollisions->m_fontColor.setWhite();
+    camera->m_frontLayer->addChild(labelCollisions);
 
     hapticDevice = a_hapticDevice;
     mirroredDisplay = false;
