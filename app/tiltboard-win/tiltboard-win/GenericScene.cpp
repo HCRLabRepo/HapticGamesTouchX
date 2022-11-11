@@ -2,7 +2,7 @@
 #include <chrono>
 #include <algorithm>
 #include <random>
-#include "CGenericScene.h"
+#include "GenericScene.h"
 #include "CBullet.h"
 
 
@@ -26,7 +26,7 @@ double hapticDeviceMaxStiffness;
 
 
 
-void cGenericScene::updateTarget(){
+void GenericScene::updateTarget(){
     destination_index++;
     if (fuzzyControl) {
         time_t timetaken = difftime(time(0), startTime);
@@ -49,7 +49,7 @@ void cGenericScene::updateTarget(){
 
 
 
-cGenericScene::cGenericScene(shared_ptr<cGenericHapticDevice> a_hapticDevice)
+GenericScene::GenericScene(shared_ptr<cGenericHapticDevice> a_hapticDevice)
 {   
     
     //-----------------------------------------------------------------------
@@ -295,7 +295,7 @@ cGenericScene::cGenericScene(shared_ptr<cGenericHapticDevice> a_hapticDevice)
 
 
 
-void cGenericScene::updateWaypoint(cVector3d positionSphere, cVector3d positionTarget){
+void GenericScene::updateWaypoint(cVector3d positionSphere, cVector3d positionTarget){
     if(waypoint_index == last_waypoint_index)
     {
         waypoint_index = last_waypoint_index +1;
@@ -317,7 +317,7 @@ void cGenericScene::updateWaypoint(cVector3d positionSphere, cVector3d positionT
     positionWaypoint = waypoints[waypoint_index];
 }
 
-void cGenericScene::updateGraphics(int a_width, int a_height){
+void GenericScene::updateGraphics(int a_width, int a_height){
 
     bulletWorld->updateShadowMaps(false, mirroredDisplay);
     camera->renderView(a_width, a_height);
@@ -326,7 +326,7 @@ void cGenericScene::updateGraphics(int a_width, int a_height){
 
 }
 
-void cGenericScene::updateHaptics(double timeInterval){
+void GenericScene::updateHaptics(double timeInterval){
     bulletWorld->computeGlobalPositions(true);
      
     // Compute World Dynamics Forces.
@@ -423,7 +423,7 @@ void cGenericScene::updateHaptics(double timeInterval){
     
 }
 
-void cGenericScene::init(){
+void GenericScene::init(){
     // Reset the camera, destination,
     camera->set(cVector3d(0.50, 0.00, 0.40),    
                 cVector3d(0.00, 0.00, -0.20),   
@@ -456,7 +456,7 @@ void cGenericScene::init(){
     
 }
 
-double cGenericScene::getFuzzyOutput(int timein, int collisionsin) {
+double GenericScene::getFuzzyOutput(int timein, int collisionsin) {
     engine->inputVariables()[0]->setValue(timein);
     engine->inputVariables()[1]->setValue(collisionsin);
     engine->process();

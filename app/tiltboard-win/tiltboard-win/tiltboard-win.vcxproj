@@ -19,17 +19,18 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="CGenericScene.cpp" />
-    <ClCompile Include="CScene1.cpp" />
-    <ClCompile Include="CScene2.cpp" />
-    <ClCompile Include="CScene3.cpp" />
+    <ClCompile Include="GenericScene.cpp" />
+    <ClCompile Include="Scene1.cpp" />
+    <ClCompile Include="Scene2.cpp" />
+    <ClCompile Include="Scene3.cpp" />
     <ClCompile Include="tilt-board2.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="CGenericScene.h" />
-    <ClInclude Include="CScene1.h" />
-    <ClInclude Include="CScene2.h" />
-    <ClInclude Include="CScene3.h" />
+    <ClInclude Include="GenericScene.h" />
+    <ClInclude Include="Scene1.h" />
+    <ClInclude Include="Scene2.h" />
+    <ClInclude Include="Scene3.h" />
+    <ClInclude Include="tilt-board2.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>

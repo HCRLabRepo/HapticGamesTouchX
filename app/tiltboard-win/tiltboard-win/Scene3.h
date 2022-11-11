@@ -1,13 +1,13 @@
 #pragma once
 
 #include "chai3d.h"
-#include "CGenericScene.h"
+#include "GenericScene.h"
 
-class cScene3: public cGenericScene{
+class Scene3: public GenericScene{
     public:
-        cScene3(std::shared_ptr<cGenericHapticDevice> a_hapticDevice);
+        Scene3(std::shared_ptr<cGenericHapticDevice> a_hapticDevice);
 
-        virtual ~cScene3() {};
+        virtual ~Scene3() {};
     
     public:
         virtual void setStiffness(double a_stiffness);

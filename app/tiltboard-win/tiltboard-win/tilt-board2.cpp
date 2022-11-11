@@ -1,7 +1,3 @@
-#include "chai3d.h"
-#include <GLFW/glfw3.h>
-#include <iostream>
-#include <fstream>
 #include <chrono>
 #include <thread>
 #include <string>
@@ -11,14 +7,11 @@
 #ifdef WINDOWS
 #include <windows.h>
 #endif
-
+#include "tilt-board2.h"
 using namespace chai3d;
 using namespace std;
 
-#include "CGenericScene.h"
-#include "CScene1.h"
-#include "CScene2.h"
-#include "CScene3.h"
+
 
 uint64_t timeSinceEpochMillisec() {
   using namespace std::chrono;
@@ -27,106 +20,13 @@ uint64_t timeSinceEpochMillisec() {
 
 void mySleep(int sleepMs)
 {
-#ifdef LINUX
-    usleep(sleepMs * 1000);
-#endif
-#ifdef WINDOWS
-    Sleep(sleepMs);
-#endif
+    #ifdef LINUX
+        usleep(sleepMs * 1000);
+    #endif
+    #ifdef WINDOWS
+        Sleep(sleepMs);
+    #endif
 }
-
-//---------------------------------------------------------------------------
-// DISPLAY SETTINGS
-//---------------------------------------------------------------------------
-cStereoMode stereoMode = C_STEREO_DISABLED;
-bool fullscreen = false;
-bool mirroredDisplay = false;
-
-enum MouseStates
-{
-    MOUSE_IDLE,
-    MOUSE_MOVE_CAMERA
-};
-MouseStates mouseState = MOUSE_IDLE; // Mouse state
-double mouseX, mouseY; // Last mouse position
-
-//---------------------------------------------------------------------------
-// CHAI3D VARIABLES
-//---------------------------------------------------------------------------
-cCamera* camera;
-cSpotLight *light;
-cHapticDeviceHandler* handler;
-shared_ptr<cGenericHapticDevice> hapticDevice;
-cGenericTool* tool;
-
-// cLabel* labelHapticDeviceModel;
-// cLabel* labelHapticDevicePosition;
-// cLabel* labelRates;
-cVector3d hapticDevicePosition;
-
-//---------------------------------------------------------------------------
-// OBJECTS
-//---------------------------------------------------------------------------
-cGenericScene* main_scene;
-cScene1* scene1;
-cScene2* scene2;
-cScene3* scene3;
-
-//------------------------------------------------------------------------------
-// DECLARED CONSTANTS
-//------------------------------------------------------------------------------
-const double SPHERE_RADIUS = 0.007;
-
-//---------------------------------------------------------------------------
-// GENERAL VARIABLES
-//---------------------------------------------------------------------------
-bool simulationRunning = false; // A flag to indicate if the simulation running
-bool simulationFinished = true; // A flag to indicate if the simulation finished
-cFrequencyCounter freqCounterGraphics; // A frequency counter to measure the smiluation graphic rate
-cFrequencyCounter freqCounterHaptics; // A frequency counter to measure the simulation haptic rate
-cThread* hapticsThread; // Haptic Thread
-GLFWwindow* window = NULL; // A handle to window display context
-
-int width = 0; // Current width of the window
-int height = 0; // Current height of the window
-int swapInterval = 1;// swap interval for the display context (vertical synchronization)
-
-//---------------------------------------------------------------------------
-// EXPERIMENT VARIABLE
-//---------------------------------------------------------------------------
-
-string subject_num;
-string subject_sex;
-int subject_age;
-int game_scene;
-int control_mode;
-
-
-//---------------------------------------------------------------------------
-// DECLARED FUNCTIONS
-//---------------------------------------------------------------------------
-void windowSizeCallback(GLFWwindow* a_window, int a_width, int a_height); // Callback when the window display is resized
-void errorCallback(int error, const char* a_description); // Callback when an GLFW error occurs
-void keyCallback(GLFWwindow* a_window, int a_key, int a_scancode, int a_action, int a_mods); // Callback when a key is pressed
-
-void mouseButtonCallback(GLFWwindow* a_window, int a_button, int a_action, int a_mods); // Callback when mouse is click
-void mouseMotionCallback(GLFWwindow* a_window, double a_posX, double a_posY);
-void mouseScrollCallback(GLFWwindow* a_window, double a_offsetX, double a_offsetY);
-
-void updateGraphics(void); // This function renders the scene
-void updateHaptics(void); // This function contains the main haptics simulation loop
-void close(void); // This function closes the application
-
-void initScene1();
-void initScene2();
-void initScene3();
-
-std::ofstream ballfile;
-std::ofstream HIPfile;
-std::ofstream CIPfile;
-std::ofstream NIPfile;
-std::ofstream HIPforcefile;
-std::ofstream CIPforcefile;
 
 void recoverColor(const btCollisionObjectWrapper* obj1)
 {   mySleep(500);
@@ -271,9 +171,9 @@ int main(int argc, char* argv[]){
     // SETUP BULLET WORLD AND OBJECTS
     //-----------------------------------------------------------------------
 
-    scene1 = new cScene1(hapticDevice);
-    scene2 = new cScene2(hapticDevice);
-    scene3 = new cScene3(hapticDevice);
+    scene1 = new Scene1(hapticDevice);
+    scene2 = new Scene2(hapticDevice);
+    scene3 = new Scene3(hapticDevice);
     // Read the scale factor between the physical workspace of the haptic
     // device and the virtual workspace defined for the tool
     double maxStiffness = 1000;
@@ -295,7 +195,7 @@ int main(int argc, char* argv[]){
     // WIDGETS
     //--------------------------------------------------------------------------
     // cFontPtr font = NEW_CFONTCALIBRI20();
-    main_scene = new cGenericScene(hapticDevice);
+    main_scene = new GenericScene(hapticDevice);
     
     // // Create a label to display the haptic device model
     // labelHapticDeviceModel = new cLabel(font);

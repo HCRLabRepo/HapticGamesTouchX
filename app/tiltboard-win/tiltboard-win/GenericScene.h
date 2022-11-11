@@ -7,12 +7,12 @@
 
 using namespace chai3d;
 
-class cGenericScene{
+class GenericScene{
 
 public:
     // Public constructor and deconstructor.
-    cGenericScene(std::shared_ptr<cGenericHapticDevice> a_hapticDevice);
-    virtual ~cGenericScene(){};
+    GenericScene(std::shared_ptr<cGenericHapticDevice> a_hapticDevice);
+    virtual ~GenericScene(){};
 
 public:
     // Public Methods

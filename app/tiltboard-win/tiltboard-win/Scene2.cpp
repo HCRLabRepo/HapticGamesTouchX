@@ -1,7 +1,7 @@
-#include "CScene2.h"
+#include "Scene2.h"
 using namespace std;
 
-cScene2::cScene2(shared_ptr<cGenericHapticDevice> a_hapticDevice):cGenericScene(a_hapticDevice){
+Scene2::Scene2(shared_ptr<cGenericHapticDevice> a_hapticDevice):GenericScene(a_hapticDevice){
     
     cMaterial matBase;
     matBase.setGrayLevel(0.3);
@@ -154,9 +154,12 @@ cScene2::cScene2(shared_ptr<cGenericHapticDevice> a_hapticDevice):cGenericScene(
     target->m_bulletRigidBody->setCollisionFlags(target->m_bulletRigidBody->getCollisionFlags() | btCollisionObject::CF_CUSTOM_MATERIAL_CALLBACK);
     target->m_bulletRigidBody->setUserPointer(target);
 
+    //set up fuzzy engine
+    engineSetup();
+
 }
 
-void cScene2::setStiffness(double a_stiffness){
+void Scene2::setStiffness(double a_stiffness){
     bulletGround->setStiffness(a_stiffness);
 
     obstacle0->setStiffness(a_stiffness);
@@ -169,7 +172,7 @@ void cScene2::setStiffness(double a_stiffness){
     obstacle7->setStiffness(a_stiffness);
 }
 
-void cScene2::generateWaypoints(cVector3d positionSphere, cVector3d positionTarget){
+void Scene2::generateWaypoints(cVector3d positionSphere, cVector3d positionTarget){
     for(int i = 0; i < destinations.size();i++){
         if(positionTarget.equals(destinations[i]))
         {
@@ -184,7 +187,7 @@ void cScene2::generateWaypoints(cVector3d positionSphere, cVector3d positionTarg
        
     }
 }
-void cScene2::updateWaypoint(cVector3d positionSphere, cVector3d positionTarget){
+void Scene2::updateWaypoint(cVector3d positionSphere, cVector3d positionTarget){
     if(waypoint_index == waypoints.size()-3){
         if(waypoint_index == last_waypoint_index)
         {
@@ -242,7 +245,7 @@ void cScene2::updateWaypoint(cVector3d positionSphere, cVector3d positionTarget)
     }
 }
 
-void cScene2::engineSetup() {
+void Scene2::engineSetup() {
     using namespace fl;
 
     InputVariable* time = new InputVariable;

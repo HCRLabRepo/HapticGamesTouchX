@@ -15,16 +15,16 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="CGenericScene.cpp">
+    <ClCompile Include="GenericScene.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="CScene1.cpp">
+    <ClCompile Include="Scene1.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="CScene2.cpp">
+    <ClCompile Include="Scene2.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="CScene3.cpp">
+    <ClCompile Include="Scene3.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="tilt-board2.cpp">
@@ -32,17 +32,20 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="CGenericScene.h">
+    <ClInclude Include="GenericScene.h">
       <Filter>Source Files</Filter>
     </ClInclude>
-    <ClInclude Include="CScene1.h">
+    <ClInclude Include="Scene1.h">
       <Filter>Source Files</Filter>
     </ClInclude>
-    <ClInclude Include="CScene2.h">
+    <ClInclude Include="Scene2.h">
       <Filter>Source Files</Filter>
     </ClInclude>
-    <ClInclude Include="CScene3.h">
+    <ClInclude Include="Scene3.h">
       <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="tilt-board2.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

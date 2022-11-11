@@ -1,8 +1,8 @@
-#include "CScene1.h"
+#include "Scene1.h"
 #include "CBullet.h"
 using namespace std;
 
-cScene1::cScene1(shared_ptr<cGenericHapticDevice> a_hapticDevice):cGenericScene(a_hapticDevice){    
+Scene1::Scene1(shared_ptr<cGenericHapticDevice> a_hapticDevice):GenericScene(a_hapticDevice){    
 
     hapticDevice = a_hapticDevice;
 
@@ -121,9 +121,12 @@ cScene1::cScene1(shared_ptr<cGenericHapticDevice> a_hapticDevice):cGenericScene(
     target->m_bulletRigidBody->setCollisionFlags(target->m_bulletRigidBody->getCollisionFlags() | btCollisionObject::CF_CUSTOM_MATERIAL_CALLBACK);
     target->m_bulletRigidBody->setUserPointer(target);
 
+    //set up fuzzy engine
+    engineSetup();
+
 }
 
-void cScene1::setStiffness(double a_stiffness){
+void Scene1::setStiffness(double a_stiffness){
     bulletGround->setStiffness(a_stiffness);
 
     obstacle0->setStiffness(a_stiffness);
@@ -134,7 +137,7 @@ void cScene1::setStiffness(double a_stiffness){
     obstacle5->setStiffness(a_stiffness);
 }
 
-void cScene1::initWaypoints(){
+void Scene1::initWaypoints(){
     if((target->getLocalPos()).equals(destinations[0])){
         last_waypoint_index = 3;
         waypoint_index = 4;
@@ -143,7 +146,7 @@ void cScene1::initWaypoints(){
         waypoint_index = 8;
     }
 }
-void cScene1::generateWaypoints(cVector3d positionSphere, cVector3d positionTarget){
+void Scene1::generateWaypoints(cVector3d positionSphere, cVector3d positionTarget){
 if(positionTarget.equals(destinations[0]))
     {   waypoints.push_back(checkpoints[0]);
         waypointsRange.push_back(checkpointsRange[0]);
@@ -212,7 +215,7 @@ if(positionTarget.equals(destinations[0]))
     
 }
 
-void cScene1::engineSetup() {
+void Scene1::engineSetup() {
     using namespace fl;
 
     InputVariable* time = new InputVariable;
