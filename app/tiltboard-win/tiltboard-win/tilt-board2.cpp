@@ -61,6 +61,7 @@ bool callbackFunc(btManifoldPoint& cp, const btCollisionObjectWrapper* obj1, int
 
     return false;
 }
+
 int main(int argc, char* argv[]){
     gContactAddedCallback=callbackFunc;
     //---------------------------------------------------------------------------

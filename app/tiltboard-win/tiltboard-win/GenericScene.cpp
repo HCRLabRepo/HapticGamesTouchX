@@ -163,42 +163,6 @@ GenericScene::GenericScene(shared_ptr<cGenericHapticDevice> a_hapticDevice)
     matBase.setDynamicFriction(0.5);
     matBase.setStaticFriction(0.9);
 
-    border1 = new cBulletBox(bulletWorld, 0.005, 0.6, 0.02);
-    bulletWorld->addChild(border1);
-    border1->createAABBCollisionDetector(toolRadius);
-    border1->setMaterial(matBase);
-    border1->buildDynamicModel();
-    border1->setLocalPos(0.3, 0.0, -0.2+0.01);
-    border1->m_bulletRigidBody->setCollisionFlags(border1->m_bulletRigidBody->getCollisionFlags() | btCollisionObject::CF_CUSTOM_MATERIAL_CALLBACK);
-    border1->m_bulletRigidBody->setUserPointer(border1);
-
-    border2 = new cBulletBox(bulletWorld, 0.005, 0.6, 0.02);
-    bulletWorld->addChild(border2);
-    border2->createAABBCollisionDetector(toolRadius);
-    border2->setMaterial(matBase);
-    border2->buildDynamicModel();
-    border2->setLocalPos(-0.3, 0.0, -0.2);
-    border2->m_bulletRigidBody->setCollisionFlags(border2->m_bulletRigidBody->getCollisionFlags() | btCollisionObject::CF_CUSTOM_MATERIAL_CALLBACK);
-    border2->m_bulletRigidBody->setUserPointer(border2);
-
-    border3 = new cBulletBox(bulletWorld, 0.6, 0.005, 0.02);
-    bulletWorld->addChild(border3);
-    border3->createAABBCollisionDetector(toolRadius);
-    border3->setMaterial(matBase);
-    border3->buildDynamicModel();
-    border3->setLocalPos(0.0, 0.3, -0.2);
-    border3->m_bulletRigidBody->setCollisionFlags(border3->m_bulletRigidBody->getCollisionFlags() | btCollisionObject::CF_CUSTOM_MATERIAL_CALLBACK);
-    border3->m_bulletRigidBody->setUserPointer(border3);
-
-    border4 = new cBulletBox(bulletWorld, 0.6, 0.005, 0.02);
-    bulletWorld->addChild(border4);
-    border4->createAABBCollisionDetector(toolRadius);
-    border4->setMaterial(matBase);
-    border4->buildDynamicModel();
-    border4->setLocalPos(0.0, -0.3, -0.2);
-    border4->m_bulletRigidBody->setCollisionFlags(border4->m_bulletRigidBody->getCollisionFlags() | btCollisionObject::CF_CUSTOM_MATERIAL_CALLBACK);
-    border4->m_bulletRigidBody->setUserPointer(border4);
-
     //-----------------------------------------------------------------------
     // SETUP GROUND AND TOOL
     //-----------------------------------------------------------------------
@@ -238,10 +202,7 @@ GenericScene::GenericScene(shared_ptr<cGenericHapticDevice> a_hapticDevice)
     guidanceSphere->m_material->setBlue();
     guidanceSphere->setEnabled(false);
     guidanceSphere->m_bulletRigidBody->setUserPointer(guidanceSphere);
-    guidanceSphere->m_bulletRigidBody->setIgnoreCollisionCheck(border1->m_bulletRigidBody, true);
-    guidanceSphere->m_bulletRigidBody->setIgnoreCollisionCheck(border2->m_bulletRigidBody, true);
-    guidanceSphere->m_bulletRigidBody->setIgnoreCollisionCheck(border3->m_bulletRigidBody, true);
-    guidanceSphere->m_bulletRigidBody->setIgnoreCollisionCheck(border4->m_bulletRigidBody, true);
+    
 
     negotiatedSphere = new cBulletSphere(bulletWorld, toolRadius);
     bulletWorld->addChild(negotiatedSphere);
@@ -254,10 +215,6 @@ GenericScene::GenericScene(shared_ptr<cGenericHapticDevice> a_hapticDevice)
     negotiatedSphere->setEnabled(false);
     negotiatedSphere->m_bulletRigidBody->setUserPointer(negotiatedSphere);
     negotiatedSphere->m_bulletRigidBody->setIgnoreCollisionCheck(guidanceSphere->m_bulletRigidBody, true);
-    negotiatedSphere->m_bulletRigidBody->setIgnoreCollisionCheck(border1->m_bulletRigidBody, true);
-    negotiatedSphere->m_bulletRigidBody->setIgnoreCollisionCheck(border2->m_bulletRigidBody, true);
-    negotiatedSphere->m_bulletRigidBody->setIgnoreCollisionCheck(border3->m_bulletRigidBody, true);
-    negotiatedSphere->m_bulletRigidBody->setIgnoreCollisionCheck(border4->m_bulletRigidBody, true);
     negotiatedSphere->m_material->setYellow();
     //guidanceSphere->m_bulletRigidBody->setCollisionFlags(guidanceSphere->m_bulletRigidBody->getCollisionFlags() | btCollisionObject::CF_NO_CONTACT_RESPONSE);
 
@@ -273,6 +230,11 @@ GenericScene::GenericScene(shared_ptr<cGenericHapticDevice> a_hapticDevice)
     mainSphere->m_bulletRigidBody->setIgnoreCollisionCheck(guidanceSphere->m_bulletRigidBody, true);
     mainSphere->m_bulletRigidBody->setIgnoreCollisionCheck(negotiatedSphere->m_bulletRigidBody, true);
     mainSphere->setInertia(cVector3d(0,0,0));
+
+    borderSetup({0.005, 0.6, 0.02}, {0.3, 0.0, -0.2}, matBase);
+    borderSetup({0.005, 0.6, 0.02}, {-0.3, 0.0, -0.2 }, matBase);
+    borderSetup({0.6, 0.005, 0.02}, {0.0, 0.3, -0.2}, matBase);
+    borderSetup({0.6, 0.005, 0.02}, {0.0, -0.3, -0.2 }, matBase);
 
     // Set gravity.
     bulletWorld->setGravity(cVector3d(0.0, 0.0, -9.0));
@@ -293,7 +255,18 @@ GenericScene::GenericScene(shared_ptr<cGenericHapticDevice> a_hapticDevice)
     startTime = time(0);
 }
 
-
+void GenericScene::borderSetup(std::vector<double> size, std::vector<double> pos, cMaterial matBase) {
+    cBulletBox* obstacle = new cBulletBox(bulletWorld, size.at(0), size.at(1), size.at(2));
+    bulletWorld->addChild(obstacle);
+    obstacle->createAABBCollisionDetector(toolRadius);
+    obstacle->setMaterial(matBase);
+    obstacle->buildDynamicModel();
+    obstacle->setLocalPos(pos.at(0), pos.at(1), pos.at(2));
+    obstacle->m_bulletRigidBody->setCollisionFlags(obstacle->m_bulletRigidBody->getCollisionFlags() | btCollisionObject::CF_CUSTOM_MATERIAL_CALLBACK);
+    obstacle->m_bulletRigidBody->setUserPointer(obstacle);
+    negotiatedSphere->m_bulletRigidBody->setIgnoreCollisionCheck(obstacle->m_bulletRigidBody, true);
+    guidanceSphere->m_bulletRigidBody->setIgnoreCollisionCheck(obstacle->m_bulletRigidBody, true);
+}
 
 void GenericScene::updateWaypoint(cVector3d positionSphere, cVector3d positionTarget){
     if(waypoint_index == last_waypoint_index)
