@@ -22,7 +22,7 @@ public:
     virtual void setStiffness(double a_stiffness){};
     virtual void updateWaypoint(cVector3d positionSphere, cVector3d positionTarget);
     virtual void generateWaypoints(cVector3d positionSphere, cVector3d positionTarget){};
-    void borderSetup(std::vector<double> size, std::vector<double> position, cMaterial matBase);
+    void borderSetup(std::vector<double> size, std::vector<double> position, std::vector<double> rotation,cMaterial matBase);
     double getFuzzyOutput(int timein, int collisionsin);
     virtual void initWaypoints(){};
     void updateTarget();

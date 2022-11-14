@@ -13,22 +13,10 @@ Scene3::Scene3(shared_ptr<cGenericHapticDevice> a_hapticDevice):GenericScene(a_h
 
     for(int i =0; i<20; i++){
         int direction = i%2 == 0? 90:0;
-        // cout << (pow(-1,(i+3)/2))*(((i+3)/2)*0.012) << endl;
         x += (pow(-1,i/2))*(0.013 + (i/2)*0.013);
         y += (pow(-1,(i+3)/2))*(((i+3)/2)*0.013);
-        //cout<< x << "," << y <<endl;
- 
-        
-        obstacles[i] = new cBulletBox(bulletWorld, 0.006, 0.026*(i/2+1.5), 0.015);
-        bulletWorld->addChild(obstacles[i]);
-        obstacles[i]->setMaterial(matBase);
-        obstacles[i]->buildDynamicModel();
-        obstacles[i]->setLocalPos(x, y, -0.2);
-        obstacles[i]->setLocalRot(cMatrix3d(cDegToRad(0), cDegToRad(0), cDegToRad(direction), C_EULER_ORDER_XYZ));
-        obstacles[i]->m_bulletRigidBody->setCollisionFlags(obstacles[i]->m_bulletRigidBody->getCollisionFlags() | btCollisionObject::CF_CUSTOM_MATERIAL_CALLBACK);
-        obstacles[i]->m_bulletRigidBody->setUserPointer(obstacles[i]);
-        obstacles[i]->m_bulletRigidBody->setIgnoreCollisionCheck(guidanceSphere->m_bulletRigidBody, true);
-        obstacles[i]->m_bulletRigidBody->setIgnoreCollisionCheck(negotiatedSphere->m_bulletRigidBody, true);
+
+        borderSetup({ 0.006, 0.026 * (i / 2 + 1.5), 0.015 }, { x, y, -0.2 }, { 0,0,(direction * 1.0) }, matBase);
     }
 
     
@@ -90,9 +78,6 @@ Scene3::Scene3(shared_ptr<cGenericHapticDevice> a_hapticDevice):GenericScene(a_h
 
 void Scene3::setStiffness(double a_stiffness){
     bulletGround->setStiffness(a_stiffness);
-    for(int i =0; i<10; i++){
-        obstacles[i]->setStiffness(a_stiffness);
-    }
 }
 
 void Scene3::initWaypoints(){

@@ -231,10 +231,10 @@ GenericScene::GenericScene(shared_ptr<cGenericHapticDevice> a_hapticDevice)
     mainSphere->m_bulletRigidBody->setIgnoreCollisionCheck(negotiatedSphere->m_bulletRigidBody, true);
     mainSphere->setInertia(cVector3d(0,0,0));
 
-    borderSetup({0.005, 0.6, 0.02}, {0.3, 0.0, -0.2}, matBase);
-    borderSetup({0.005, 0.6, 0.02}, {-0.3, 0.0, -0.2 }, matBase);
-    borderSetup({0.6, 0.005, 0.02}, {0.0, 0.3, -0.2}, matBase);
-    borderSetup({0.6, 0.005, 0.02}, {0.0, -0.3, -0.2 }, matBase);
+    borderSetup({0.005, 0.6, 0.02}, {0.3, 0.0, -0.2}, { 0,0,0 }, matBase);
+    borderSetup({0.005, 0.6, 0.02}, {-0.3, 0.0, -0.2 }, { 0,0,0 }, matBase);
+    borderSetup({0.6, 0.005, 0.02}, {0.0, 0.3, -0.2}, { 0,0,0 }, matBase);
+    borderSetup({0.6, 0.005, 0.02}, {0.0, -0.3, -0.2 }, { 0,0,0 }, matBase);
 
     // Set gravity.
     bulletWorld->setGravity(cVector3d(0.0, 0.0, -9.0));
@@ -255,13 +255,14 @@ GenericScene::GenericScene(shared_ptr<cGenericHapticDevice> a_hapticDevice)
     startTime = time(0);
 }
 
-void GenericScene::borderSetup(std::vector<double> size, std::vector<double> pos, cMaterial matBase) {
+void GenericScene::borderSetup(std::vector<double> size, std::vector<double> pos, std::vector<double> rot,cMaterial matBase) {
     cBulletBox* obstacle = new cBulletBox(bulletWorld, size.at(0), size.at(1), size.at(2));
     bulletWorld->addChild(obstacle);
     obstacle->createAABBCollisionDetector(toolRadius);
     obstacle->setMaterial(matBase);
     obstacle->buildDynamicModel();
     obstacle->setLocalPos(pos.at(0), pos.at(1), pos.at(2));
+    obstacle->setLocalRot(cMatrix3d(cDegToRad(rot.at(0)), cDegToRad(rot.at(1)), cDegToRad(rot.at(2)), C_EULER_ORDER_XYZ));
     obstacle->m_bulletRigidBody->setCollisionFlags(obstacle->m_bulletRigidBody->getCollisionFlags() | btCollisionObject::CF_CUSTOM_MATERIAL_CALLBACK);
     obstacle->m_bulletRigidBody->setUserPointer(obstacle);
     negotiatedSphere->m_bulletRigidBody->setIgnoreCollisionCheck(obstacle->m_bulletRigidBody, true);
