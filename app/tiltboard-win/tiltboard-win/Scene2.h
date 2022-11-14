@@ -15,15 +15,4 @@ class Scene2: public GenericScene{
         void updateWaypoint(cVector3d positionSphere, cVector3d positionTarget) override;
         void engineSetup();
 
-
-    public:
-
-        cBulletBox* obstacle0;
-        cBulletBox* obstacle1;
-        cBulletBox* obstacle2;
-        cBulletBox* obstacle3;
-        cBulletBox* obstacle4;
-        cBulletBox* obstacle5;
-        cBulletBox* obstacle6;
-        cBulletBox* obstacle7;
 };

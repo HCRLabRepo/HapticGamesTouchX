@@ -15,8 +15,4 @@ class Scene3: public GenericScene{
         void initWaypoints() override;
         void engineSetup();
 
-    public:
-
-        cBulletBox* obstacles[20];
-
 };

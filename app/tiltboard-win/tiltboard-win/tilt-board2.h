@@ -7,6 +7,7 @@
 #include "Scene1.h"
 #include "Scene2.h"
 #include "Scene3.h"
+#include "DebugScene.h"
 
 using namespace std;
 using namespace chai3d;
@@ -47,6 +48,7 @@ GenericScene* main_scene;
 Scene1* scene1;
 Scene2* scene2;
 Scene3* scene3;
+DebugScene* debugScene;
 
 //------------------------------------------------------------------------------
 // DECLARED CONSTANTS
@@ -96,6 +98,7 @@ void close(void); // This function closes the application
 void initScene1();
 void initScene2();
 void initScene3();
+void initDebugScene();
 
 std::ofstream ballfile;
 std::ofstream HIPfile;

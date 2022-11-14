@@ -95,10 +95,10 @@ int main(int argc, char* argv[]){
     cout << "Tilt Board" << endl;
     cout << "-----------------------------------" << endl << endl << endl;
     cout << "Keyboard Options:" << endl << endl;
+    cout << "[0] - Select Debug Scene" << endl;
     cout << "[1] - Select Scene 1" << endl;
     cout << "[2] - Select Scene 2" << endl;
     cout << "[3] - Select Scene 3" << endl;
-    cout << "[4] - Select Demo 4" << endl;
     cout << "[f] - Enable/Disable full screen mode" << endl;
     cout << "[m] - Enable/Disable vertical mirroring" << endl;
     cout << "[q] - Exit application" << endl;
@@ -172,6 +172,7 @@ int main(int argc, char* argv[]){
     // SETUP BULLET WORLD AND OBJECTS
     //-----------------------------------------------------------------------
 
+    debugScene = new DebugScene(hapticDevice);
     scene1 = new Scene1(hapticDevice);
     scene2 = new Scene2(hapticDevice);
     scene3 = new Scene3(hapticDevice);
@@ -184,10 +185,12 @@ int main(int argc, char* argv[]){
         maxStiffness = cMin(maxStiffness,hapticDeviceInfo.m_maxLinearStiffness/workspaceScaleFactor);
     }
     // Stiffness properties
+    debugScene->camera->setStereoMode(stereoMode);
     scene1->camera->setStereoMode(stereoMode);
     scene2->camera->setStereoMode(stereoMode);
     scene3->camera->setStereoMode(stereoMode);
 
+    debugScene->setStiffness(maxStiffness);
     scene1->setStiffness(maxStiffness);
     scene2->setStiffness(maxStiffness);
     scene3->setStiffness(maxStiffness);
@@ -195,33 +198,9 @@ int main(int argc, char* argv[]){
     //--------------------------------------------------------------------------
     // WIDGETS
     //--------------------------------------------------------------------------
-    // cFontPtr font = NEW_CFONTCALIBRI20();
     main_scene = new GenericScene(hapticDevice);
     
-    // // Create a label to display the haptic device model
-    // labelHapticDeviceModel = new cLabel(font);
-    // main_scene->camera->m_frontLayer->addChild(labelHapticDeviceModel);
-    // // scene1->camera->m_frontLayer->addChild(labelHapticDeviceModel);
-    // // scene2->camera->m_frontLayer->addChild(labelHapticDeviceModel);
-    // // scene3->camera->m_frontLayer->addChild(labelHapticDeviceModel);
-    // labelHapticDeviceModel->setText(hapticDeviceInfo.m_modelName);
-    // cout <<hapticDeviceInfo.m_modelName<< endl;
-    // // Create a label to display the position of haptic device
-    // labelHapticDevicePosition = new cLabel(font);
-    // main_scene->camera->m_frontLayer->addChild(labelHapticDevicePosition);
-    // scene1->camera->m_frontLayer->addChild(labelHapticDevicePosition);
-    // scene2->camera->m_frontLayer->addChild(labelHapticDevicePosition);
-    // scene3->camera->m_frontLayer->addChild(labelHapticDevicePosition);
-
-    // Create a label to display the haptic and graphic rate of the simulation
-    // labelRates = new cLabel(font);
-    // labelRates->m_fontColor.setWhite();
-    // main_scene->camera->m_frontLayer->addChild(labelRates);
-    // scene1->camera->m_frontLayer->addChild(labelRates);
-    // scene2->camera->m_frontLayer->addChild(labelRates);
-    // scene3->camera->m_frontLayer->addChild(labelRates);
-    
-    if(game_scene==1 || game_scene ==0){
+    if(game_scene==1){
         initScene1();
     }
     else if(game_scene == 2){
@@ -229,6 +208,9 @@ int main(int argc, char* argv[]){
     }
     else if(game_scene == 3){
         initScene3();
+    }
+    else if (game_scene == 0) {
+        initDebugScene();
     }
     ballfile.open(ballfilename);
     HIPfile.open(HIPfilename);
@@ -286,6 +268,11 @@ void initScene3(){
     main_scene->init();
 }
 
+void initDebugScene(){
+    main_scene = debugScene;
+    debugScene->init();
+}
+
 void keyCallback(GLFWwindow* a_window, int a_key, int a_scancode, int a_action, int a_mods)
 {
     // filter calls that only include a key press
@@ -329,9 +316,11 @@ void keyCallback(GLFWwindow* a_window, int a_key, int a_scancode, int a_action, 
         scene1->camera->setMirrorVertical(mirroredDisplay);
         scene2->camera->setMirrorVertical(mirroredDisplay);
         scene3->camera->setMirrorVertical(mirroredDisplay);
+        debugScene->camera->setMirrorVertical(mirroredDisplay);
         scene1->mirroredDisplay = mirroredDisplay;
         scene2->mirroredDisplay = mirroredDisplay;
         scene3->mirroredDisplay = mirroredDisplay;
+        debugScene->mirroredDisplay = mirroredDisplay;
     }
     else if(a_key == GLFW_KEY_S){
         main_scene->controlSphere->setEnabled(!(main_scene->controlSphere->getEnabled()));
@@ -358,6 +347,11 @@ void keyCallback(GLFWwindow* a_window, int a_key, int a_scancode, int a_action, 
     {
         initScene3();
     }
+
+    else if (a_key == GLFW_KEY_0)
+    {
+        initDebugScene();
+    }
 }
 
 void close(void)
@@ -373,6 +367,7 @@ void close(void)
     delete scene1;
     delete scene2;
     delete scene3;
+    delete debugScene;
     delete handler;
 }
 

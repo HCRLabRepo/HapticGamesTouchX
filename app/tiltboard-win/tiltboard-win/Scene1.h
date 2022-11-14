@@ -15,12 +15,4 @@ class Scene1: public GenericScene{
         void engineSetup();
         void initWaypoints() override;
 
-    public:
-
-        cBulletBox* obstacle0;
-        cBulletBox* obstacle1;
-        cBulletBox* obstacle2;
-        cBulletBox* obstacle3;
-        cBulletBox* obstacle4;
-        cBulletBox* obstacle5;
 };

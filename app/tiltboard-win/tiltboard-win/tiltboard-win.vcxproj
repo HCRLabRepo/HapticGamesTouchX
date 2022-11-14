@@ -19,6 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="DebugScene.cpp" />
     <ClCompile Include="GenericScene.cpp" />
     <ClCompile Include="Scene1.cpp" />
     <ClCompile Include="Scene2.cpp" />
@@ -26,6 +27,7 @@
     <ClCompile Include="tilt-board2.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="DebugScene.h" />
     <ClInclude Include="GenericScene.h" />
     <ClInclude Include="Scene1.h" />
     <ClInclude Include="Scene2.h" />
