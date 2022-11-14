@@ -448,7 +448,12 @@ void updateGraphics(void){
     // UPDATE WIDGETS
     /////////////////////////////////////////////////////////////////////
 
+    main_scene->labelHapticDeviceModel->setLocalPos(20, height - 40, 0);
+    // update position of label
+    main_scene->labelHapticDevicePosition->setLocalPos(20, height - 60, 0);
+
     //Update the text information.
+
     main_scene->labelHapticDevicePosition->setText(hapticDevicePosition.str(3));
     main_scene->labelRates->setText(cStr(freqCounterGraphics.getFrequency(), 0) + " Hz /" + 
                         cStr(freqCounterHaptics.getFrequency(),0) + " Hz");
