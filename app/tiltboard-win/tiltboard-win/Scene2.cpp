@@ -1,15 +1,21 @@
 #include "Scene2.h"
 using namespace std;
 
+/**
+* @file Scene2.cpp
+*
+* Scene 2 ("Intermediate" scene) implementation
+*/
 Scene2::Scene2(shared_ptr<cGenericHapticDevice> a_hapticDevice):GenericScene(a_hapticDevice){
     
+    /** Describe the material to be used for obstacles */
     cMaterial matBase;
     matBase.setGrayLevel(0.3);
     matBase.setStiffness(100);
     matBase.setDynamicFriction(0.5);
     matBase.setStaticFriction(0.9);
 
-    // Setup static obstacles
+    /** Set up static obstacles */
     borderSetup({ 0.005, 0.33, 0.015 }, { 0.16, 0.18, -0.2 }, {0,0,-45}, matBase);
     borderSetup({ 0.005, 0.33, 0.015 }, { 0.18, 0.16, -0.2 }, {0,0,-45}, matBase);
     borderSetup({ 0.005, 0.33, 0.015 }, { -0.18, -0.16, -0.2 }, { 0,0,-45 }, matBase);
@@ -19,6 +25,7 @@ Scene2::Scene2(shared_ptr<cGenericHapticDevice> a_hapticDevice):GenericScene(a_h
     borderSetup({ 0.005, 0.33, 0.015 }, { -0.16, 0.18, -0.2 }, { 0,0,45 }, matBase);
     borderSetup({ 0.005, 0.33, 0.015 }, { -0.18, 0.16, -0.2 }, { 0,0,45 }, matBase);
 
+    /** Set up list of destinations */
     destinations.push_back(cVector3d(-0.28, 0.28, -0.2+0.00025));
     destinations.push_back(cVector3d(0.28, 0.28, -0.2+0.00025));
     destinations.push_back(cVector3d(-0.28, -0.28, -0.2+0.00025));
@@ -28,6 +35,7 @@ Scene2::Scene2(shared_ptr<cGenericHapticDevice> a_hapticDevice):GenericScene(a_h
     destinations.push_back(cVector3d(-0.25, 0.0, -0.2+0.00025));
     destinations.push_back(cVector3d(0.25, 0.0, -0.2+0.00025));
 
+    /** Set up list of checkpoints */
     checkpoints.push_back(cVector3d(-0.05, 0.05, -0.2+0.00025));
     checkpointsRange.push_back(0.015);
     checkpoints.push_back(cVector3d(0.05, 0.05, -0.2+0.00025));
@@ -44,13 +52,10 @@ Scene2::Scene2(shared_ptr<cGenericHapticDevice> a_hapticDevice):GenericScene(a_h
     checkpointsRange.push_back(0.04);
     checkpoints.push_back(cVector3d(0.05, 0.0, -0.2+0.00025));
     checkpointsRange.push_back(0.04);
-
-
-    //middle point
     checkpoints.push_back(cVector3d(-0.00,-0.0, -0.20025));
     checkpointsRange.push_back(0.05);
 
-    // set up target
+    /** Set up target */
     target = new cBulletCylinder(bulletWorld, 0.0005, toolRadius*1.5);
     bulletWorld->addChild(target);
     target->createAABBCollisionDetector(toolRadius);
@@ -60,7 +65,7 @@ Scene2::Scene2(shared_ptr<cGenericHapticDevice> a_hapticDevice):GenericScene(a_h
     target->m_bulletRigidBody->setCollisionFlags(target->m_bulletRigidBody->getCollisionFlags() | btCollisionObject::CF_CUSTOM_MATERIAL_CALLBACK);
     target->m_bulletRigidBody->setUserPointer(target);
 
-    //set up fuzzy engine
+    /** Set up fuzzy engine */
     engineSetup();
 
 }

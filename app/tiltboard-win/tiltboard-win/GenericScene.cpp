@@ -36,11 +36,14 @@ void GenericScene::updateTarget(){
         ALPHA_CONTROL += result;
         ALPHA_CONTROL = min(1.0, ALPHA_CONTROL);
         ALPHA_CONTROL = max(0.0, ALPHA_CONTROL);
+        currentAlpha = ALPHA_CONTROL;
     }
     cout<< "updated target" << endl;
     if( destination_index == destinations.size() ){
         cout << "finished" << endl;
     }
+    startTime = time(0);
+    collisionNum = 0;
     target->setLocalPos(destinations[shuffled_order[destination_index]]);
 }
 

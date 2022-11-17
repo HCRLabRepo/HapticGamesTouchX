@@ -17,7 +17,7 @@ Scene1::Scene1(shared_ptr<cGenericHapticDevice> a_hapticDevice):GenericScene(a_h
     matBase.setStiffness(100);
     matBase.setDynamicFriction(0.5);
     matBase.setStaticFriction(0.9);
-
+    
     /** Set up static obstacles */
     borderSetup({ 0.005,0.5,0.02 }, { -0.20, -0.05, -0.2 + toolRadius }, {0,0,0}, matBase);
     borderSetup({ 0.005, 0.5, 0.02 }, { -0.10, 0.05, -0.2 }, { 0,0,0 }, matBase);
@@ -59,7 +59,7 @@ Scene1::Scene1(shared_ptr<cGenericHapticDevice> a_hapticDevice):GenericScene(a_h
 
 
 
-    /** Set up taget */
+    /** Set up target */
     target = new cBulletCylinder(bulletWorld, 0.0005, toolRadius*1.5);
     bulletWorld->addChild(target);
     target->createAABBCollisionDetector(toolRadius);
@@ -172,22 +172,22 @@ void Scene1::engineSetup() {
     time->setEnabled(true);
     time->setRange(0.000, 120.000);
     time->setLockValueInRange(false);
-    time->addTerm(new Bell("acceptable", 0.000, 40.000, 5.000));
-    time->addTerm(new Gaussian("slow", 70.000, 15.000));
-    time->addTerm(new Bell("veryslow", 120.000, 30.000, 5.000));
+    time->addTerm(new Bell("acceptable", 0.000, 20.000, 5.000));
+    time->addTerm(new Gaussian("slow", 50.000, 10.000));
+    time->addTerm(new Bell("veryslow", 120.000, 40.000, 5.000));
     engine->addInputVariable(time);
 
     InputVariable* collisions = new InputVariable;
     collisions->setName("collisions");
     collisions->setDescription("");
     collisions->setEnabled(true);
-    collisions->setRange(0.000, 5000.000);
+    collisions->setRange(0.000, 500.000);
     collisions->setLockValueInRange(false);
-    collisions->addTerm(new Trapezoid("flawless", 0.000, 0.000, 500.000, 1000.000));
-    collisions->addTerm(new Trapezoid("good", 0.000, 1000.000, 1500.000, 2000.000));
-    collisions->addTerm(new Trapezoid("OK", 1000.000, 2000.000, 2500.000, 3000.000));
-    collisions->addTerm(new Trapezoid("bad", 2000.000, 3000.000, 3500.000, 4000.000));
-    collisions->addTerm(new Trapezoid("terrible", 3500.000, 4000.000, 5000.000, 99999.000));
+    collisions->addTerm(new Trapezoid("flawless", 0.000, 0.000, 75.000, 100.000));
+    collisions->addTerm(new Trapezoid("good", 0.000, 100.000, 150.000, 200.000));
+    collisions->addTerm(new Trapezoid("OK", 100.000, 200.000, 250.000, 300.000));
+    collisions->addTerm(new Trapezoid("bad", 200.000, 300.000, 350.000, 400.000));
+    collisions->addTerm(new Trapezoid("terrible", 350.000, 400.000, 500.000, 99999.000));
     engine->addInputVariable(collisions);
 
     OutputVariable* alphachange = new OutputVariable;

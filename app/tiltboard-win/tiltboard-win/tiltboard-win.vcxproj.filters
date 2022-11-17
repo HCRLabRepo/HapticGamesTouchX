@@ -54,4 +54,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
+  <ItemGroup>
+    <Text Include="resources\1_waypoints.txt" />
+    <Text Include="resources\2_waypoints.txt" />
+    <Text Include="resources\3_waypoints.txt" />
+  </ItemGroup>
 </Project>

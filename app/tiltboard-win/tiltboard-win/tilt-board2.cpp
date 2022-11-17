@@ -593,13 +593,17 @@ void updateHaptics(void){
         // Performance-based proportional human control. Alpha is proportional to how well the user is performing the task.
         // Collision data and time taken are both taken into account for this.
         else if(control_mode == 6){
+            main_scene->fuzzyControl = true;
             //Manual Override
             if (button0){
                 main_scene->ALPHA_CONTROL += 0.001;
                 main_scene->ALPHA_CONTROL = min(main_scene->ALPHA_CONTROL, 1.0);
                 main_scene->K_DAMPING_VELOCITY = 2;
             }
-            main_scene->fuzzyControl = true;
+            else {
+                main_scene->ALPHA_CONTROL = main_scene->currentAlpha;
+            }
+            
         }
         main_scene->updateHaptics(timeInterval);
         if(main_scene->destination_index == main_scene->destinations.size()){

@@ -5,7 +5,7 @@
 /**
 * \file Scene1.h
 *
-* \brief Header file for Scene 1 ("Easy" scene)
+* Header file for Scene 1 ("Easy" scene)
 * 
 */
 class Scene1: public GenericScene{
@@ -29,6 +29,9 @@ class Scene1: public GenericScene{
 
         /**
         * Generates the list of waypoints based on what destination the main sphere is closest to
+        * 
+        * \param positionSphere position of the main sphere
+        * \param positionTarget position of the current target
         */
         void generateWaypoints(cVector3d positionSphere, cVector3d positionTarget) override;
 

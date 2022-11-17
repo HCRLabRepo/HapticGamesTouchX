@@ -34,6 +34,11 @@
     <ClInclude Include="Scene3.h" />
     <ClInclude Include="tilt-board2.h" />
   </ItemGroup>
+  <ItemGroup>
+    <Text Include="resources\1_waypoints.txt" />
+    <Text Include="resources\2_waypoints.txt" />
+    <Text Include="resources\3_waypoints.txt" />
+  </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>

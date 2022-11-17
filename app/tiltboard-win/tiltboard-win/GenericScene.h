@@ -74,6 +74,7 @@ public:
     int collisionNum = 0;
     time_t startTime;
     bool fuzzyControl = false;
+    double currentAlpha = 1;
    
 
     cLabel* labelHapticDeviceModel;
