@@ -1,5 +1,7 @@
 #include "Scene1.h"
 #include "CBullet.h"
+#include <fstream>
+#include <iostream>
 using namespace std;
 
 /**
@@ -31,34 +33,18 @@ Scene1::Scene1(shared_ptr<cGenericHapticDevice> a_hapticDevice):GenericScene(a_h
     destinations.push_back(cVector3d(-0.28,-0.28,-0.2+0.00025));
 
     /** Set up list of checkpoints */
-    checkpoints.push_back(cVector3d(-0.25,0.23, -0.20025));
-    checkpointsRange.push_back(0.06);
-    checkpoints.push_back(cVector3d(-0.15,0.23, -0.20025));
-    checkpointsRange.push_back(0.06);
-    checkpoints.push_back(cVector3d(-0.14,-0.22, -0.20025));
-    checkpointsRange.push_back(0.05);
-    checkpoints.push_back(cVector3d(-0.07,-0.22, -0.20025));
-    checkpointsRange.push_back(0.06);
-    checkpoints.push_back(cVector3d(-0.06,0.22, -0.20025));
-    checkpointsRange.push_back(0.06);
-    checkpoints.push_back(cVector3d(0.03,0.22, -0.20025));
-    checkpointsRange.push_back(0.02);
-    checkpoints.push_back(cVector3d(0.03,-0.22, -0.20025));
-    checkpointsRange.push_back(0.02);
-    checkpoints.push_back(cVector3d(0.10,-0.22, -0.20025));
-    checkpointsRange.push_back(0.05);
-    checkpoints.push_back(cVector3d(0.1,0.22, -0.20025));
-    checkpointsRange.push_back(0.07);
-    checkpoints.push_back(cVector3d(0.2,0.22, -0.20025));
-    checkpointsRange.push_back(0.08);
-    checkpoints.push_back(cVector3d(0.2,-0.22, -0.20025));
-    checkpointsRange.push_back(0.06);
-    checkpoints.push_back(cVector3d(0.27,-0.21, -0.20025));
-    checkpointsRange.push_back(0.04);
-
-
-
-
+    ifstream test("resources/1_waypoints.txt");
+    std::string line;
+    while (getline(test, line)) {
+        vector<double> coord;
+        stringstream ss(line);
+        string elem;
+        while (getline(ss, elem, ',')) {
+            coord.push_back(stod(elem));
+        }
+        checkpoints.push_back(cVector3d(coord[0], coord[1], coord[2]));
+        checkpointsRange.push_back(0.04);
+    }
     /** Set up target */
     target = new cBulletCylinder(bulletWorld, 0.0005, toolRadius*1.5);
     bulletWorld->addChild(target);
@@ -157,10 +143,7 @@ if(positionTarget.equals(destinations[0]))
         waypointsRange.push_back(0.005);
         waypoints.push_back(checkpoints[0]);
         waypointsRange.push_back(checkpointsRange[0]);
-        
-        
     }
-    
 }
 
 void Scene1::engineSetup() {

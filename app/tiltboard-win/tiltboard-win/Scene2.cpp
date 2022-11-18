@@ -1,4 +1,6 @@
 #include "Scene2.h"
+#include <fstream>
+#include <iostream>
 using namespace std;
 
 /**
@@ -36,24 +38,18 @@ Scene2::Scene2(shared_ptr<cGenericHapticDevice> a_hapticDevice):GenericScene(a_h
     destinations.push_back(cVector3d(0.25, 0.0, -0.2+0.00025));
 
     /** Set up list of checkpoints */
-    checkpoints.push_back(cVector3d(-0.05, 0.05, -0.2+0.00025));
-    checkpointsRange.push_back(0.015);
-    checkpoints.push_back(cVector3d(0.05, 0.05, -0.2+0.00025));
-    checkpointsRange.push_back(0.015);
-    checkpoints.push_back(cVector3d(-0.05, -0.05, -0.2+0.00025));
-    checkpointsRange.push_back(0.015);
-    checkpoints.push_back(cVector3d(0.05, -0.05, -0.2+0.00025));
-    checkpointsRange.push_back(0.015);
-    checkpoints.push_back(cVector3d(0, -0.05, -0.2+0.00025));
-    checkpointsRange.push_back(0.04);
-    checkpoints.push_back(cVector3d(0, 0.05, -0.2+0.00025));
-    checkpointsRange.push_back(0.04);
-    checkpoints.push_back(cVector3d(-0.05, 0.0, -0.2+0.00025));
-    checkpointsRange.push_back(0.04);
-    checkpoints.push_back(cVector3d(0.05, 0.0, -0.2+0.00025));
-    checkpointsRange.push_back(0.04);
-    checkpoints.push_back(cVector3d(-0.00,-0.0, -0.20025));
-    checkpointsRange.push_back(0.05);
+    ifstream test("resources/2_waypoints.txt");
+    std::string line;
+    while (getline(test, line)) {
+        vector<double> coord;
+        stringstream ss(line);
+        string elem;
+        while (getline(ss, elem, ',')) {
+            coord.push_back(stod(elem));
+        }
+        checkpoints.push_back(cVector3d(coord[0], coord[1], coord[2]));
+        checkpointsRange.push_back(0.04);
+    }
 
     /** Set up target */
     target = new cBulletCylinder(bulletWorld, 0.0005, toolRadius*1.5);

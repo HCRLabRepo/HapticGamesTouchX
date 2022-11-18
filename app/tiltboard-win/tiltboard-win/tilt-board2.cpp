@@ -332,7 +332,9 @@ void keyCallback(GLFWwindow* a_window, int a_key, int a_scancode, int a_action, 
     else if(a_key == GLFW_KEY_N){
         main_scene->negotiatedSphere->setEnabled(!(main_scene->negotiatedSphere->getEnabled()));
     }
-
+    /*else if (a_key == GLFW_KEY_W) {
+        main_scene->visualizeWaypoints();
+    }*/
     else if (a_key == GLFW_KEY_1)
     {
         initScene1();

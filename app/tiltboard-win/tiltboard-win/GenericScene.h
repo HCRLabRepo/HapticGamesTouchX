@@ -26,6 +26,8 @@ public:
     double getFuzzyOutput(int timein, int collisionsin);
     virtual void initWaypoints(){};
     void updateTarget();
+
+    //void visualizeWaypoints();
     
 
 public:
@@ -52,6 +54,7 @@ public:
     cBulletSphere* guidanceSphere;
     cBulletSphere* mainSphere;
     cBulletCylinder* target;
+    cBulletCylinder* wp;
 
     std::vector<cVector3d> destinations;
     std::vector<int> shuffled_order;

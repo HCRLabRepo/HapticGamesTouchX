@@ -47,7 +47,25 @@ void GenericScene::updateTarget(){
     target->setLocalPos(destinations[shuffled_order[destination_index]]);
 }
 
-
+//void GenericScene::visualizeWaypoints() {
+//    cMaterial matBase;
+//    matBase.setGrayLevel(0.3);
+//    matBase.setStiffness(10);
+//    matBase.setDynamicFriction(0.5);
+//    matBase.setStaticFriction(0.9);
+//    cout << checkpoints.size() << "a" << endl;
+//    for (int i = 0; i < checkpoints.size(); i++) {
+//        wp = new cBulletCylinder(bulletWorld, 0.0005, checkpointsRange[i]);
+//        bulletWorld->addChild(wp);
+//        wp->createAABBCollisionDetector(toolRadius);
+//        wp->setMaterial(matBase);
+//        wp->buildDynamicModel();
+//        wp->m_material->setPink();
+//        wp->setLocalPos(checkpoints[i]);
+//        wp->m_bulletRigidBody->setCollisionFlags(wp->m_bulletRigidBody->getCollisionFlags() | btCollisionObject::CF_CUSTOM_MATERIAL_CALLBACK);
+//        wp->m_bulletRigidBody->setUserPointer(wp);
+//    }
+//}
 
 
 
@@ -272,7 +290,16 @@ void GenericScene::borderSetup(std::vector<double> size, std::vector<double> pos
     guidanceSphere->m_bulletRigidBody->setIgnoreCollisionCheck(obstacle->m_bulletRigidBody, true);
 }
 
-void GenericScene::updateWaypoint(cVector3d positionSphere, cVector3d positionTarget){
+void GenericScene::updateWaypoint(cVector3d positionSphere, cVector3d positionTarget) {
+    if (cDistance(positionSphere, positionTarget) < waypointsRange[waypointsRange.size() - 2]) {
+        updateTarget();
+        waypoints.clear();
+        generateWaypoints(positionSphere, target->getLocalPos());
+        waypoint_index = 0;
+        positionWaypoint = waypoints[0];
+
+    }
+
     if(waypoint_index == last_waypoint_index)
     {
         waypoint_index = last_waypoint_index +1;
