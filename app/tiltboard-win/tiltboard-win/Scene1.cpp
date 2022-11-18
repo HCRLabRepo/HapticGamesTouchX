@@ -81,68 +81,27 @@ void Scene1::initWaypoints(){
     }
 }
 void Scene1::generateWaypoints(cVector3d positionSphere, cVector3d positionTarget){
-if(positionTarget.equals(destinations[0]))
-    {   waypoints.push_back(checkpoints[0]);
-        waypointsRange.push_back(checkpointsRange[0]);
-        waypoints.push_back(checkpoints[1]);
-        waypointsRange.push_back(checkpointsRange[1]);
-        waypoints.push_back(checkpoints[2]);
-        waypointsRange.push_back(checkpointsRange[2]);
-        waypoints.push_back(checkpoints[3]);
-        waypointsRange.push_back(checkpointsRange[4]);
-        waypoints.push_back(checkpoints[4]);
-        waypointsRange.push_back(checkpointsRange[4]);
-        waypoints.push_back(checkpoints[5]);
-        waypointsRange.push_back(checkpointsRange[5]);
-        waypoints.push_back(checkpoints[6]);
-        waypointsRange.push_back(checkpointsRange[6]);
-        waypoints.push_back(checkpoints[7]);
-        waypointsRange.push_back(checkpointsRange[7]);
-        waypoints.push_back(checkpoints[8]);
-        waypointsRange.push_back(checkpointsRange[8]);
-        waypoints.push_back(checkpoints[9]);
-        waypointsRange.push_back(checkpointsRange[9]);
-        waypoints.push_back(checkpoints[10]);
-        waypointsRange.push_back(checkpointsRange[10]);
-        waypoints.push_back(checkpoints[11]);
-        waypointsRange.push_back(checkpointsRange[11]);
-        
-        waypoints.push_back(destinations[0]);
-        waypointsRange.push_back(0.005);
-        waypoints.push_back(checkpoints[11]);
-        waypointsRange.push_back(checkpointsRange[11]);
-        
+    if (positionTarget.equals(destinations[0])) {
+        for (int i = 0; i < checkpoints.size(); i++) {
+            waypoints.push_back(checkpoints[i]);
+            waypointsRange.push_back(checkpointsRange[i]);
+        }
 
-    }else if(positionTarget.equals(destinations[1])){
-        waypoints.push_back(checkpoints[11]);
-        waypointsRange.push_back(checkpointsRange[11]);
-        waypoints.push_back(checkpoints[10]);
-        waypointsRange.push_back(checkpointsRange[10]);
-        waypoints.push_back(checkpoints[9]);
-        waypointsRange.push_back(checkpointsRange[9]);
-        waypoints.push_back(checkpoints[8]);
-        waypointsRange.push_back(checkpointsRange[8]);
-        waypoints.push_back(checkpoints[7]);
-        waypointsRange.push_back(checkpointsRange[7]);
-        waypoints.push_back(checkpoints[6]);
-        waypointsRange.push_back(checkpointsRange[6]);
-        waypoints.push_back(checkpoints[5]);
-        waypointsRange.push_back(checkpointsRange[5]);
-        waypoints.push_back(checkpoints[4]);
-        waypointsRange.push_back(checkpointsRange[4]);
-        waypoints.push_back(checkpoints[3]);
-        waypointsRange.push_back(checkpointsRange[3]);
-        waypoints.push_back(checkpoints[2]);
-        waypointsRange.push_back(checkpointsRange[2]);
-        waypoints.push_back(checkpoints[1]);
-        waypointsRange.push_back(checkpointsRange[1]);
-        waypoints.push_back(checkpoints[0]);
-        waypointsRange.push_back(checkpointsRange[0]);
-        
-        waypoints.push_back(destinations[1]);
+        waypoints.push_back(positionTarget);
         waypointsRange.push_back(0.005);
-        waypoints.push_back(checkpoints[0]);
-        waypointsRange.push_back(checkpointsRange[0]);
+        waypoints.push_back(checkpoints.back());
+        waypointsRange.push_back(checkpointsRange.back());
+    }
+    else if(positionTarget.equals(destinations[1])){
+        for (int i = checkpoints.size() - 1; i >= 0; i--) {
+            waypoints.push_back(checkpoints[i]);
+            waypointsRange.push_back(checkpointsRange[i]);
+        }
+        
+        waypoints.push_back(positionTarget);
+        waypointsRange.push_back(0.005);
+        waypoints.push_back(checkpoints.front());
+        waypointsRange.push_back(checkpointsRange.front());
     }
 }
 
