@@ -1,16 +1,16 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <ClCompile Include="C:\Users\fadva\Desktop\fuzzylite-6.0\fuzzylite\src\main.cpp">
+    <ClCompile Include="D:\git\project\HapticGamesTouchX\app\external\fuzzylite\src\main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <CustomBuild Include="C:\Users\fadva\Desktop\fuzzylite-6.0\fuzzylite\CMakeLists.txt" />
+    <CustomBuild Include="D:\git\project\HapticGamesTouchX\app\external\fuzzylite\CMakeLists.txt" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Source Files">
-      <UniqueIdentifier>{6F09A06A-6E0D-3DAC-A3E0-2F82D45BCAE8}</UniqueIdentifier>
+      <UniqueIdentifier>{DF601166-CA1E-32BB-8C23-E8037FE0B5CB}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

@@ -1,8 +1,8 @@
-C:/Users/fadva/Desktop/fuzzylite-6.0/fuzzylite/build/CMakeFiles/fl-shared.dir
-C:/Users/fadva/Desktop/fuzzylite-6.0/fuzzylite/build/CMakeFiles/fl-static.dir
-C:/Users/fadva/Desktop/fuzzylite-6.0/fuzzylite/build/CMakeFiles/fl-bin.dir
-C:/Users/fadva/Desktop/fuzzylite-6.0/fuzzylite/build/CMakeFiles/fl-test.dir
-C:/Users/fadva/Desktop/fuzzylite-6.0/fuzzylite/build/CMakeFiles/RUN_TESTS.dir
-C:/Users/fadva/Desktop/fuzzylite-6.0/fuzzylite/build/CMakeFiles/INSTALL.dir
-C:/Users/fadva/Desktop/fuzzylite-6.0/fuzzylite/build/CMakeFiles/ALL_BUILD.dir
-C:/Users/fadva/Desktop/fuzzylite-6.0/fuzzylite/build/CMakeFiles/ZERO_CHECK.dir
+D:/git/project/HapticGamesTouchX/app/external/fuzzylite/build/CMakeFiles/fl-shared.dir
+D:/git/project/HapticGamesTouchX/app/external/fuzzylite/build/CMakeFiles/fl-static.dir
+D:/git/project/HapticGamesTouchX/app/external/fuzzylite/build/CMakeFiles/fl-bin.dir
+D:/git/project/HapticGamesTouchX/app/external/fuzzylite/build/CMakeFiles/fl-test.dir
+D:/git/project/HapticGamesTouchX/app/external/fuzzylite/build/CMakeFiles/RUN_TESTS.dir
+D:/git/project/HapticGamesTouchX/app/external/fuzzylite/build/CMakeFiles/INSTALL.dir
+D:/git/project/HapticGamesTouchX/app/external/fuzzylite/build/CMakeFiles/ALL_BUILD.dir
+D:/git/project/HapticGamesTouchX/app/external/fuzzylite/build/CMakeFiles/ZERO_CHECK.dir

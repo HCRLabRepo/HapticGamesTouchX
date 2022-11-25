@@ -22,7 +22,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{28FAE7B4-E3A3-3FCB-A369-0D7E864236B5}</ProjectGuid>
+    <ProjectGuid>{B78564D8-5F15-368B-98BC-1FBCF0B8E848}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
     <WindowsTargetPlatformVersion>10.0.19041.0</WindowsTargetPlatformVersion>
     <Platform>x64</Platform>
@@ -59,25 +59,25 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup>
     <_ProjectFileVersion>10.0.20506.1</_ProjectFileVersion>
-    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Users\fadva\Desktop\fuzzylite-6.0\fuzzylite\build\bin\Debug\</OutDir>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">D:\git\project\HapticGamesTouchX\app\external\fuzzylite\build\bin\Debug\</OutDir>
     <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">fl-test.dir\Debug\</IntDir>
     <TargetName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">fuzzylite-tests-debug</TargetName>
     <TargetExt Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.exe</TargetExt>
     <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</LinkIncremental>
     <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</GenerateManifest>
-    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\Users\fadva\Desktop\fuzzylite-6.0\fuzzylite\build\bin\Release\</OutDir>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">D:\git\project\HapticGamesTouchX\app\external\fuzzylite\build\bin\Release\</OutDir>
     <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">fl-test.dir\Release\</IntDir>
     <TargetName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">fuzzylite-tests</TargetName>
     <TargetExt Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.exe</TargetExt>
     <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</LinkIncremental>
     <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</GenerateManifest>
-    <OutDir Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:\Users\fadva\Desktop\fuzzylite-6.0\fuzzylite\build\bin\MinSizeRel\</OutDir>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">D:\git\project\HapticGamesTouchX\app\external\fuzzylite\build\bin\MinSizeRel\</OutDir>
     <IntDir Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">fl-test.dir\MinSizeRel\</IntDir>
     <TargetName Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">fuzzylite-tests</TargetName>
     <TargetExt Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">.exe</TargetExt>
     <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">false</LinkIncremental>
     <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">true</GenerateManifest>
-    <OutDir Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:\Users\fadva\Desktop\fuzzylite-6.0\fuzzylite\build\bin\RelWithDebInfo\</OutDir>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">D:\git\project\HapticGamesTouchX\app\external\fuzzylite\build\bin\RelWithDebInfo\</OutDir>
     <IntDir Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">fl-test.dir\RelWithDebInfo\</IntDir>
     <TargetName Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">fuzzylite-tests</TargetName>
     <TargetExt Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">.exe</TargetExt>
@@ -86,7 +86,7 @@
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
-      <AdditionalIncludeDirectories>C:\Users\fadva\Desktop\fuzzylite-6.0\fuzzylite\.;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>D:\git\project\HapticGamesTouchX\app\external\fuzzylite\.;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
@@ -98,15 +98,15 @@
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
       <UseFullPaths>false</UseFullPaths>
       <WarningLevel>Level4</WarningLevel>
-      <PreprocessorDefinitions>%(PreprocessorDefinitions);FL_IMPORT_LIBRARY;FL_BUILD_PATH="C:/Users/fadva/Desktop/fuzzylite-6.0/fuzzylite";FL_BACKTRACE;CMAKE_INTDIR="Debug"</PreprocessorDefinitions>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);FL_IMPORT_LIBRARY;FL_BUILD_PATH="D:/git/project/HapticGamesTouchX/app/external/fuzzylite";FL_BACKTRACE;CMAKE_INTDIR="Debug"</PreprocessorDefinitions>
       <ObjectFileName>$(IntDir)</ObjectFileName>
     </ClCompile>
     <ResourceCompile>
-      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_DEBUG;FL_IMPORT_LIBRARY;FL_BUILD_PATH=\"C:/Users/fadva/Desktop/fuzzylite-6.0/fuzzylite\";FL_BACKTRACE;CMAKE_INTDIR=\"Debug\"</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>C:\Users\fadva\Desktop\fuzzylite-6.0\fuzzylite\.;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_DEBUG;FL_IMPORT_LIBRARY;FL_BUILD_PATH=\"D:/git/project/HapticGamesTouchX/app/external/fuzzylite\";FL_BACKTRACE;CMAKE_INTDIR=\"Debug\"</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>D:\git\project\HapticGamesTouchX\app\external\fuzzylite\.;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ResourceCompile>
     <Midl>
-      <AdditionalIncludeDirectories>C:\Users\fadva\Desktop\fuzzylite-6.0\fuzzylite\.;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>D:\git\project\HapticGamesTouchX\app\external\fuzzylite\.;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
       <HeaderFileName>%(Filename).h</HeaderFileName>
       <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
@@ -119,8 +119,8 @@
       <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
-      <ImportLibrary>C:/Users/fadva/Desktop/fuzzylite-6.0/fuzzylite/build/bin/Debug/tmp-fuzzylite-tests-debug.lib</ImportLibrary>
-      <ProgramDataBaseFile>C:/Users/fadva/Desktop/fuzzylite-6.0/fuzzylite/build/bin/Debug/fuzzylite-tests-debug.pdb</ProgramDataBaseFile>
+      <ImportLibrary>D:/git/project/HapticGamesTouchX/app/external/fuzzylite/build/bin/Debug/tmp-fuzzylite-tests-debug.lib</ImportLibrary>
+      <ProgramDataBaseFile>D:/git/project/HapticGamesTouchX/app/external/fuzzylite/build/bin/Debug/fuzzylite-tests-debug.pdb</ProgramDataBaseFile>
       <SubSystem>Console</SubSystem>
     </Link>
     <ProjectReference>
@@ -129,7 +129,7 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
-      <AdditionalIncludeDirectories>C:\Users\fadva\Desktop\fuzzylite-6.0\fuzzylite\.;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>D:\git\project\HapticGamesTouchX\app\external\fuzzylite\.;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
       <DisableSpecificWarnings>4130</DisableSpecificWarnings>
       <ExceptionHandling>Sync</ExceptionHandling>
@@ -139,17 +139,17 @@
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
       <UseFullPaths>false</UseFullPaths>
       <WarningLevel>Level4</WarningLevel>
-      <PreprocessorDefinitions>%(PreprocessorDefinitions);NDEBUG;FL_IMPORT_LIBRARY;FL_BUILD_PATH="C:/Users/fadva/Desktop/fuzzylite-6.0/fuzzylite";FL_BACKTRACE;CMAKE_INTDIR="Release"</PreprocessorDefinitions>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);NDEBUG;FL_IMPORT_LIBRARY;FL_BUILD_PATH="D:/git/project/HapticGamesTouchX/app/external/fuzzylite";FL_BACKTRACE;CMAKE_INTDIR="Release"</PreprocessorDefinitions>
       <ObjectFileName>$(IntDir)</ObjectFileName>
       <DebugInformationFormat>
       </DebugInformationFormat>
     </ClCompile>
     <ResourceCompile>
-      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;NDEBUG;FL_IMPORT_LIBRARY;FL_BUILD_PATH=\"C:/Users/fadva/Desktop/fuzzylite-6.0/fuzzylite\";FL_BACKTRACE;CMAKE_INTDIR=\"Release\"</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>C:\Users\fadva\Desktop\fuzzylite-6.0\fuzzylite\.;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;NDEBUG;FL_IMPORT_LIBRARY;FL_BUILD_PATH=\"D:/git/project/HapticGamesTouchX/app/external/fuzzylite\";FL_BACKTRACE;CMAKE_INTDIR=\"Release\"</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>D:\git\project\HapticGamesTouchX\app\external\fuzzylite\.;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ResourceCompile>
     <Midl>
-      <AdditionalIncludeDirectories>C:\Users\fadva\Desktop\fuzzylite-6.0\fuzzylite\.;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>D:\git\project\HapticGamesTouchX\app\external\fuzzylite\.;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
       <HeaderFileName>%(Filename).h</HeaderFileName>
       <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
@@ -162,8 +162,8 @@
       <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
       <GenerateDebugInformation>false</GenerateDebugInformation>
       <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
-      <ImportLibrary>C:/Users/fadva/Desktop/fuzzylite-6.0/fuzzylite/build/bin/Release/tmp-fuzzylite-tests.lib</ImportLibrary>
-      <ProgramDataBaseFile>C:/Users/fadva/Desktop/fuzzylite-6.0/fuzzylite/build/bin/Release/fuzzylite-tests.pdb</ProgramDataBaseFile>
+      <ImportLibrary>D:/git/project/HapticGamesTouchX/app/external/fuzzylite/build/bin/Release/tmp-fuzzylite-tests.lib</ImportLibrary>
+      <ProgramDataBaseFile>D:/git/project/HapticGamesTouchX/app/external/fuzzylite/build/bin/Release/fuzzylite-tests.pdb</ProgramDataBaseFile>
       <SubSystem>Console</SubSystem>
     </Link>
     <ProjectReference>
@@ -172,7 +172,7 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">
     <ClCompile>
-      <AdditionalIncludeDirectories>C:\Users\fadva\Desktop\fuzzylite-6.0\fuzzylite\.;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>D:\git\project\HapticGamesTouchX\app\external\fuzzylite\.;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
       <DisableSpecificWarnings>4130</DisableSpecificWarnings>
       <ExceptionHandling>Sync</ExceptionHandling>
@@ -182,17 +182,17 @@
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
       <UseFullPaths>false</UseFullPaths>
       <WarningLevel>Level4</WarningLevel>
-      <PreprocessorDefinitions>%(PreprocessorDefinitions);NDEBUG;FL_IMPORT_LIBRARY;FL_BUILD_PATH="C:/Users/fadva/Desktop/fuzzylite-6.0/fuzzylite";FL_BACKTRACE;CMAKE_INTDIR="MinSizeRel"</PreprocessorDefinitions>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);NDEBUG;FL_IMPORT_LIBRARY;FL_BUILD_PATH="D:/git/project/HapticGamesTouchX/app/external/fuzzylite";FL_BACKTRACE;CMAKE_INTDIR="MinSizeRel"</PreprocessorDefinitions>
       <ObjectFileName>$(IntDir)</ObjectFileName>
       <DebugInformationFormat>
       </DebugInformationFormat>
     </ClCompile>
     <ResourceCompile>
-      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;NDEBUG;FL_IMPORT_LIBRARY;FL_BUILD_PATH=\"C:/Users/fadva/Desktop/fuzzylite-6.0/fuzzylite\";FL_BACKTRACE;CMAKE_INTDIR=\"MinSizeRel\"</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>C:\Users\fadva\Desktop\fuzzylite-6.0\fuzzylite\.;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;NDEBUG;FL_IMPORT_LIBRARY;FL_BUILD_PATH=\"D:/git/project/HapticGamesTouchX/app/external/fuzzylite\";FL_BACKTRACE;CMAKE_INTDIR=\"MinSizeRel\"</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>D:\git\project\HapticGamesTouchX\app\external\fuzzylite\.;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ResourceCompile>
     <Midl>
-      <AdditionalIncludeDirectories>C:\Users\fadva\Desktop\fuzzylite-6.0\fuzzylite\.;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>D:\git\project\HapticGamesTouchX\app\external\fuzzylite\.;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
       <HeaderFileName>%(Filename).h</HeaderFileName>
       <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
@@ -205,8 +205,8 @@
       <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
       <GenerateDebugInformation>false</GenerateDebugInformation>
       <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
-      <ImportLibrary>C:/Users/fadva/Desktop/fuzzylite-6.0/fuzzylite/build/bin/MinSizeRel/tmp-fuzzylite-tests.lib</ImportLibrary>
-      <ProgramDataBaseFile>C:/Users/fadva/Desktop/fuzzylite-6.0/fuzzylite/build/bin/MinSizeRel/fuzzylite-tests.pdb</ProgramDataBaseFile>
+      <ImportLibrary>D:/git/project/HapticGamesTouchX/app/external/fuzzylite/build/bin/MinSizeRel/tmp-fuzzylite-tests.lib</ImportLibrary>
+      <ProgramDataBaseFile>D:/git/project/HapticGamesTouchX/app/external/fuzzylite/build/bin/MinSizeRel/fuzzylite-tests.pdb</ProgramDataBaseFile>
       <SubSystem>Console</SubSystem>
     </Link>
     <ProjectReference>
@@ -215,7 +215,7 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">
     <ClCompile>
-      <AdditionalIncludeDirectories>C:\Users\fadva\Desktop\fuzzylite-6.0\fuzzylite\.;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>D:\git\project\HapticGamesTouchX\app\external\fuzzylite\.;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
       <DisableSpecificWarnings>4130</DisableSpecificWarnings>
@@ -226,15 +226,15 @@
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
       <UseFullPaths>false</UseFullPaths>
       <WarningLevel>Level4</WarningLevel>
-      <PreprocessorDefinitions>%(PreprocessorDefinitions);NDEBUG;FL_IMPORT_LIBRARY;FL_BUILD_PATH="C:/Users/fadva/Desktop/fuzzylite-6.0/fuzzylite";FL_BACKTRACE;CMAKE_INTDIR="RelWithDebInfo"</PreprocessorDefinitions>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);NDEBUG;FL_IMPORT_LIBRARY;FL_BUILD_PATH="D:/git/project/HapticGamesTouchX/app/external/fuzzylite";FL_BACKTRACE;CMAKE_INTDIR="RelWithDebInfo"</PreprocessorDefinitions>
       <ObjectFileName>$(IntDir)</ObjectFileName>
     </ClCompile>
     <ResourceCompile>
-      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;NDEBUG;FL_IMPORT_LIBRARY;FL_BUILD_PATH=\"C:/Users/fadva/Desktop/fuzzylite-6.0/fuzzylite\";FL_BACKTRACE;CMAKE_INTDIR=\"RelWithDebInfo\"</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>C:\Users\fadva\Desktop\fuzzylite-6.0\fuzzylite\.;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;NDEBUG;FL_IMPORT_LIBRARY;FL_BUILD_PATH=\"D:/git/project/HapticGamesTouchX/app/external/fuzzylite\";FL_BACKTRACE;CMAKE_INTDIR=\"RelWithDebInfo\"</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>D:\git\project\HapticGamesTouchX\app\external\fuzzylite\.;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ResourceCompile>
     <Midl>
-      <AdditionalIncludeDirectories>C:\Users\fadva\Desktop\fuzzylite-6.0\fuzzylite\.;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>D:\git\project\HapticGamesTouchX\app\external\fuzzylite\.;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
       <HeaderFileName>%(Filename).h</HeaderFileName>
       <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
@@ -247,8 +247,8 @@
       <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
-      <ImportLibrary>C:/Users/fadva/Desktop/fuzzylite-6.0/fuzzylite/build/bin/RelWithDebInfo/tmp-fuzzylite-tests.lib</ImportLibrary>
-      <ProgramDataBaseFile>C:/Users/fadva/Desktop/fuzzylite-6.0/fuzzylite/build/bin/RelWithDebInfo/fuzzylite-tests.pdb</ProgramDataBaseFile>
+      <ImportLibrary>D:/git/project/HapticGamesTouchX/app/external/fuzzylite/build/bin/RelWithDebInfo/tmp-fuzzylite-tests.lib</ImportLibrary>
+      <ProgramDataBaseFile>D:/git/project/HapticGamesTouchX/app/external/fuzzylite/build/bin/RelWithDebInfo/fuzzylite-tests.pdb</ProgramDataBaseFile>
       <SubSystem>Console</SubSystem>
     </Link>
     <ProjectReference>
@@ -256,11 +256,11 @@
     </ProjectReference>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <CustomBuild Include="C:\Users\fadva\Desktop\fuzzylite-6.0\fuzzylite\CMakeLists.txt">
+    <CustomBuild Include="D:\git\project\HapticGamesTouchX\app\external\fuzzylite\CMakeLists.txt">
       <UseUtf8Encoding>Always</UseUtf8Encoding>
-      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Building Custom Rule C:/Users/fadva/Desktop/fuzzylite-6.0/fuzzylite/CMakeLists.txt</Message>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Building Custom Rule D:/git/project/HapticGamesTouchX/app/external/fuzzylite/CMakeLists.txt</Message>
       <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">setlocal
-"C:\Program Files\CMake\bin\cmake.exe" -SC:/Users/fadva/Desktop/fuzzylite-6.0/fuzzylite -BC:/Users/fadva/Desktop/fuzzylite-6.0/fuzzylite/build --check-stamp-file C:/Users/fadva/Desktop/fuzzylite-6.0/fuzzylite/build/CMakeFiles/generate.stamp
+"C:\Program Files\CMake\bin\cmake.exe" -SD:/git/project/HapticGamesTouchX/app/external/fuzzylite -BD:/git/project/HapticGamesTouchX/app/external/fuzzylite/build --check-stamp-file D:/git/project/HapticGamesTouchX/app/external/fuzzylite/build/CMakeFiles/generate.stamp
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -268,12 +268,12 @@ endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
 exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
-      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Program Files\CMake\share\cmake-3.24\Modules\CMakeCXXCompiler.cmake.in;C:\Program Files\CMake\share\cmake-3.24\Modules\CMakeCXXCompilerABI.cpp;C:\Program Files\CMake\share\cmake-3.24\Modules\CMakeCXXInformation.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\CMakeCommonLanguageInclude.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\CMakeCompilerIdDetection.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\CMakeDetermineCXXCompiler.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\CMakeDetermineCompileFeatures.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\CMakeDetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\CMakeDetermineCompilerABI.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\CMakeDetermineCompilerId.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\CMakeDetermineRCCompiler.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\CMakeDetermineSystem.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\CMakeFindBinUtils.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\CMakeGenericSystem.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\CMakeInitializeConfigs.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\CMakeLanguageInformation.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\CMakeParseImplicitIncludeInfo.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\CMakeParseImplicitLinkInfo.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\CMakeParseLibraryArchitecture.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\CMakeRCCompiler.cmake.in;C:\Program Files\CMake\share\cmake-3.24\Modules\CMakeRCInformation.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\CMakeSystem.cmake.in;C:\Program Files\CMake\share\cmake-3.24\Modules\CMakeSystemSpecificInformation.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\CMakeSystemSpecificInitialize.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\CMakeTestCXXCompiler.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\CMakeTestCompilerCommon.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\CMakeTestRCCompiler.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\Compiler\ADSP-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\Compiler\ARMCC-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\Compiler\ARMClang-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\Compiler\AppleClang-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\Compiler\Borland-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\Compiler\CMakeCommonCompilerMacros.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\Compiler\Clang-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\Compiler\Clang-DetermineCompilerInternal.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\Compiler\Comeau-CXX-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\Compiler\Compaq-CXX-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\Compiler\Cray-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\Compiler\Embarcadero-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\Compiler\Fujitsu-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\Compiler\FujitsuClang-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\Compiler\GHS-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\Compiler\GNU-CXX-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\Compiler\HP-CXX-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\Compiler\IAR-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\Compiler\IBMCPP-CXX-DetermineVersionInternal.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\Compiler\IBMClang-CXX-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\Compiler\Intel-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\Compiler\IntelLLVM-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\Compiler\LCC-CXX-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\Compiler\MSVC-CXX.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\Compiler\MSVC-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\Compiler\MSVC.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\Compiler\NVHPC-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\Compiler\NVIDIA-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\Compiler\OpenWatcom-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\Compiler\PGI-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\Compiler\PathScale-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\Compiler\SCO-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\Compiler\SunPro-CXX-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\Compiler\TI-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\Compiler\VisualAge-CXX-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\Compiler\Watcom-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\Compiler\XL-CXX-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\Compiler\XLClang-CXX-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\Compiler\zOS-CXX-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\CompilerId\VS-10.vcxproj.in;C:\Program Files\CMake\share\cmake-3.24\Modules\Internal\FeatureTesting.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\Platform\Windows-Determine-CXX.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\Platform\Windows-MSVC-CXX.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\Platform\Windows-MSVC.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\Platform\Windows.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\Platform\WindowsPaths.cmake;C:\Users\fadva\Desktop\fuzzylite-6.0\fuzzylite\build\CMakeFiles\3.24.3\CMakeCXXCompiler.cmake;C:\Users\fadva\Desktop\fuzzylite-6.0\fuzzylite\build\CMakeFiles\3.24.3\CMakeRCCompiler.cmake;C:\Users\fadva\Desktop\fuzzylite-6.0\fuzzylite\build\CMakeFiles\3.24.3\CMakeSystem.cmake;C:\Users\fadva\Desktop\fuzzylite-6.0\fuzzylite\fuzzylite.pc.in;%(AdditionalInputs)</AdditionalInputs>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Users\fadva\Desktop\fuzzylite-6.0\fuzzylite\build\CMakeFiles\generate.stamp</Outputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Program Files\CMake\share\cmake-3.24\Modules\CMakeCXXCompiler.cmake.in;C:\Program Files\CMake\share\cmake-3.24\Modules\CMakeCXXCompilerABI.cpp;C:\Program Files\CMake\share\cmake-3.24\Modules\CMakeCXXInformation.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\CMakeCommonLanguageInclude.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\CMakeCompilerIdDetection.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\CMakeDetermineCXXCompiler.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\CMakeDetermineCompileFeatures.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\CMakeDetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\CMakeDetermineCompilerABI.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\CMakeDetermineCompilerId.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\CMakeDetermineRCCompiler.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\CMakeDetermineSystem.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\CMakeFindBinUtils.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\CMakeGenericSystem.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\CMakeInitializeConfigs.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\CMakeLanguageInformation.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\CMakeParseImplicitIncludeInfo.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\CMakeParseImplicitLinkInfo.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\CMakeParseLibraryArchitecture.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\CMakeRCCompiler.cmake.in;C:\Program Files\CMake\share\cmake-3.24\Modules\CMakeRCInformation.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\CMakeSystem.cmake.in;C:\Program Files\CMake\share\cmake-3.24\Modules\CMakeSystemSpecificInformation.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\CMakeSystemSpecificInitialize.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\CMakeTestCXXCompiler.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\CMakeTestCompilerCommon.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\CMakeTestRCCompiler.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\Compiler\ADSP-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\Compiler\ARMCC-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\Compiler\ARMClang-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\Compiler\AppleClang-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\Compiler\Borland-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\Compiler\CMakeCommonCompilerMacros.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\Compiler\Clang-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\Compiler\Clang-DetermineCompilerInternal.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\Compiler\Comeau-CXX-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\Compiler\Compaq-CXX-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\Compiler\Cray-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\Compiler\Embarcadero-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\Compiler\Fujitsu-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\Compiler\FujitsuClang-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\Compiler\GHS-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\Compiler\GNU-CXX-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\Compiler\HP-CXX-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\Compiler\IAR-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\Compiler\IBMCPP-CXX-DetermineVersionInternal.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\Compiler\IBMClang-CXX-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\Compiler\Intel-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\Compiler\IntelLLVM-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\Compiler\LCC-CXX-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\Compiler\MSVC-CXX.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\Compiler\MSVC-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\Compiler\MSVC.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\Compiler\NVHPC-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\Compiler\NVIDIA-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\Compiler\OpenWatcom-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\Compiler\PGI-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\Compiler\PathScale-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\Compiler\SCO-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\Compiler\SunPro-CXX-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\Compiler\TI-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\Compiler\VisualAge-CXX-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\Compiler\Watcom-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\Compiler\XL-CXX-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\Compiler\XLClang-CXX-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\Compiler\zOS-CXX-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\CompilerId\VS-10.vcxproj.in;C:\Program Files\CMake\share\cmake-3.24\Modules\Internal\FeatureTesting.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\Platform\Windows-Determine-CXX.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\Platform\Windows-MSVC-CXX.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\Platform\Windows-MSVC.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\Platform\Windows.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\Platform\WindowsPaths.cmake;D:\git\project\HapticGamesTouchX\app\external\fuzzylite\build\CMakeFiles\3.24.3\CMakeCXXCompiler.cmake;D:\git\project\HapticGamesTouchX\app\external\fuzzylite\build\CMakeFiles\3.24.3\CMakeRCCompiler.cmake;D:\git\project\HapticGamesTouchX\app\external\fuzzylite\build\CMakeFiles\3.24.3\CMakeSystem.cmake;D:\git\project\HapticGamesTouchX\app\external\fuzzylite\fuzzylite.pc.in;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">D:\git\project\HapticGamesTouchX\app\external\fuzzylite\build\CMakeFiles\generate.stamp</Outputs>
       <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</LinkObjects>
-      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Building Custom Rule C:/Users/fadva/Desktop/fuzzylite-6.0/fuzzylite/CMakeLists.txt</Message>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Building Custom Rule D:/git/project/HapticGamesTouchX/app/external/fuzzylite/CMakeLists.txt</Message>
       <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">setlocal
-"C:\Program Files\CMake\bin\cmake.exe" -SC:/Users/fadva/Desktop/fuzzylite-6.0/fuzzylite -BC:/Users/fadva/Desktop/fuzzylite-6.0/fuzzylite/build --check-stamp-file C:/Users/fadva/Desktop/fuzzylite-6.0/fuzzylite/build/CMakeFiles/generate.stamp
+"C:\Program Files\CMake\bin\cmake.exe" -SD:/git/project/HapticGamesTouchX/app/external/fuzzylite -BD:/git/project/HapticGamesTouchX/app/external/fuzzylite/build --check-stamp-file D:/git/project/HapticGamesTouchX/app/external/fuzzylite/build/CMakeFiles/generate.stamp
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -281,12 +281,12 @@ endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
 exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
-      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\Program Files\CMake\share\cmake-3.24\Modules\CMakeCXXCompiler.cmake.in;C:\Program Files\CMake\share\cmake-3.24\Modules\CMakeCXXCompilerABI.cpp;C:\Program Files\CMake\share\cmake-3.24\Modules\CMakeCXXInformation.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\CMakeCommonLanguageInclude.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\CMakeCompilerIdDetection.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\CMakeDetermineCXXCompiler.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\CMakeDetermineCompileFeatures.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\CMakeDetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\CMakeDetermineCompilerABI.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\CMakeDetermineCompilerId.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\CMakeDetermineRCCompiler.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\CMakeDetermineSystem.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\CMakeFindBinUtils.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\CMakeGenericSystem.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\CMakeInitializeConfigs.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\CMakeLanguageInformation.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\CMakeParseImplicitIncludeInfo.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\CMakeParseImplicitLinkInfo.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\CMakeParseLibraryArchitecture.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\CMakeRCCompiler.cmake.in;C:\Program Files\CMake\share\cmake-3.24\Modules\CMakeRCInformation.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\CMakeSystem.cmake.in;C:\Program Files\CMake\share\cmake-3.24\Modules\CMakeSystemSpecificInformation.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\CMakeSystemSpecificInitialize.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\CMakeTestCXXCompiler.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\CMakeTestCompilerCommon.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\CMakeTestRCCompiler.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\Compiler\ADSP-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\Compiler\ARMCC-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\Compiler\ARMClang-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\Compiler\AppleClang-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\Compiler\Borland-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\Compiler\CMakeCommonCompilerMacros.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\Compiler\Clang-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\Compiler\Clang-DetermineCompilerInternal.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\Compiler\Comeau-CXX-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\Compiler\Compaq-CXX-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\Compiler\Cray-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\Compiler\Embarcadero-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\Compiler\Fujitsu-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\Compiler\FujitsuClang-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\Compiler\GHS-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\Compiler\GNU-CXX-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\Compiler\HP-CXX-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\Compiler\IAR-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\Compiler\IBMCPP-CXX-DetermineVersionInternal.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\Compiler\IBMClang-CXX-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\Compiler\Intel-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\Compiler\IntelLLVM-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\Compiler\LCC-CXX-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\Compiler\MSVC-CXX.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\Compiler\MSVC-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\Compiler\MSVC.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\Compiler\NVHPC-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\Compiler\NVIDIA-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\Compiler\OpenWatcom-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\Compiler\PGI-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\Compiler\PathScale-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\Compiler\SCO-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\Compiler\SunPro-CXX-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\Compiler\TI-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\Compiler\VisualAge-CXX-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\Compiler\Watcom-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\Compiler\XL-CXX-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\Compiler\XLClang-CXX-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\Compiler\zOS-CXX-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\CompilerId\VS-10.vcxproj.in;C:\Program Files\CMake\share\cmake-3.24\Modules\Internal\FeatureTesting.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\Platform\Windows-Determine-CXX.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\Platform\Windows-MSVC-CXX.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\Platform\Windows-MSVC.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\Platform\Windows.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\Platform\WindowsPaths.cmake;C:\Users\fadva\Desktop\fuzzylite-6.0\fuzzylite\build\CMakeFiles\3.24.3\CMakeCXXCompiler.cmake;C:\Users\fadva\Desktop\fuzzylite-6.0\fuzzylite\build\CMakeFiles\3.24.3\CMakeRCCompiler.cmake;C:\Users\fadva\Desktop\fuzzylite-6.0\fuzzylite\build\CMakeFiles\3.24.3\CMakeSystem.cmake;C:\Users\fadva\Desktop\fuzzylite-6.0\fuzzylite\fuzzylite.pc.in;%(AdditionalInputs)</AdditionalInputs>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\Users\fadva\Desktop\fuzzylite-6.0\fuzzylite\build\CMakeFiles\generate.stamp</Outputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\Program Files\CMake\share\cmake-3.24\Modules\CMakeCXXCompiler.cmake.in;C:\Program Files\CMake\share\cmake-3.24\Modules\CMakeCXXCompilerABI.cpp;C:\Program Files\CMake\share\cmake-3.24\Modules\CMakeCXXInformation.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\CMakeCommonLanguageInclude.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\CMakeCompilerIdDetection.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\CMakeDetermineCXXCompiler.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\CMakeDetermineCompileFeatures.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\CMakeDetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\CMakeDetermineCompilerABI.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\CMakeDetermineCompilerId.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\CMakeDetermineRCCompiler.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\CMakeDetermineSystem.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\CMakeFindBinUtils.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\CMakeGenericSystem.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\CMakeInitializeConfigs.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\CMakeLanguageInformation.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\CMakeParseImplicitIncludeInfo.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\CMakeParseImplicitLinkInfo.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\CMakeParseLibraryArchitecture.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\CMakeRCCompiler.cmake.in;C:\Program Files\CMake\share\cmake-3.24\Modules\CMakeRCInformation.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\CMakeSystem.cmake.in;C:\Program Files\CMake\share\cmake-3.24\Modules\CMakeSystemSpecificInformation.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\CMakeSystemSpecificInitialize.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\CMakeTestCXXCompiler.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\CMakeTestCompilerCommon.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\CMakeTestRCCompiler.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\Compiler\ADSP-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\Compiler\ARMCC-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\Compiler\ARMClang-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\Compiler\AppleClang-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\Compiler\Borland-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\Compiler\CMakeCommonCompilerMacros.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\Compiler\Clang-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\Compiler\Clang-DetermineCompilerInternal.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\Compiler\Comeau-CXX-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\Compiler\Compaq-CXX-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\Compiler\Cray-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\Compiler\Embarcadero-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\Compiler\Fujitsu-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\Compiler\FujitsuClang-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\Compiler\GHS-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\Compiler\GNU-CXX-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\Compiler\HP-CXX-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\Compiler\IAR-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\Compiler\IBMCPP-CXX-DetermineVersionInternal.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\Compiler\IBMClang-CXX-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\Compiler\Intel-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\Compiler\IntelLLVM-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\Compiler\LCC-CXX-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\Compiler\MSVC-CXX.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\Compiler\MSVC-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\Compiler\MSVC.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\Compiler\NVHPC-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\Compiler\NVIDIA-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\Compiler\OpenWatcom-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\Compiler\PGI-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\Compiler\PathScale-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\Compiler\SCO-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\Compiler\SunPro-CXX-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\Compiler\TI-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\Compiler\VisualAge-CXX-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\Compiler\Watcom-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\Compiler\XL-CXX-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\Compiler\XLClang-CXX-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\Compiler\zOS-CXX-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\CompilerId\VS-10.vcxproj.in;C:\Program Files\CMake\share\cmake-3.24\Modules\Internal\FeatureTesting.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\Platform\Windows-Determine-CXX.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\Platform\Windows-MSVC-CXX.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\Platform\Windows-MSVC.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\Platform\Windows.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\Platform\WindowsPaths.cmake;D:\git\project\HapticGamesTouchX\app\external\fuzzylite\build\CMakeFiles\3.24.3\CMakeCXXCompiler.cmake;D:\git\project\HapticGamesTouchX\app\external\fuzzylite\build\CMakeFiles\3.24.3\CMakeRCCompiler.cmake;D:\git\project\HapticGamesTouchX\app\external\fuzzylite\build\CMakeFiles\3.24.3\CMakeSystem.cmake;D:\git\project\HapticGamesTouchX\app\external\fuzzylite\fuzzylite.pc.in;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">D:\git\project\HapticGamesTouchX\app\external\fuzzylite\build\CMakeFiles\generate.stamp</Outputs>
       <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</LinkObjects>
-      <Message Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">Building Custom Rule C:/Users/fadva/Desktop/fuzzylite-6.0/fuzzylite/CMakeLists.txt</Message>
+      <Message Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">Building Custom Rule D:/git/project/HapticGamesTouchX/app/external/fuzzylite/CMakeLists.txt</Message>
       <Command Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">setlocal
-"C:\Program Files\CMake\bin\cmake.exe" -SC:/Users/fadva/Desktop/fuzzylite-6.0/fuzzylite -BC:/Users/fadva/Desktop/fuzzylite-6.0/fuzzylite/build --check-stamp-file C:/Users/fadva/Desktop/fuzzylite-6.0/fuzzylite/build/CMakeFiles/generate.stamp
+"C:\Program Files\CMake\bin\cmake.exe" -SD:/git/project/HapticGamesTouchX/app/external/fuzzylite -BD:/git/project/HapticGamesTouchX/app/external/fuzzylite/build --check-stamp-file D:/git/project/HapticGamesTouchX/app/external/fuzzylite/build/CMakeFiles/generate.stamp
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -294,12 +294,12 @@ endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
 exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
-      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:\Program Files\CMake\share\cmake-3.24\Modules\CMakeCXXCompiler.cmake.in;C:\Program Files\CMake\share\cmake-3.24\Modules\CMakeCXXCompilerABI.cpp;C:\Program Files\CMake\share\cmake-3.24\Modules\CMakeCXXInformation.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\CMakeCommonLanguageInclude.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\CMakeCompilerIdDetection.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\CMakeDetermineCXXCompiler.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\CMakeDetermineCompileFeatures.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\CMakeDetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\CMakeDetermineCompilerABI.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\CMakeDetermineCompilerId.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\CMakeDetermineRCCompiler.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\CMakeDetermineSystem.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\CMakeFindBinUtils.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\CMakeGenericSystem.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\CMakeInitializeConfigs.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\CMakeLanguageInformation.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\CMakeParseImplicitIncludeInfo.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\CMakeParseImplicitLinkInfo.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\CMakeParseLibraryArchitecture.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\CMakeRCCompiler.cmake.in;C:\Program Files\CMake\share\cmake-3.24\Modules\CMakeRCInformation.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\CMakeSystem.cmake.in;C:\Program Files\CMake\share\cmake-3.24\Modules\CMakeSystemSpecificInformation.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\CMakeSystemSpecificInitialize.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\CMakeTestCXXCompiler.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\CMakeTestCompilerCommon.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\CMakeTestRCCompiler.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\Compiler\ADSP-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\Compiler\ARMCC-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\Compiler\ARMClang-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\Compiler\AppleClang-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\Compiler\Borland-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\Compiler\CMakeCommonCompilerMacros.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\Compiler\Clang-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\Compiler\Clang-DetermineCompilerInternal.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\Compiler\Comeau-CXX-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\Compiler\Compaq-CXX-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\Compiler\Cray-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\Compiler\Embarcadero-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\Compiler\Fujitsu-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\Compiler\FujitsuClang-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\Compiler\GHS-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\Compiler\GNU-CXX-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\Compiler\HP-CXX-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\Compiler\IAR-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\Compiler\IBMCPP-CXX-DetermineVersionInternal.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\Compiler\IBMClang-CXX-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\Compiler\Intel-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\Compiler\IntelLLVM-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\Compiler\LCC-CXX-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\Compiler\MSVC-CXX.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\Compiler\MSVC-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\Compiler\MSVC.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\Compiler\NVHPC-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\Compiler\NVIDIA-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\Compiler\OpenWatcom-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\Compiler\PGI-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\Compiler\PathScale-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\Compiler\SCO-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\Compiler\SunPro-CXX-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\Compiler\TI-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\Compiler\VisualAge-CXX-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\Compiler\Watcom-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\Compiler\XL-CXX-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\Compiler\XLClang-CXX-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\Compiler\zOS-CXX-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\CompilerId\VS-10.vcxproj.in;C:\Program Files\CMake\share\cmake-3.24\Modules\Internal\FeatureTesting.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\Platform\Windows-Determine-CXX.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\Platform\Windows-MSVC-CXX.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\Platform\Windows-MSVC.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\Platform\Windows.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\Platform\WindowsPaths.cmake;C:\Users\fadva\Desktop\fuzzylite-6.0\fuzzylite\build\CMakeFiles\3.24.3\CMakeCXXCompiler.cmake;C:\Users\fadva\Desktop\fuzzylite-6.0\fuzzylite\build\CMakeFiles\3.24.3\CMakeRCCompiler.cmake;C:\Users\fadva\Desktop\fuzzylite-6.0\fuzzylite\build\CMakeFiles\3.24.3\CMakeSystem.cmake;C:\Users\fadva\Desktop\fuzzylite-6.0\fuzzylite\fuzzylite.pc.in;%(AdditionalInputs)</AdditionalInputs>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:\Users\fadva\Desktop\fuzzylite-6.0\fuzzylite\build\CMakeFiles\generate.stamp</Outputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:\Program Files\CMake\share\cmake-3.24\Modules\CMakeCXXCompiler.cmake.in;C:\Program Files\CMake\share\cmake-3.24\Modules\CMakeCXXCompilerABI.cpp;C:\Program Files\CMake\share\cmake-3.24\Modules\CMakeCXXInformation.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\CMakeCommonLanguageInclude.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\CMakeCompilerIdDetection.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\CMakeDetermineCXXCompiler.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\CMakeDetermineCompileFeatures.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\CMakeDetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\CMakeDetermineCompilerABI.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\CMakeDetermineCompilerId.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\CMakeDetermineRCCompiler.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\CMakeDetermineSystem.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\CMakeFindBinUtils.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\CMakeGenericSystem.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\CMakeInitializeConfigs.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\CMakeLanguageInformation.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\CMakeParseImplicitIncludeInfo.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\CMakeParseImplicitLinkInfo.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\CMakeParseLibraryArchitecture.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\CMakeRCCompiler.cmake.in;C:\Program Files\CMake\share\cmake-3.24\Modules\CMakeRCInformation.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\CMakeSystem.cmake.in;C:\Program Files\CMake\share\cmake-3.24\Modules\CMakeSystemSpecificInformation.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\CMakeSystemSpecificInitialize.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\CMakeTestCXXCompiler.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\CMakeTestCompilerCommon.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\CMakeTestRCCompiler.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\Compiler\ADSP-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\Compiler\ARMCC-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\Compiler\ARMClang-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\Compiler\AppleClang-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\Compiler\Borland-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\Compiler\CMakeCommonCompilerMacros.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\Compiler\Clang-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\Compiler\Clang-DetermineCompilerInternal.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\Compiler\Comeau-CXX-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\Compiler\Compaq-CXX-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\Compiler\Cray-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\Compiler\Embarcadero-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\Compiler\Fujitsu-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\Compiler\FujitsuClang-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\Compiler\GHS-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\Compiler\GNU-CXX-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\Compiler\HP-CXX-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\Compiler\IAR-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\Compiler\IBMCPP-CXX-DetermineVersionInternal.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\Compiler\IBMClang-CXX-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\Compiler\Intel-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\Compiler\IntelLLVM-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\Compiler\LCC-CXX-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\Compiler\MSVC-CXX.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\Compiler\MSVC-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\Compiler\MSVC.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\Compiler\NVHPC-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\Compiler\NVIDIA-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\Compiler\OpenWatcom-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\Compiler\PGI-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\Compiler\PathScale-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\Compiler\SCO-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\Compiler\SunPro-CXX-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\Compiler\TI-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\Compiler\VisualAge-CXX-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\Compiler\Watcom-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\Compiler\XL-CXX-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\Compiler\XLClang-CXX-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\Compiler\zOS-CXX-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\CompilerId\VS-10.vcxproj.in;C:\Program Files\CMake\share\cmake-3.24\Modules\Internal\FeatureTesting.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\Platform\Windows-Determine-CXX.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\Platform\Windows-MSVC-CXX.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\Platform\Windows-MSVC.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\Platform\Windows.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\Platform\WindowsPaths.cmake;D:\git\project\HapticGamesTouchX\app\external\fuzzylite\build\CMakeFiles\3.24.3\CMakeCXXCompiler.cmake;D:\git\project\HapticGamesTouchX\app\external\fuzzylite\build\CMakeFiles\3.24.3\CMakeRCCompiler.cmake;D:\git\project\HapticGamesTouchX\app\external\fuzzylite\build\CMakeFiles\3.24.3\CMakeSystem.cmake;D:\git\project\HapticGamesTouchX\app\external\fuzzylite\fuzzylite.pc.in;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">D:\git\project\HapticGamesTouchX\app\external\fuzzylite\build\CMakeFiles\generate.stamp</Outputs>
       <LinkObjects Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">false</LinkObjects>
-      <Message Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">Building Custom Rule C:/Users/fadva/Desktop/fuzzylite-6.0/fuzzylite/CMakeLists.txt</Message>
+      <Message Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">Building Custom Rule D:/git/project/HapticGamesTouchX/app/external/fuzzylite/CMakeLists.txt</Message>
       <Command Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">setlocal
-"C:\Program Files\CMake\bin\cmake.exe" -SC:/Users/fadva/Desktop/fuzzylite-6.0/fuzzylite -BC:/Users/fadva/Desktop/fuzzylite-6.0/fuzzylite/build --check-stamp-file C:/Users/fadva/Desktop/fuzzylite-6.0/fuzzylite/build/CMakeFiles/generate.stamp
+"C:\Program Files\CMake\bin\cmake.exe" -SD:/git/project/HapticGamesTouchX/app/external/fuzzylite -BD:/git/project/HapticGamesTouchX/app/external/fuzzylite/build --check-stamp-file D:/git/project/HapticGamesTouchX/app/external/fuzzylite/build/CMakeFiles/generate.stamp
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
@@ -307,149 +307,149 @@ endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
 exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
-      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:\Program Files\CMake\share\cmake-3.24\Modules\CMakeCXXCompiler.cmake.in;C:\Program Files\CMake\share\cmake-3.24\Modules\CMakeCXXCompilerABI.cpp;C:\Program Files\CMake\share\cmake-3.24\Modules\CMakeCXXInformation.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\CMakeCommonLanguageInclude.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\CMakeCompilerIdDetection.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\CMakeDetermineCXXCompiler.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\CMakeDetermineCompileFeatures.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\CMakeDetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\CMakeDetermineCompilerABI.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\CMakeDetermineCompilerId.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\CMakeDetermineRCCompiler.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\CMakeDetermineSystem.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\CMakeFindBinUtils.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\CMakeGenericSystem.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\CMakeInitializeConfigs.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\CMakeLanguageInformation.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\CMakeParseImplicitIncludeInfo.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\CMakeParseImplicitLinkInfo.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\CMakeParseLibraryArchitecture.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\CMakeRCCompiler.cmake.in;C:\Program Files\CMake\share\cmake-3.24\Modules\CMakeRCInformation.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\CMakeSystem.cmake.in;C:\Program Files\CMake\share\cmake-3.24\Modules\CMakeSystemSpecificInformation.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\CMakeSystemSpecificInitialize.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\CMakeTestCXXCompiler.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\CMakeTestCompilerCommon.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\CMakeTestRCCompiler.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\Compiler\ADSP-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\Compiler\ARMCC-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\Compiler\ARMClang-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\Compiler\AppleClang-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\Compiler\Borland-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\Compiler\CMakeCommonCompilerMacros.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\Compiler\Clang-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\Compiler\Clang-DetermineCompilerInternal.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\Compiler\Comeau-CXX-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\Compiler\Compaq-CXX-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\Compiler\Cray-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\Compiler\Embarcadero-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\Compiler\Fujitsu-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\Compiler\FujitsuClang-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\Compiler\GHS-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\Compiler\GNU-CXX-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\Compiler\HP-CXX-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\Compiler\IAR-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\Compiler\IBMCPP-CXX-DetermineVersionInternal.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\Compiler\IBMClang-CXX-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\Compiler\Intel-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\Compiler\IntelLLVM-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\Compiler\LCC-CXX-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\Compiler\MSVC-CXX.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\Compiler\MSVC-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\Compiler\MSVC.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\Compiler\NVHPC-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\Compiler\NVIDIA-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\Compiler\OpenWatcom-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\Compiler\PGI-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\Compiler\PathScale-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\Compiler\SCO-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\Compiler\SunPro-CXX-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\Compiler\TI-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\Compiler\VisualAge-CXX-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\Compiler\Watcom-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\Compiler\XL-CXX-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\Compiler\XLClang-CXX-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\Compiler\zOS-CXX-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\CompilerId\VS-10.vcxproj.in;C:\Program Files\CMake\share\cmake-3.24\Modules\Internal\FeatureTesting.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\Platform\Windows-Determine-CXX.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\Platform\Windows-MSVC-CXX.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\Platform\Windows-MSVC.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\Platform\Windows.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\Platform\WindowsPaths.cmake;C:\Users\fadva\Desktop\fuzzylite-6.0\fuzzylite\build\CMakeFiles\3.24.3\CMakeCXXCompiler.cmake;C:\Users\fadva\Desktop\fuzzylite-6.0\fuzzylite\build\CMakeFiles\3.24.3\CMakeRCCompiler.cmake;C:\Users\fadva\Desktop\fuzzylite-6.0\fuzzylite\build\CMakeFiles\3.24.3\CMakeSystem.cmake;C:\Users\fadva\Desktop\fuzzylite-6.0\fuzzylite\fuzzylite.pc.in;%(AdditionalInputs)</AdditionalInputs>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:\Users\fadva\Desktop\fuzzylite-6.0\fuzzylite\build\CMakeFiles\generate.stamp</Outputs>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:\Program Files\CMake\share\cmake-3.24\Modules\CMakeCXXCompiler.cmake.in;C:\Program Files\CMake\share\cmake-3.24\Modules\CMakeCXXCompilerABI.cpp;C:\Program Files\CMake\share\cmake-3.24\Modules\CMakeCXXInformation.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\CMakeCommonLanguageInclude.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\CMakeCompilerIdDetection.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\CMakeDetermineCXXCompiler.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\CMakeDetermineCompileFeatures.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\CMakeDetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\CMakeDetermineCompilerABI.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\CMakeDetermineCompilerId.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\CMakeDetermineRCCompiler.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\CMakeDetermineSystem.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\CMakeFindBinUtils.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\CMakeGenericSystem.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\CMakeInitializeConfigs.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\CMakeLanguageInformation.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\CMakeParseImplicitIncludeInfo.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\CMakeParseImplicitLinkInfo.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\CMakeParseLibraryArchitecture.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\CMakeRCCompiler.cmake.in;C:\Program Files\CMake\share\cmake-3.24\Modules\CMakeRCInformation.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\CMakeSystem.cmake.in;C:\Program Files\CMake\share\cmake-3.24\Modules\CMakeSystemSpecificInformation.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\CMakeSystemSpecificInitialize.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\CMakeTestCXXCompiler.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\CMakeTestCompilerCommon.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\CMakeTestRCCompiler.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\Compiler\ADSP-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\Compiler\ARMCC-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\Compiler\ARMClang-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\Compiler\AppleClang-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\Compiler\Borland-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\Compiler\CMakeCommonCompilerMacros.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\Compiler\Clang-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\Compiler\Clang-DetermineCompilerInternal.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\Compiler\Comeau-CXX-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\Compiler\Compaq-CXX-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\Compiler\Cray-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\Compiler\Embarcadero-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\Compiler\Fujitsu-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\Compiler\FujitsuClang-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\Compiler\GHS-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\Compiler\GNU-CXX-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\Compiler\HP-CXX-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\Compiler\IAR-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\Compiler\IBMCPP-CXX-DetermineVersionInternal.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\Compiler\IBMClang-CXX-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\Compiler\Intel-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\Compiler\IntelLLVM-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\Compiler\LCC-CXX-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\Compiler\MSVC-CXX.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\Compiler\MSVC-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\Compiler\MSVC.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\Compiler\NVHPC-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\Compiler\NVIDIA-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\Compiler\OpenWatcom-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\Compiler\PGI-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\Compiler\PathScale-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\Compiler\SCO-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\Compiler\SunPro-CXX-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\Compiler\TI-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\Compiler\VisualAge-CXX-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\Compiler\Watcom-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\Compiler\XL-CXX-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\Compiler\XLClang-CXX-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\Compiler\zOS-CXX-DetermineCompiler.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\CompilerId\VS-10.vcxproj.in;C:\Program Files\CMake\share\cmake-3.24\Modules\Internal\FeatureTesting.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\Platform\Windows-Determine-CXX.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\Platform\Windows-MSVC-CXX.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\Platform\Windows-MSVC.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\Platform\Windows.cmake;C:\Program Files\CMake\share\cmake-3.24\Modules\Platform\WindowsPaths.cmake;D:\git\project\HapticGamesTouchX\app\external\fuzzylite\build\CMakeFiles\3.24.3\CMakeCXXCompiler.cmake;D:\git\project\HapticGamesTouchX\app\external\fuzzylite\build\CMakeFiles\3.24.3\CMakeRCCompiler.cmake;D:\git\project\HapticGamesTouchX\app\external\fuzzylite\build\CMakeFiles\3.24.3\CMakeSystem.cmake;D:\git\project\HapticGamesTouchX\app\external\fuzzylite\fuzzylite.pc.in;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">D:\git\project\HapticGamesTouchX\app\external\fuzzylite\build\CMakeFiles\generate.stamp</Outputs>
       <LinkObjects Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">false</LinkObjects>
     </CustomBuild>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="C:\Users\fadva\Desktop\fuzzylite-6.0\fuzzylite\fl\Benchmark.h" />
-    <ClInclude Include="C:\Users\fadva\Desktop\fuzzylite-6.0\fuzzylite\fl\Complexity.h" />
-    <ClInclude Include="C:\Users\fadva\Desktop\fuzzylite-6.0\fuzzylite\fl\Console.h" />
-    <ClInclude Include="C:\Users\fadva\Desktop\fuzzylite-6.0\fuzzylite\fl\activation\Activation.h" />
-    <ClInclude Include="C:\Users\fadva\Desktop\fuzzylite-6.0\fuzzylite\fl\activation\First.h" />
-    <ClInclude Include="C:\Users\fadva\Desktop\fuzzylite-6.0\fuzzylite\fl\activation\General.h" />
-    <ClInclude Include="C:\Users\fadva\Desktop\fuzzylite-6.0\fuzzylite\fl\activation\Highest.h" />
-    <ClInclude Include="C:\Users\fadva\Desktop\fuzzylite-6.0\fuzzylite\fl\activation\Last.h" />
-    <ClInclude Include="C:\Users\fadva\Desktop\fuzzylite-6.0\fuzzylite\fl\activation\Lowest.h" />
-    <ClInclude Include="C:\Users\fadva\Desktop\fuzzylite-6.0\fuzzylite\fl\activation\Proportional.h" />
-    <ClInclude Include="C:\Users\fadva\Desktop\fuzzylite-6.0\fuzzylite\fl\activation\Threshold.h" />
-    <ClInclude Include="C:\Users\fadva\Desktop\fuzzylite-6.0\fuzzylite\fl\defuzzifier\Bisector.h" />
-    <ClInclude Include="C:\Users\fadva\Desktop\fuzzylite-6.0\fuzzylite\fl\defuzzifier\Centroid.h" />
-    <ClInclude Include="C:\Users\fadva\Desktop\fuzzylite-6.0\fuzzylite\fl\defuzzifier\Defuzzifier.h" />
-    <ClInclude Include="C:\Users\fadva\Desktop\fuzzylite-6.0\fuzzylite\fl\defuzzifier\IntegralDefuzzifier.h" />
-    <ClInclude Include="C:\Users\fadva\Desktop\fuzzylite-6.0\fuzzylite\fl\defuzzifier\LargestOfMaximum.h" />
-    <ClInclude Include="C:\Users\fadva\Desktop\fuzzylite-6.0\fuzzylite\fl\defuzzifier\MeanOfMaximum.h" />
-    <ClInclude Include="C:\Users\fadva\Desktop\fuzzylite-6.0\fuzzylite\fl\defuzzifier\SmallestOfMaximum.h" />
-    <ClInclude Include="C:\Users\fadva\Desktop\fuzzylite-6.0\fuzzylite\fl\defuzzifier\WeightedAverage.h" />
-    <ClInclude Include="C:\Users\fadva\Desktop\fuzzylite-6.0\fuzzylite\fl\defuzzifier\WeightedAverageCustom.h" />
-    <ClInclude Include="C:\Users\fadva\Desktop\fuzzylite-6.0\fuzzylite\fl\defuzzifier\WeightedDefuzzifier.h" />
-    <ClInclude Include="C:\Users\fadva\Desktop\fuzzylite-6.0\fuzzylite\fl\defuzzifier\WeightedSum.h" />
-    <ClInclude Include="C:\Users\fadva\Desktop\fuzzylite-6.0\fuzzylite\fl\defuzzifier\WeightedSumCustom.h" />
-    <ClInclude Include="C:\Users\fadva\Desktop\fuzzylite-6.0\fuzzylite\fl\Engine.h" />
-    <ClInclude Include="C:\Users\fadva\Desktop\fuzzylite-6.0\fuzzylite\fl\Exception.h" />
-    <ClInclude Include="C:\Users\fadva\Desktop\fuzzylite-6.0\fuzzylite\fl\factory\ActivationFactory.h" />
-    <ClInclude Include="C:\Users\fadva\Desktop\fuzzylite-6.0\fuzzylite\fl\factory\CloningFactory.h" />
-    <ClInclude Include="C:\Users\fadva\Desktop\fuzzylite-6.0\fuzzylite\fl\factory\ConstructionFactory.h" />
-    <ClInclude Include="C:\Users\fadva\Desktop\fuzzylite-6.0\fuzzylite\fl\factory\DefuzzifierFactory.h" />
-    <ClInclude Include="C:\Users\fadva\Desktop\fuzzylite-6.0\fuzzylite\fl\factory\FactoryManager.h" />
-    <ClInclude Include="C:\Users\fadva\Desktop\fuzzylite-6.0\fuzzylite\fl\factory\FunctionFactory.h" />
-    <ClInclude Include="C:\Users\fadva\Desktop\fuzzylite-6.0\fuzzylite\fl\factory\HedgeFactory.h" />
-    <ClInclude Include="C:\Users\fadva\Desktop\fuzzylite-6.0\fuzzylite\fl\factory\SNormFactory.h" />
-    <ClInclude Include="C:\Users\fadva\Desktop\fuzzylite-6.0\fuzzylite\fl\factory\TermFactory.h" />
-    <ClInclude Include="C:\Users\fadva\Desktop\fuzzylite-6.0\fuzzylite\fl\factory\TNormFactory.h" />
-    <ClInclude Include="C:\Users\fadva\Desktop\fuzzylite-6.0\fuzzylite\fl\fuzzylite.h" />
-    <ClInclude Include="C:\Users\fadva\Desktop\fuzzylite-6.0\fuzzylite\fl\Headers.h" />
-    <ClInclude Include="C:\Users\fadva\Desktop\fuzzylite-6.0\fuzzylite\fl\hedge\Any.h" />
-    <ClInclude Include="C:\Users\fadva\Desktop\fuzzylite-6.0\fuzzylite\fl\hedge\Extremely.h" />
-    <ClInclude Include="C:\Users\fadva\Desktop\fuzzylite-6.0\fuzzylite\fl\hedge\Hedge.h" />
-    <ClInclude Include="C:\Users\fadva\Desktop\fuzzylite-6.0\fuzzylite\fl\hedge\HedgeFunction.h" />
-    <ClInclude Include="C:\Users\fadva\Desktop\fuzzylite-6.0\fuzzylite\fl\hedge\Not.h" />
-    <ClInclude Include="C:\Users\fadva\Desktop\fuzzylite-6.0\fuzzylite\fl\hedge\Seldom.h" />
-    <ClInclude Include="C:\Users\fadva\Desktop\fuzzylite-6.0\fuzzylite\fl\hedge\Somewhat.h" />
-    <ClInclude Include="C:\Users\fadva\Desktop\fuzzylite-6.0\fuzzylite\fl\hedge\Very.h" />
-    <ClInclude Include="C:\Users\fadva\Desktop\fuzzylite-6.0\fuzzylite\fl\imex\CppExporter.h" />
-    <ClInclude Include="C:\Users\fadva\Desktop\fuzzylite-6.0\fuzzylite\fl\imex\Exporter.h" />
-    <ClInclude Include="C:\Users\fadva\Desktop\fuzzylite-6.0\fuzzylite\fl\imex\FclExporter.h" />
-    <ClInclude Include="C:\Users\fadva\Desktop\fuzzylite-6.0\fuzzylite\fl\imex\FclImporter.h" />
-    <ClInclude Include="C:\Users\fadva\Desktop\fuzzylite-6.0\fuzzylite\fl\imex\FisExporter.h" />
-    <ClInclude Include="C:\Users\fadva\Desktop\fuzzylite-6.0\fuzzylite\fl\imex\FisImporter.h" />
-    <ClInclude Include="C:\Users\fadva\Desktop\fuzzylite-6.0\fuzzylite\fl\imex\FldExporter.h" />
-    <ClInclude Include="C:\Users\fadva\Desktop\fuzzylite-6.0\fuzzylite\fl\imex\FllExporter.h" />
-    <ClInclude Include="C:\Users\fadva\Desktop\fuzzylite-6.0\fuzzylite\fl\imex\FllImporter.h" />
-    <ClInclude Include="C:\Users\fadva\Desktop\fuzzylite-6.0\fuzzylite\fl\imex\Importer.h" />
-    <ClInclude Include="C:\Users\fadva\Desktop\fuzzylite-6.0\fuzzylite\fl\imex\JavaExporter.h" />
-    <ClInclude Include="C:\Users\fadva\Desktop\fuzzylite-6.0\fuzzylite\fl\imex\RScriptExporter.h" />
-    <ClInclude Include="C:\Users\fadva\Desktop\fuzzylite-6.0\fuzzylite\fl\norm\Norm.h" />
-    <ClInclude Include="C:\Users\fadva\Desktop\fuzzylite-6.0\fuzzylite\fl\norm\s\AlgebraicSum.h" />
-    <ClInclude Include="C:\Users\fadva\Desktop\fuzzylite-6.0\fuzzylite\fl\norm\s\BoundedSum.h" />
-    <ClInclude Include="C:\Users\fadva\Desktop\fuzzylite-6.0\fuzzylite\fl\norm\s\DrasticSum.h" />
-    <ClInclude Include="C:\Users\fadva\Desktop\fuzzylite-6.0\fuzzylite\fl\norm\s\EinsteinSum.h" />
-    <ClInclude Include="C:\Users\fadva\Desktop\fuzzylite-6.0\fuzzylite\fl\norm\s\HamacherSum.h" />
-    <ClInclude Include="C:\Users\fadva\Desktop\fuzzylite-6.0\fuzzylite\fl\norm\s\Maximum.h" />
-    <ClInclude Include="C:\Users\fadva\Desktop\fuzzylite-6.0\fuzzylite\fl\norm\s\NilpotentMaximum.h" />
-    <ClInclude Include="C:\Users\fadva\Desktop\fuzzylite-6.0\fuzzylite\fl\norm\s\NormalizedSum.h" />
-    <ClInclude Include="C:\Users\fadva\Desktop\fuzzylite-6.0\fuzzylite\fl\norm\s\SNormFunction.h" />
-    <ClInclude Include="C:\Users\fadva\Desktop\fuzzylite-6.0\fuzzylite\fl\norm\s\UnboundedSum.h" />
-    <ClInclude Include="C:\Users\fadva\Desktop\fuzzylite-6.0\fuzzylite\fl\norm\SNorm.h" />
-    <ClInclude Include="C:\Users\fadva\Desktop\fuzzylite-6.0\fuzzylite\fl\norm\t\AlgebraicProduct.h" />
-    <ClInclude Include="C:\Users\fadva\Desktop\fuzzylite-6.0\fuzzylite\fl\norm\t\BoundedDifference.h" />
-    <ClInclude Include="C:\Users\fadva\Desktop\fuzzylite-6.0\fuzzylite\fl\norm\t\DrasticProduct.h" />
-    <ClInclude Include="C:\Users\fadva\Desktop\fuzzylite-6.0\fuzzylite\fl\norm\t\EinsteinProduct.h" />
-    <ClInclude Include="C:\Users\fadva\Desktop\fuzzylite-6.0\fuzzylite\fl\norm\t\HamacherProduct.h" />
-    <ClInclude Include="C:\Users\fadva\Desktop\fuzzylite-6.0\fuzzylite\fl\norm\t\Minimum.h" />
-    <ClInclude Include="C:\Users\fadva\Desktop\fuzzylite-6.0\fuzzylite\fl\norm\t\NilpotentMinimum.h" />
-    <ClInclude Include="C:\Users\fadva\Desktop\fuzzylite-6.0\fuzzylite\fl\norm\t\TNormFunction.h" />
-    <ClInclude Include="C:\Users\fadva\Desktop\fuzzylite-6.0\fuzzylite\fl\norm\TNorm.h" />
-    <ClInclude Include="C:\Users\fadva\Desktop\fuzzylite-6.0\fuzzylite\fl\Operation.h" />
-    <ClInclude Include="C:\Users\fadva\Desktop\fuzzylite-6.0\fuzzylite\fl\rule\Antecedent.h" />
-    <ClInclude Include="C:\Users\fadva\Desktop\fuzzylite-6.0\fuzzylite\fl\rule\Consequent.h" />
-    <ClInclude Include="C:\Users\fadva\Desktop\fuzzylite-6.0\fuzzylite\fl\rule\Expression.h" />
-    <ClInclude Include="C:\Users\fadva\Desktop\fuzzylite-6.0\fuzzylite\fl\rule\RuleBlock.h" />
-    <ClInclude Include="C:\Users\fadva\Desktop\fuzzylite-6.0\fuzzylite\fl\rule\Rule.h" />
-    <ClInclude Include="C:\Users\fadva\Desktop\fuzzylite-6.0\fuzzylite\fl\term\Activated.h" />
-    <ClInclude Include="C:\Users\fadva\Desktop\fuzzylite-6.0\fuzzylite\fl\term\Aggregated.h" />
-    <ClInclude Include="C:\Users\fadva\Desktop\fuzzylite-6.0\fuzzylite\fl\term\Bell.h" />
-    <ClInclude Include="C:\Users\fadva\Desktop\fuzzylite-6.0\fuzzylite\fl\term\Binary.h" />
-    <ClInclude Include="C:\Users\fadva\Desktop\fuzzylite-6.0\fuzzylite\fl\term\Concave.h" />
-    <ClInclude Include="C:\Users\fadva\Desktop\fuzzylite-6.0\fuzzylite\fl\term\Constant.h" />
-    <ClInclude Include="C:\Users\fadva\Desktop\fuzzylite-6.0\fuzzylite\fl\term\Cosine.h" />
-    <ClInclude Include="C:\Users\fadva\Desktop\fuzzylite-6.0\fuzzylite\fl\term\Discrete.h" />
-    <ClInclude Include="C:\Users\fadva\Desktop\fuzzylite-6.0\fuzzylite\fl\term\Function.h" />
-    <ClInclude Include="C:\Users\fadva\Desktop\fuzzylite-6.0\fuzzylite\fl\term\Gaussian.h" />
-    <ClInclude Include="C:\Users\fadva\Desktop\fuzzylite-6.0\fuzzylite\fl\term\GaussianProduct.h" />
-    <ClInclude Include="C:\Users\fadva\Desktop\fuzzylite-6.0\fuzzylite\fl\term\Linear.h" />
-    <ClInclude Include="C:\Users\fadva\Desktop\fuzzylite-6.0\fuzzylite\fl\term\PiShape.h" />
-    <ClInclude Include="C:\Users\fadva\Desktop\fuzzylite-6.0\fuzzylite\fl\term\Ramp.h" />
-    <ClInclude Include="C:\Users\fadva\Desktop\fuzzylite-6.0\fuzzylite\fl\term\Rectangle.h" />
-    <ClInclude Include="C:\Users\fadva\Desktop\fuzzylite-6.0\fuzzylite\fl\term\SigmoidDifference.h" />
-    <ClInclude Include="C:\Users\fadva\Desktop\fuzzylite-6.0\fuzzylite\fl\term\Sigmoid.h" />
-    <ClInclude Include="C:\Users\fadva\Desktop\fuzzylite-6.0\fuzzylite\fl\term\SigmoidProduct.h" />
-    <ClInclude Include="C:\Users\fadva\Desktop\fuzzylite-6.0\fuzzylite\fl\term\Spike.h" />
-    <ClInclude Include="C:\Users\fadva\Desktop\fuzzylite-6.0\fuzzylite\fl\term\SShape.h" />
-    <ClInclude Include="C:\Users\fadva\Desktop\fuzzylite-6.0\fuzzylite\fl\term\Term.h" />
-    <ClInclude Include="C:\Users\fadva\Desktop\fuzzylite-6.0\fuzzylite\fl\term\Trapezoid.h" />
-    <ClInclude Include="C:\Users\fadva\Desktop\fuzzylite-6.0\fuzzylite\fl\term\Triangle.h" />
-    <ClInclude Include="C:\Users\fadva\Desktop\fuzzylite-6.0\fuzzylite\fl\term\ZShape.h" />
-    <ClInclude Include="C:\Users\fadva\Desktop\fuzzylite-6.0\fuzzylite\fl\variable\InputVariable.h" />
-    <ClInclude Include="C:\Users\fadva\Desktop\fuzzylite-6.0\fuzzylite\fl\variable\OutputVariable.h" />
-    <ClInclude Include="C:\Users\fadva\Desktop\fuzzylite-6.0\fuzzylite\fl\variable\Variable.h" />
-    <ClInclude Include="C:\Users\fadva\Desktop\fuzzylite-6.0\fuzzylite\test\catch.hpp" />
-    <ClCompile Include="C:\Users\fadva\Desktop\fuzzylite-6.0\fuzzylite\test\MainTest.cpp" />
-    <ClCompile Include="C:\Users\fadva\Desktop\fuzzylite-6.0\fuzzylite\test\BenchmarkTest.cpp" />
-    <ClCompile Include="C:\Users\fadva\Desktop\fuzzylite-6.0\fuzzylite\test\QuickTest.cpp" />
-    <ClCompile Include="C:\Users\fadva\Desktop\fuzzylite-6.0\fuzzylite\test\activation\ThresholdTest.cpp" />
-    <ClCompile Include="C:\Users\fadva\Desktop\fuzzylite-6.0\fuzzylite\test\hedge\HedgeFunctionTest.cpp" />
-    <ClCompile Include="C:\Users\fadva\Desktop\fuzzylite-6.0\fuzzylite\test\imex\FldExporterTest.cpp" />
-    <ClCompile Include="C:\Users\fadva\Desktop\fuzzylite-6.0\fuzzylite\test\imex\FllImporterTest.cpp" />
-    <ClCompile Include="C:\Users\fadva\Desktop\fuzzylite-6.0\fuzzylite\test\imex\RScriptExporterTest.cpp" />
-    <ClCompile Include="C:\Users\fadva\Desktop\fuzzylite-6.0\fuzzylite\test\norm\NormFunctionTest.cpp" />
-    <ClCompile Include="C:\Users\fadva\Desktop\fuzzylite-6.0\fuzzylite\test\term\AggregatedTest.cpp" />
-    <ClCompile Include="C:\Users\fadva\Desktop\fuzzylite-6.0\fuzzylite\test\term\DiscreteTest.cpp" />
-    <ClCompile Include="C:\Users\fadva\Desktop\fuzzylite-6.0\fuzzylite\test\term\FunctionTest.cpp" />
-    <ClCompile Include="C:\Users\fadva\Desktop\fuzzylite-6.0\fuzzylite\test\term\TrapezoidTest.cpp" />
-    <ClCompile Include="C:\Users\fadva\Desktop\fuzzylite-6.0\fuzzylite\test\term\TriangleTest.cpp" />
-    <ClCompile Include="C:\Users\fadva\Desktop\fuzzylite-6.0\fuzzylite\test\variable\VariableTest.cpp" />
+    <ClInclude Include="D:\git\project\HapticGamesTouchX\app\external\fuzzylite\fl\Benchmark.h" />
+    <ClInclude Include="D:\git\project\HapticGamesTouchX\app\external\fuzzylite\fl\Complexity.h" />
+    <ClInclude Include="D:\git\project\HapticGamesTouchX\app\external\fuzzylite\fl\Console.h" />
+    <ClInclude Include="D:\git\project\HapticGamesTouchX\app\external\fuzzylite\fl\activation\Activation.h" />
+    <ClInclude Include="D:\git\project\HapticGamesTouchX\app\external\fuzzylite\fl\activation\First.h" />
+    <ClInclude Include="D:\git\project\HapticGamesTouchX\app\external\fuzzylite\fl\activation\General.h" />
+    <ClInclude Include="D:\git\project\HapticGamesTouchX\app\external\fuzzylite\fl\activation\Highest.h" />
+    <ClInclude Include="D:\git\project\HapticGamesTouchX\app\external\fuzzylite\fl\activation\Last.h" />
+    <ClInclude Include="D:\git\project\HapticGamesTouchX\app\external\fuzzylite\fl\activation\Lowest.h" />
+    <ClInclude Include="D:\git\project\HapticGamesTouchX\app\external\fuzzylite\fl\activation\Proportional.h" />
+    <ClInclude Include="D:\git\project\HapticGamesTouchX\app\external\fuzzylite\fl\activation\Threshold.h" />
+    <ClInclude Include="D:\git\project\HapticGamesTouchX\app\external\fuzzylite\fl\defuzzifier\Bisector.h" />
+    <ClInclude Include="D:\git\project\HapticGamesTouchX\app\external\fuzzylite\fl\defuzzifier\Centroid.h" />
+    <ClInclude Include="D:\git\project\HapticGamesTouchX\app\external\fuzzylite\fl\defuzzifier\Defuzzifier.h" />
+    <ClInclude Include="D:\git\project\HapticGamesTouchX\app\external\fuzzylite\fl\defuzzifier\IntegralDefuzzifier.h" />
+    <ClInclude Include="D:\git\project\HapticGamesTouchX\app\external\fuzzylite\fl\defuzzifier\LargestOfMaximum.h" />
+    <ClInclude Include="D:\git\project\HapticGamesTouchX\app\external\fuzzylite\fl\defuzzifier\MeanOfMaximum.h" />
+    <ClInclude Include="D:\git\project\HapticGamesTouchX\app\external\fuzzylite\fl\defuzzifier\SmallestOfMaximum.h" />
+    <ClInclude Include="D:\git\project\HapticGamesTouchX\app\external\fuzzylite\fl\defuzzifier\WeightedAverage.h" />
+    <ClInclude Include="D:\git\project\HapticGamesTouchX\app\external\fuzzylite\fl\defuzzifier\WeightedAverageCustom.h" />
+    <ClInclude Include="D:\git\project\HapticGamesTouchX\app\external\fuzzylite\fl\defuzzifier\WeightedDefuzzifier.h" />
+    <ClInclude Include="D:\git\project\HapticGamesTouchX\app\external\fuzzylite\fl\defuzzifier\WeightedSum.h" />
+    <ClInclude Include="D:\git\project\HapticGamesTouchX\app\external\fuzzylite\fl\defuzzifier\WeightedSumCustom.h" />
+    <ClInclude Include="D:\git\project\HapticGamesTouchX\app\external\fuzzylite\fl\Engine.h" />
+    <ClInclude Include="D:\git\project\HapticGamesTouchX\app\external\fuzzylite\fl\Exception.h" />
+    <ClInclude Include="D:\git\project\HapticGamesTouchX\app\external\fuzzylite\fl\factory\ActivationFactory.h" />
+    <ClInclude Include="D:\git\project\HapticGamesTouchX\app\external\fuzzylite\fl\factory\CloningFactory.h" />
+    <ClInclude Include="D:\git\project\HapticGamesTouchX\app\external\fuzzylite\fl\factory\ConstructionFactory.h" />
+    <ClInclude Include="D:\git\project\HapticGamesTouchX\app\external\fuzzylite\fl\factory\DefuzzifierFactory.h" />
+    <ClInclude Include="D:\git\project\HapticGamesTouchX\app\external\fuzzylite\fl\factory\FactoryManager.h" />
+    <ClInclude Include="D:\git\project\HapticGamesTouchX\app\external\fuzzylite\fl\factory\FunctionFactory.h" />
+    <ClInclude Include="D:\git\project\HapticGamesTouchX\app\external\fuzzylite\fl\factory\HedgeFactory.h" />
+    <ClInclude Include="D:\git\project\HapticGamesTouchX\app\external\fuzzylite\fl\factory\SNormFactory.h" />
+    <ClInclude Include="D:\git\project\HapticGamesTouchX\app\external\fuzzylite\fl\factory\TermFactory.h" />
+    <ClInclude Include="D:\git\project\HapticGamesTouchX\app\external\fuzzylite\fl\factory\TNormFactory.h" />
+    <ClInclude Include="D:\git\project\HapticGamesTouchX\app\external\fuzzylite\fl\fuzzylite.h" />
+    <ClInclude Include="D:\git\project\HapticGamesTouchX\app\external\fuzzylite\fl\Headers.h" />
+    <ClInclude Include="D:\git\project\HapticGamesTouchX\app\external\fuzzylite\fl\hedge\Any.h" />
+    <ClInclude Include="D:\git\project\HapticGamesTouchX\app\external\fuzzylite\fl\hedge\Extremely.h" />
+    <ClInclude Include="D:\git\project\HapticGamesTouchX\app\external\fuzzylite\fl\hedge\Hedge.h" />
+    <ClInclude Include="D:\git\project\HapticGamesTouchX\app\external\fuzzylite\fl\hedge\HedgeFunction.h" />
+    <ClInclude Include="D:\git\project\HapticGamesTouchX\app\external\fuzzylite\fl\hedge\Not.h" />
+    <ClInclude Include="D:\git\project\HapticGamesTouchX\app\external\fuzzylite\fl\hedge\Seldom.h" />
+    <ClInclude Include="D:\git\project\HapticGamesTouchX\app\external\fuzzylite\fl\hedge\Somewhat.h" />
+    <ClInclude Include="D:\git\project\HapticGamesTouchX\app\external\fuzzylite\fl\hedge\Very.h" />
+    <ClInclude Include="D:\git\project\HapticGamesTouchX\app\external\fuzzylite\fl\imex\CppExporter.h" />
+    <ClInclude Include="D:\git\project\HapticGamesTouchX\app\external\fuzzylite\fl\imex\Exporter.h" />
+    <ClInclude Include="D:\git\project\HapticGamesTouchX\app\external\fuzzylite\fl\imex\FclExporter.h" />
+    <ClInclude Include="D:\git\project\HapticGamesTouchX\app\external\fuzzylite\fl\imex\FclImporter.h" />
+    <ClInclude Include="D:\git\project\HapticGamesTouchX\app\external\fuzzylite\fl\imex\FisExporter.h" />
+    <ClInclude Include="D:\git\project\HapticGamesTouchX\app\external\fuzzylite\fl\imex\FisImporter.h" />
+    <ClInclude Include="D:\git\project\HapticGamesTouchX\app\external\fuzzylite\fl\imex\FldExporter.h" />
+    <ClInclude Include="D:\git\project\HapticGamesTouchX\app\external\fuzzylite\fl\imex\FllExporter.h" />
+    <ClInclude Include="D:\git\project\HapticGamesTouchX\app\external\fuzzylite\fl\imex\FllImporter.h" />
+    <ClInclude Include="D:\git\project\HapticGamesTouchX\app\external\fuzzylite\fl\imex\Importer.h" />
+    <ClInclude Include="D:\git\project\HapticGamesTouchX\app\external\fuzzylite\fl\imex\JavaExporter.h" />
+    <ClInclude Include="D:\git\project\HapticGamesTouchX\app\external\fuzzylite\fl\imex\RScriptExporter.h" />
+    <ClInclude Include="D:\git\project\HapticGamesTouchX\app\external\fuzzylite\fl\norm\Norm.h" />
+    <ClInclude Include="D:\git\project\HapticGamesTouchX\app\external\fuzzylite\fl\norm\s\AlgebraicSum.h" />
+    <ClInclude Include="D:\git\project\HapticGamesTouchX\app\external\fuzzylite\fl\norm\s\BoundedSum.h" />
+    <ClInclude Include="D:\git\project\HapticGamesTouchX\app\external\fuzzylite\fl\norm\s\DrasticSum.h" />
+    <ClInclude Include="D:\git\project\HapticGamesTouchX\app\external\fuzzylite\fl\norm\s\EinsteinSum.h" />
+    <ClInclude Include="D:\git\project\HapticGamesTouchX\app\external\fuzzylite\fl\norm\s\HamacherSum.h" />
+    <ClInclude Include="D:\git\project\HapticGamesTouchX\app\external\fuzzylite\fl\norm\s\Maximum.h" />
+    <ClInclude Include="D:\git\project\HapticGamesTouchX\app\external\fuzzylite\fl\norm\s\NilpotentMaximum.h" />
+    <ClInclude Include="D:\git\project\HapticGamesTouchX\app\external\fuzzylite\fl\norm\s\NormalizedSum.h" />
+    <ClInclude Include="D:\git\project\HapticGamesTouchX\app\external\fuzzylite\fl\norm\s\SNormFunction.h" />
+    <ClInclude Include="D:\git\project\HapticGamesTouchX\app\external\fuzzylite\fl\norm\s\UnboundedSum.h" />
+    <ClInclude Include="D:\git\project\HapticGamesTouchX\app\external\fuzzylite\fl\norm\SNorm.h" />
+    <ClInclude Include="D:\git\project\HapticGamesTouchX\app\external\fuzzylite\fl\norm\t\AlgebraicProduct.h" />
+    <ClInclude Include="D:\git\project\HapticGamesTouchX\app\external\fuzzylite\fl\norm\t\BoundedDifference.h" />
+    <ClInclude Include="D:\git\project\HapticGamesTouchX\app\external\fuzzylite\fl\norm\t\DrasticProduct.h" />
+    <ClInclude Include="D:\git\project\HapticGamesTouchX\app\external\fuzzylite\fl\norm\t\EinsteinProduct.h" />
+    <ClInclude Include="D:\git\project\HapticGamesTouchX\app\external\fuzzylite\fl\norm\t\HamacherProduct.h" />
+    <ClInclude Include="D:\git\project\HapticGamesTouchX\app\external\fuzzylite\fl\norm\t\Minimum.h" />
+    <ClInclude Include="D:\git\project\HapticGamesTouchX\app\external\fuzzylite\fl\norm\t\NilpotentMinimum.h" />
+    <ClInclude Include="D:\git\project\HapticGamesTouchX\app\external\fuzzylite\fl\norm\t\TNormFunction.h" />
+    <ClInclude Include="D:\git\project\HapticGamesTouchX\app\external\fuzzylite\fl\norm\TNorm.h" />
+    <ClInclude Include="D:\git\project\HapticGamesTouchX\app\external\fuzzylite\fl\Operation.h" />
+    <ClInclude Include="D:\git\project\HapticGamesTouchX\app\external\fuzzylite\fl\rule\Antecedent.h" />
+    <ClInclude Include="D:\git\project\HapticGamesTouchX\app\external\fuzzylite\fl\rule\Consequent.h" />
+    <ClInclude Include="D:\git\project\HapticGamesTouchX\app\external\fuzzylite\fl\rule\Expression.h" />
+    <ClInclude Include="D:\git\project\HapticGamesTouchX\app\external\fuzzylite\fl\rule\RuleBlock.h" />
+    <ClInclude Include="D:\git\project\HapticGamesTouchX\app\external\fuzzylite\fl\rule\Rule.h" />
+    <ClInclude Include="D:\git\project\HapticGamesTouchX\app\external\fuzzylite\fl\term\Activated.h" />
+    <ClInclude Include="D:\git\project\HapticGamesTouchX\app\external\fuzzylite\fl\term\Aggregated.h" />
+    <ClInclude Include="D:\git\project\HapticGamesTouchX\app\external\fuzzylite\fl\term\Bell.h" />
+    <ClInclude Include="D:\git\project\HapticGamesTouchX\app\external\fuzzylite\fl\term\Binary.h" />
+    <ClInclude Include="D:\git\project\HapticGamesTouchX\app\external\fuzzylite\fl\term\Concave.h" />
+    <ClInclude Include="D:\git\project\HapticGamesTouchX\app\external\fuzzylite\fl\term\Constant.h" />
+    <ClInclude Include="D:\git\project\HapticGamesTouchX\app\external\fuzzylite\fl\term\Cosine.h" />
+    <ClInclude Include="D:\git\project\HapticGamesTouchX\app\external\fuzzylite\fl\term\Discrete.h" />
+    <ClInclude Include="D:\git\project\HapticGamesTouchX\app\external\fuzzylite\fl\term\Function.h" />
+    <ClInclude Include="D:\git\project\HapticGamesTouchX\app\external\fuzzylite\fl\term\Gaussian.h" />
+    <ClInclude Include="D:\git\project\HapticGamesTouchX\app\external\fuzzylite\fl\term\GaussianProduct.h" />
+    <ClInclude Include="D:\git\project\HapticGamesTouchX\app\external\fuzzylite\fl\term\Linear.h" />
+    <ClInclude Include="D:\git\project\HapticGamesTouchX\app\external\fuzzylite\fl\term\PiShape.h" />
+    <ClInclude Include="D:\git\project\HapticGamesTouchX\app\external\fuzzylite\fl\term\Ramp.h" />
+    <ClInclude Include="D:\git\project\HapticGamesTouchX\app\external\fuzzylite\fl\term\Rectangle.h" />
+    <ClInclude Include="D:\git\project\HapticGamesTouchX\app\external\fuzzylite\fl\term\SigmoidDifference.h" />
+    <ClInclude Include="D:\git\project\HapticGamesTouchX\app\external\fuzzylite\fl\term\Sigmoid.h" />
+    <ClInclude Include="D:\git\project\HapticGamesTouchX\app\external\fuzzylite\fl\term\SigmoidProduct.h" />
+    <ClInclude Include="D:\git\project\HapticGamesTouchX\app\external\fuzzylite\fl\term\Spike.h" />
+    <ClInclude Include="D:\git\project\HapticGamesTouchX\app\external\fuzzylite\fl\term\SShape.h" />
+    <ClInclude Include="D:\git\project\HapticGamesTouchX\app\external\fuzzylite\fl\term\Term.h" />
+    <ClInclude Include="D:\git\project\HapticGamesTouchX\app\external\fuzzylite\fl\term\Trapezoid.h" />
+    <ClInclude Include="D:\git\project\HapticGamesTouchX\app\external\fuzzylite\fl\term\Triangle.h" />
+    <ClInclude Include="D:\git\project\HapticGamesTouchX\app\external\fuzzylite\fl\term\ZShape.h" />
+    <ClInclude Include="D:\git\project\HapticGamesTouchX\app\external\fuzzylite\fl\variable\InputVariable.h" />
+    <ClInclude Include="D:\git\project\HapticGamesTouchX\app\external\fuzzylite\fl\variable\OutputVariable.h" />
+    <ClInclude Include="D:\git\project\HapticGamesTouchX\app\external\fuzzylite\fl\variable\Variable.h" />
+    <ClInclude Include="D:\git\project\HapticGamesTouchX\app\external\fuzzylite\test\catch.hpp" />
+    <ClCompile Include="D:\git\project\HapticGamesTouchX\app\external\fuzzylite\test\MainTest.cpp" />
+    <ClCompile Include="D:\git\project\HapticGamesTouchX\app\external\fuzzylite\test\BenchmarkTest.cpp" />
+    <ClCompile Include="D:\git\project\HapticGamesTouchX\app\external\fuzzylite\test\QuickTest.cpp" />
+    <ClCompile Include="D:\git\project\HapticGamesTouchX\app\external\fuzzylite\test\activation\ThresholdTest.cpp" />
+    <ClCompile Include="D:\git\project\HapticGamesTouchX\app\external\fuzzylite\test\hedge\HedgeFunctionTest.cpp" />
+    <ClCompile Include="D:\git\project\HapticGamesTouchX\app\external\fuzzylite\test\imex\FldExporterTest.cpp" />
+    <ClCompile Include="D:\git\project\HapticGamesTouchX\app\external\fuzzylite\test\imex\FllImporterTest.cpp" />
+    <ClCompile Include="D:\git\project\HapticGamesTouchX\app\external\fuzzylite\test\imex\RScriptExporterTest.cpp" />
+    <ClCompile Include="D:\git\project\HapticGamesTouchX\app\external\fuzzylite\test\norm\NormFunctionTest.cpp" />
+    <ClCompile Include="D:\git\project\HapticGamesTouchX\app\external\fuzzylite\test\term\AggregatedTest.cpp" />
+    <ClCompile Include="D:\git\project\HapticGamesTouchX\app\external\fuzzylite\test\term\DiscreteTest.cpp" />
+    <ClCompile Include="D:\git\project\HapticGamesTouchX\app\external\fuzzylite\test\term\FunctionTest.cpp" />
+    <ClCompile Include="D:\git\project\HapticGamesTouchX\app\external\fuzzylite\test\term\TrapezoidTest.cpp" />
+    <ClCompile Include="D:\git\project\HapticGamesTouchX\app\external\fuzzylite\test\term\TriangleTest.cpp" />
+    <ClCompile Include="D:\git\project\HapticGamesTouchX\app\external\fuzzylite\test\variable\VariableTest.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="C:\Users\fadva\Desktop\fuzzylite-6.0\fuzzylite\build\ZERO_CHECK.vcxproj">
-      <Project>{396A46CA-4B1F-338F-B641-0A4E72B368F1}</Project>
+    <ProjectReference Include="D:\git\project\HapticGamesTouchX\app\external\fuzzylite\build\ZERO_CHECK.vcxproj">
+      <Project>{21448CFE-78F6-3D79-A949-652E604CD281}</Project>
       <Name>ZERO_CHECK</Name>
       <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </ProjectReference>
-    <ProjectReference Include="C:\Users\fadva\Desktop\fuzzylite-6.0\fuzzylite\build\fl-shared.vcxproj">
-      <Project>{06C0C797-FD16-3695-894A-236AB284D771}</Project>
+    <ProjectReference Include="D:\git\project\HapticGamesTouchX\app\external\fuzzylite\build\fl-shared.vcxproj">
+      <Project>{B492289A-C3B7-352D-82EB-93C3CFBE0F6A}</Project>
       <Name>fl-shared</Name>
     </ProjectReference>
   </ItemGroup>

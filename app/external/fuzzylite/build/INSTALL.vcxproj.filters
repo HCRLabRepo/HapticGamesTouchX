@@ -1,13 +1,13 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <CustomBuild Include="C:\Users\fadva\Desktop\fuzzylite-6.0\fuzzylite\build\CMakeFiles\3ce2a61ff6ad4d9d9b4cfeacadccde9f\INSTALL_force.rule">
+    <CustomBuild Include="D:\git\project\HapticGamesTouchX\app\external\fuzzylite\build\CMakeFiles\38ac95018fcfd652d0dca86624e6572a\INSTALL_force.rule">
       <Filter>CMake Rules</Filter>
     </CustomBuild>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="CMake Rules">
-      <UniqueIdentifier>{8353F88C-05F0-34AB-B5EC-A36E6D8BF71F}</UniqueIdentifier>
+      <UniqueIdentifier>{7722906A-E774-3FC2-91F8-6ADB2F5F68AB}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>
