@@ -229,7 +229,7 @@ GenericScene::GenericScene(shared_ptr<cGenericHapticDevice> a_hapticDevice)
     bulletWorld->addChild(negotiatedSphere);
     negotiatedSphere->createAABBCollisionDetector(toolRadius);
     negotiatedSphere->setMaterial(mat);
-    negotiatedSphere->setMass(SPHERE_MASS);
+    negotiatedSphere->setMass(SPHERE_MASS*2);
     negotiatedSphere->buildDynamicModel();
     negotiatedSphere->setLocalPos(0.0,0.0,-0.2+toolRadius);
     negotiatedSphere->setDamping(K_DAMPING, K_DAMPING);
@@ -243,7 +243,7 @@ GenericScene::GenericScene(shared_ptr<cGenericHapticDevice> a_hapticDevice)
     bulletWorld->addChild(mainSphere);
     mainSphere->createAABBCollisionDetector(toolRadius);
     mainSphere->setMaterial(mat);
-    mainSphere->setMass(SPHERE_MASS);
+    mainSphere->setMass(SPHERE_MASS*3);
     mainSphere->buildDynamicModel();
     mainSphere->setLocalPos(0.01,0.02,-0.2+toolRadius);
     mainSphere->setDamping(K_DAMPING, K_DAMPING);
