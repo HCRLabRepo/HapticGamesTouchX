@@ -588,7 +588,7 @@ void updateHaptics(void){
                 main_scene->K_DAMPING_VELOCITY = 2;
             }
             else{
-                main_scene->ALPHA_CONTROL = 0.1*(main_scene->userForce);
+                main_scene->ALPHA_CONTROL = 0.05*(main_scene->userForce);
                 main_scene->K_DAMPING_VELOCITY = 0.10;
             }
         }
