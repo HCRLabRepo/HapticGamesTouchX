@@ -296,6 +296,7 @@ void GenericScene::updateWaypoint(cVector3d positionSphere, cVector3d positionTa
         waypoints.clear();
         generateWaypoints(positionSphere, target->getLocalPos());
         waypoint_index = 0;
+        last_waypoint_index = -1;
         positionWaypoint = waypoints[0];
 
     }
@@ -306,10 +307,17 @@ void GenericScene::updateWaypoint(cVector3d positionSphere, cVector3d positionTa
         return;
     }
 
-    for(int i=max(last_waypoint_index-1,0); i < min(last_waypoint_index+2, (int)waypoints.size()); i++){
+    /*for(int i=max(last_waypoint_index-1,0); i < min(last_waypoint_index+2, (int)waypoints.size()); i++){
         if(cDistance(positionSphere, waypoints[i])/cDistance(waypoints[last_waypoint_index], waypoints[i])+0.7<cDistance(positionSphere, waypoints[waypoint_index])/cDistance(waypoints[last_waypoint_index], waypoints[waypoint_index])){
             waypoint_index = i;
         }
+    }*/
+
+    if ((cDistance(positionSphere, waypoints[waypoint_index+1]) < cDistance(waypoints[waypoint_index], waypoints[waypoint_index+1])*0.7) &&
+        waypoint_index != waypoints.size()-2) {
+        cout << "Advancing to waypoint " << waypoint_index + 1 << endl;
+        waypoint_index += 1;
+        last_waypoint_index += 1;
     }
 
     if(waypoint_index == waypoints.size()-1){
