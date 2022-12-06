@@ -4,6 +4,7 @@
 #include "CBullet.h"
 #include "fl/Headers.h"
 #include <time.h>
+#include <chrono>
 
 using namespace chai3d;
 
@@ -78,6 +79,7 @@ public:
     time_t startTime;
     bool fuzzyControl = false;
     double currentAlpha = 1;
+    std::chrono::high_resolution_clock::time_point inactiveTime;
    
 
     cLabel* labelHapticDeviceModel;
