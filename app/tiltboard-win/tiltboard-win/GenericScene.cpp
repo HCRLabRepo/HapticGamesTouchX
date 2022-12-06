@@ -362,6 +362,10 @@ void GenericScene::updateHaptics(double timeInterval){
     sphereForce = (K_SPRING*(ALPHA_CONTROL) * (distance01) * dir01);
     userForce = (K_SPRING*(0.5) * (distance01) * dir01).length();
     if(userForce<1.0){
+        if (!userInactive) {
+            using namespace std::chrono;
+            inactiveTime = high_resolution_clock::now();
+        }
         userInactive = true;
     }else{
         userInactive = false;

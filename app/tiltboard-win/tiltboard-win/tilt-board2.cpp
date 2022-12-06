@@ -607,6 +607,28 @@ void updateHaptics(void){
             }
             
         }
+        else if (control_mode == 7) {
+            using namespace std::chrono;
+            high_resolution_clock::time_point t1 = high_resolution_clock::now();
+            milliseconds ms = duration_cast<milliseconds>(t1 - (main_scene->inactiveTime));
+            
+            //Manual Override
+            if (button0) {
+                main_scene->ALPHA_CONTROL += 0.001;
+                main_scene->ALPHA_CONTROL = min(main_scene->ALPHA_CONTROL, 1.0);
+                main_scene->K_DAMPING_VELOCITY = 2;
+            }
+            else if (ms.count() > 500 && ((main_scene->sphereForce).lengthsq() < 1.0)) {
+                main_scene->ALPHA_CONTROL -= 0.001;
+                main_scene->ALPHA_CONTROL = max(main_scene->ALPHA_CONTROL, 0.1);
+                main_scene->K_DAMPING_VELOCITY = 0.10;
+            }
+            else {
+                main_scene->ALPHA_CONTROL += 0.001;
+                main_scene->ALPHA_CONTROL = min(main_scene->ALPHA_CONTROL, 1.0);
+                main_scene->K_DAMPING_VELOCITY = 0.10;
+            }
+        }
         main_scene->updateHaptics(timeInterval);
         if(main_scene->destination_index == main_scene->destinations.size()){
             break;        

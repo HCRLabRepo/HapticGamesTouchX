@@ -127,12 +127,12 @@ void Scene2::updateWaypoint(cVector3d positionSphere, cVector3d positionTarget){
             waypoint_index = last_waypoint_index +1;
         }
 
-        for(int i=max(last_waypoint_index-1,0); i < min(last_waypoint_index+2, (int)waypoints.size()); i++){
+        /*for(int i=max(last_waypoint_index-1,0); i < min(last_waypoint_index+2, (int)waypoints.size()); i++){
             if(cDistance(positionSphere, waypoints[i])/cDistance(waypoints[last_waypoint_index], waypoints[i])+0.7<cDistance(positionSphere, waypoints[waypoint_index])/cDistance(waypoints[last_waypoint_index], waypoints[waypoint_index])){
                 cout << "waypoint updated backward" << endl;
                 waypoint_index = i;
             }
-        }
+        }*/
         if(waypoint_index == waypoints.size()-1){
             updateTarget();
             generateWaypoints(positionSphere, target->getLocalPos());
