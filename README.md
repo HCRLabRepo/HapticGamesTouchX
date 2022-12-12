@@ -15,6 +15,8 @@ This is a haptic game consisting on controlling a ball towards a target as effic
 2. Visual Studio 2022
 [Download](https://visualstudio.microsoft.com/vs/)
 
+Run the setup.bat script to compile one of the external libraries. It must be ran using the Visual Studio developer console **OR** after adding devenv.exe to PATH.
+
 Open the visual studio solution file located in app/tiltboard-win/tiltboard-win. Build all the projects and the resulting .exe file should be in app/bin/win-x64. Please ensure that the dll files required for running the project are present: fuzzylite.dll, hdPhantom64.dll, Leap.dll, sixense_x64.dll, and tdLeap.dll. There should also be a folder named "resources" where the text files containing the coordinates for the waypoints should be present.
 
 # Source Files
