@@ -80,6 +80,8 @@ public:
     bool fuzzyControl = false;
     double currentAlpha = 1;
     std::chrono::high_resolution_clock::time_point inactiveTime;
+    std::chrono::high_resolution_clock::time_point recordTime = std::chrono::high_resolution_clock::now();
+    int collisionsLastSec = 0;
    
 
     cLabel* labelHapticDeviceModel;

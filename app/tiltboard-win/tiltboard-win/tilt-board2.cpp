@@ -49,6 +49,7 @@ bool callbackFunc(btManifoldPoint& cp, const btCollisionObjectWrapper* obj1, int
         std::thread t(recoverColor,obj1);
         ballfile << "Collision" <<endl;
         main_scene->collisionNum += 1;
+        main_scene->collisionsLastSec += 1;
         t.join();
     }
     if( (((cBulletMesh*)(obj2->getCollisionObject()->getUserPointer()))->m_material->m_diffuse == Gray) && (((cBulletMesh*)(obj1->getCollisionObject()->getUserPointer()))->m_material->m_diffuse != Blue) ){
@@ -56,6 +57,7 @@ bool callbackFunc(btManifoldPoint& cp, const btCollisionObjectWrapper* obj1, int
         std::thread t(recoverColor,obj2);
         ballfile <<  "Collision" <<endl;
         main_scene->collisionNum += 1;
+        main_scene->collisionsLastSec += 1;
         t.join();
     }
 
@@ -618,7 +620,7 @@ void updateHaptics(void){
                 main_scene->ALPHA_CONTROL = min(main_scene->ALPHA_CONTROL, 1.0);
                 main_scene->K_DAMPING_VELOCITY = 2;
             }
-            else if (ms.count() > 500 && ((main_scene->sphereForce).lengthsq() < 2.0)) {
+            else if (ms.count() > 500 && (main_scene->userForce < 3.0)) {
                 main_scene->ALPHA_CONTROL -= 0.001;
                 main_scene->ALPHA_CONTROL = max(main_scene->ALPHA_CONTROL, 0.1);
                 main_scene->K_DAMPING_VELOCITY = 0.10;
@@ -627,6 +629,16 @@ void updateHaptics(void){
                 main_scene->ALPHA_CONTROL += 0.001;
                 main_scene->ALPHA_CONTROL = min(main_scene->ALPHA_CONTROL, 1.0);
                 main_scene->K_DAMPING_VELOCITY = 0.10;
+            }
+        }
+        else if (control_mode == 8) {
+            using namespace std::chrono;
+            high_resolution_clock::time_point t1 = high_resolution_clock::now();
+            milliseconds ms = duration_cast<milliseconds>(t1 - (main_scene->recordTime));
+            if (ms.count() >= 500) {
+                main_scene->ALPHA_CONTROL = max((1.0 - (0.01 * main_scene->collisionsLastSec)), 0.0);
+                main_scene->collisionsLastSec = 0;
+                main_scene->recordTime = high_resolution_clock::now();
             }
         }
         main_scene->updateHaptics(timeInterval);
