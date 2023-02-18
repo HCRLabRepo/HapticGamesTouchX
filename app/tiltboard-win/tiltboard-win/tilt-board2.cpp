@@ -220,6 +220,7 @@ int main(int argc, char* argv[]){
     NIPfile.open(NIPfilename);
     HIPforcefile.open(HIPforcefilename);
     CIPforcefile.open(CIPforcefilename);
+    s = new SensorData();
     //--------------------------------------------------------------------------
     // START SIMULATION
     //--------------------------------------------------------------------------
@@ -227,6 +228,8 @@ int main(int argc, char* argv[]){
     // Create a thread which starts the main haptics rendering loop
     hapticsThread = new cThread();
     hapticsThread->start(updateHaptics, CTHREAD_PRIORITY_HAPTICS);
+    sensorThread = new cThread();
+    sensorThread->start(getSensorData, CTHREAD_PRIORITY_GRAPHICS);
     
     // Setup callback when application exits
     atexit(close);
@@ -632,6 +635,7 @@ void updateHaptics(void){
             }
         }
         else if (control_mode == 8) {
+            //cout << s->conductance << endl;
             using namespace std::chrono;
             high_resolution_clock::time_point t1 = high_resolution_clock::now();
             milliseconds ms = duration_cast<milliseconds>(t1 - (main_scene->recordTime));
@@ -668,4 +672,8 @@ void updateHaptics(void){
     CIPforcefile.close();
     hapticDevice->close();
     simulationFinished = true;
+}
+
+void getSensorData() {
+    s->getData();
 }

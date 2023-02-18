@@ -8,6 +8,7 @@
 #include "Scene2.h"
 #include "Scene3.h"
 #include "DebugScene.h"
+#include "SensorData.h"
 
 using namespace std;
 using namespace chai3d;
@@ -99,6 +100,7 @@ void initScene1();
 void initScene2();
 void initScene3();
 void initDebugScene();
+void getSensorData();
 
 std::ofstream ballfile;
 std::ofstream HIPfile;
@@ -106,3 +108,6 @@ std::ofstream CIPfile;
 std::ofstream NIPfile;
 std::ofstream HIPforcefile;
 std::ofstream CIPforcefile;
+
+SensorData* s;
+cThread* sensorThread;
