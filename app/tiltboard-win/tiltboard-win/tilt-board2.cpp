@@ -585,10 +585,10 @@ void updateHaptics(void){
             if (button0){
                 main_scene->ALPHA_CONTROL += 0.001;
                 main_scene->ALPHA_CONTROL = min(main_scene->ALPHA_CONTROL, 1.0);
-                main_scene->K_DAMPING_VELOCITY = 2;
+                main_scene->K_DAMPING_VELOCITY = 2; 
             }
             else{
-                main_scene->ALPHA_CONTROL = 0.05*(main_scene->userForce);
+                main_scene->ALPHA_CONTROL = 0.1*(main_scene->userForce);
                 main_scene->K_DAMPING_VELOCITY = 0.10;
             }
         }
@@ -618,7 +618,7 @@ void updateHaptics(void){
                 main_scene->ALPHA_CONTROL = min(main_scene->ALPHA_CONTROL, 1.0);
                 main_scene->K_DAMPING_VELOCITY = 2;
             }
-            else if (ms.count() > 500 && ((main_scene->sphereForce).lengthsq() < 1.0)) {
+            else if (ms.count() > 500 && ((main_scene->sphereForce).lengthsq() < 2.0)) {
                 main_scene->ALPHA_CONTROL -= 0.001;
                 main_scene->ALPHA_CONTROL = max(main_scene->ALPHA_CONTROL, 0.1);
                 main_scene->K_DAMPING_VELOCITY = 0.10;
