@@ -371,6 +371,7 @@ void close(void)
 
     // delete resources
     delete hapticsThread;
+    delete sensorThread;
     delete scene1;
     delete scene2;
     delete scene3;
@@ -635,14 +636,25 @@ void updateHaptics(void){
             }
         }
         else if (control_mode == 8) {
-            //cout << s->conductance << endl;
             using namespace std::chrono;
             high_resolution_clock::time_point t1 = high_resolution_clock::now();
             milliseconds ms = duration_cast<milliseconds>(t1 - (main_scene->recordTime));
             if (ms.count() >= 500) {
-                main_scene->ALPHA_CONTROL = max((1.0 - (0.01 * main_scene->collisionsLastSec)), 0.0);
-                main_scene->collisionsLastSec = 0;
-                main_scene->recordTime = high_resolution_clock::now();
+                float delta = 0.1 * (main_scene->collisionsLastSec);
+                if (delta > 0) {
+                    main_scene->ALPHA_CONTROL -= delta;
+                    main_scene->ALPHA_CONTROL = max(main_scene->ALPHA_CONTROL, 0.0);
+                    main_scene->collisionsLastSec = 0;
+                    main_scene->recordTime = high_resolution_clock::now();
+                    main_scene->K_DAMPING_VELOCITY = 0.10;
+                }
+                else {
+                    main_scene->ALPHA_CONTROL += 0.1;
+                    main_scene->ALPHA_CONTROL = min(main_scene->ALPHA_CONTROL, 1.0);
+                    main_scene->collisionsLastSec = 0;
+                    main_scene->recordTime = high_resolution_clock::now();
+                    main_scene->K_DAMPING_VELOCITY = 0.10;
+                }
             }
         }
         main_scene->updateHaptics(timeInterval);
