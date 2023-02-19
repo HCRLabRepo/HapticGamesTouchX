@@ -167,7 +167,7 @@
       </SDLCheck>
       <PreprocessorDefinitions>WIN64;NDEBUG;_CONSOLE;_MSVC;_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>..\..\external\chai3d-3.2.0\src;..\..\external\chai3d-3.2.0\external\Eigen;..\..\external\chai3d-3.2.0\external\glew\include;..\..\external\chai3d-3.2.0\extras\GLFW\include;..\..\external\chai3d-3.2.0\modules\BULLET\src;..\..\external\chai3d-3.2.0\modules\BULLET\external\bullet\src;..\..\external\fuzzylite;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Python311\include;..\..\external\chai3d-3.2.0\src;..\..\external\chai3d-3.2.0\external\Eigen;..\..\external\chai3d-3.2.0\external\glew\include;..\..\external\chai3d-3.2.0\extras\GLFW\include;..\..\external\chai3d-3.2.0\modules\BULLET\src;..\..\external\chai3d-3.2.0\modules\BULLET\external\bullet\src;..\..\external\fuzzylite;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <RuntimeTypeInfo>true</RuntimeTypeInfo>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <Optimization>Full</Optimization>
@@ -185,8 +185,8 @@
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>false</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>..\..\external\fuzzylite\build\bin\Release;..\..\external\chai3d-3.2.0\extras\freeglut\lib\$(Configuration)\$(Platform);..\..\external\chai3d-3.2.0\modules\BULLET\lib\$(Configuration)\$(Platform);..\..\external\chai3d-3.2.0\lib\$(Configuration)\$(Platform);..\..\external\chai3d-3.2.0\extras\GLFW\lib\$(Configuration)\$(Platform);C:\OpenHaptics\Developer\3.5.0\lib\x64\Release;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>glfw.lib;OpenGL32.lib;glu32.lib;chai3d.lib;chai3d-BULLET.lib;fuzzylite.lib;fuzzylite-static.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>C:\Python311\libs;..\..\external\fuzzylite\build\bin\Release;..\..\external\chai3d-3.2.0\extras\freeglut\lib\$(Configuration)\$(Platform);..\..\external\chai3d-3.2.0\modules\BULLET\lib\$(Configuration)\$(Platform);..\..\external\chai3d-3.2.0\lib\$(Configuration)\$(Platform);..\..\external\chai3d-3.2.0\extras\GLFW\lib\$(Configuration)\$(Platform);C:\OpenHaptics\Developer\3.5.0\lib\x64\Release;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>python311.lib;glfw.lib;OpenGL32.lib;glu32.lib;chai3d.lib;chai3d-BULLET.lib;fuzzylite.lib;fuzzylite-static.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <RandomizedBaseAddress>false</RandomizedBaseAddress>
     </Link>
     <ProjectReference>

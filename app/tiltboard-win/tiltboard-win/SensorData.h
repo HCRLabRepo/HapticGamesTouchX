@@ -1,4 +1,5 @@
 #pragma once
+#include <Python.h>
 
 class SensorData {
 	public:
@@ -7,6 +8,7 @@ class SensorData {
 		virtual ~SensorData() {};
 
 	public:
+		PyObject* pModule;
 		float conductance;
 
 };
