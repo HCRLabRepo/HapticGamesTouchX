@@ -111,3 +111,4 @@ std::ofstream CIPforcefile;
 
 SensorData* s;
 cThread* sensorThread;
+float previousConductance = 0;

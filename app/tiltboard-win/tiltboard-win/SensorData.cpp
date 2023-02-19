@@ -6,6 +6,7 @@ using namespace std;
 
 SensorData::SensorData()
 {
+	conductance = 0;
 	Py_Initialize();
 	pModule = PyImport_AddModule("__main__");
 	PyRun_SimpleString(
@@ -29,7 +30,12 @@ void SensorData::getData(){
 		PyRun_SimpleString("read_sensor.read()");
 		PyObject* catcher = PyObject_GetAttrString(pModule, "outputCatch");
 		PyObject* output = PyObject_GetAttrString(catcher, "value");
-		conductance = stof(_PyUnicode_AsString(output));
+		if (stof(_PyUnicode_AsString(output))> 10 || stof(_PyUnicode_AsString(output))<0) {
+			continue;
+		}
+		else {
+			conductance = stof(_PyUnicode_AsString(output));
+		}
 		cout << conductance << endl;
 	}
 }

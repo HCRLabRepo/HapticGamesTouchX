@@ -657,6 +657,13 @@ void updateHaptics(void){
                 }
             }
         }
+        else if (control_mode == 9) {
+            float delta = (s->conductance - previousConductance);
+            main_scene->ALPHA_CONTROL -= 0.1*delta;
+            main_scene->ALPHA_CONTROL = max(main_scene->ALPHA_CONTROL, 0.0);
+            main_scene->ALPHA_CONTROL = min(main_scene->ALPHA_CONTROL, 1.0);
+            previousConductance = s->conductance;
+        }
         main_scene->updateHaptics(timeInterval);
         if(main_scene->destination_index == main_scene->destinations.size()){
             break;        
