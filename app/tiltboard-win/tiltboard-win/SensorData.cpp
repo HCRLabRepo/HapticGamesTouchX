@@ -1,5 +1,6 @@
 #include <Python.h>
 #include <iostream>
+#include <string>
 #include "SensorData.h"
 using namespace std;
 
@@ -15,7 +16,7 @@ SensorData::SensorData()
 		"   def __init__(self) :\n"
 		"       self.value = ''\n"
 		"   def write(self, txt) :\n"
-		"       self.value += txt\n"
+		"       self.value = txt\n"
 		"outputCatch = CatchOutput()\n"
 		"sys.stdout = outputCatch\n"
 		"import read_sensor\n"
@@ -28,7 +29,7 @@ void SensorData::getData(){
 		PyRun_SimpleString("read_sensor.read()");
 		PyObject* catcher = PyObject_GetAttrString(pModule, "outputCatch");
 		PyObject* output = PyObject_GetAttrString(catcher, "value");
-		printf("Here's the output:\n %s", _PyUnicode_AsString(output));
-		conductance = 0.0;
+		conductance = stof(_PyUnicode_AsString(output));
+		cout << conductance << endl;
 	}
 }

@@ -19,27 +19,27 @@ def setup():
     global ser
     ser = serial.Serial(port="COM6", baudrate=115200)
     ser.flushInput()
-    print ("port opening, done.")
+    #print ("port opening, done.")
 
     # send the set sensors command
     ser.write(struct.pack('BBBB', 0x08 , 0x04, 0x01, 0x00))  #GSR and PPG
     wait_for_ack()   
-    print ("sensor setting, done.")
+    #print ("sensor setting, done.")
 
     # Enable the internal expansion board power
     ser.write(struct.pack('BB', 0x5E, 0x01))
     wait_for_ack()
-    print ("enable internal expansion board power, done.")
+    #print ("enable internal expansion board power, done.")
 
     # send the set sampling rate command
 
     ser.write(struct.pack('BBB', 0x05, 0x00, 0x19)) #5.12Hz (6400 (0x1900)). Has to be done like this for alignment reasons
     wait_for_ack()
-    print ("sampling rate setting, done.")
+    #print ("sampling rate setting, done.")
     # send start streaming command
     ser.write(struct.pack('B', 0x07))
     wait_for_ack()
-    print ("start command sending, done.")
+    #print ("start command sending, done.")
 
     
     #print ("Packet Type\tTimestamp\tGSR\tPPG")
@@ -49,7 +49,7 @@ def read():
     numbytes = 0
     framesize = 8 # 1byte packet type + 3byte timestamp + 2 byte GSR + 2 byte PPG(Int A13)
 
-    print("Beginning read")
+    #print("Beginning read")
     try:
         #while True:
          while numbytes < framesize:
@@ -88,8 +88,8 @@ def read():
 
          timestamp = timestamp0 + timestamp1*256 + timestamp2*65536
 
-         print ("0x%02x\t\t%5d,\t%4d,\t%4d" % (packettype[0], timestamp, GSR_ohm, PPG_mv))
-         print("Conductance:" + str(conductance))
+         #print ("0x%02x\t\t%5d,\t%4d,\t%4d" % (packettype[0], timestamp, GSR_ohm, PPG_mv))
+         sys.stdout.write(str(conductance))
          
 
     except KeyboardInterrupt:
