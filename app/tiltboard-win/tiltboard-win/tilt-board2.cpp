@@ -46,19 +46,21 @@ bool callbackFunc(btManifoldPoint& cp, const btCollisionObjectWrapper* obj1, int
 
     if( (((cBulletMesh*)(obj1->getCollisionObject()->getUserPointer()))->m_material->m_diffuse == Gray) && (((cBulletMesh*)(obj2->getCollisionObject()->getUserPointer()))->m_material->m_diffuse != Blue)){
         ((cBulletMesh*)(obj1->getCollisionObject()->getUserPointer()))->m_material->setRed();
-        std::thread t(recoverColor,obj1);
+        ((cBulletMesh*)(obj1->getCollisionObject()->getUserPointer()))->m_material->setGrayLevel(0.3);
+        //std::thread t(recoverColor,obj1);
         ballfile << "Collision" <<endl;
         main_scene->collisionNum += 1;
         main_scene->collisionsLastSec += 1;
-        t.join();
+        //t.join();
     }
     if( (((cBulletMesh*)(obj2->getCollisionObject()->getUserPointer()))->m_material->m_diffuse == Gray) && (((cBulletMesh*)(obj1->getCollisionObject()->getUserPointer()))->m_material->m_diffuse != Blue) ){
         ((cBulletMesh*)(obj2->getCollisionObject()->getUserPointer()))->m_material->setRed();
-        std::thread t(recoverColor,obj2);
+        ((cBulletMesh*)(obj2->getCollisionObject()->getUserPointer()))->m_material->setGrayLevel(0.3);
+        //std::thread t(recoverColor,obj2);
         ballfile <<  "Collision" <<endl;
         main_scene->collisionNum += 1;
         main_scene->collisionsLastSec += 1;
-        t.join();
+        //t.join();
     }
 
     return false;
@@ -220,7 +222,9 @@ int main(int argc, char* argv[]){
     NIPfile.open(NIPfilename);
     HIPforcefile.open(HIPforcefilename);
     CIPforcefile.open(CIPforcefilename);
-    s = new SensorData();
+    if (control_mode == 9){
+        s = new SensorData();
+    }
     //--------------------------------------------------------------------------
     // START SIMULATION
     //--------------------------------------------------------------------------
@@ -228,8 +232,11 @@ int main(int argc, char* argv[]){
     // Create a thread which starts the main haptics rendering loop
     hapticsThread = new cThread();
     hapticsThread->start(updateHaptics, CTHREAD_PRIORITY_HAPTICS);
-    sensorThread = new cThread();
-    sensorThread->start(getSensorData, CTHREAD_PRIORITY_GRAPHICS);
+    if (control_mode == 9) {
+        sensorThread = new cThread();
+        sensorThread->start(getSensorData, CTHREAD_PRIORITY_GRAPHICS);
+    }
+    
     
     // Setup callback when application exits
     atexit(close);
@@ -371,7 +378,9 @@ void close(void)
 
     // delete resources
     delete hapticsThread;
-    delete sensorThread;
+    if (control_mode == 9) {
+        delete sensorThread;
+    }
     delete scene1;
     delete scene2;
     delete scene3;
@@ -591,10 +600,12 @@ void updateHaptics(void){
             if (button0){
                 main_scene->ALPHA_CONTROL += 0.001;
                 main_scene->ALPHA_CONTROL = min(main_scene->ALPHA_CONTROL, 1.0);
-                main_scene->K_DAMPING_VELOCITY = 2; 
+                main_scene->K_DAMPING_VELOCITY = 2;
             }
             else{
                 main_scene->ALPHA_CONTROL = 0.1*(main_scene->userForce);
+                main_scene->ALPHA_CONTROL = max(main_scene->ALPHA_CONTROL, 0.0);
+                main_scene->ALPHA_CONTROL = min(main_scene->ALPHA_CONTROL, 1.0);
                 main_scene->K_DAMPING_VELOCITY = 0.10;
             }
         }
