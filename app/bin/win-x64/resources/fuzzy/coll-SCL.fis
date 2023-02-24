@@ -1,0 +1,62 @@
+% R-Fuzzy (C) J.M.Garibaldi, 1st Oct 2004 $Revision: 0.1$
+[System]
+Name='Collisions-SCL'
+Type='mamdani'
+NumInputs=2
+NumOutputs=1
+NumRules=17
+AndMethod='min'
+OrMethod='max'
+ImpMethod='min'
+AggMethod='max'
+DefuzzMethod='centroid'
+
+
+[Input1]
+Name='collisions'
+Range=[0 75]
+NumMFs=5
+MF1='flawless':'trapmf',[0 0 11.25 15]
+MF2='good':'trapmf',[0 15 22.5 30]
+MF3='OK':'trapmf',[15 30 37.5 45]
+MF4='bad':'trapmf',[30 45 52.5 60]
+MF5='terrible':'trapmf',[52.5 60 75 99999]
+
+[Input2]
+Name='SCL'
+Range=[0 16]
+NumMFs=4
+MF1='low':'gbellmf',[1 5 0]
+MF2='normal':'gaussmf',[1 3]
+MF3='high':'gaussmf',[2 7]
+MF4='very high':'gbellmf',[7 4 16]
+
+[Output1]
+Name='alpha change'
+Range=[-1 1]
+NumMFs=5
+MF1='great deduction':'trapmf',[-1 -1 -0.8 -0.6]
+MF2='small deduction':'trapmf',[-0.8 -0.6 -0.4 -0.2]
+MF3='menial change':'gaussmf',[0.1 0]
+MF4='small increase':'trapmf',[0.2 0.4 0.6 0.8]
+MF5='great increase':'trapmf',[0.6 0.8 1 1]
+
+[Rules]
+1 1, 5 (1) : 1
+1 2, 4 (1) : 1
+1 3, 3 (1) : 1
+1 4, 3 (1) : 1
+2 1, 4 (1) : 1
+2 2, 4 (1) : 1
+2 3, 3 (1) : 1
+2 4, 2 (1) : 1
+3 1, 3 (1) : 1
+3 2, 3 (1) : 1
+3 3, 2 (1) : 1
+3 4, 2 (1) : 1
+4 1, 2 (1) : 1
+4 2, 2 (1) : 1
+4 3, 1 (1) : 1
+4 4, 1 (1) : 1
+5 0, 1 (1) : 1
+

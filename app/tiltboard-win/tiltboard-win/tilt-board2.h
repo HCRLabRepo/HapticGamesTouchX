@@ -3,6 +3,9 @@
 #include <fstream>
 #include <chai3d.h>
 #include <GLFW/glfw3.h>
+#include <vector>
+#include <numeric>
+#include <iostream>
 #include "GenericScene.h"
 #include "Scene1.h"
 #include "Scene2.h"
@@ -79,6 +82,7 @@ string subject_sex;
 int subject_age;
 int game_scene;
 int control_mode;
+string fuzzy_params;
 
 
 //---------------------------------------------------------------------------
@@ -112,3 +116,9 @@ std::ofstream CIPforcefile;
 SensorData* s;
 cThread* sensorThread;
 float previousConductance = 0;
+
+fl::Engine* fuzzy;
+bool startSensor = false;
+
+std::vector<float> forceLastSec;
+std::vector<float> conductanceLastSec;

@@ -78,6 +78,15 @@ int main(int argc, char* argv[]){
         settingsfile >> subject_age;
         settingsfile >> game_scene;
         settingsfile >> control_mode;
+        if (control_mode == 10) {
+            settingsfile >> fuzzy_params;
+            
+            if (fuzzy_params.find("SCL") != string::npos) {
+                startSensor = true;
+            }
+            cout << "resources/fuzzy/" + fuzzy_params + ".fis" << endl;
+            fuzzy = fl::FisImporter().fromFile("resources/fuzzy/" + fuzzy_params + ".fis");
+        }
 
         settingsfile.close();
     }else{
@@ -222,7 +231,8 @@ int main(int argc, char* argv[]){
     NIPfile.open(NIPfilename);
     HIPforcefile.open(HIPforcefilename);
     CIPforcefile.open(CIPforcefilename);
-    if (control_mode == 9){
+    if (control_mode == 9 || startSensor){
+        cout << startSensor << endl;
         s = new SensorData();
     }
     //--------------------------------------------------------------------------
@@ -232,7 +242,7 @@ int main(int argc, char* argv[]){
     // Create a thread which starts the main haptics rendering loop
     hapticsThread = new cThread();
     hapticsThread->start(updateHaptics, CTHREAD_PRIORITY_HAPTICS);
-    if (control_mode == 9) {
+    if (control_mode ==9 || startSensor) {
         sensorThread = new cThread();
         sensorThread->start(getSensorData, CTHREAD_PRIORITY_GRAPHICS);
     }
@@ -378,7 +388,7 @@ void close(void)
 
     // delete resources
     delete hapticsThread;
-    if (control_mode == 9) {
+    if (control_mode ==9 || startSensor) {
         delete sensorThread;
     }
     delete scene1;
@@ -678,6 +688,42 @@ void updateHaptics(void){
         main_scene->updateHaptics(timeInterval);
         if(main_scene->destination_index == main_scene->destinations.size()){
             break;        
+        }
+        else if (control_mode == 10) {
+            using namespace std::chrono;
+            high_resolution_clock::time_point t1 = high_resolution_clock::now();
+            milliseconds ms = duration_cast<milliseconds>(t1 - (main_scene->recordTime));
+            forceLastSec.push_back(main_scene->userForce);
+            if (startSensor) {
+                conductanceLastSec.push_back(s->conductance);
+            }
+            if (ms.count() >= 500) {
+                if (fuzzy_params.find("coll") != string::npos) {
+                    fl::InputVariable* colls = fuzzy->getInputVariable("collisions");
+                    colls->setValue(main_scene->collisionsLastSec);
+                }
+                if (fuzzy_params.find("force") != string::npos) {
+                    fl::InputVariable* force = fuzzy->getInputVariable("force");
+                    force->setValue((std::accumulate(forceLastSec.begin(), forceLastSec.end(), 0.0))/forceLastSec.size());
+                }
+                if (fuzzy_params.find("SCL") != string::npos) {
+                    fl::InputVariable* SCL = fuzzy->getInputVariable("SCL");
+                    cout << "Conductance: " << s->conductance << endl;
+                    SCL->setValue((std::accumulate(conductanceLastSec.begin(), conductanceLastSec.end(), 0.0)) / conductanceLastSec.size());
+                }
+                fuzzy->process();
+                double output = stod(fl::Op::str(fuzzy->outputVariables()[0]->getValue()));
+                if (isnan(output)) {
+                    continue;
+                }
+                cout << output << endl;
+                main_scene->ALPHA_CONTROL += output;
+                main_scene->ALPHA_CONTROL = max(main_scene->ALPHA_CONTROL, 0.0);
+                main_scene->ALPHA_CONTROL = min(main_scene->ALPHA_CONTROL, 1.0);
+                main_scene->K_DAMPING_VELOCITY = 1;
+                main_scene->collisionsLastSec = 0;
+                main_scene->recordTime = high_resolution_clock::now();
+            }
         }
         // Reset the simulation clock
         clock.reset();
