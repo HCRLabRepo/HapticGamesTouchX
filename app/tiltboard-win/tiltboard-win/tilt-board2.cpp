@@ -705,11 +705,13 @@ void updateHaptics(void){
                 if (fuzzy_params.find("force") != string::npos) {
                     fl::InputVariable* force = fuzzy->getInputVariable("force");
                     force->setValue((std::accumulate(forceLastSec.begin(), forceLastSec.end(), 0.0))/forceLastSec.size());
+                    forceLastSec.clear();
                 }
                 if (fuzzy_params.find("SCL") != string::npos) {
                     fl::InputVariable* SCL = fuzzy->getInputVariable("SCL");
                     cout << "Conductance: " << s->conductance << endl;
                     SCL->setValue((std::accumulate(conductanceLastSec.begin(), conductanceLastSec.end(), 0.0)) / conductanceLastSec.size());
+                    conductanceLastSec.clear();
                 }
                 fuzzy->process();
                 double output = stod(fl::Op::str(fuzzy->outputVariables()[0]->getValue()));
