@@ -48,7 +48,7 @@ bool callbackFunc(btManifoldPoint& cp, const btCollisionObjectWrapper* obj1, int
         ((cBulletMesh*)(obj1->getCollisionObject()->getUserPointer()))->m_material->setRed();
         ((cBulletMesh*)(obj1->getCollisionObject()->getUserPointer()))->m_material->setGrayLevel(0.3);
         //std::thread t(recoverColor,obj1);
-        ballfile << "Collision" <<endl;
+        ballfile << timeSinceEpochMillisec() << ", " << "Collision" <<endl;
         main_scene->collisionNum += 1;
         main_scene->collisionsLastSec += 1;
         //t.join();
@@ -57,7 +57,7 @@ bool callbackFunc(btManifoldPoint& cp, const btCollisionObjectWrapper* obj1, int
         ((cBulletMesh*)(obj2->getCollisionObject()->getUserPointer()))->m_material->setRed();
         ((cBulletMesh*)(obj2->getCollisionObject()->getUserPointer()))->m_material->setGrayLevel(0.3);
         //std::thread t(recoverColor,obj2);
-        ballfile <<  "Collision" <<endl;
+        ballfile << timeSinceEpochMillisec() << ", " << "Collision" <<endl;
         main_scene->collisionNum += 1;
         main_scene->collisionsLastSec += 1;
         //t.join();
@@ -72,10 +72,24 @@ int main(int argc, char* argv[]){
     // Retreat Experiment Settings
     //---------------------------------------------------------------------------
     std::ifstream settingsfile("ExperimentSettings.txt");
-    if(settingsfile.is_open()){
+    if (argc >= 2) {
+        subject_num = argv[1];
+        game_scene = atoi(argv[2]);
+        control_mode = atoi(argv[3]);
+        if (control_mode == 10) {
+            fuzzy_params = argv[4];
+            if (fuzzy_params.find("SCL") != string::npos) {
+                startSensor = true;
+            }
+            cout << "resources/fuzzy/" + fuzzy_params + ".fis" << endl;
+            fuzzy = fl::FisImporter().fromFile("resources/fuzzy/" + fuzzy_params + ".fis");
+        }
+        else {
+            fuzzy_params = "";
+        }
+    }
+    else if(settingsfile.is_open()){
         settingsfile >> subject_num;
-        settingsfile >> subject_sex;
-        settingsfile >> subject_age;
         settingsfile >> game_scene;
         settingsfile >> control_mode;
         if (control_mode == 10) {
@@ -89,17 +103,18 @@ int main(int argc, char* argv[]){
         }
 
         settingsfile.close();
-    }else{
+    }
+    else{
         cout << "Settings File Not Found!" << endl;
         return 0;
     }
-
-    string ballfilename = "S" + subject_num + "/ball" + "/S" + subject_num + "_" + subject_sex + to_string(subject_age) + "_" + to_string(game_scene) + "_" + to_string(control_mode) + ".csv";
-    string HIPfilename = "S" + subject_num + "/HIP" + "/S" + subject_num + "_" + subject_sex + to_string(subject_age) + "_" + to_string(game_scene) + "_" + to_string(control_mode) + ".csv";
-    string CIPfilename = "S" + subject_num + "/CIP" + "/S" + subject_num + "_" + subject_sex + to_string(subject_age) + "_" + to_string(game_scene) + "_" + to_string(control_mode) + ".csv";
-    string NIPfilename = "S" + subject_num + "/NIP" + "/S" + subject_num + "_" + subject_sex + to_string(subject_age) + "_" + to_string(game_scene) + "_" + to_string(control_mode) + ".csv";
-    string HIPforcefilename = "S" + subject_num + "/HIP" + "/S" + subject_num + "_" + subject_sex + to_string(subject_age) + "_" + to_string(game_scene) + "_" + to_string(control_mode) + "_force.csv";
-    string CIPforcefilename = "S" + subject_num + "/CIP" + "/S" + subject_num + "_" + subject_sex + to_string(subject_age) + "_" + to_string(game_scene) + "_" + to_string(control_mode) + "_force.csv";
+    string resultPath = "results/S" + subject_num + "/control_" + to_string(control_mode);
+    string ballfilename = resultPath + fuzzy_params + "/ball.csv";
+    string HIPfilename = resultPath + fuzzy_params + "/position_HIP.csv";
+    string CIPfilename = resultPath + fuzzy_params + "/position_CIP.csv";
+    string NIPfilename = resultPath + fuzzy_params + "/position_NIP.csv";
+    string HIPforcefilename = resultPath + fuzzy_params + "/force_HIP.csv";
+    string CIPforcefilename = resultPath + fuzzy_params + "/force_CIP.csv";
     //---------------------------------------------------------------------------
     // Initial Print Message
     //---------------------------------------------------------------------------
@@ -750,6 +765,7 @@ void updateHaptics(void){
     CIPforcefile.close();
     hapticDevice->close();
     simulationFinished = true;
+    glfwSetWindowShouldClose(window, GLFW_TRUE);
 }
 
 void getSensorData() {
