@@ -78,9 +78,6 @@ int main(int argc, char* argv[]){
         control_mode = atoi(argv[3]);
         if (control_mode == 10) {
             fuzzy_params = argv[4];
-            if (fuzzy_params.find("SCL") != string::npos) {
-                startSensor = true;
-            }
             cout << "resources/fuzzy/" + fuzzy_params + ".fis" << endl;
             fuzzy = fl::FisImporter().fromFile("resources/fuzzy/" + fuzzy_params + ".fis");
         }
@@ -88,16 +85,12 @@ int main(int argc, char* argv[]){
             fuzzy_params = "";
         }
     }
-    else if(settingsfile.is_open()){
+    else if(argc == 0 && settingsfile.is_open()){
         settingsfile >> subject_num;
         settingsfile >> game_scene;
         settingsfile >> control_mode;
         if (control_mode == 10) {
             settingsfile >> fuzzy_params;
-            
-            if (fuzzy_params.find("SCL") != string::npos) {
-                startSensor = true;
-            }
             cout << "resources/fuzzy/" + fuzzy_params + ".fis" << endl;
             fuzzy = fl::FisImporter().fromFile("resources/fuzzy/" + fuzzy_params + ".fis");
         }
@@ -110,6 +103,7 @@ int main(int argc, char* argv[]){
     }
     string resultPath = "results/S" + subject_num + "/control_" + to_string(control_mode);
     string ballfilename = resultPath + fuzzy_params + "/ball.csv";
+    string conductancefilename = resultPath + fuzzy_params + "/conductance.csv";
     string HIPfilename = resultPath + fuzzy_params + "/position_HIP.csv";
     string CIPfilename = resultPath + fuzzy_params + "/position_CIP.csv";
     string NIPfilename = resultPath + fuzzy_params + "/position_NIP.csv";
@@ -241,15 +235,13 @@ int main(int argc, char* argv[]){
         initDebugScene();
     }
     ballfile.open(ballfilename);
+    conductancefile.open(conductancefilename);
     HIPfile.open(HIPfilename);
     CIPfile.open(CIPfilename);
     NIPfile.open(NIPfilename);
     HIPforcefile.open(HIPforcefilename);
     CIPforcefile.open(CIPforcefilename);
-    if (control_mode == 9 || startSensor){
-        cout << startSensor << endl;
-        s = new SensorData();
-    }
+    s = new SensorData();
     //--------------------------------------------------------------------------
     // START SIMULATION
     //--------------------------------------------------------------------------
@@ -257,10 +249,8 @@ int main(int argc, char* argv[]){
     // Create a thread which starts the main haptics rendering loop
     hapticsThread = new cThread();
     hapticsThread->start(updateHaptics, CTHREAD_PRIORITY_HAPTICS);
-    if (control_mode ==9 || startSensor) {
-        sensorThread = new cThread();
-        sensorThread->start(getSensorData, CTHREAD_PRIORITY_GRAPHICS);
-    }
+    sensorThread = new cThread();
+    sensorThread->start(getSensorData, CTHREAD_PRIORITY_GRAPHICS);
     
     
     // Setup callback when application exits
@@ -403,9 +393,7 @@ void close(void)
 
     // delete resources
     delete hapticsThread;
-    if (control_mode ==9 || startSensor) {
-        delete sensorThread;
-    }
+    delete sensorThread;
     delete scene1;
     delete scene2;
     delete scene3;
@@ -709,9 +697,7 @@ void updateHaptics(void){
             high_resolution_clock::time_point t1 = high_resolution_clock::now();
             milliseconds ms = duration_cast<milliseconds>(t1 - (main_scene->recordTime));
             forceLastSec.push_back(main_scene->userForce);
-            if (startSensor) {
-                conductanceLastSec.push_back(s->conductance);
-            }
+            conductanceLastSec.push_back(s->conductance);
             if (ms.count() >= 500) {
                 if (fuzzy_params.find("coll") != string::npos) {
                     fl::InputVariable* colls = fuzzy->getInputVariable("collisions");
@@ -749,6 +735,7 @@ void updateHaptics(void){
         // Signal frequency counter
         freqCounterHaptics.signal(1);
         ballfile <<  timeSinceEpochMillisec() << ", " << main_scene->positionMainSphere <<endl;
+        conductancefile << timeSinceEpochMillisec() << ", " << s->conductance << endl;
         HIPfile << timeSinceEpochMillisec() << ", " << hapticDevicePosition << endl;
         CIPfile << timeSinceEpochMillisec() << ", " << main_scene->positionGuidanceSphere << endl;
         NIPfile << timeSinceEpochMillisec() << ", " << main_scene->positionNegotiatedSphere << endl;

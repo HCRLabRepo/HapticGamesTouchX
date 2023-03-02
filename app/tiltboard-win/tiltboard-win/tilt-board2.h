@@ -107,6 +107,7 @@ void initDebugScene();
 void getSensorData();
 
 std::ofstream ballfile;
+std::ofstream conductancefile;
 std::ofstream HIPfile;
 std::ofstream CIPfile;
 std::ofstream NIPfile;
@@ -118,7 +119,6 @@ cThread* sensorThread;
 float previousConductance = 0;
 
 fl::Engine* fuzzy;
-bool startSensor = false;
 
 std::vector<float> forceLastSec;
 std::vector<float> conductanceLastSec;

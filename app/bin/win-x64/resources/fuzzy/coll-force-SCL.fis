@@ -10,14 +10,10 @@ OrMethod='max'
 ImpMethod='min'
 AggMethod='max'
 DefuzzMethod='centroid'
-mfType='t1'
 
 [Input1]
 Name='SCL'
 Range=[0 16]
-fuzzification.method=''
-fuzzification.params=[]
-firing.method='tnorm.min.max'
 NumMFs=4
 MF1='low':'gbellmf',[1 5 0]
 MF2='normal':'gaussmf',[1 3]
@@ -27,9 +23,6 @@ MF4='very high':'gbellmf',[7 4 16]
 [Input2]
 Name='collisions'
 Range=[0 75]
-fuzzification.method=''
-fuzzification.params=[]
-firing.method='tnorm.min.max'
 NumMFs=5
 MF1='flawless':'trapmf',[0 0 11.25 15]
 MF2='good':'trapmf',[0 15 22.5 30]
@@ -40,9 +33,6 @@ MF5='terrible':'trapmf',[52.5 60 75 99999]
 [Input3]
 Name='force'
 Range=[0 10]
-fuzzification.method=''
-fuzzification.params=[]
-firing.method='tnorm.min.max'
 NumMFs=5
 MF1='Imperceptible':'gaussmf',[0.5 0]
 MF2='Mild':'gbellmf',[1 3 2.5]
