@@ -36,6 +36,5 @@ void SensorData::getData(){
 		else {
 			conductance = stof(_PyUnicode_AsString(output));
 		}
-		cout << conductance << endl;
 	}
 }

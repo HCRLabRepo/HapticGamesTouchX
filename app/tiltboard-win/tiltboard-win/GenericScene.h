@@ -27,8 +27,6 @@ public:
     double getFuzzyOutput(int timein, int collisionsin);
     virtual void initWaypoints(){};
     void updateTarget();
-
-    //void visualizeWaypoints();
     
 
 public:

@@ -45,25 +45,3 @@ pause
 start /WAIT /B "Experiment 8" tiltboard-win.exe %userId% 2 10 coll-force-SCL
 echo STUDY COMPLETE.
 pause
-
-:P2
-echo Permutation 2
-start /WAIT /B "Experiment" tiltboard-win.exe %userId% 2 1
-start /WAIT /B "Experiment" tiltboard-win.exe %userId% 2 5
-start /WAIT /B "Experiment" tiltboard-win.exe %userId% 2 8
-start /WAIT /B "Experiment" tiltboard-win.exe %userId% 2 9 
-start /WAIT /B "Experiment" tiltboard-win.exe %userId% 2 10 coll-force
-start /WAIT /B "Experiment" tiltboard-win.exe %userId% 2 10 coll-SCL
-start /WAIT /B "Experiment" tiltboard-win.exe %userId% 2 10 force-SCL
-start /WAIT /B "Experiment" tiltboard-win.exe %userId% 2 10 coll-force-SCL
-
-:P3
-echo Permutation 3
-start /WAIT /B "Experiment" tiltboard-win.exe %userId% 2 1
-start /WAIT /B "Experiment" tiltboard-win.exe %userId% 2 5
-start /WAIT /B "Experiment" tiltboard-win.exe %userId% 2 8
-start /WAIT /B "Experiment" tiltboard-win.exe %userId% 2 9 
-start /WAIT /B "Experiment" tiltboard-win.exe %userId% 2 10 coll-force
-start /WAIT /B "Experiment" tiltboard-win.exe %userId% 2 10 coll-SCL
-start /WAIT /B "Experiment" tiltboard-win.exe %userId% 2 10 force-SCL
-start /WAIT /B "Experiment" tiltboard-win.exe %userId% 2 10 coll-force-SCL

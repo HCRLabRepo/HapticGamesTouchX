@@ -48,7 +48,7 @@ Scene2::Scene2(shared_ptr<cGenericHapticDevice> a_hapticDevice):GenericScene(a_h
             coord.push_back(stod(elem));
         }
         checkpoints.push_back(cVector3d(coord[0], coord[1], coord[2]));
-        checkpointsRange.push_back(0.04);
+        checkpointsRange.push_back(0.02);
     }
 
     /** Set up target */
@@ -86,53 +86,29 @@ void Scene2::generateWaypoints(cVector3d positionSphere, cVector3d positionTarge
     }
 }
 void Scene2::updateWaypoint(cVector3d positionSphere, cVector3d positionTarget){
-    if(waypoint_index == waypoints.size()-3){
-        if(waypoint_index == last_waypoint_index)
-        {
-            cout<< "waypoint upodated forward" << endl;
-            waypoint_index = last_waypoint_index +1;
-            return;
-        }else if(cDistance(positionTarget,positionSphere) + cDistance(waypoints[waypoint_index], positionSphere) > cDistance(waypoints[waypoint_index],positionTarget)+0.03){
-            double min_distance =  cDistance(waypoints[waypoint_index], positionSphere);
-            for(int i = 4; i < checkpoints.size(); i++){
-                if(cDistance(checkpoints[i], positionSphere)< min_distance){
-                    min_distance = cDistance(checkpoints[i], positionSphere);
-                    positionWaypoint = checkpoints[i];
-                }
-            }
-        }
-        if(cDistance(positionWaypoint,positionSphere)<0.04){
-            positionWaypoint = waypoints[waypoint_index];
-        }
-    }
-    else if(waypoint_index == waypoints.size()-2){
+    if(waypoint_index == waypoints.size()-2){
          if(waypoint_index == last_waypoint_index)
         {
-            cout<< "waypoint upodated forward" << endl;
-            waypoint_index = last_waypoint_index +1;
+             cout << "Arrived at target! " << waypoint_index << endl;
+             waypoint_index = last_waypoint_index + 1;
+             cout << "waypoint updated forward: " << waypoint_index << endl;
             return;
 
-        }else if(cDistance(positionTarget,positionSphere) + cDistance(waypoints[waypoint_index-1], positionSphere) > cDistance(waypoints[waypoint_index-1],positionTarget)+0.09)
-        {
-            last_waypoint_index = last_waypoint_index -1;
-            waypoint_index = waypoint_index-1;
         }
-        positionWaypoint = waypoints[waypoint_index];            
+         else if (abs(positionTarget.get(0)) == abs(positionTarget.get(1)) && inForbiddenZone(positionSphere)){
+             last_waypoint_index -= 1;
+             waypoint_index = last_waypoint_index;
+         }
     }
     else
     {
         if(waypoint_index == last_waypoint_index)
         {
-            cout<< "waypoint upodated forward" << endl;
-            waypoint_index = last_waypoint_index +1;
+            cout << "Arrived at waypoint: " << waypoint_index << endl;
+            waypoint_index = last_waypoint_index + 1;
+            cout << "waypoint updated forward: " << waypoint_index << endl;
         }
 
-        /*for(int i=max(last_waypoint_index-1,0); i < min(last_waypoint_index+2, (int)waypoints.size()); i++){
-            if(cDistance(positionSphere, waypoints[i])/cDistance(waypoints[last_waypoint_index], waypoints[i])+0.7<cDistance(positionSphere, waypoints[waypoint_index])/cDistance(waypoints[last_waypoint_index], waypoints[waypoint_index])){
-                cout << "waypoint updated backward" << endl;
-                waypoint_index = i;
-            }
-        }*/
         if(waypoint_index == waypoints.size()-1){
             updateTarget();
             generateWaypoints(positionSphere, target->getLocalPos());
@@ -141,6 +117,18 @@ void Scene2::updateWaypoint(cVector3d positionSphere, cVector3d positionTarget){
         waypoint_index = waypoint_index % waypoints.size();
         positionWaypoint = waypoints[waypoint_index];
     }
+}
+
+bool Scene2::inForbiddenZone(cVector3d positionSphere) {
+    for (int i = 0; i < fz.size(); i += 2) {
+        float line = cDistance(fz.at(i), fz.at(i+1));
+            float line1 = cDistance(fz.at(i), positionSphere);
+            float line2 = cDistance(positionSphere, fz.at(i+1));
+            if (line1 + line2 <= (line+0.01)) {
+                return true;
+            }
+    }
+    return false;
 }
 
 void Scene2::engineSetup() {

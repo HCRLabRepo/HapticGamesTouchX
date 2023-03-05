@@ -85,7 +85,7 @@ int main(int argc, char* argv[]){
             fuzzy_params = "";
         }
     }
-    else if(argc == 0 && settingsfile.is_open()){
+    else if(argc < 2 && settingsfile.is_open()){
         settingsfile >> subject_num;
         settingsfile >> game_scene;
         settingsfile >> control_mode;
@@ -93,6 +93,7 @@ int main(int argc, char* argv[]){
             settingsfile >> fuzzy_params;
             cout << "resources/fuzzy/" + fuzzy_params + ".fis" << endl;
             fuzzy = fl::FisImporter().fromFile("resources/fuzzy/" + fuzzy_params + ".fis");
+            fuzzy_params = "_" + fuzzy_params;
         }
 
         settingsfile.close();
@@ -359,9 +360,6 @@ void keyCallback(GLFWwindow* a_window, int a_key, int a_scancode, int a_action, 
     else if(a_key == GLFW_KEY_N){
         main_scene->negotiatedSphere->setEnabled(!(main_scene->negotiatedSphere->getEnabled()));
     }
-    /*else if (a_key == GLFW_KEY_W) {
-        main_scene->visualizeWaypoints();
-    }*/
     else if (a_key == GLFW_KEY_1)
     {
         initScene1();
@@ -710,7 +708,6 @@ void updateHaptics(void){
                 }
                 if (fuzzy_params.find("SCL") != string::npos) {
                     fl::InputVariable* SCL = fuzzy->getInputVariable("SCL");
-                    cout << "Conductance: " << s->conductance << endl;
                     SCL->setValue((std::accumulate(conductanceLastSec.begin(), conductanceLastSec.end(), 0.0)) / conductanceLastSec.size());
                     conductanceLastSec.clear();
                 }
@@ -719,7 +716,6 @@ void updateHaptics(void){
                 if (isnan(output)) {
                     continue;
                 }
-                cout << output << endl;
                 main_scene->ALPHA_CONTROL += output;
                 main_scene->ALPHA_CONTROL = max(main_scene->ALPHA_CONTROL, 0.0);
                 main_scene->ALPHA_CONTROL = min(main_scene->ALPHA_CONTROL, 1.0);

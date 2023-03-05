@@ -47,29 +47,6 @@ void GenericScene::updateTarget(){
     target->setLocalPos(destinations[shuffled_order[destination_index]]);
 }
 
-//void GenericScene::visualizeWaypoints() {
-//    cMaterial matBase;
-//    matBase.setGrayLevel(0.3);
-//    matBase.setStiffness(10);
-//    matBase.setDynamicFriction(0.5);
-//    matBase.setStaticFriction(0.9);
-//    cout << checkpoints.size() << "a" << endl;
-//    for (int i = 0; i < checkpoints.size(); i++) {
-//        wp = new cBulletCylinder(bulletWorld, 0.0005, checkpointsRange[i]);
-//        bulletWorld->addChild(wp);
-//        wp->createAABBCollisionDetector(toolRadius);
-//        wp->setMaterial(matBase);
-//        wp->buildDynamicModel();
-//        wp->m_material->setPink();
-//        wp->setLocalPos(checkpoints[i]);
-//        wp->m_bulletRigidBody->setCollisionFlags(wp->m_bulletRigidBody->getCollisionFlags() | btCollisionObject::CF_CUSTOM_MATERIAL_CALLBACK);
-//        wp->m_bulletRigidBody->setUserPointer(wp);
-//    }
-//}
-
-
-
-
 GenericScene::GenericScene(shared_ptr<cGenericHapticDevice> a_hapticDevice)
 {   
     
@@ -306,12 +283,6 @@ void GenericScene::updateWaypoint(cVector3d positionSphere, cVector3d positionTa
         waypoint_index = last_waypoint_index +1;
         return;
     }
-
-    /*for(int i=max(last_waypoint_index-1,0); i < min(last_waypoint_index+2, (int)waypoints.size()); i++){
-        if(cDistance(positionSphere, waypoints[i])/cDistance(waypoints[last_waypoint_index], waypoints[i])+0.7<cDistance(positionSphere, waypoints[waypoint_index])/cDistance(waypoints[last_waypoint_index], waypoints[waypoint_index])){
-            waypoint_index = i;
-        }
-    }*/
 
     if ((cDistance(positionSphere, waypoints[waypoint_index+1]) < cDistance(waypoints[waypoint_index], waypoints[waypoint_index+1])*0.7) &&
         waypoint_index != waypoints.size()-2) {
