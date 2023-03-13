@@ -1,5 +1,8 @@
 #include "DebugScene.h"
 #include "CBullet.h"
+#include <fstream>
+
+using namespace std;
 
 DebugScene::DebugScene(std::shared_ptr<cGenericHapticDevice> a_hapticDevice):GenericScene(a_hapticDevice){
 	
@@ -11,33 +14,24 @@ DebugScene::DebugScene(std::shared_ptr<cGenericHapticDevice> a_hapticDevice):Gen
     matBase.setDynamicFriction(0.5);
     matBase.setStaticFriction(0.9);
 
+    borderSetup({ 0.005,0.5,0.02 }, { -0.20, -0.05, -0.2 + toolRadius }, { 0,0,0 }, matBase);
+    borderSetup({ 0.005, 0.5, 0.02 }, { 0.25, 0.05, -0.2 }, { 0,0,0 }, matBase);
+
     destinations.push_back(cVector3d(0.28, 0.28, -0.2 + 0.00025));
     destinations.push_back(cVector3d(-0.28, -0.28, -0.2 + 0.00025));
 
-    checkpoints.push_back(cVector3d(-0.25, 0.23, -0.20025));
-    checkpointsRange.push_back(0.06);
-    checkpoints.push_back(cVector3d(-0.15, 0.23, -0.20025));
-    checkpointsRange.push_back(0.06);
-    checkpoints.push_back(cVector3d(-0.14, -0.22, -0.20025));
-    checkpointsRange.push_back(0.05);
-    checkpoints.push_back(cVector3d(-0.07, -0.22, -0.20025));
-    checkpointsRange.push_back(0.06);
-    checkpoints.push_back(cVector3d(-0.06, 0.22, -0.20025));
-    checkpointsRange.push_back(0.06);
-    checkpoints.push_back(cVector3d(0.03, 0.22, -0.20025));
-    checkpointsRange.push_back(0.02);
-    checkpoints.push_back(cVector3d(0.03, -0.22, -0.20025));
-    checkpointsRange.push_back(0.02);
-    checkpoints.push_back(cVector3d(0.10, -0.22, -0.20025));
-    checkpointsRange.push_back(0.05);
-    checkpoints.push_back(cVector3d(0.1, 0.22, -0.20025));
-    checkpointsRange.push_back(0.07);
-    checkpoints.push_back(cVector3d(0.2, 0.22, -0.20025));
-    checkpointsRange.push_back(0.08);
-    checkpoints.push_back(cVector3d(0.2, -0.22, -0.20025));
-    checkpointsRange.push_back(0.06);
-    checkpoints.push_back(cVector3d(0.27, -0.21, -0.20025));
-    checkpointsRange.push_back(0.04);
+    ifstream test("resources/practice_waypoints.txt");
+    std::string line;
+    while (getline(test, line)) {
+        vector<double> coord;
+        stringstream ss(line);
+        string elem;
+        while (getline(ss, elem, ',')) {
+            coord.push_back(stod(elem));
+        }
+        checkpoints.push_back(cVector3d(coord[0], coord[1], coord[2]));
+        checkpointsRange.push_back(0.04);
+    }
 
 
 
@@ -59,82 +53,36 @@ void DebugScene::setStiffness(double a_stiffness) {
 
 void DebugScene::initWaypoints() {
     if ((target->getLocalPos()).equals(destinations[0])) {
-        last_waypoint_index = 3;
-        waypoint_index = 4;
+        last_waypoint_index = -1;
+        waypoint_index = 0;
     }
     else if ((target->getLocalPos()).equals(destinations[1])) {
-        last_waypoint_index = 7;
-        waypoint_index = 8;
+        last_waypoint_index = 1;
+        waypoint_index = 2;
     }
 }
 void DebugScene::generateWaypoints(cVector3d positionSphere, cVector3d positionTarget) {
-    if (positionTarget.equals(destinations[0]))
-    {
-        waypoints.push_back(checkpoints[0]);
-        waypointsRange.push_back(checkpointsRange[0]);
-        waypoints.push_back(checkpoints[1]);
-        waypointsRange.push_back(checkpointsRange[1]);
-        waypoints.push_back(checkpoints[2]);
-        waypointsRange.push_back(checkpointsRange[2]);
-        waypoints.push_back(checkpoints[3]);
-        waypointsRange.push_back(checkpointsRange[4]);
-        waypoints.push_back(checkpoints[4]);
-        waypointsRange.push_back(checkpointsRange[4]);
-        waypoints.push_back(checkpoints[5]);
-        waypointsRange.push_back(checkpointsRange[5]);
-        waypoints.push_back(checkpoints[6]);
-        waypointsRange.push_back(checkpointsRange[6]);
-        waypoints.push_back(checkpoints[7]);
-        waypointsRange.push_back(checkpointsRange[7]);
-        waypoints.push_back(checkpoints[8]);
-        waypointsRange.push_back(checkpointsRange[8]);
-        waypoints.push_back(checkpoints[9]);
-        waypointsRange.push_back(checkpointsRange[9]);
-        waypoints.push_back(checkpoints[10]);
-        waypointsRange.push_back(checkpointsRange[10]);
-        waypoints.push_back(checkpoints[11]);
-        waypointsRange.push_back(checkpointsRange[11]);
+    if (positionTarget.equals(destinations[0])) {
+        for (int i = 0; i < checkpoints.size(); i++) {
+            waypoints.push_back(checkpoints[i]);
+            waypointsRange.push_back(checkpointsRange[i]);
+        }
 
-        waypoints.push_back(destinations[0]);
+        waypoints.push_back(positionTarget);
         waypointsRange.push_back(0.005);
-        waypoints.push_back(checkpoints[11]);
-        waypointsRange.push_back(checkpointsRange[11]);
-
-
+        waypoints.push_back(checkpoints.back());
+        waypointsRange.push_back(checkpointsRange.back());
     }
     else if (positionTarget.equals(destinations[1])) {
-        waypoints.push_back(checkpoints[11]);
-        waypointsRange.push_back(checkpointsRange[11]);
-        waypoints.push_back(checkpoints[10]);
-        waypointsRange.push_back(checkpointsRange[10]);
-        waypoints.push_back(checkpoints[9]);
-        waypointsRange.push_back(checkpointsRange[9]);
-        waypoints.push_back(checkpoints[8]);
-        waypointsRange.push_back(checkpointsRange[8]);
-        waypoints.push_back(checkpoints[7]);
-        waypointsRange.push_back(checkpointsRange[7]);
-        waypoints.push_back(checkpoints[6]);
-        waypointsRange.push_back(checkpointsRange[6]);
-        waypoints.push_back(checkpoints[5]);
-        waypointsRange.push_back(checkpointsRange[5]);
-        waypoints.push_back(checkpoints[4]);
-        waypointsRange.push_back(checkpointsRange[4]);
-        waypoints.push_back(checkpoints[3]);
-        waypointsRange.push_back(checkpointsRange[3]);
-        waypoints.push_back(checkpoints[2]);
-        waypointsRange.push_back(checkpointsRange[2]);
-        waypoints.push_back(checkpoints[1]);
-        waypointsRange.push_back(checkpointsRange[1]);
-        waypoints.push_back(checkpoints[0]);
-        waypointsRange.push_back(checkpointsRange[0]);
+        for (int i = checkpoints.size() - 1; i >= 0; i--) {
+            waypoints.push_back(checkpoints[i]);
+            waypointsRange.push_back(checkpointsRange[i]);
+        }
 
-        waypoints.push_back(destinations[1]);
-        waypointsRange.push_back(0.005);
-        waypoints.push_back(checkpoints[0]);
-        waypointsRange.push_back(checkpointsRange[0]);
-
-
+        waypoints.push_back(positionTarget);
+        waypointsRange.push_back(0.01);
+        waypoints.push_back(checkpoints.front());
+        waypointsRange.push_back(checkpointsRange.front());
     }
-
 }
 

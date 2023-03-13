@@ -102,7 +102,7 @@ int main(int argc, char* argv[]){
         cout << "Settings File Not Found!" << endl;
         return 0;
     }
-    string resultPath = "results/S" + subject_num + "/control_" + to_string(control_mode);
+    string resultPath = "results/S" + subject_num + "/scene_"+ to_string(game_scene) + "/control_" + to_string(control_mode);
     string ballfilename = resultPath + fuzzy_params + "/ball.csv";
     string conductancefilename = resultPath + fuzzy_params + "/conductance.csv";
     string HIPfilename = resultPath + fuzzy_params + "/position_HIP.csv";

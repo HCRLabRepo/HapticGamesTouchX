@@ -77,7 +77,7 @@ void Scene2::generateWaypoints(cVector3d positionSphere, cVector3d positionTarge
             waypoints.push_back(checkpoints[i]);
             waypointsRange.push_back(checkpointsRange[i]);
             waypoints.push_back(destinations[i]);
-            waypointsRange.push_back(0.005);
+            waypointsRange.push_back(0.01);
             waypoints.push_back(checkpoints[i]);
             waypointsRange.push_back(checkpointsRange[i]);
             break;
@@ -86,6 +86,13 @@ void Scene2::generateWaypoints(cVector3d positionSphere, cVector3d positionTarge
     }
 }
 void Scene2::updateWaypoint(cVector3d positionSphere, cVector3d positionTarget){
+    if (cDistance(positionSphere, positionTarget) < waypointsRange[waypointsRange.size() - 2]) {
+        cout << "Arrived at target! " << waypoint_index << endl;
+        updateTarget();
+        generateWaypoints(positionSphere, target->getLocalPos());
+        return;
+    }
+
     if(waypoint_index == waypoints.size()-2){
          if(waypoint_index == last_waypoint_index)
         {
