@@ -42,8 +42,6 @@ void GenericScene::updateTarget(){
     if( destination_index == destinations.size() ){
         cout << "finished" << endl;
     }
-    startTime = time(0);
-    collisionNum = 0;
     target->setLocalPos(destinations[shuffled_order[destination_index]]);
 }
 
@@ -121,7 +119,8 @@ GenericScene::GenericScene(shared_ptr<cGenericHapticDevice> a_hapticDevice)
     }
     // Create a label to display the position of haptic device
     labelHapticDevicePosition = new cLabel(font);
-    camera->m_frontLayer->addChild(labelHapticDevicePosition);
+    //camera->m_frontLayer->addChild(labelHapticDevicePosition);
+
 
     // Create a label to display the haptic and graphic rate of the simulation
     labelRates = new cLabel(font);
