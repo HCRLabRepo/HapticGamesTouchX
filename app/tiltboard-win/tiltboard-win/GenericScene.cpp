@@ -205,7 +205,7 @@ GenericScene::GenericScene(shared_ptr<cGenericHapticDevice> a_hapticDevice)
     bulletWorld->addChild(negotiatedSphere);
     negotiatedSphere->createAABBCollisionDetector(toolRadius);
     negotiatedSphere->setMaterial(mat);
-    negotiatedSphere->setMass(SPHERE_MASS*2);
+    negotiatedSphere->setMass(SPHERE_MASS);
     negotiatedSphere->buildDynamicModel();
     negotiatedSphere->setLocalPos(0.0,0.0,-0.2+toolRadius);
     negotiatedSphere->setDamping(K_DAMPING, K_DAMPING);
@@ -219,7 +219,7 @@ GenericScene::GenericScene(shared_ptr<cGenericHapticDevice> a_hapticDevice)
     bulletWorld->addChild(mainSphere);
     mainSphere->createAABBCollisionDetector(toolRadius);
     mainSphere->setMaterial(mat);
-    mainSphere->setMass(SPHERE_MASS*3);
+    mainSphere->setMass(SPHERE_MASS);
     mainSphere->buildDynamicModel();
     mainSphere->setLocalPos(0.01,0.02,-0.2+toolRadius);
     mainSphere->setDamping(K_DAMPING, K_DAMPING);
@@ -340,34 +340,29 @@ void GenericScene::updateHaptics(double timeInterval){
     }else{
         userInactive = false;
     }
-    cVector3d hapticForce = -(K_SPRING*(0.5) * (distance01) * dir01) + wallForce;
 
-    // The force of negotiatedSphere towards guidanceSphere. 
-    cVector3d dir02 = cNormalize(positionGuidanceSphere-positionNegotiatedSphere);
-    double distance02 = cDistance(positionGuidanceSphere, positionNegotiatedSphere);
-    guidanceForce = (K_SPRING*(1-ALPHA_CONTROL) * (distance02) * dir02);
+    // Compute the various forces.
+    // Force at HIP towards NIP and haptic force for the device
+    cVector3d disp_HIP_NIP = hapticDevicePosition - positionNegotiatedSphere;
+    HIPForce = (60 * disp_HIP_NIP);
+    userForce = (K_SPRING * disp_HIP_NIP).length();
+    cVector3d hapticForce = -(60 * disp_HIP_NIP) + wallForce;
 
-    // The force of guidanceSphere towards waypoint.
-    cVector3d dir03 = cNormalize(positionWaypoint-positionGuidanceSphere);
-    double distance03 = cDistance(positionWaypoint, positionGuidanceSphere);
-    cVector3d velocity03 = cVector3d(guidanceSphere->m_bulletRigidBody->getLinearVelocity().x(),guidanceSphere->m_bulletRigidBody->getLinearVelocity().y(), guidanceSphere->m_bulletRigidBody->getLinearVelocity().z());
-    cVector3d targetForce = (K_SPRING_TARGET * (distance03) * dir03) - K_DAMPING_VELOCITY * velocity03.length() * dir03;
+    // Force at CIP towards NIP. 
+    cVector3d disp_CIP_NIP = positionGuidanceSphere - positionNegotiatedSphere;
+    CIPForce = (100 * disp_CIP_NIP);
 
-    // The force of mainSphere towards negotiatedSphere.
-    cVector3d dir04 = cNormalize(positionNegotiatedSphere-positionMainSphere);
-    double distance04 = cDistance(positionNegotiatedSphere, positionMainSphere);
-    cVector3d velocity04 = cVector3d(mainSphere->m_bulletRigidBody->getLinearVelocity().x(),mainSphere->m_bulletRigidBody->getLinearVelocity().y(), mainSphere->m_bulletRigidBody->getLinearVelocity().z());
-    cVector3d negotiatedForce = ((K_SPRING) * (distance04) * dir04) - K_DAMPING_VELOCITY * velocity04.length() * dir04;
+    // The force of CIP towards current waypoint.
+    cVector3d disp_TARGET_CIP = positionWaypoint - positionGuidanceSphere;
+    cVector3d velocity_CIP = (Eigen::Vector3d)guidanceSphere->m_bulletRigidBody->getLinearVelocity();
+    cVector3d waypointForce = (K_SPRING_TARGET * disp_TARGET_CIP) + 0.1 * velocity_CIP;
 
-    cVector3d finalForce = guidanceForce + sphereForce;
+    // Force of the ball towards NIP.
+    cVector3d disp_NIP_BALL = positionNegotiatedSphere - positionMainSphere;
+    cVector3d velocity_BALL = (Eigen::Vector3d)mainSphere->m_bulletRigidBody->getLinearVelocity();
+    cVector3d ballForce = (20 * disp_NIP_BALL) + 0.2 * velocity_BALL;
 
-    if(cDistance(positionGuidanceSphere, positionNegotiatedSphere) > 0.15){
-        targetForce =  -(K_SPRING*0.5 * (distance02) * dir02);
-    }
-
-    if(cDistance(positionMainSphere, positionNegotiatedSphere) > 0.15){
-        finalForce -= negotiatedForce;
-    }
+    cVector3d NIPForce = CIPForce * (1-ALPHA_CONTROL) + HIPForce * ALPHA_CONTROL;
 
     if(cDistance(positionMainSphere, waypoints[waypoint_index]) < waypointsRange[waypoint_index]){
         last_waypoint_index = waypoint_index;
@@ -375,10 +370,10 @@ void GenericScene::updateHaptics(double timeInterval){
    
     updateWaypoint(positionMainSphere, target->getLocalPos());
 
-    sphereForce.z(0);
-    negotiatedSphere->addExternalForce(finalForce);
-    guidanceSphere->addExternalForce(targetForce);
-    mainSphere->addExternalForce(negotiatedForce);
+    HIPForce.z(0);
+    negotiatedSphere->addExternalForce(NIPForce);
+    guidanceSphere->addExternalForce(waypointForce);
+    mainSphere->addExternalForce(ballForce);
     controlSphere->setLocalPos(hapticDevicePosition); 
 
     double time = simClock.getCurrentTimeSeconds();
@@ -398,6 +393,7 @@ void GenericScene::updateHaptics(double timeInterval){
     if(hapticForce.length()> MAX_HAPTIC_FORCE){
         hapticForce = cNormalize(hapticForce) * MAX_HAPTIC_FORCE;
     }
+    
     hapticDevice->setForce(hapticForce);
   
 

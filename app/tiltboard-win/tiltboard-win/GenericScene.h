@@ -92,8 +92,8 @@ public:
     cVector3d positionNegotiatedSphere;
     cVector3d positionMainSphere;
     cVector3d positionGuidanceSphere;
-    cVector3d sphereForce;
-    cVector3d guidanceForce;
+    cVector3d HIPForce;
+    cVector3d CIPForce;
 
     fl::Engine* engine;
 

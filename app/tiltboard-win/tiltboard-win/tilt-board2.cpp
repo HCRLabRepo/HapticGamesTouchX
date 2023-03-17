@@ -545,19 +545,16 @@ void updateHaptics(void){
                 // gradually change the control to human.
                 main_scene->ALPHA_CONTROL += 0.001;
                 main_scene->ALPHA_CONTROL = min(main_scene->ALPHA_CONTROL, 1.0);
-                main_scene->K_DAMPING_VELOCITY = 2;
             }
             else if (button1 || main_scene->userInactive){
                 // gradually change the control to robot.
                 main_scene->ALPHA_CONTROL -= 0.001;
                 main_scene->ALPHA_CONTROL = max(main_scene->ALPHA_CONTROL, 0.0);
-                main_scene->K_DAMPING_VELOCITY = 0.10;
             }
             else{
                 // gradually change to equal control.
                 double difference = main_scene->ALPHA_CONTROL - 0.5;
                 main_scene->ALPHA_CONTROL -= copysign(0.001, difference);
-                main_scene->K_DAMPING_VELOCITY = 0.10;
             }
         }
         // Variable Control by Physiological Signal
@@ -566,13 +563,11 @@ void updateHaptics(void){
                 // gradually change the control constant.
                 main_scene->ALPHA_CONTROL += 0.001;
                 main_scene->ALPHA_CONTROL = min(main_scene->ALPHA_CONTROL, 1.0);
-                main_scene->K_DAMPING_VELOCITY = 2;
             }
             else if (button1){
                 // gradually change the control constant.
                 main_scene->ALPHA_CONTROL -= 0.001;
                 main_scene->ALPHA_CONTROL = max(main_scene->ALPHA_CONTROL, 0.0);
-                main_scene->K_DAMPING_VELOCITY = 0.10;
             }
             else{
                 string prediction = "0";
@@ -586,24 +581,20 @@ void updateHaptics(void){
                 if(prediction == "0"){
                     main_scene->ALPHA_CONTROL += 0.001;
                     main_scene->ALPHA_CONTROL = min(main_scene->ALPHA_CONTROL, 1.0);
-                    main_scene->K_DAMPING_VELOCITY = 2;
                 }
                 else if(prediction == "1"){
                     double difference = main_scene->ALPHA_CONTROL - 0.5;
                     main_scene->ALPHA_CONTROL -= copysign(0.001, difference);
-                    main_scene->K_DAMPING_VELOCITY = 0.10;
                 }
                 else{
                     main_scene->ALPHA_CONTROL -= 0.001;
                     main_scene->ALPHA_CONTROL = max(main_scene->ALPHA_CONTROL, 0.0);
-                    main_scene->K_DAMPING_VELOCITY = 0.10;
                 }
             }
         }
         // Ideal Control (Robot Control for best score reference, not part of user experiment but to produce the standard score.)
         else if(control_mode == 4){
             main_scene->ALPHA_CONTROL = 0;
-            main_scene->K_DAMPING_VELOCITY = 0.10;
         }
         // Force-based proportional human control. Alpha is proportional to force exerted by user
         else if(control_mode == 5){
@@ -611,13 +602,11 @@ void updateHaptics(void){
             if (button0){
                 main_scene->ALPHA_CONTROL += 0.001;
                 main_scene->ALPHA_CONTROL = min(main_scene->ALPHA_CONTROL, 1.0);
-                main_scene->K_DAMPING_VELOCITY = 2;
             }
             else{
                 main_scene->ALPHA_CONTROL = 0.1*(main_scene->userForce);
                 main_scene->ALPHA_CONTROL = max(main_scene->ALPHA_CONTROL, 0.0);
                 main_scene->ALPHA_CONTROL = min(main_scene->ALPHA_CONTROL, 1.0);
-                main_scene->K_DAMPING_VELOCITY = 0.10;
             }
         }
         // Performance-based proportional human control. Alpha is proportional to how well the user is performing the task.
@@ -628,7 +617,6 @@ void updateHaptics(void){
             if (button0){
                 main_scene->ALPHA_CONTROL += 0.001;
                 main_scene->ALPHA_CONTROL = min(main_scene->ALPHA_CONTROL, 1.0);
-                main_scene->K_DAMPING_VELOCITY = 2;
             }
             else {
                 main_scene->ALPHA_CONTROL = main_scene->currentAlpha;
@@ -644,17 +632,14 @@ void updateHaptics(void){
             if (button0) {
                 main_scene->ALPHA_CONTROL += 0.001;
                 main_scene->ALPHA_CONTROL = min(main_scene->ALPHA_CONTROL, 1.0);
-                main_scene->K_DAMPING_VELOCITY = 2;
             }
             else if (ms.count() > 500 && (main_scene->userForce < 3.0)) {
                 main_scene->ALPHA_CONTROL -= 0.001;
                 main_scene->ALPHA_CONTROL = max(main_scene->ALPHA_CONTROL, 0.1);
-                main_scene->K_DAMPING_VELOCITY = 0.10;
             }
             else {
                 main_scene->ALPHA_CONTROL += 0.001;
                 main_scene->ALPHA_CONTROL = min(main_scene->ALPHA_CONTROL, 1.0);
-                main_scene->K_DAMPING_VELOCITY = 0.10;
             }
         }
         else if (control_mode == 8) {
@@ -668,14 +653,12 @@ void updateHaptics(void){
                     main_scene->ALPHA_CONTROL = max(main_scene->ALPHA_CONTROL, 0.0);
                     main_scene->collisionsLastSec = 0;
                     main_scene->recordTime = high_resolution_clock::now();
-                    main_scene->K_DAMPING_VELOCITY = 0.10;
                 }
                 else {
                     main_scene->ALPHA_CONTROL += 0.1;
                     main_scene->ALPHA_CONTROL = min(main_scene->ALPHA_CONTROL, 1.0);
                     main_scene->collisionsLastSec = 0;
                     main_scene->recordTime = high_resolution_clock::now();
-                    main_scene->K_DAMPING_VELOCITY = 0.10;
                 }
             }
         }
@@ -719,7 +702,6 @@ void updateHaptics(void){
                 main_scene->ALPHA_CONTROL += output;
                 main_scene->ALPHA_CONTROL = max(main_scene->ALPHA_CONTROL, 0.0);
                 main_scene->ALPHA_CONTROL = min(main_scene->ALPHA_CONTROL, 1.0);
-                main_scene->K_DAMPING_VELOCITY = 1;
                 main_scene->collisionsLastSec = 0;
                 main_scene->recordTime = high_resolution_clock::now();
             }
@@ -735,8 +717,8 @@ void updateHaptics(void){
         HIPfile << timeSinceEpochMillisec() << ", " << hapticDevicePosition << endl;
         CIPfile << timeSinceEpochMillisec() << ", " << main_scene->positionGuidanceSphere << endl;
         NIPfile << timeSinceEpochMillisec() << ", " << main_scene->positionNegotiatedSphere << endl;
-        HIPforcefile << timeSinceEpochMillisec() << ", " << main_scene->sphereForce << endl;
-        CIPforcefile << timeSinceEpochMillisec() << ", " << main_scene->guidanceForce << endl;
+        HIPforcefile << timeSinceEpochMillisec() << ", " << main_scene->HIPForce << endl;
+        CIPforcefile << timeSinceEpochMillisec() << ", " << main_scene->CIPForce << endl;
 
 
     }

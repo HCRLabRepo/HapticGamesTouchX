@@ -17,7 +17,7 @@ def printest():
 
 def setup():
     global ser
-    ser = serial.Serial(port="COM6", baudrate=115200)
+    ser = serial.Serial(port="COM7", baudrate=115200)
     ser.flushInput()
     #print ("port opening, done.")
 
