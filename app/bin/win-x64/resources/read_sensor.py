@@ -90,6 +90,7 @@ def read():
 
          #print ("0x%02x\t\t%5d,\t%4d,\t%4d" % (packettype[0], timestamp, GSR_ohm, PPG_mv))
          sys.stdout.write(str(conductance))
+         return conductance
          
 
     except KeyboardInterrupt:

@@ -36,6 +36,10 @@ start /WAIT /B "Practice 1" tiltboard-win.exe %userId% 0 1
 echo PRACTICE 2
 start /WAIT /B "Practice 2" tiltboard-win.exe %userId% 0 4
 pause
+echo BASELINE MEASUREMENT
+python resources/baseline.py
+echo BASELINE FINISHED
+pause
 start /WAIT /B "Experiment 1" tiltboard-win.exe %userId% 2 1
 pause
 start /WAIT /B "Experiment 2" tiltboard-win.exe %userId% 2 5
@@ -53,6 +57,10 @@ echo PRACTICE 1
 start /WAIT /B "Practice 1" tiltboard-win.exe %userId% 0 1
 echo PRACTICE 2
 start /WAIT /B "Practice 2" tiltboard-win.exe %userId% 0 4
+pause
+echo BASELINE MEASUREMENT
+python resources/baseline.py
+echo BASELINE FINISHED
 pause
 start /WAIT /B "Experiment 1" tiltboard-win.exe %userId% 2 5
 pause
@@ -73,6 +81,10 @@ start /WAIT /B "Practice 1" tiltboard-win.exe %userId% 0 1
 echo PRACTICE 2
 start /WAIT /B "Practice 2" tiltboard-win.exe %userId% 0 4
 pause
+echo BASELINE MEASUREMENT
+python resources/baseline.py
+echo BASELINE FINISHED
+pause
 start /WAIT /B "Experiment 1" tiltboard-win.exe %userId% 2 9
 pause
 start /WAIT /B "Experiment 2" tiltboard-win.exe %userId% 2 10 force-SCL
@@ -90,6 +102,10 @@ echo PRACTICE 1
 start /WAIT /B "Practice 1" tiltboard-win.exe %userId% 0 1
 echo PRACTICE 2
 start /WAIT /B "Practice 2" tiltboard-win.exe %userId% 0 4
+pause
+echo BASELINE MEASUREMENT
+python resources/baseline.py
+echo BASELINE FINISHED
 pause
 start /WAIT /B "Experiment 1" tiltboard-win.exe %userId% 2 10 force-SCL
 pause
