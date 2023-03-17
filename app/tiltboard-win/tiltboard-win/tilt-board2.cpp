@@ -487,9 +487,6 @@ void updateGraphics(void){
     main_scene->labelTime->setText("Time taken: " + to_string(difftime(time(0)+penalty, main_scene->startTime)));
     main_scene->labelTime->setLocalPos((int)((width - main_scene->labelTime->getWidth())/2), height - 40);
 
-    main_scene->labelTime->setText("Time since last waypoint: " + to_string(difftime(time(0), main_scene->startTime)));
-    main_scene->labelTime->setLocalPos((int)(width - main_scene->labelTime->getWidth()), 15);
-
     main_scene->labelCollisions->setText("Collisions: "+ to_string(main_scene->collisionNum));
     main_scene->labelCollisions->setLocalPos((int)((width - main_scene->labelCollisions->getWidth())/2), height - 60);
     /////////////////////////////////////////////////////////////////////
