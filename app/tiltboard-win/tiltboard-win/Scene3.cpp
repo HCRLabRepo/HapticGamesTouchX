@@ -3,6 +3,11 @@
 #include <fstream>
 using namespace std;
 
+/**
+* @file Scene3.cpp
+* 
+* Scene 3 ("Hard" Scene) Implementation
+*/
 Scene3::Scene3(shared_ptr<cGenericHapticDevice> a_hapticDevice):GenericScene(a_hapticDevice){
     
     cMaterial matBase;
@@ -14,7 +19,7 @@ Scene3::Scene3(shared_ptr<cGenericHapticDevice> a_hapticDevice):GenericScene(a_h
     double y = 0;
 
     for(int i =0; i<20; i++){
-        int direction = i%2 == 0? 90:0;
+        int direction = i%2 == 0 ? 90:0;
         x += (pow(-1,i/2))*(0.013 + (i/2)*0.013);
         y += (pow(-1,(i+3)/2))*(((i+3)/2)*0.013);
 
@@ -58,10 +63,12 @@ void Scene3::setStiffness(double a_stiffness){
     bulletGround->setStiffness(a_stiffness);
 }
 
+
 void Scene3::initWaypoints(){
     last_waypoint_index = 0;
     waypoint_index = 0;
 }
+
 void Scene3::generateWaypoints(cVector3d positionSphere, cVector3d positionTarget){
     
     if(positionTarget.equals(destinations[1]))
@@ -88,6 +95,7 @@ void Scene3::generateWaypoints(cVector3d positionSphere, cVector3d positionTarge
 
     }
 }
+
 
 void Scene3::engineSetup() {
     using namespace fl;

@@ -17,7 +17,7 @@ const double CIP_STIFFNESS      = 60;
 const double TARGET_STIFFNESS   = 20;
 const double BALL_STIFFNESS     = 20;
 const double TARGET_DAMPING     = 0.1;
-const double BALL_DAMPING       = 0.1;
+const double BALL_DAMPING       = 0.08;
 const double HAPTIC_STIFFNESS   = 1.0;
 const double WALL_GROUND        = -0.2;
 

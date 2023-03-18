@@ -11,7 +11,7 @@
 class Scene1: public GenericScene{
     public:
         /**
-        * Creates the scene, sets up the obstacles, destinations, checkpoints and targets.
+        * Constructor for Scene 1
         * 
         * \param a_hapticDevice A pointer to the connected haptic device
         */
@@ -20,29 +20,23 @@ class Scene1: public GenericScene{
         virtual ~Scene1() {};
     
     public:
-        /**
-        * Sets the stiffness of the ground
-        * 
-        * \param a_stifness The stiffness level to be applied to the ground
-        */
         virtual void setStiffness(double a_stiffness);
 
         /**
-        * Generates the list of waypoints based on what destination the main sphere is closest to
-        * 
-        * \param positionSphere position of the main sphere
-        * \param positionTarget position of the current target
+        Determines the initial waypoints based on the position of the target.
+        */
+        void initWaypoints() override;
+
+        /**
+        * Generates and places the waypoints in the waypoint list based on the position of the target and main sphere.
+        * @param positionSphere Position of the main sphere
+        * @param positionTarget Position of target
         */
         void generateWaypoints(cVector3d positionSphere, cVector3d positionTarget) override;
 
         /**
-        * Generates and initialises all aspects of the fuzzy logic engine
+        Sets up the fuzzy engine for the scene
         */
         void engineSetup();
-        
-        /**
-        * Decides which waypoint to follow based on the main sphere's current position
-        */
-        void initWaypoints() override;
 
 };

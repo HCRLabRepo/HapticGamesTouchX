@@ -13,14 +13,14 @@ Scene1::Scene1(shared_ptr<cGenericHapticDevice> a_hapticDevice):GenericScene(a_h
 
     hapticDevice = a_hapticDevice;
    
-    /** Describe the material to be used for obstacles */
+    // Describe the material to be used for obstacles
     cMaterial matBase;
     matBase.setGrayLevel(0.3);
     matBase.setStiffness(100);
     matBase.setDynamicFriction(0.5);
     matBase.setStaticFriction(0.9);
     
-    /** Set up static obstacles */
+    // Set up static obstacles
     borderSetup({ 0.005,0.5,0.02 }, { -0.20, -0.05, -0.2 + toolRadius }, {0,0,0}, matBase);
     borderSetup({ 0.005, 0.5, 0.02 }, { -0.10, 0.05, -0.2 }, { 0,0,0 }, matBase);
     borderSetup({ 0.005, 0.5, 0.02 }, { 0.015, -0.05, -0.2 }, { 0,0,0 }, matBase);
@@ -28,11 +28,11 @@ Scene1::Scene1(shared_ptr<cGenericHapticDevice> a_hapticDevice):GenericScene(a_h
     borderSetup({ 0.005, 0.5, 0.02 }, { 0.15, -0.05, -0.2 }, { 0,0,0 }, matBase);
     borderSetup({ 0.005, 0.5, 0.02 }, { 0.25, 0.05, -0.2 }, { 0,0,0 }, matBase);
 
-    /** Set up list of destinations */
+    // Set up list of destinations
     destinations.push_back(cVector3d(0.28,0.28,-0.2+0.00025));
     destinations.push_back(cVector3d(-0.28,-0.28,-0.2+0.00025));
 
-    /** Set up list of checkpoints */
+    // Set up list of checkpoints
     ifstream test("resources/1_waypoints.txt");
     std::string line;
     while (getline(test, line)) {
@@ -45,7 +45,8 @@ Scene1::Scene1(shared_ptr<cGenericHapticDevice> a_hapticDevice):GenericScene(a_h
         checkpoints.push_back(cVector3d(coord[0], coord[1], coord[2]));
         checkpointsRange.push_back(0.04);
     }
-    /** Set up target */
+
+    // Set up target 3D element
     target = new cBulletCylinder(bulletWorld, 0.0005, toolRadius*1.5);
     bulletWorld->addChild(target);
     target->createAABBCollisionDetector(toolRadius);
@@ -80,6 +81,7 @@ void Scene1::initWaypoints(){
         waypoint_index = 8;
     }
 }
+
 void Scene1::generateWaypoints(cVector3d positionSphere, cVector3d positionTarget){
     if (positionTarget.equals(destinations[0])) {
         for (int i = 0; i < checkpoints.size(); i++) {
