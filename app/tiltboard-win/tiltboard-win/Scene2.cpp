@@ -87,18 +87,22 @@ void Scene2::generateWaypoints(cVector3d positionSphere, cVector3d positionTarge
 }
 void Scene2::updateWaypoint(cVector3d positionSphere, cVector3d positionTarget){
     if (cDistance(positionSphere, positionTarget) < waypointsRange[waypointsRange.size() - 2]) {
-        cout << "Arrived at target! " << waypoint_index << endl;
         updateTarget();
         generateWaypoints(positionSphere, target->getLocalPos());
         return;
     }
 
+    if ((cDistance(positionSphere, waypoints[waypoint_index + 1]) < cDistance(waypoints[waypoint_index], waypoints[waypoint_index + 1]) * 0.7) &&
+        waypoint_index != waypoints.size() - 2) {
+        cout << "Advancing to waypoint " << waypoint_index + 1 << endl;
+        waypoint_index += 1;
+        last_waypoint_index += 1;
+    }
+
     if(waypoint_index == waypoints.size()-2){
          if(waypoint_index == last_waypoint_index)
         {
-             cout << "Arrived at target! " << waypoint_index << endl;
              waypoint_index = last_waypoint_index + 1;
-             cout << "waypoint updated forward: " << waypoint_index << endl;
             return;
 
         }
@@ -111,9 +115,7 @@ void Scene2::updateWaypoint(cVector3d positionSphere, cVector3d positionTarget){
     {
         if(waypoint_index == last_waypoint_index)
         {
-            cout << "Arrived at waypoint: " << waypoint_index << endl;
             waypoint_index = last_waypoint_index + 1;
-            cout << "waypoint updated forward: " << waypoint_index << endl;
         }
 
         if(waypoint_index == waypoints.size()-1){

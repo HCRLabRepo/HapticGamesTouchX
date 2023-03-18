@@ -80,6 +80,7 @@ int main(int argc, char* argv[]){
             fuzzy_params = argv[4];
             cout << "resources/fuzzy/" + fuzzy_params + ".fis" << endl;
             fuzzy = fl::FisImporter().fromFile("resources/fuzzy/" + fuzzy_params + ".fis");
+            fuzzy_params = "_" + fuzzy_params;
         }
         else {
             fuzzy_params = "";
@@ -102,14 +103,14 @@ int main(int argc, char* argv[]){
         cout << "Settings File Not Found!" << endl;
         return 0;
     }
-    string resultPath = "results/S" + subject_num + "/scene_"+ to_string(game_scene) + "/control_" + to_string(control_mode);
-    string ballfilename = resultPath + fuzzy_params + "/ball.csv";
-    string conductancefilename = resultPath + fuzzy_params + "/conductance.csv";
-    string HIPfilename = resultPath + fuzzy_params + "/position_HIP.csv";
-    string CIPfilename = resultPath + fuzzy_params + "/position_CIP.csv";
-    string NIPfilename = resultPath + fuzzy_params + "/position_NIP.csv";
-    string HIPforcefilename = resultPath + fuzzy_params + "/force_HIP.csv";
-    string CIPforcefilename = resultPath + fuzzy_params + "/force_CIP.csv";
+    string resultPath = "results/S" + subject_num + "/scene_"+ to_string(game_scene) + "/control_" + to_string(control_mode) + fuzzy_params;
+    string ballfilename = resultPath + "/ball.csv";
+    string conductancefilename = resultPath + "/conductance.csv";
+    string HIPfilename = resultPath + "/position_HIP.csv";
+    string CIPfilename = resultPath + "/position_CIP.csv";
+    string NIPfilename = resultPath + "/position_NIP.csv";
+    string HIPforcefilename = resultPath + "/force_HIP.csv";
+    string CIPforcefilename = resultPath + "/force_CIP.csv";
     //---------------------------------------------------------------------------
     // Initial Print Message
     //---------------------------------------------------------------------------

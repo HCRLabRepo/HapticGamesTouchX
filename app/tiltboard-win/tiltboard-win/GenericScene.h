@@ -70,7 +70,6 @@ public:
     int waypoint_index = 0;
     int last_waypoint_index = 1;
     double ALPHA_CONTROL = 1;
-    double K_DAMPING_VELOCITY = 0.2;
     bool userInactive = false;
     double userForce = 0.0;
     int collisionNum = 0;

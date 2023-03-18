@@ -12,10 +12,14 @@ using namespace std;
 const double SPHERE_MASS        = 0.04;
 const double SPHERE_STIFFNESS   = 200.0;
 const double K_DAMPING          = 0.9999999999999999;
-const double K_SPRING           = 80.0;
-const double K_SPRING_TARGET    = 20.0;
+const double HIP_STIFFNESS      = 60;
+const double CIP_STIFFNESS      = 60;
+const double TARGET_STIFFNESS   = 20;
+const double BALL_STIFFNESS     = 20;
+const double TARGET_DAMPING     = 0.1;
+const double BALL_DAMPING       = 0.1;
 const double HAPTIC_STIFFNESS   = 1.0;
-const double WALL_GROUND = -0.2;
+const double WALL_GROUND        = -0.2;
 
 double MAX_HAPTIC_FORCE = 4;
 
@@ -325,45 +329,41 @@ void GenericScene::updateHaptics(double timeInterval){
     wallForce.add(cVector3d(0.0, 0.0, 50 * (WALL_GROUND + toolRadius- hapticDevicePosition.z())));
     hapticDevicePosition.z(WALL_GROUND+toolRadius);
     
-    // Compute the varies forces.
-    // The force of negotiatedSphere towards controlSphere and the force feedback for human operator.
-    cVector3d dir01 = cNormalize(hapticDevicePosition-positionNegotiatedSphere);
-    double distance01 = cDistance(hapticDevicePosition, positionNegotiatedSphere);
-    sphereForce = (K_SPRING*(ALPHA_CONTROL) * (distance01) * dir01);
-    userForce = (K_SPRING*(0.5) * (distance01) * dir01).length();
-    if(userForce<1.0){
+    // Compute the various forces.
+    // Force at HIP towards NIP and haptic force for the device
+    cVector3d disp_HIP_NIP = hapticDevicePosition - positionNegotiatedSphere;
+    HIPForce = (HIP_STIFFNESS * disp_HIP_NIP);
+    cVector3d hapticForce = -HIPForce + wallForce;
+
+    //Force exerted by the user
+    userForce = HIPForce.length();
+    if (userForce < 1.0) {
         if (!userInactive) {
             using namespace std::chrono;
             inactiveTime = high_resolution_clock::now();
         }
         userInactive = true;
-    }else{
+    }
+    else {
         userInactive = false;
     }
 
-    // Compute the various forces.
-    // Force at HIP towards NIP and haptic force for the device
-    cVector3d disp_HIP_NIP = hapticDevicePosition - positionNegotiatedSphere;
-    HIPForce = (60 * disp_HIP_NIP);
-    userForce = (K_SPRING * disp_HIP_NIP).length();
-    cVector3d hapticForce = -(60 * disp_HIP_NIP) + wallForce;
-
     // Force at CIP towards NIP. 
     cVector3d disp_CIP_NIP = positionGuidanceSphere - positionNegotiatedSphere;
-    CIPForce = (100 * disp_CIP_NIP);
+    CIPForce = (CIP_STIFFNESS * disp_CIP_NIP);
 
     // The force of CIP towards current waypoint.
     cVector3d disp_TARGET_CIP = positionWaypoint - positionGuidanceSphere;
     cVector3d velocity_CIP = (Eigen::Vector3d)guidanceSphere->m_bulletRigidBody->getLinearVelocity();
-    cVector3d waypointForce = (K_SPRING_TARGET * disp_TARGET_CIP) + 0.1 * velocity_CIP;
+    cVector3d waypointForce = (TARGET_STIFFNESS * disp_TARGET_CIP) + TARGET_DAMPING * velocity_CIP;
 
     // Force of the ball towards NIP.
     cVector3d disp_NIP_BALL = positionNegotiatedSphere - positionMainSphere;
     cVector3d velocity_BALL = (Eigen::Vector3d)mainSphere->m_bulletRigidBody->getLinearVelocity();
-    cVector3d ballForce = (20 * disp_NIP_BALL) + 0.2 * velocity_BALL;
+    cVector3d ballForce = (BALL_STIFFNESS * disp_NIP_BALL) + BALL_DAMPING * velocity_BALL;
 
     cVector3d NIPForce = CIPForce * (1-ALPHA_CONTROL) + HIPForce * ALPHA_CONTROL;
-
+ 
     if(cDistance(positionMainSphere, waypoints[waypoint_index]) < waypointsRange[waypoint_index]){
         last_waypoint_index = waypoint_index;
     }
@@ -383,7 +383,7 @@ void GenericScene::updateHaptics(double timeInterval){
     // APPLY FORCES
     /////////////////////////////////////////////////////////////////////////
     double stiffnessRatio = 1.0;
-    
+
     if (hapticDeviceMaxStiffness < HAPTIC_STIFFNESS)
         stiffnessRatio = hapticDeviceMaxStiffness / HAPTIC_STIFFNESS;
     // Compute Force Feedback
