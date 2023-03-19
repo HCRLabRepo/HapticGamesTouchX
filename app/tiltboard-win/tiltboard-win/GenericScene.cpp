@@ -10,7 +10,6 @@
 using namespace std;
 
 const double SPHERE_MASS        = 0.04;
-const double SPHERE_STIFFNESS   = 200.0;
 const double K_DAMPING          = 0.9999999999999999;
 const double HIP_STIFFNESS      = 60;
 const double CIP_STIFFNESS      = 60;
@@ -110,7 +109,7 @@ GenericScene::GenericScene(shared_ptr<cGenericHapticDevice> a_hapticDevice)
     //-----------------------------------------------------------------------
     // Widget
     //-----------------------------------------------------------------------    
-    cFontPtr font = NEW_CFONTCALIBRI20();
+    cFontPtr font = NEW_CFONTCALIBRI40();
 
     labelHapticDeviceModel = new cLabel(font);
     camera->m_frontLayer->addChild(labelHapticDeviceModel);
@@ -131,7 +130,7 @@ GenericScene::GenericScene(shared_ptr<cGenericHapticDevice> a_hapticDevice)
     labelRates->m_fontColor.setWhite();
     camera->m_frontLayer->addChild(labelRates);
 
-    // Create bar
+    // Create bar to display control level
     controlLevel = new cLevel();
     camera->m_frontLayer->addChild(controlLevel);
     controlLevel->setLocalPos(20, 60);
@@ -141,12 +140,12 @@ GenericScene::GenericScene(shared_ptr<cGenericHapticDevice> a_hapticDevice)
     controlLevel->setSingleIncrementDisplay(false);
     controlLevel->setTransparencyLevel(0.5);
 
-    // Create a label to display the time taken since the last waypoint
+    // Create a label to display the time taken to complete task
     labelTime = new cLabel(font);
     labelTime->m_fontColor.setWhite();
     camera->m_frontLayer->addChild(labelTime);
 
-    //Create a lebel to display the number of collisions since last checkpoint
+    //Create a label to display the number of collisions
     labelCollisions = new cLabel(font);
     labelCollisions->m_fontColor.setWhite();
     camera->m_frontLayer->addChild(labelCollisions);
@@ -156,7 +155,7 @@ GenericScene::GenericScene(shared_ptr<cGenericHapticDevice> a_hapticDevice)
     toolRadius = 0.0025;
 
     //-----------------------------------------------------------------------
-    // Borders
+    // Border Materials
     //-----------------------------------------------------------------------
     cMaterial matBase;
     matBase.setGrayLevel(0.3);
@@ -179,6 +178,7 @@ GenericScene::GenericScene(shared_ptr<cGenericHapticDevice> a_hapticDevice)
     bulletGround->setMaterial(matGround);
     bulletGround->createAABBCollisionDetector(toolRadius);
 
+    //Create HIP sphere
     controlSphere = new cShapeSphere(toolRadius);
     bulletWorld->addChild(controlSphere);
     controlSphere->setLocalPos(0.0,0.0, -0.20);
@@ -192,6 +192,7 @@ GenericScene::GenericScene(shared_ptr<cGenericHapticDevice> a_hapticDevice)
     mat.setDynamicFriction(0.9);
     mat.setStaticFriction(0.9);
 
+    //Create CIP sphere
     guidanceSphere = new cBulletSphere(bulletWorld, toolRadius);
     bulletWorld->addChild(guidanceSphere);
     guidanceSphere->createAABBCollisionDetector(toolRadius);
@@ -204,7 +205,7 @@ GenericScene::GenericScene(shared_ptr<cGenericHapticDevice> a_hapticDevice)
     guidanceSphere->setEnabled(false);
     guidanceSphere->m_bulletRigidBody->setUserPointer(guidanceSphere);
     
-
+    //Create NIP sphere
     negotiatedSphere = new cBulletSphere(bulletWorld, toolRadius);
     bulletWorld->addChild(negotiatedSphere);
     negotiatedSphere->createAABBCollisionDetector(toolRadius);
@@ -219,6 +220,7 @@ GenericScene::GenericScene(shared_ptr<cGenericHapticDevice> a_hapticDevice)
     negotiatedSphere->m_material->setYellow();
     //guidanceSphere->m_bulletRigidBody->setCollisionFlags(guidanceSphere->m_bulletRigidBody->getCollisionFlags() | btCollisionObject::CF_NO_CONTACT_RESPONSE);
 
+    //Create main sphere
     mainSphere = new cBulletSphere(bulletWorld, toolRadius);
     bulletWorld->addChild(mainSphere);
     mainSphere->createAABBCollisionDetector(toolRadius);
@@ -271,6 +273,7 @@ void GenericScene::borderSetup(std::vector<double> size, std::vector<double> pos
 }
 
 void GenericScene::updateWaypoint(cVector3d positionSphere, cVector3d positionTarget) {
+    //If target is reached, clear the current list of waypoints and update the target
     if (cDistance(positionSphere, positionTarget) < waypointsRange[waypointsRange.size() - 2]) {
         updateTarget();
         waypoints.clear();
@@ -281,12 +284,14 @@ void GenericScene::updateWaypoint(cVector3d positionSphere, cVector3d positionTa
 
     }
 
+    //If waypoint is reached, go to next waypoint
     if(waypoint_index == last_waypoint_index)
     {
         waypoint_index = last_waypoint_index +1;
         return;
     }
 
+    //If main sphere is closer to next waypoint than current one, advance to next waypoint
     if ((cDistance(positionSphere, waypoints[waypoint_index+1]) < cDistance(waypoints[waypoint_index], waypoints[waypoint_index+1])*0.7) &&
         waypoint_index != waypoints.size()-2) {
         cout << "Advancing to waypoint " << waypoint_index + 1 << endl;
@@ -305,6 +310,7 @@ void GenericScene::updateWaypoint(cVector3d positionSphere, cVector3d positionTa
 
 void GenericScene::updateGraphics(int a_width, int a_height){
 
+    //Update cameras and control level label
     bulletWorld->updateShadowMaps(false, mirroredDisplay);
     camera->renderView(a_width, a_height);
 
@@ -315,7 +321,8 @@ void GenericScene::updateGraphics(int a_width, int a_height){
 void GenericScene::updateHaptics(double timeInterval){
     bulletWorld->computeGlobalPositions(true);
      
-    // Compute World Dynamics Forces.
+    //Retrieve positions for all spheres ans the haptic device
+
     cVector3d hapticDevicePosition;
     cVector3d positionTarget = target->getLocalPos();
     positionNegotiatedSphere = negotiatedSphere->getLocalPos();
@@ -325,6 +332,7 @@ void GenericScene::updateHaptics(double timeInterval){
     hapticDevice->getPosition(hapticDevicePosition); 
     hapticDevicePosition = hapticDevicePosition *10;
 
+    //Additional force required to keep the device still in the z axis
     cVector3d wallForce;
     wallForce.add(cVector3d(0.0, 0.0, 50 * (WALL_GROUND + toolRadius- hapticDevicePosition.z())));
     hapticDevicePosition.z(WALL_GROUND+toolRadius);
@@ -439,6 +447,7 @@ void GenericScene::init(){
 }
 
 double GenericScene::getFuzzyOutput(int timein, int collisionsin) {
+    //Input the time taken to reach the waypoint and the collisions, output the change in control level
     engine->inputVariables()[0]->setValue(timein);
     engine->inputVariables()[1]->setValue(collisionsin);
     engine->process();

@@ -95,7 +95,7 @@ void Scene2::updateWaypoint(cVector3d positionSphere, cVector3d positionTarget){
     }
 
     if ((cDistance(positionSphere, waypoints[waypoint_index + 1]) < cDistance(waypoints[waypoint_index], waypoints[waypoint_index + 1]) * 0.7) &&
-        waypoint_index != waypoints.size() - 2) {
+        waypoint_index != waypoints.size() - 2 && !inForbiddenZone(positionSphere)) {
         cout << "Advancing to waypoint " << waypoint_index + 1 << endl;
         waypoint_index += 1;
         last_waypoint_index += 1;
