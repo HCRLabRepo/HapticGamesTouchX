@@ -31,18 +31,42 @@ Scene3::Scene3(shared_ptr<cGenericHapticDevice> a_hapticDevice):GenericScene(a_h
     destinations.push_back(cVector3d(-0.28,-0.28,-0.2+0.00025));
 
 
-    ifstream test("resources/3_waypoints.txt");
-    std::string line;
-    while (getline(test, line)) {
-        vector<double> coord;
-        stringstream ss(line);
-        string elem;
-        while (getline(ss, elem, ',')) {
-            coord.push_back(stod(elem));
-        }
-        checkpoints.push_back(cVector3d(coord[0], coord[1], coord[2]));
-        checkpointsRange.push_back(0.01);
-    }
+    checkpoints.push_back(cVector3d(-0.029, 0.02, -0.20025));
+    checkpointsRange.push_back(0.01);
+    checkpoints.push_back(cVector3d(-0.029, -0.028, -0.20025));
+    checkpointsRange.push_back(0.01);
+    checkpoints.push_back(cVector3d(0.028, -0.028, -0.20025));
+    checkpointsRange.push_back(0.01);
+    checkpoints.push_back(cVector3d(0.028, 0.052, -0.20025));
+    checkpointsRange.push_back(0.01);
+    checkpoints.push_back(cVector3d(-0.053, 0.052, -0.20025));
+    checkpointsRange.push_back(0.01);
+    checkpoints.push_back(cVector3d(-0.053, -0.052, -0.20025));
+    checkpointsRange.push_back(0.01);
+    checkpoints.push_back(cVector3d(0.055, -0.052, -0.20025));
+    checkpointsRange.push_back(0.01);
+    checkpoints.push_back(cVector3d(0.055, 0.077, -0.20025));
+    checkpointsRange.push_back(0.01);
+    checkpoints.push_back(cVector3d(-0.080, 0.077, -0.20025));
+    checkpointsRange.push_back(0.01);
+    checkpoints.push_back(cVector3d(-0.080, -0.080, -0.20025));
+    checkpointsRange.push_back(0.01);
+    checkpoints.push_back(cVector3d(0.080, -0.080, -0.20025));
+    checkpointsRange.push_back(0.01);
+    checkpoints.push_back(cVector3d(0.080, 0.105, -0.20025));
+    checkpointsRange.push_back(0.01);
+    checkpoints.push_back(cVector3d(-0.105, 0.105, -0.20025));
+    checkpointsRange.push_back(0.01);
+    checkpoints.push_back(cVector3d(-0.105, -0.105, -0.20025));
+    checkpointsRange.push_back(0.01);
+    checkpoints.push_back(cVector3d(0.105, -0.105, -0.20025));
+    checkpointsRange.push_back(0.01);
+    checkpoints.push_back(cVector3d(0.105, 0.130, -0.20025));
+    checkpointsRange.push_back(0.01);
+    checkpoints.push_back(cVector3d(-0.130, 0.130, -0.20025));
+    checkpointsRange.push_back(0.01);
+    checkpoints.push_back(cVector3d(-0.130, -0.140, -0.20025));
+    checkpointsRange.push_back(0.01);
 
     // set up target
     target = new cBulletCylinder(bulletWorld, 0.0005, toolRadius*1.5);

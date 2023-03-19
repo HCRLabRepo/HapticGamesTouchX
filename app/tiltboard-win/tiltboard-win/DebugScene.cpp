@@ -19,22 +19,15 @@ DebugScene::DebugScene(std::shared_ptr<cGenericHapticDevice> a_hapticDevice):Gen
 
     destinations.push_back(cVector3d(0.28, 0.28, -0.2 + 0.00025));
     destinations.push_back(cVector3d(-0.28, -0.28, -0.2 + 0.00025));
-
-    ifstream test("resources/practice_waypoints.txt");
-    std::string line;
-    while (getline(test, line)) {
-        vector<double> coord;
-        stringstream ss(line);
-        string elem;
-        while (getline(ss, elem, ',')) {
-            coord.push_back(stod(elem));
-        }
-        checkpoints.push_back(cVector3d(coord[0], coord[1], coord[2]));
-        checkpointsRange.push_back(0.04);
-    }
-
-
-
+    
+    checkpoints.push_back(cVector3d(- 0.26, 0.23, -0.20025));
+    checkpointsRange.push_back(0.04);
+    checkpoints.push_back(cVector3d(-0.16, 0.23, -0.20025));
+    checkpointsRange.push_back(0.04);
+    checkpoints.push_back(cVector3d(0.20, -0.23, -0.20025));
+    checkpointsRange.push_back(0.04);
+    checkpoints.push_back(cVector3d(0.28, -0.23, -0.20025));
+    checkpointsRange.push_back(0.04);
 
     // set up target
     target = new cBulletCylinder(bulletWorld, 0.0005, toolRadius * 1.5);
