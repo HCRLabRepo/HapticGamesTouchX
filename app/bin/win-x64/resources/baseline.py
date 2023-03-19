@@ -4,7 +4,7 @@ import sys
 
 
 if __name__ == '__main__':
-    with open("test.csv", "w") as sys.stdout:
+    with open("results/S"+sys.argv[1]+"/baseline.csv", "w") as sys.stdout:
         read_sensor.setup()
         data = ""
         start = time.time()

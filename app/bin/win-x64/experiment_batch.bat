@@ -32,12 +32,15 @@ GOTO BEGIN
 :P1
 echo Permutation 1
 echo PRACTICE 1
+pause
 start /WAIT /B "Practice 1" tiltboard-win.exe %userId% 0 1
+pause
 echo PRACTICE 2
+pause
 start /WAIT /B "Practice 2" tiltboard-win.exe %userId% 0 4
 pause
 echo BASELINE MEASUREMENT
-python resources/baseline.py
+python resources/baseline.py %userID%
 echo BASELINE FINISHED
 pause
 start /WAIT /B "Experiment 1" tiltboard-win.exe %userId% 2 1
@@ -59,7 +62,7 @@ echo PRACTICE 2
 start /WAIT /B "Practice 2" tiltboard-win.exe %userId% 0 4
 pause
 echo BASELINE MEASUREMENT
-python resources/baseline.py
+python resources/baseline.py %userID%
 echo BASELINE FINISHED
 pause
 start /WAIT /B "Experiment 1" tiltboard-win.exe %userId% 2 5
@@ -82,7 +85,7 @@ echo PRACTICE 2
 start /WAIT /B "Practice 2" tiltboard-win.exe %userId% 0 4
 pause
 echo BASELINE MEASUREMENT
-python resources/baseline.py
+python resources/baseline.py %userID%
 echo BASELINE FINISHED
 pause
 start /WAIT /B "Experiment 1" tiltboard-win.exe %userId% 2 9
@@ -104,7 +107,7 @@ echo PRACTICE 2
 start /WAIT /B "Practice 2" tiltboard-win.exe %userId% 0 4
 pause
 echo BASELINE MEASUREMENT
-python resources/baseline.py
+python resources/baseline.py %userID%
 echo BASELINE FINISHED
 pause
 start /WAIT /B "Experiment 1" tiltboard-win.exe %userId% 2 10 force-SCL
