@@ -111,6 +111,7 @@ int main(int argc, char* argv[]){
     string NIPfilename = resultPath + "/position_NIP.csv";
     string HIPforcefilename = resultPath + "/force_HIP.csv";
     string CIPforcefilename = resultPath + "/force_CIP.csv";
+    string alphafilename = resultPath + "/control_level.csv";
     //---------------------------------------------------------------------------
     // Initial Print Message
     //---------------------------------------------------------------------------
@@ -243,6 +244,7 @@ int main(int argc, char* argv[]){
     NIPfile.open(NIPfilename);
     HIPforcefile.open(HIPforcefilename);
     CIPforcefile.open(CIPforcefilename);
+    alphafile.open(alphafilename);
     s = new SensorData();
     //--------------------------------------------------------------------------
     // START SIMULATION
@@ -720,6 +722,7 @@ void updateHaptics(void){
         NIPfile << timeSinceEpochMillisec() << ", " << main_scene->positionNegotiatedSphere << endl;
         HIPforcefile << timeSinceEpochMillisec() << ", " << main_scene->HIPForce << endl;
         CIPforcefile << timeSinceEpochMillisec() << ", " << main_scene->CIPForce << endl;
+        alphafile << timeSinceEpochMillisec() << ", " << main_scene->ALPHA_CONTROL << endl;
 
 
     }
@@ -729,6 +732,7 @@ void updateHaptics(void){
     NIPfile.close();
     HIPforcefile.close();
     CIPforcefile.close();
+    alphafile.close();
     hapticDevice->close();
     simulationFinished = true;
     glfwSetWindowShouldClose(window, GLFW_TRUE);

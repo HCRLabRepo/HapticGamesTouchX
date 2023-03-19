@@ -113,6 +113,7 @@ std::ofstream CIPfile;
 std::ofstream NIPfile;
 std::ofstream HIPforcefile;
 std::ofstream CIPforcefile;
+std::ofstream alphafile;
 
 SensorData* s;
 cThread* sensorThread;
