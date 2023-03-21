@@ -307,31 +307,26 @@ void initDebugScene(){
 void keyCallback(GLFWwindow* a_window, int a_key, int a_scancode, int a_action, int a_mods)
 {
     // filter calls that only include a key press
-    if ((a_action != GLFW_PRESS) && (a_action != GLFW_REPEAT))
-    {
+    if ((a_action != GLFW_PRESS) && (a_action != GLFW_REPEAT)){
         return;
     }
-
-    else if((a_key == GLFW_KEY_ESCAPE) || (a_key == GLFW_KEY_Q))
-    {
+    //Quit if escape or Q are pressed
+    else if((a_key == GLFW_KEY_ESCAPE) || (a_key == GLFW_KEY_Q)){
         glfwSetWindowShouldClose(a_window, GLFW_TRUE);
     }
-    
-    else if(a_key == GLFW_KEY_F)
-    {
+    //Switch to fullscreen if F is pressed
+    else if(a_key == GLFW_KEY_F){
         fullscreen = !fullscreen;
         
         GLFWmonitor* monitor = glfwGetPrimaryMonitor();
 
         const GLFWvidmode* mode  = glfwGetVideoMode(monitor);
 
-        if(fullscreen)
-        {
+        if(fullscreen){
             glfwSetWindowMonitor(window, monitor, 0, 0, mode->width, mode->height, mode->refreshRate);
             glfwSwapInterval(swapInterval);
         }
-        else
-        {
+        else{
             int w = 0.8 * mode->height;
             int h = 0.5 * mode->height;
             int x = 0.5 * (mode->width - w);
@@ -340,9 +335,8 @@ void keyCallback(GLFWwindow* a_window, int a_key, int a_scancode, int a_action, 
             glfwSwapInterval(swapInterval);
         }
     }
-
-    else if (a_key == GLFW_KEY_M)
-    {
+    //Mirror the screen vertically if M is pressed
+    else if (a_key == GLFW_KEY_M){
         mirroredDisplay = !mirroredDisplay;
         scene1->camera->setMirrorVertical(mirroredDisplay);
         scene2->camera->setMirrorVertical(mirroredDisplay);
@@ -353,33 +347,32 @@ void keyCallback(GLFWwindow* a_window, int a_key, int a_scancode, int a_action, 
         scene3->mirroredDisplay = mirroredDisplay;
         debugScene->mirroredDisplay = mirroredDisplay;
     }
+    //Make the control sphere visible
     else if(a_key == GLFW_KEY_S){
         main_scene->controlSphere->setEnabled(!(main_scene->controlSphere->getEnabled()));
     }
-
+    //Make the guidance sphere visible
     else if(a_key == GLFW_KEY_G){
         main_scene->guidanceSphere->setEnabled(!(main_scene->guidanceSphere->getEnabled()));
     }
+    //Make the negotiated sphere visible
     else if(a_key == GLFW_KEY_N){
         main_scene->negotiatedSphere->setEnabled(!(main_scene->negotiatedSphere->getEnabled()));
     }
-    else if (a_key == GLFW_KEY_1)
-    {
+    //Switch to Scene 1
+    else if (a_key == GLFW_KEY_1){
         initScene1();
     }
-
-    else if (a_key == GLFW_KEY_2)
-    {
+    //Switch to Scene 2
+    else if (a_key == GLFW_KEY_2){
         initScene2();
     }
-    
-    else if (a_key == GLFW_KEY_3)
-    {
+    //Switch to Scene 3
+    else if (a_key == GLFW_KEY_3){
         initScene3();
     }
-
-    else if (a_key == GLFW_KEY_0)
-    {
+    //Switch to Debug Scene
+    else if (a_key == GLFW_KEY_0){
         initDebugScene();
     }
 }
@@ -491,7 +484,7 @@ void updateGraphics(void){
     main_scene->labelTime->setLocalPos((int)((width - main_scene->labelTime->getWidth())/2), height - 40);
 
     main_scene->labelCollisions->setText("Collisions: "+ to_string(main_scene->collisionNum));
-    main_scene->labelCollisions->setLocalPos((int)((width - main_scene->labelCollisions->getWidth())/2), height - 60);
+    main_scene->labelCollisions->setLocalPos((int)((width - main_scene->labelCollisions->getWidth())/2), height - 80);
     /////////////////////////////////////////////////////////////////////
     // RENDER SCENE
     /////////////////////////////////////////////////////////////////////
@@ -601,42 +594,23 @@ void updateHaptics(void){
         }
         // Force-based proportional human control. Alpha is proportional to force exerted by user
         else if(control_mode == 5){
-            //Manual Override
-            if (button0){
-                main_scene->ALPHA_CONTROL += 0.001;
-                main_scene->ALPHA_CONTROL = min(main_scene->ALPHA_CONTROL, 1.0);
-            }
-            else{
-                main_scene->ALPHA_CONTROL = 0.1*(main_scene->userForce);
-                main_scene->ALPHA_CONTROL = max(main_scene->ALPHA_CONTROL, 0.0);
-                main_scene->ALPHA_CONTROL = min(main_scene->ALPHA_CONTROL, 1.0);
-            }
+            main_scene->ALPHA_CONTROL = 0.1*(main_scene->userForce);
+            main_scene->ALPHA_CONTROL = max(main_scene->ALPHA_CONTROL, 0.0);
+            main_scene->ALPHA_CONTROL = min(main_scene->ALPHA_CONTROL, 1.0);
         }
         // Performance-based proportional human control. Alpha is proportional to how well the user is performing the task.
         // Collision data and time taken are both taken into account for this.
         else if(control_mode == 6){
             main_scene->fuzzyControl = true;
-            //Manual Override
-            if (button0){
-                main_scene->ALPHA_CONTROL += 0.001;
-                main_scene->ALPHA_CONTROL = min(main_scene->ALPHA_CONTROL, 1.0);
-            }
-            else {
-                main_scene->ALPHA_CONTROL = main_scene->currentAlpha;
-            }
-            
+            main_scene->ALPHA_CONTROL = main_scene->currentAlpha;
         }
+        //Threshold-based control. If user is inactive for more than the specified amount of time, 
+        // computer control starts taking over
         else if (control_mode == 7) {
             using namespace std::chrono;
             high_resolution_clock::time_point t1 = high_resolution_clock::now();
             milliseconds ms = duration_cast<milliseconds>(t1 - (main_scene->inactiveTime));
-            
-            //Manual Override
-            if (button0) {
-                main_scene->ALPHA_CONTROL += 0.001;
-                main_scene->ALPHA_CONTROL = min(main_scene->ALPHA_CONTROL, 1.0);
-            }
-            else if (ms.count() > 500 && (main_scene->userForce < 3.0)) {
+            if (ms.count() > 500 && (main_scene->userForce < 3.0)) {
                 main_scene->ALPHA_CONTROL -= 0.001;
                 main_scene->ALPHA_CONTROL = max(main_scene->ALPHA_CONTROL, 0.1);
             }
@@ -645,6 +619,8 @@ void updateHaptics(void){
                 main_scene->ALPHA_CONTROL = min(main_scene->ALPHA_CONTROL, 1.0);
             }
         }
+        // Collision-based proportional control. Control is given or taken away from the suer
+        // based on the amount of collision frames detected in the last 500 milliseconds
         else if (control_mode == 8) {
             using namespace std::chrono;
             high_resolution_clock::time_point t1 = high_resolution_clock::now();
@@ -665,6 +641,7 @@ void updateHaptics(void){
                 }
             }
         }
+        // SCL-based proportional control. Change in control mirrors changes in user's SCL - The higher it is, the more control the computer has.
         else if (control_mode == 9) {
             float delta = (s->conductance - previousConductance);
             main_scene->ALPHA_CONTROL -= 0.1*delta;
@@ -672,10 +649,7 @@ void updateHaptics(void){
             main_scene->ALPHA_CONTROL = min(main_scene->ALPHA_CONTROL, 1.0);
             previousConductance = s->conductance;
         }
-        main_scene->updateHaptics(timeInterval);
-        if(main_scene->destination_index == main_scene->destinations.size()){
-            break;        
-        }
+        //Fuzzy control. Can take any combination of force, collisions or SCL to give an output that modifies the control level.
         else if (control_mode == 10) {
             using namespace std::chrono;
             high_resolution_clock::time_point t1 = high_resolution_clock::now();
@@ -709,12 +683,17 @@ void updateHaptics(void){
                 main_scene->recordTime = high_resolution_clock::now();
             }
         }
+        main_scene->updateHaptics(timeInterval);
+        if (main_scene->destination_index == main_scene->destinations.size()) {
+            break;
+        }
         // Reset the simulation clock
         clock.reset();
         clock.start();
 
         // Signal frequency counter
         freqCounterHaptics.signal(1);
+        //Save all data to files
         ballfile <<  timeSinceEpochMillisec() << ", " << main_scene->positionMainSphere <<endl;
         conductancefile << timeSinceEpochMillisec() << ", " << s->conductance << endl;
         HIPfile << timeSinceEpochMillisec() << ", " << hapticDevicePosition << endl;
@@ -726,6 +705,7 @@ void updateHaptics(void){
 
 
     }
+    //Close files and end simulation
     ballfile.close();
     HIPfile.close();
     CIPfile.close();
@@ -739,5 +719,6 @@ void updateHaptics(void){
 }
 
 void getSensorData() {
+    //Retrieve data from GSR sensor
     s->getData();
 }

@@ -121,7 +121,6 @@ GenericScene::GenericScene(shared_ptr<cGenericHapticDevice> a_hapticDevice)
     }
     // Create a label to display the position of haptic device
     labelHapticDevicePosition = new cLabel(font);
-    //camera->m_frontLayer->addChild(labelHapticDevicePosition);
 
 
     // Create a label to display the haptic and graphic rate of the simulation
