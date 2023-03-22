@@ -232,10 +232,10 @@ GenericScene::GenericScene(shared_ptr<cGenericHapticDevice> a_hapticDevice)
     mainSphere->m_bulletRigidBody->setIgnoreCollisionCheck(negotiatedSphere->m_bulletRigidBody, true);
     mainSphere->setInertia(cVector3d(0,0,0));
 
-    borderSetup({0.005, 0.6, 0.02}, {0.3, 0.0, -0.2}, { 0,0,0 }, matBase);
-    borderSetup({0.005, 0.6, 0.02}, {-0.3, 0.0, -0.2 }, { 0,0,0 }, matBase);
-    borderSetup({0.6, 0.005, 0.02}, {0.0, 0.3, -0.2}, { 0,0,0 }, matBase);
-    borderSetup({0.6, 0.005, 0.02}, {0.0, -0.3, -0.2 }, { 0,0,0 }, matBase);
+    borderSetup({0.005, 0.6, 0.05}, {0.3, 0.0, -0.2}, { 0,0,0 }, matBase);
+    borderSetup({0.005, 0.6, 0.05}, {-0.3, 0.0, -0.2 }, { 0,0,0 }, matBase);
+    borderSetup({0.6, 0.005, 0.05}, {0.0, 0.3, -0.2}, { 0,0,0 }, matBase);
+    borderSetup({0.6, 0.005, 0.05}, {0.0, -0.3, -0.2 }, { 0,0,0 }, matBase);
 
     // Set gravity.
     bulletWorld->setGravity(cVector3d(0.0, 0.0, -9.0));
@@ -378,6 +378,7 @@ void GenericScene::updateHaptics(double timeInterval){
 
     HIPForce.z(0);
     ballForce.z(0);
+    
     negotiatedSphere->addExternalForce(NIPForce);
     guidanceSphere->addExternalForce(waypointForce);
     mainSphere->addExternalForce(ballForce);
