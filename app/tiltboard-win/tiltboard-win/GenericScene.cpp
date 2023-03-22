@@ -9,6 +9,8 @@
 
 using namespace std;
 
+double NUMBER_OF_RUNS     = 5;
+
 const double SPHERE_MASS        = 0.04;
 const double K_DAMPING          = 0.9999999999999999;
 const double HIP_STIFFNESS      = 30;
@@ -42,6 +44,13 @@ void GenericScene::updateTarget(){
     }
     cout<< "updated target" << endl;
     if( destination_index == destinations.size() ){
+        NUMBER_OF_RUNS--;
+        if (NUMBER_OF_RUNS > 0) {
+            destination_index = 0;
+            target->setLocalPos(destinations[shuffled_order[destination_index]]);
+            generateWaypoints(mainSphere->getLocalPos(), target->getLocalPos());
+            initWaypoints();
+        }
         cout << "finished" << endl;
     }
     target->setLocalPos(destinations[shuffled_order[destination_index]]);
