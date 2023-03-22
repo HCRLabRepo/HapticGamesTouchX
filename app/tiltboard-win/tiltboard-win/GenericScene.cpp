@@ -11,12 +11,12 @@ using namespace std;
 
 const double SPHERE_MASS        = 0.04;
 const double K_DAMPING          = 0.9999999999999999;
-const double HIP_STIFFNESS      = 40;
-const double CIP_STIFFNESS      = 60;
+const double HIP_STIFFNESS      = 30;
+const double CIP_STIFFNESS      = 30;
 const double TARGET_STIFFNESS   = 20;
-const double BALL_STIFFNESS     = 20;
+const double BALL_STIFFNESS     = 60;
 const double TARGET_DAMPING     = 0.1;
-const double BALL_DAMPING       = 0.08;
+const double BALL_DAMPING       = 0.1;
 const double WALL_GROUND        = -0.2;
 
 double MAX_HAPTIC_FORCE = 4;
@@ -377,6 +377,7 @@ void GenericScene::updateHaptics(double timeInterval){
     updateWaypoint(positionMainSphere, target->getLocalPos());
 
     HIPForce.z(0);
+    ballForce.z(0);
     negotiatedSphere->addExternalForce(NIPForce);
     guidanceSphere->addExternalForce(waypointForce);
     mainSphere->addExternalForce(ballForce);

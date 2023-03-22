@@ -21,7 +21,6 @@ public:
     virtual ~Scene2() {};
 
 public:
-    virtual void setStiffness(double a_stiffness);
     /**
     * Generates and places the waypoints in the waypoint list based on the position of the target and main sphere.
     * @param positionSphere Position of the main sphere

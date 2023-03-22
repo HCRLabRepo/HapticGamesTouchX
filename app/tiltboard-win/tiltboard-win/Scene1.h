@@ -20,8 +20,6 @@ class Scene1: public GenericScene{
         virtual ~Scene1() {};
     
     public:
-        virtual void setStiffness(double a_stiffness);
-
         /**
         Determines the initial waypoints based on the position of the target.
         */

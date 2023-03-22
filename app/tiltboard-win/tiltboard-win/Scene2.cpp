@@ -72,11 +72,6 @@ Scene2::Scene2(shared_ptr<cGenericHapticDevice> a_hapticDevice):GenericScene(a_h
 
 }
 
-void Scene2::setStiffness(double a_stiffness){
-    bulletGround->setStiffness(a_stiffness);
-}
-
-
 void Scene2::generateWaypoints(cVector3d positionSphere, cVector3d positionTarget){
     for(int i = 0; i < destinations.size();i++){
         if(positionTarget.equals(destinations[i]))

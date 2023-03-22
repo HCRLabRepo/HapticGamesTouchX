@@ -16,8 +16,6 @@ class Scene3: public GenericScene{
         virtual ~Scene3() {};
     
     public:
-        virtual void setStiffness(double a_stiffness);
-
         /**
         Initialises first waypoints
         */

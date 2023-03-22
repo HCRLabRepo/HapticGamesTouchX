@@ -73,17 +73,6 @@ Scene1::Scene1(shared_ptr<cGenericHapticDevice> a_hapticDevice):GenericScene(a_h
 
 }
 
-void Scene1::setStiffness(double a_stiffness){
-    bulletGround->setStiffness(a_stiffness);
-
-    //obstacle0->setStiffness(a_stiffness);
-    //obstacle1->setStiffness(a_stiffness);
-    //obstacle2->setStiffness(a_stiffness);
-    //obstacle3->setStiffness(a_stiffness);
-    //obstacle4->setStiffness(a_stiffness);
-    //obstacle5->setStiffness(a_stiffness);
-}
-
 void Scene1::initWaypoints(){
     if((target->getLocalPos()).equals(destinations[0])){
         last_waypoint_index = 3;

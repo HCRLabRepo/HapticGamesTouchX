@@ -83,11 +83,6 @@ Scene3::Scene3(shared_ptr<cGenericHapticDevice> a_hapticDevice):GenericScene(a_h
 
 }
 
-void Scene3::setStiffness(double a_stiffness){
-    bulletGround->setStiffness(a_stiffness);
-}
-
-
 void Scene3::initWaypoints(){
     last_waypoint_index = 0;
     waypoint_index = 0;

@@ -18,21 +18,6 @@ uint64_t timeSinceEpochMillisec() {
   return duration_cast<milliseconds>(system_clock::now().time_since_epoch()).count();
 }
 
-void mySleep(int sleepMs)
-{
-    #ifdef LINUX
-        usleep(sleepMs * 1000);
-    #endif
-    #ifdef WINDOWS
-        Sleep(sleepMs);
-    #endif
-}
-
-void recoverColor(const btCollisionObjectWrapper* obj1)
-{   mySleep(500);
-    ((cBulletMesh*)(obj1->getCollisionObject()->getUserPointer()))->m_material->setGrayLevel(0.3);
-
-}
 bool callbackFunc(btManifoldPoint& cp, const btCollisionObjectWrapper* obj1, int id1, int index1, const btCollisionObjectWrapper* obj2, int id2, int index2)
 {   cColorf Red;
     cColorf Gray;
@@ -44,23 +29,16 @@ bool callbackFunc(btManifoldPoint& cp, const btCollisionObjectWrapper* obj1, int
     Green.setGreen();
     Blue.setBlue();
 
-    if( (((cBulletMesh*)(obj1->getCollisionObject()->getUserPointer()))->m_material->m_diffuse == Gray) && (((cBulletMesh*)(obj2->getCollisionObject()->getUserPointer()))->m_material->m_diffuse != Blue)){
-        ((cBulletMesh*)(obj1->getCollisionObject()->getUserPointer()))->m_material->setRed();
-        ((cBulletMesh*)(obj1->getCollisionObject()->getUserPointer()))->m_material->setGrayLevel(0.3);
-        //std::thread t(recoverColor,obj1);
+    if( (((cBulletMesh*)(obj1->getCollisionObject()->getUserPointer()))->m_material->m_diffuse == Gray)){
         ballfile << timeSinceEpochMillisec() << ", " << "Collision" <<endl;
         main_scene->collisionNum += 1;
         main_scene->collisionsLastSec += 1;
-        //t.join();
     }
-    if( (((cBulletMesh*)(obj2->getCollisionObject()->getUserPointer()))->m_material->m_diffuse == Gray) && (((cBulletMesh*)(obj1->getCollisionObject()->getUserPointer()))->m_material->m_diffuse != Blue) ){
-        ((cBulletMesh*)(obj2->getCollisionObject()->getUserPointer()))->m_material->setRed();
-        ((cBulletMesh*)(obj2->getCollisionObject()->getUserPointer()))->m_material->setGrayLevel(0.3);
-        //std::thread t(recoverColor,obj2);
+    if( (((cBulletMesh*)(obj2->getCollisionObject()->getUserPointer()))->m_material->m_diffuse == Gray)){
         ballfile << timeSinceEpochMillisec() << ", " << "Collision" <<endl;
         main_scene->collisionNum += 1;
         main_scene->collisionsLastSec += 1;
-        //t.join();
+        ((cBulletMesh*)(obj2->getCollisionObject()->getUserPointer()))->m_material->setGrayLevel(0.3);
     }
 
     return false;
@@ -69,7 +47,7 @@ bool callbackFunc(btManifoldPoint& cp, const btCollisionObjectWrapper* obj1, int
 int main(int argc, char* argv[]){
     gContactAddedCallback=callbackFunc;
     //---------------------------------------------------------------------------
-    // Retreat Experiment Settings
+    // Retrieve Experiment Settings
     //---------------------------------------------------------------------------
     std::ifstream settingsfile("ExperimentSettings.txt");
     if (argc >= 2) {
@@ -194,31 +172,19 @@ int main(int argc, char* argv[]){
     cHapticDeviceInfo hapticDeviceInfo = hapticDevice->getSpecifications();
 
     //-----------------------------------------------------------------------
-    // SETUP BULLET WORLD AND OBJECTS
+    // SETUP SCENES
     //-----------------------------------------------------------------------
 
     debugScene = new DebugScene(hapticDevice);
     scene1 = new Scene1(hapticDevice);
     scene2 = new Scene2(hapticDevice);
     scene3 = new Scene3(hapticDevice);
-    // Read the scale factor between the physical workspace of the haptic
-    // device and the virtual workspace defined for the tool
-    double maxStiffness = 1000;
-    if(tool!=NULL)
-    {
-        double workspaceScaleFactor = tool->getWorkspaceScaleFactor();
-        maxStiffness = cMin(maxStiffness,hapticDeviceInfo.m_maxLinearStiffness/workspaceScaleFactor);
-    }
-    // Stiffness properties
+
     debugScene->camera->setStereoMode(stereoMode);
     scene1->camera->setStereoMode(stereoMode);
     scene2->camera->setStereoMode(stereoMode);
     scene3->camera->setStereoMode(stereoMode);
 
-    debugScene->setStiffness(maxStiffness);
-    scene1->setStiffness(maxStiffness);
-    scene2->setStiffness(maxStiffness);
-    scene3->setStiffness(maxStiffness);
 
     //--------------------------------------------------------------------------
     // WIDGETS
@@ -594,7 +560,7 @@ void updateHaptics(void){
         }
         // Force-based proportional human control. Alpha is proportional to force exerted by user
         else if(control_mode == 5){
-            main_scene->ALPHA_CONTROL = 0.1*(main_scene->userForce);
+            main_scene->ALPHA_CONTROL = 0.2*(main_scene->userForce);
             main_scene->ALPHA_CONTROL = max(main_scene->ALPHA_CONTROL, 0.0);
             main_scene->ALPHA_CONTROL = min(main_scene->ALPHA_CONTROL, 1.0);
         }
