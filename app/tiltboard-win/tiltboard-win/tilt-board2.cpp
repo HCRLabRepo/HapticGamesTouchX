@@ -30,15 +30,18 @@ bool callbackFunc(btManifoldPoint& cp, const btCollisionObjectWrapper* obj1, int
     Blue.setBlue();
 
     if( (((cBulletMesh*)(obj1->getCollisionObject()->getUserPointer()))->m_material->m_diffuse == Gray)){
+        ((cBulletMesh*)(obj1->getCollisionObject()->getUserPointer()))->m_material->setRed();
         ballfile << timeSinceEpochMillisec() << ", " << "Collision" <<endl;
         main_scene->collisionNum += 1;
         main_scene->collisionsLastSec += 1;
     }
     if( (((cBulletMesh*)(obj2->getCollisionObject()->getUserPointer()))->m_material->m_diffuse == Gray)){
         ballfile << timeSinceEpochMillisec() << ", " << "Collision" <<endl;
+        ((cBulletMesh*)(obj2->getCollisionObject()->getUserPointer()))->m_material->setRed();
         main_scene->collisionNum += 1;
         main_scene->collisionsLastSec += 1;
-        ((cBulletMesh*)(obj2->getCollisionObject()->getUserPointer()))->m_material->setGrayLevel(0.3);
+        
+            
     }
 
     return false;
@@ -432,7 +435,9 @@ void updateGraphics(void){
     /////////////////////////////////////////////////////////////////////
     // UPDATE WIDGETS
     /////////////////////////////////////////////////////////////////////
-
+    for (cBulletBox* element : (main_scene->obstacles)) {
+        element->m_material->setGrayLevel(0.3);
+    }
     main_scene->labelHapticDeviceModel->setLocalPos(20, height - 40, 0);
     // update position of label
     main_scene->labelHapticDevicePosition->setLocalPos(20, height - 60, 0);

@@ -65,6 +65,7 @@ public:
 
     std::vector<cVector3d> checkpoints;
     std::vector<double> checkpointsRange;
+    std::vector<cBulletBox*> obstacles;
     
     int destination_index = 0;
     int waypoint_index = 0;

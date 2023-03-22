@@ -267,6 +267,7 @@ GenericScene::GenericScene(shared_ptr<cGenericHapticDevice> a_hapticDevice)
 
 void GenericScene::borderSetup(std::vector<double> size, std::vector<double> pos, std::vector<double> rot,cMaterial matBase) {
     cBulletBox* obstacle = new cBulletBox(bulletWorld, size.at(0), size.at(1), size.at(2));
+    obstacles.push_back(obstacle);
     bulletWorld->addChild(obstacle);
     obstacle->createAABBCollisionDetector(toolRadius);
     obstacle->setMaterial(matBase);
