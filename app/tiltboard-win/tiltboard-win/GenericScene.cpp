@@ -86,8 +86,6 @@ GenericScene::GenericScene(shared_ptr<cGenericHapticDevice> a_hapticDevice)
     spotLight->setLocalPos(0.4, 0.4, 0.3); // Posision the light source
     spotLight->setDir(-0.4, -0.4, -0.3); // Define the direction of the light beam
     spotLight->setSpotExponent(0.0); // Set uniform concentration of light
-    spotLight->setShadowMapEnabled(true); // Enable this light source to generate shadows
-    spotLight->m_shadowMap->setQualityVeryHigh(); // Set the resolution of the shadow map
     spotLight->m_ambient.set(0.6, 0.6, 0.6);
     spotLight->m_diffuse.set(0.8, 0.8, 0.8);
     spotLight->m_specular.set(0.8, 0.8, 0.8);
@@ -228,7 +226,7 @@ GenericScene::GenericScene(shared_ptr<cGenericHapticDevice> a_hapticDevice)
     //guidanceSphere->m_bulletRigidBody->setCollisionFlags(guidanceSphere->m_bulletRigidBody->getCollisionFlags() | btCollisionObject::CF_NO_CONTACT_RESPONSE);
 
     //Create main sphere
-    mainSphere = new cBulletSphere(bulletWorld, toolRadius);
+    mainSphere = new cBulletSphere(bulletWorld, toolRadius+0.002);
     bulletWorld->addChild(mainSphere);
     mainSphere->createAABBCollisionDetector(toolRadius);
     mainSphere->setMaterial(mat);

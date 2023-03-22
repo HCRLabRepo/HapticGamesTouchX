@@ -18,14 +18,14 @@ Scene2::Scene2(shared_ptr<cGenericHapticDevice> a_hapticDevice):GenericScene(a_h
     matBase.setStaticFriction(0.9);
 
     // Set up static obstacles
-    borderSetup({ 0.005, 0.33, 0.015 }, { 0.16, 0.18, -0.2 }, {0,0,-45}, matBase);
-    borderSetup({ 0.005, 0.33, 0.015 }, { 0.18, 0.16, -0.2 }, {0,0,-45}, matBase);
-    borderSetup({ 0.005, 0.33, 0.015 }, { -0.18, -0.16, -0.2 }, { 0,0,-45 }, matBase);
-    borderSetup({ 0.005, 0.33, 0.015 }, { -0.16, -0.18, -0.2 }, { 0,0,-45 }, matBase);
-    borderSetup({ 0.005, 0.33, 0.015 }, { 0.18, -0.16, -0.2 }, { 0,0,45 }, matBase);
-    borderSetup({ 0.005, 0.33, 0.015 }, { 0.16, -0.18, -0.2 }, { 0,0,45 }, matBase);
-    borderSetup({ 0.005, 0.33, 0.015 }, { -0.16, 0.18, -0.2 }, { 0,0,45 }, matBase);
-    borderSetup({ 0.005, 0.33, 0.015 }, { -0.18, 0.16, -0.2 }, { 0,0,45 }, matBase);
+    borderSetup({ 0.005, 0.33, 0.03 }, { 0.16, 0.18, -0.2 }, {0,0,-45}, matBase);
+    borderSetup({ 0.005, 0.33, 0.03 }, { 0.18, 0.16, -0.2 }, {0,0,-45}, matBase);
+    borderSetup({ 0.005, 0.33, 0.03 }, { -0.18, -0.16, -0.2 }, { 0,0,-45 }, matBase);
+    borderSetup({ 0.005, 0.33, 0.03 }, { -0.16, -0.18, -0.2 }, { 0,0,-45 }, matBase);
+    borderSetup({ 0.005, 0.33, 0.03 }, { 0.18, -0.16, -0.2 }, { 0,0,45 }, matBase);
+    borderSetup({ 0.005, 0.33, 0.03 }, { 0.16, -0.18, -0.2 }, { 0,0,45 }, matBase);
+    borderSetup({ 0.005, 0.33, 0.03 }, { -0.16, 0.18, -0.2 }, { 0,0,45 }, matBase);
+    borderSetup({ 0.005, 0.33, 0.03 }, { -0.18, 0.16, -0.2 }, { 0,0,45 }, matBase);
 
     // Set up list of destinations
     destinations.push_back(cVector3d(-0.28, 0.28, -0.2+0.00025));
