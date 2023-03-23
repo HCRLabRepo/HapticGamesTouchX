@@ -46,8 +46,8 @@ void GenericScene::updateTarget(){
     if( destination_index == destinations.size() ){
         NUMBER_OF_RUNS--;
         if (NUMBER_OF_RUNS > 0) {
-            timeLastRun = time(0);
             performanceReview();
+            timeLastRun = time(0);
             destination_index = 0;
             target->setLocalPos(destinations[shuffled_order[destination_index]]);
             generateWaypoints(mainSphere->getLocalPos(), target->getLocalPos());
@@ -61,6 +61,7 @@ void GenericScene::updateTarget(){
 void GenericScene::performanceReview() {
     
     double finalColls = collisionNum - collsLastRun;
+    double finalTime = difftime(time(0), timeLastRun);
     string feedback = "";
     if (finalColls > 2000) {
         feedback += "You did terribly";
@@ -74,8 +75,27 @@ void GenericScene::performanceReview() {
     else if (finalColls > 100) {
         feedback += "You did very well!";
     }
+    else if (finalColls > 0) {
+        feedback += "You did excellent!";
+    }
     else if (finalColls == 0) {
         feedback += "You did perfect!";
+    }
+
+    if (finalTime > 120) {
+        feedback += "\nYou really need to hurry up!";
+    }
+    else if (finalTime > 100) {
+        feedback += "\nYou could go a bit faster!";
+    }
+    else if (finalTime > 80) {
+        feedback += "\nYou made decent time!";
+    }
+    else if (finalTime > 60) {
+        feedback += "\nYou had time to spare!";
+    }
+    else if (finalTime > 40) {
+        feedback += "\nYou were lightning fast!";
     }
     labelReview->setText("Runs remaining: " + to_string(NUMBER_OF_RUNS) +"\n" + feedback);
     collsLastRun = collisionNum;
