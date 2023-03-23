@@ -13,9 +13,9 @@ double NUMBER_OF_RUNS     = 5;
 
 const double SPHERE_MASS        = 0.04;
 const double K_DAMPING          = 0.9999999999999999;
-const double HIP_STIFFNESS      = 30;
-const double CIP_STIFFNESS      = 30;
-const double TARGET_STIFFNESS   = 20;
+const double HIP_STIFFNESS      = 15;
+const double CIP_STIFFNESS      = 15;
+const double TARGET_STIFFNESS   = 10;
 const double BALL_STIFFNESS     = 60;
 const double TARGET_DAMPING     = 0.1;
 const double BALL_DAMPING       = 0.1;
