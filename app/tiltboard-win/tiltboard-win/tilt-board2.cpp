@@ -526,6 +526,7 @@ void updateHaptics(void){
             }
         }
         // Variable Control by Physiological Signal
+        // DEPRECATED
         else if(control_mode == 3){
             if (button0){
                 // gradually change the control constant.

@@ -78,8 +78,6 @@ int swapInterval = 1;// swap interval for the display context (vertical synchron
 //---------------------------------------------------------------------------
 
 string subject_num;
-string subject_sex;
-int subject_age;
 int game_scene;
 int control_mode;
 string fuzzy_params;
@@ -100,11 +98,18 @@ void updateGraphics(void); // This function renders the scene
 void updateHaptics(void); // This function contains the main haptics simulation loop
 void close(void); // This function closes the application
 
+// Initialises Scene 1
 void initScene1();
+// Initialises Scene 2
 void initScene2();
+// Initialises Scene 3
 void initScene3();
+// Initialises Debug Scene
 void initDebugScene();
+// Obtains Sensor data from script
 void getSensorData();
+
+// Files for storing data
 
 std::ofstream ballfile;
 std::ofstream conductancefile;
@@ -115,8 +120,11 @@ std::ofstream HIPforcefile;
 std::ofstream CIPforcefile;
 std::ofstream alphafile;
 
+// Script and thread for sensor data collecting
+
 SensorData* s;
 cThread* sensorThread;
+
 float previousConductance = 0;
 
 fl::Engine* fuzzy;
