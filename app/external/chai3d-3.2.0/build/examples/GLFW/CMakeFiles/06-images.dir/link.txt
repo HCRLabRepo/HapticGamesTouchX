@@ -1,3 +1,0 @@
-"C:\Program Files (x86)\CMake\bin\cmake.exe" -E remove -f CMakeFiles\06-images.dir/objects.a
-C:\msys64\mingw64\bin\ar.exe cr CMakeFiles\06-images.dir/objects.a @CMakeFiles\06-images.dir\objects1.rsp
-C:\msys64\mingw64\bin\g++.exe  -march=native -Wno-deprecated -std=c++0x -O3 -DNDEBUG   -Wl,--whole-archive CMakeFiles\06-images.dir/objects.a -Wl,--no-whole-archive  -o ..\..\..\bin\win-Win32\06-images.exe -Wl,--out-implib,lib06-images.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\06-images.dir\linklibs.rsp

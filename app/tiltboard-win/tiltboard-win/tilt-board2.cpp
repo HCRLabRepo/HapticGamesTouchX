@@ -528,38 +528,7 @@ void updateHaptics(void){
         // Variable Control by Physiological Signal
         // DEPRECATED
         else if(control_mode == 3){
-            if (button0){
-                // gradually change the control constant.
-                main_scene->ALPHA_CONTROL += 0.001;
-                main_scene->ALPHA_CONTROL = min(main_scene->ALPHA_CONTROL, 1.0);
-            }
-            else if (button1){
-                // gradually change the control constant.
-                main_scene->ALPHA_CONTROL -= 0.001;
-                main_scene->ALPHA_CONTROL = max(main_scene->ALPHA_CONTROL, 0.0);
-            }
-            else{
-                string prediction = "0";
-                string prediction_file_name = "S" + subject_num + "/prediction" + "/S" + subject_num + "_" + subject_sex + to_string(subject_age) + "_" + to_string(game_scene) + "_" + to_string(control_mode) + "_live" + ".csv";
-                std::ifstream live_prediction_file(prediction_file_name);
-                if(live_prediction_file.is_open()){
-                    live_prediction_file >> prediction;
-                }
-
-                // gradually change to control determines by physiology data prediction.
-                if(prediction == "0"){
-                    main_scene->ALPHA_CONTROL += 0.001;
-                    main_scene->ALPHA_CONTROL = min(main_scene->ALPHA_CONTROL, 1.0);
-                }
-                else if(prediction == "1"){
-                    double difference = main_scene->ALPHA_CONTROL - 0.5;
-                    main_scene->ALPHA_CONTROL -= copysign(0.001, difference);
-                }
-                else{
-                    main_scene->ALPHA_CONTROL -= 0.001;
-                    main_scene->ALPHA_CONTROL = max(main_scene->ALPHA_CONTROL, 0.0);
-                }
-            }
+           
         }
         // Ideal Control (Robot Control for best score reference, not part of user experiment but to produce the standard score.)
         else if(control_mode == 4){

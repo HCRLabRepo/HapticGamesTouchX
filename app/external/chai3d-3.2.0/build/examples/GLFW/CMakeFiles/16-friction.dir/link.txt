@@ -1,3 +1,0 @@
-"C:\Program Files (x86)\CMake\bin\cmake.exe" -E remove -f CMakeFiles\16-friction.dir/objects.a
-C:\msys64\mingw64\bin\ar.exe cr CMakeFiles\16-friction.dir/objects.a @CMakeFiles\16-friction.dir\objects1.rsp
-C:\msys64\mingw64\bin\g++.exe  -march=native -Wno-deprecated -std=c++0x -O3 -DNDEBUG   -Wl,--whole-archive CMakeFiles\16-friction.dir/objects.a -Wl,--no-whole-archive  -o ..\..\..\bin\win-Win32\16-friction.exe -Wl,--out-implib,lib16-friction.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\16-friction.dir\linklibs.rsp
