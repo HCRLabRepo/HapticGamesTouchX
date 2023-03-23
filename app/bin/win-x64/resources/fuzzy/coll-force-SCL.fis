@@ -16,9 +16,9 @@ Name='SCL'
 Range=[0 16]
 NumMFs=4
 MF1='low':'gbellmf',[1 5 0]
-MF2='normal':'gaussmf',[1 3]
-MF3='high':'gaussmf',[2 7]
-MF4='very high':'gbellmf',[7 4 16]
+MF2='normal':'gaussmf',[1.5 5]
+MF3='high':'gbellmf',[4 5 9]
+MF4='very high':'gbellmf',[5 10 16]
 
 [Input2]
 Name='collisions'
