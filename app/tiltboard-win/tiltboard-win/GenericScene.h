@@ -27,6 +27,7 @@ public:
     double getFuzzyOutput(int timein, int collisionsin);
     virtual void initWaypoints(){};
     void updateTarget();
+    void performanceReview();
     
 
 public:
@@ -88,6 +89,7 @@ public:
     cLabel* labelTime;
     cLabel* labelCollisions;
     cLevel* controlLevel;
+    cLabel* labelReview;
 
     cVector3d positionNegotiatedSphere;
     cVector3d positionMainSphere;
@@ -96,5 +98,8 @@ public:
     cVector3d CIPForce;
 
     fl::Engine* engine;
+
+    double timeLastRun = time(0);
+    double collsLastRun = 0;
 
 };

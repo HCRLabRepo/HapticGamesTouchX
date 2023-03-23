@@ -442,20 +442,21 @@ void updateGraphics(void){
     // update position of label
     main_scene->labelHapticDevicePosition->setLocalPos(20, height - 60, 0);
 
-    //Update the text information.
-
+    //Update the text information
     main_scene->labelHapticDevicePosition->setText(hapticDevicePosition.str(3));
-    main_scene->labelRates->setText(cStr(freqCounterGraphics.getFrequency(), 0) + " Hz /" + 
-                        cStr(freqCounterHaptics.getFrequency(),0) + " Hz");
-    
     // update position of label
-    main_scene->labelRates->setLocalPos((int)(0.5 * (width - main_scene->labelRates->getWidth())), 15);
     int penalty = std::floor(main_scene->collisionNum/20);
-    main_scene->labelTime->setText("Time taken: " + to_string(difftime(time(0)+penalty, main_scene->startTime)));
+    main_scene->labelTime->setText("Time taken: " + to_string((int)difftime(time(0)+penalty, main_scene->startTime)));
     main_scene->labelTime->setLocalPos((int)((width - main_scene->labelTime->getWidth())/2), height - 40);
 
     main_scene->labelCollisions->setText("Collisions: "+ to_string(main_scene->collisionNum));
     main_scene->labelCollisions->setLocalPos((int)((width - main_scene->labelCollisions->getWidth())/2), height - 80);
+
+    main_scene->labelReview->setLocalPos(((width - main_scene->labelReview->getWidth())/2), (height / 2));
+    if (difftime(time(0), main_scene->timeLastRun) > 10) {
+        main_scene->labelReview->setText("");
+    }
+    
     /////////////////////////////////////////////////////////////////////
     // RENDER SCENE
     /////////////////////////////////////////////////////////////////////

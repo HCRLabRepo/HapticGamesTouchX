@@ -9,7 +9,7 @@
 
 using namespace std;
 
-double NUMBER_OF_RUNS     = 5;
+int NUMBER_OF_RUNS     = 5;
 
 const double SPHERE_MASS        = 0.04;
 const double K_DAMPING          = 0.9999999999999999;
@@ -46,6 +46,8 @@ void GenericScene::updateTarget(){
     if( destination_index == destinations.size() ){
         NUMBER_OF_RUNS--;
         if (NUMBER_OF_RUNS > 0) {
+            timeLastRun = time(0);
+            performanceReview();
             destination_index = 0;
             target->setLocalPos(destinations[shuffled_order[destination_index]]);
             generateWaypoints(mainSphere->getLocalPos(), target->getLocalPos());
@@ -56,13 +58,36 @@ void GenericScene::updateTarget(){
     target->setLocalPos(destinations[shuffled_order[destination_index]]);
 }
 
+void GenericScene::performanceReview() {
+    
+    double finalColls = collisionNum - collsLastRun;
+    string feedback = "";
+    if (finalColls > 2000) {
+        feedback += "You did terribly";
+    }
+    else if (finalColls > 1000) {
+        feedback += "You need some practice";
+    }
+    else if (finalColls > 500) {
+        feedback += "You did OK";
+    }
+    else if (finalColls > 100) {
+        feedback += "You did very well!";
+    }
+    else if (finalColls == 0) {
+        feedback += "You did perfect!";
+    }
+    labelReview->setText("Runs remaining: " + to_string(NUMBER_OF_RUNS) +"\n" + feedback);
+    collsLastRun = collisionNum;
+}
+
 GenericScene::GenericScene(shared_ptr<cGenericHapticDevice> a_hapticDevice)
 {   
     
     //-----------------------------------------------------------------------
     // WORLD - CAMERA - LIGHTING
     //-----------------------------------------------------------------------
- 
+    
     // Create the world.
     bulletWorld = new cBulletWorld();
     bulletWorld->m_backgroundColor.setBlack();
@@ -118,7 +143,6 @@ GenericScene::GenericScene(shared_ptr<cGenericHapticDevice> a_hapticDevice)
     cFontPtr font = NEW_CFONTCALIBRI40();
 
     labelHapticDeviceModel = new cLabel(font);
-    camera->m_frontLayer->addChild(labelHapticDeviceModel);
     cHapticDeviceInfo hapticDeviceInfo = a_hapticDevice->getSpecifications();
     labelHapticDeviceModel->setText(hapticDeviceInfo.m_modelName);
     if(hapticDeviceInfo.m_modelName == "Touch X"){
@@ -154,6 +178,11 @@ GenericScene::GenericScene(shared_ptr<cGenericHapticDevice> a_hapticDevice)
     labelCollisions = new cLabel(font);
     labelCollisions->m_fontColor.setWhite();
     camera->m_frontLayer->addChild(labelCollisions);
+
+    labelReview = new cLabel(NEW_CFONTCALIBRI72());
+    labelReview->m_fontColor.setWhite();
+    camera->m_frontLayer->addChild(labelReview);
+
 
     hapticDevice = a_hapticDevice;
     mirroredDisplay = false;
@@ -261,6 +290,7 @@ GenericScene::GenericScene(shared_ptr<cGenericHapticDevice> a_hapticDevice)
     engine->setDescription("");
 
     startTime = time(0);
+    timeLastRun = time(0);
 }
 
 void GenericScene::borderSetup(std::vector<double> size, std::vector<double> pos, std::vector<double> rot,cMaterial matBase) {
