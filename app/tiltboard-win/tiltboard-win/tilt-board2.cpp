@@ -566,9 +566,26 @@ void updateHaptics(void){
         }
         // Force-based proportional human control. Alpha is proportional to force exerted by user
         else if(control_mode == 5){
-            main_scene->ALPHA_CONTROL = 0.2*(main_scene->userForce);
-            main_scene->ALPHA_CONTROL = max(main_scene->ALPHA_CONTROL, 0.0);
-            main_scene->ALPHA_CONTROL = min(main_scene->ALPHA_CONTROL, 1.0);
+            using namespace std::chrono;
+            high_resolution_clock::time_point t1 = high_resolution_clock::now();
+            milliseconds ms = duration_cast<milliseconds>(t1 - (main_scene->recordTime));
+            forceLastSec.push_back(main_scene->userForce);
+            if (ms.count() > 1000 && forceLastSec.size()>0) {
+                double change = 0.4 * (std::accumulate(forceLastSec.begin(), forceLastSec.end(), 0.0)) / forceLastSec.size();
+                if (change > main_scene->ALPHA_CONTROL + 0.2) {
+                    main_scene->ALPHA_CONTROL += 0.2;
+                }
+                else if (change < main_scene->ALPHA_CONTROL - 0.2) {
+                    main_scene->ALPHA_CONTROL -= 0.2;
+                }
+                else {
+                    main_scene->ALPHA_CONTROL = change;
+                }
+                main_scene->ALPHA_CONTROL = max(main_scene->ALPHA_CONTROL, 0.0);
+                main_scene->ALPHA_CONTROL = min(main_scene->ALPHA_CONTROL, 1.0);
+                forceLastSec.clear();
+                main_scene->recordTime = high_resolution_clock::now();
+            }
         }
         // Performance-based proportional human control. Alpha is proportional to how well the user is performing the task.
         // Collision data and time taken are both taken into account for this.
@@ -628,7 +645,7 @@ void updateHaptics(void){
             milliseconds ms = duration_cast<milliseconds>(t1 - (main_scene->recordTime));
             forceLastSec.push_back(main_scene->userForce);
             conductanceLastSec.push_back(s->conductance);
-            if (ms.count() >= 500) {
+            if (ms.count() >= 1000) {
                 if (fuzzy_params.find("coll") != string::npos) {
                     fl::InputVariable* colls = fuzzy->getInputVariable("collisions");
                     colls->setValue(main_scene->collisionsLastSec);
