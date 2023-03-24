@@ -49,6 +49,10 @@ void DebugScene::initWaypoints() {
         last_waypoint_index = -1;
         waypoint_index = 0;
     }
+    else if ((target->getLocalPos()).equals(destinations[1]) && last_waypoint_index == 4) {
+        last_waypoint_index = 5;
+        waypoint_index = 4;
+    }
     else if ((target->getLocalPos()).equals(destinations[1])) {
         last_waypoint_index = 1;
         waypoint_index = 2;

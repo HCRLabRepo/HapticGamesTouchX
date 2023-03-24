@@ -33,14 +33,16 @@ double hapticDeviceMaxStiffness;
 void GenericScene::updateTarget(){
     destination_index++;
     if (fuzzyControl) {
-        time_t timetaken = difftime(time(0), startTime);
-        cout << "Time: " << timetaken << " Collisions: " << collisionNum << endl;
-        double result = getFuzzyOutput(timetaken, collisionNum);
+        time_t timetaken = difftime(time(0), timeSinceTarget);
+        cout << "Time: " << timetaken << " Collisions: " << (collisionNum-collsSinceTarget) << endl;
+        double result = getFuzzyOutput(timetaken, (collisionNum - collsSinceTarget));
         cout << "Change in alpha: " << result << endl;
         ALPHA_CONTROL += result;
         ALPHA_CONTROL = min(1.0, ALPHA_CONTROL);
         ALPHA_CONTROL = max(0.0, ALPHA_CONTROL);
         currentAlpha = ALPHA_CONTROL;
+        timeSinceTarget = time(0);
+        collsSinceTarget = collisionNum;
     }
     cout<< "updated target" << endl;
     if( destination_index == destinations.size() ){
@@ -181,7 +183,6 @@ GenericScene::GenericScene(shared_ptr<cGenericHapticDevice> a_hapticDevice)
 
     // Create bar to display control level
     controlLevel = new cLevel();
-    camera->m_frontLayer->addChild(controlLevel);
     controlLevel->setLocalPos(20, 60);
     controlLevel->setRange(0.0, 1.0);
     controlLevel->setWidth(40);
@@ -311,6 +312,7 @@ GenericScene::GenericScene(shared_ptr<cGenericHapticDevice> a_hapticDevice)
 
     startTime = time(0);
     timeLastRun = time(0);
+    timeSinceTarget = time(0);
 }
 
 void GenericScene::borderSetup(std::vector<double> size, std::vector<double> pos, std::vector<double> rot,cMaterial matBase) {

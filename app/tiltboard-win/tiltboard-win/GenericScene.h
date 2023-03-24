@@ -100,6 +100,8 @@ public:
     fl::Engine* engine;
 
     double timeLastRun = time(0);
+    double timeSinceTarget;
+    double collsSinceTarget = 0;
     double collsLastRun = 0;
 
 };

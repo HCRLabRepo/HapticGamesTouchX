@@ -74,10 +74,15 @@ Scene1::Scene1(shared_ptr<cGenericHapticDevice> a_hapticDevice):GenericScene(a_h
 }
 
 void Scene1::initWaypoints(){
-    if((target->getLocalPos()).equals(destinations[0])){
+    if (target->getLocalPos().equals(destinations[1]) && last_waypoint_index == 12) {
+        last_waypoint_index = 13;
+        waypoint_index = 12;
+    }
+    else if((target->getLocalPos()).equals(destinations[0])){
         last_waypoint_index = 3;
         waypoint_index = 4;
-    }else if((target->getLocalPos()).equals(destinations[1])){
+    }
+    else if((target->getLocalPos()).equals(destinations[1])){
         last_waypoint_index = 7; 
         waypoint_index = 8;
     }
