@@ -108,8 +108,8 @@ void Scene1::generateWaypoints(cVector3d positionSphere, cVector3d positionTarge
         
         waypoints.push_back(positionTarget);
         waypointsRange.push_back(0.01);
-        waypoints.push_back(checkpoints.front());
-        waypointsRange.push_back(checkpointsRange.front());
+        waypoints.push_back(checkpoints.back());
+        waypointsRange.push_back(checkpointsRange.back());
     }
 }
 

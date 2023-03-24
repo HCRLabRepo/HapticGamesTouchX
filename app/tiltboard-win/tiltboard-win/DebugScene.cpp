@@ -50,8 +50,8 @@ void DebugScene::initWaypoints() {
         waypoint_index = 0;
     }
     else if ((target->getLocalPos()).equals(destinations[1]) && last_waypoint_index == 4) {
-        last_waypoint_index = 5;
-        waypoint_index = 4;
+        last_waypoint_index = 4;
+        waypoint_index = 3;
     }
     else if ((target->getLocalPos()).equals(destinations[1])) {
         last_waypoint_index = 1;
@@ -78,8 +78,8 @@ void DebugScene::generateWaypoints(cVector3d positionSphere, cVector3d positionT
 
         waypoints.push_back(positionTarget);
         waypointsRange.push_back(0.01);
-        waypoints.push_back(checkpoints.front());
-        waypointsRange.push_back(checkpointsRange.front());
+        waypoints.push_back(checkpoints.back());
+        waypointsRange.push_back(checkpointsRange.back());
     }
 }
 
