@@ -21,6 +21,7 @@ This is a haptic game consisting on controlling a ball towards a target as effic
 4. Python 3.11
 [Download](https://www.python.org/downloads/)
 **Please ensure this is installed in the default location (C:\Python311)**
+Pyserial package
 
 Firstly, run the Touch Setup utility to configure your haptic device. The Touch is recommended, but the Touch X can also work. Make sure whichever one you are using is set as the default device. The Touch diagnostic can then be run to check that the device is properly set up.
 
