@@ -21,12 +21,15 @@ This is a haptic game consisting on controlling a ball towards a target as effic
 4. Python 3.11
 [Download](https://www.python.org/downloads/)
 **Please ensure this is installed in the default location (C:\Python311)**
-Pyserial package
+
+5. Pyserial package
 
 Firstly, run the Touch Setup utility to configure your haptic device. The Touch is recommended, but the Touch X can also work. Make sure whichever one you are using is set as the default device. The Touch diagnostic can then be run to check that the device is properly set up.
 
 Run the setup.bat script to compile the external libraries and the project. It must be ran using the Visual Studio developer console **OR** after adding devenv.exe to PATH.
 Please ensure that the dll files required for running the project are present in the win_x64 folder: fuzzylite.dll, hdPhantom64.dll, Leap.dll, sixense_x64.dll, and tdLeap.dll. There should also be a folder named "resources" where the text files containing the coordinates for the waypoints should be present.
+
+**NOTE:** Please ensure the correct COM port is set in line 20 of read_sensor.py!!
 
 There are two ways of starting an experiment:
 1. Modifying the ExperimentSettings.txt file. This should be formatted as such:  
