@@ -111,6 +111,8 @@ Click on the "Install" or "Modify" button at the bottom right.
 
     To make the project run, in the end, the current way is to comment the line around 683 *s->getData();* in ``tilt-board2.cpp``, to stop reading any data from the sensor, avoiding entering ``read_sensor.py`` and ``SensorData.cpp``.
 
-2. Setup.bat has one failed configuration, but it can run. -- Win 11 only
+2. ~~[SOLVED] Setup.bat has one failed configuration, but it can run. -- Win 11 only~~
    
-    Not always happen tho. It only happens after I fix the issue of undetected pyserial packages.
+    ~~Not always happen tho. It only happens after I fix the issue of undetected pyserial packages.~~
+
+   ~~[Solved]: JUST CLEAN THE SOLUTIONS AND THEN REBUILD~~
