@@ -66,7 +66,7 @@ The source and header files for this implementation can be found in the app/tilt
 
     Go to the menu bar on the top, change to release x64, and then click "run local debugger" to build the project. If this is successful, the prompt will show something as "press any key to exit". So, quit.
          
-    The "setting files not found" could be ignored, as the author puts all .dll files in a different directory (the directory where tiltboard-win.exe is located). Maybe you can try to move everything to the current directory, but I am too scared to do so. (Project breakdown has ruined my confidence :p)
+    The "setting files not found" could be ignored, as the author puts all .dll files in a different directory (the directory where ``tiltboard-win.exe`` is located). Maybe you can try to move everything to the current directory, but I am too scared to do so. (Project breakdown has ruined my confidence :p)
 
 6. Run the .exe
 
