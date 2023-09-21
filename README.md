@@ -56,11 +56,11 @@ The source and header files for this implementation can be found in the app/tilt
 ## How to run this project
 1. Open solution
 
-    Go to `\HapticGamesTouchX-Windows\app\tiltboard-win\tiltboard-win` to find the `tiltboard-win.sln`, open this file in Visual Studio 2022.
+    Go to `\HapticGamesTouchX-Windows\app\tiltboard-win\tiltboard-win` to find the `tiltboard-win.sln`, and open this file in Visual Studio 2022.
 
 3. Remember to run the ``setup. bat`` **within** Visual Studio 2022, before you build the project. 
 
-    Go to ``Tools -> Command-Line`` to find the developer console, either one is okay to use. This .bat only needs to be run once. 
+    Go to ``Tools -> Command-Line`` to find the developer console, either one is okay to use. This .bat only needs to be run once. Run *setup.bat* in this console.
 
 5. Build the project:
 
@@ -85,7 +85,7 @@ The source and header files for this implementation can be found in the app/tilt
 
 2. Pyserial Packages Installing:
 
-    Go to the Pyserial GitHub page, zip the code, and download it to the local machine. Extract the zip folder and move the folder to your ideal location. I put it in the same directory as Python. Run`a new ``cmd`` as administrator, go to the directory where the setup.py file in the Pyserial folder is stored, run *python setup.py install*, and then the Pyserial packages can be installed successfully.
+    Go to the Pyserial GitHub page, zip the code, and download it to the local machine. Extract the zip folder and move the folder to your ideal location. I put it in the same directory as Python. Run a new ``cmd`` as administrator, go to the directory where the setup.py file in the Pyserial folder is stored, run *python setup.py install*, and then the Pyserial packages can be installed successfully.
 
 4. CMake:
 
@@ -105,10 +105,11 @@ Click on the "Install" or "Modify" button at the bottom right.
 
     When separating the sensor code from the project, to make the project run without a GSR sensor, the project can't run if I remove the print code *sys.stdout.write("-1")* around line 73 in ``read_sensor.py``. If you put sleeping code before this block, the project can only run the time you specify in the sleeping code. For example, sleep(10), then the project runs only 10 seconds. After that, it will crush.
    
-    The idea is to set a global variable in ``read_sensor.py``, defining whether the sensor is connected or not. If not, skip all the code but to return -1 to the SensorData.cpp file, where it convers python code to C++ code.
+    The idea is to set a global variable in ``read_sensor.py``, defining whether the sensor is connected or not. If not, skip all the code but return -1 to the SensorData.cpp file, where it converts Python code to C++ code.
    
-    The interesting thing is, when the *sys.stdout.write("-1")* is removed, it seems like the project can't receive -1 anymore, which shouldn't happen as the *sys.stdout.write("-1")* doesn't have the function to return any value.
+    The interesting thing is when the *sys.stdout.write("-1")* is removed, it seems like the project can't receive -1 anymore, which shouldn't happen as the *sys.stdout.write("-1")* doesn't have the function to return any value.
 
-    To make the project run, in the end, the current way is to comment the line around 683 *s->getData();* in ``tilt-board2.cpp``, to stop read any data from sensor, avoiding to enter ``read_sensor.py`` and ``SensorData.cpp``.
+    To make the project run, in the end, the current way is to comment the line around 683 *s->getData();* in ``tilt-board2.cpp``, to stop reading any data from the sensor, avoiding entering ``read_sensor.py`` and ``SensorData.cpp``.
 
-2. Setup.bat has one failed configuaration, but it can run. -- Win 11 only
+2. Setup.bat has one failed configuration, but it can run. -- Win 11 only
+    Not always happen tho. It only happens after I fix the issue of undetected pyserial packages.
