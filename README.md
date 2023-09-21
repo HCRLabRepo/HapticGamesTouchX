@@ -85,7 +85,7 @@ The source and header files for this implementation can be found in the app/tilt
 
 2. Pyserial Packages Installing:
 
-    Go to the Pyserial GitHub page, zip the code, and download it to the local machine. Extract the zip folder and move the folder to your ideal location. I put it in the same directory as Python. Run a new ``cmd`` as administrator, go to the directory where the setup.py file in the Pyserial folder is stored, run *python setup.py install*, and then the Pyserial packages can be installed successfully.
+    Go to the Pyserial GitHub page, zip the code, and download it to the local machine. Extract the zip folder and move the folder to your ideal location. I put it in the same directory as Python. Run a new ``cmd`` as administrator, go to the directory where the ``setup.py`` file in the Pyserial folder is stored, run *python setup.py install*, and then the Pyserial packages can be installed successfully.
 
 4. CMake:
 
