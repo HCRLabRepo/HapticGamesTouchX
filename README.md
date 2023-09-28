@@ -127,4 +127,5 @@ Click on the "Install" or "Modify" button at the bottom right.
 
    When the robot is connected, the ball always moves very fast even under tiny slight moves.
 
-5. Maybe it's worth figuring out how to define the global variable NUM_OF_RUNS in a better way. The current way (reading from the command line) may work, but I don't think this is the best way. I tried to define it in the header file using extern and pragma, but it didn't work.
+5. Maybe it's worth figuring out how to define the global variable NUM_OF_RUNS in a better way. The current way (reading from the command line and letting another source file refer to this number) may work, but I don't think this is the best way to define, declare, and refer to it. I tried to define it in the header file using extern and pragma, but it didn't work.
+
