@@ -116,3 +116,15 @@ Click on the "Install" or "Modify" button at the bottom right.
     ~~Not always happen tho. It only happens after I fix the issue of undetected pyserial packages.~~
 
    ~~[Solved]: JUST CLEAN THE SOLUTIONS AND THEN REBUILD~~
+
+   But if you open Error List and under IntelliSense, there are still hundreds of warnings, which I have no idea what they mean.
+
+3. Weird Ball Moving:
+
+   The ball can start to move to the left a little bit even when the sensor and robot are not connected in scene 2.
+
+4. Ball Moves TOO fast:
+
+   When the robot is connected, the ball always moves very fast even under tiny slight moves.
+
+5. Maybe it's worth figuring out how to define the global variable NUM_OF_RUNS in a better way. The current way (reading from the command line) may work, but I don't think this is the best way. I tried to define it in the header file using extern and pragma, but it didn't work.
