@@ -129,11 +129,16 @@ Click on the "Install" or "Modify" button at the bottom right.
 
 5. Maybe it's worth figuring out how to define the global variable NUM_OF_RUNS in a better way. The current way (reading from the command line and letting another source file refer to this number) may work, but I don't think this is the best way to define, declare, and refer to it. I tried to define it in the header file using extern and pragma, but it didn't work.
 
-   I have this concern because when I built this project after this change, it gave me more skipped buildings, and only 2 successful buildings, even though there is no failed building.
+   I have this concern because when I built this project after this change, it gave me more skipped buildings, and only 2 successful buildings, even though there is no failed building. [ Well, in Win 10, there is no such issue ]
 
-6. Maybe it would be better if we could set another variable such as the number of targets in every scene. In this way,  the local file can store any many interesting targets that you would like to test, and the reading can just stop wherever you want.
+   The NUM_OF_RUNS doesn't have debug scheme, such as -1, 0.
+
+7. Maybe it would be better if we could set another variable such as the number of targets in every scene. In this way,  the local file can store any many interesting targets that you would like to test, and the reading can just stop wherever you want.
 
     The current way is to manually input interesting positions x y z into the txt file, and the project reads through the whole file, setting these positions as the targets.
+   
+8. When you move tilt too fast, sometimes the ball can fall out of the boarder.
 
-7. When you move tilt too fast, sometimes the ball can fall out of the boarder.
+9. On Win 11 only, even specify the corrent port number, it still can't work.
+
 
