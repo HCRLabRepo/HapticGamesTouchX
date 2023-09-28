@@ -135,4 +135,5 @@ Click on the "Install" or "Modify" button at the bottom right.
 
     The current way is to manually input interesting positions x y z into the txt file, and the project reads through the whole file, setting these positions as the targets.
 
+7. When you move tilt too fast, sometimes the ball can fall out of the boarder.
 
